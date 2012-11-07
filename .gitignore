@@ -1,0 +1,14 @@
+# .gitignore
+
+/*
+/.*
+
+!/.gitignore
+
+# vim
+!/.vimrc
+!/.gvimrc
+
+
+# EOF
+
