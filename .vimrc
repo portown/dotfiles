@@ -19,6 +19,7 @@ NeoBundle 'Shougo/neobundle.vim'
 NeoBundle 'Shougo/vimproc', {
       \   'build' : {
       \     'cygwin' : 'make -f make_cygwin.mak',
+      \     'unix' : 'make -f make_unix.mak',
       \   },
       \ }
 NeoBundle 'Shougo/vimshell'
