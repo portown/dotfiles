@@ -67,6 +67,14 @@ set wrapscan
 set foldmethod=indent
 set foldlevel=0
 
+if exists( '&ambiwidth' )
+  if has( 'kaoriya' )
+    set ambiwidth=auto
+  else
+    set ambiwidth=double
+  endif
+endif
+
 syntax on
 
 let java_highlight_all=1
