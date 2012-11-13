@@ -65,8 +65,8 @@ set ignorecase smartcase
 set incsearch hlsearch
 set wrapscan
 
-set foldmethod=indent
-set foldlevel=0
+" set foldmethod=indent
+" set foldlevel=0
 
 if exists( '&ambiwidth' )
   if has( 'kaoriya' )
