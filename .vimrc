@@ -78,6 +78,10 @@ endif
 
 syntax on
 
+nnoremap <SPACE> <PageDown>
+
+autocmd Filetype help nnoremap <buffer> q <C-w>c
+
 let java_highlight_all=1
 let java_highlight_debug=1
 let java_space_errors=1
