@@ -1,11 +1,18 @@
 " .vimrc
 
 
+" -------------------------------------------------------------
+" 初期化 {{{
+
 set nocompatible
 
+let s:is_windows = has( 'win32' ) || has( 'win64' )
+
+" }}}
+" -------------------------------------------------------------
 
 " -------------------------------------------------------------
-" neobundle.vim の設定
+" neobundle.vim の設定 {{{
 
 filetype off
 
@@ -29,44 +36,22 @@ NeoBundle 'Shougo/unite.vim'
 
 filetype plugin indent on
 
+" }}}
 " -------------------------------------------------------------
 
+" -------------------------------------------------------------
+" 文字コードの設定 {{{
 
 set encoding=utf-8
 
+if s:is_windows
+  set termencoding=cp932
+endif
 
-set autoindent smartindent
+scriptencoding utf-8
 
-set clipboard=unnamed
-
-set tags=~/.tags
-
-colorscheme ron
-
-set expandtab
-set shiftwidth=2
-set tabstop=2
-set softtabstop=0
-set smarttab
-
-set list
-set listchars=tab:^\ ,trail:_,extends:<
-highlight JpSpace cterm=underline ctermfg=Blue guibg=Blue
-au BufNewFile,BufRead * match JpSpace /　/
-
-set backspace=indent,start,eol
-
-set showmatch
-
-set number
-set ruler
-
-set ignorecase smartcase
-set incsearch hlsearch
-set wrapscan
-
-" set foldmethod=indent
-" set foldlevel=0
+set fileformat=unix
+set fileformats=unix,dos,mac
 
 if exists( '&ambiwidth' )
   if has( 'kaoriya' )
@@ -76,16 +61,85 @@ if exists( '&ambiwidth' )
   endif
 endif
 
+" }}}
+" -------------------------------------------------------------
+
+set autoindent smartindent
+
+set clipboard=unnamed
+
+set tags=~/.tags
+
+colorscheme ron
+
+" -------------------------------------------------------------
+" タブ設定 {{{
+
+set expandtab
+set shiftwidth=2
+set tabstop=2
+set softtabstop=0
+set smarttab
+
+" }}}
+" -------------------------------------------------------------
+
+" -------------------------------------------------------------
+" 空白文字の設定 {{{
+
+set list
+set listchars=tab:^\ ,trail:_,extends:<
+highlight JpSpace cterm=underline ctermfg=Blue guibg=Blue
+au BufNewFile,BufRead * match JpSpace /　/
+
+" }}}
+" -------------------------------------------------------------
+
+set backspace=indent,start,eol
+
+set showmatch
+
+set number
+set ruler
+
+" -------------------------------------------------------------
+" 検索設定 {{{
+
+set ignorecase smartcase
+set incsearch hlsearch
+set wrapscan
+
+" }}}
+" -------------------------------------------------------------
+
+" -------------------------------------------------------------
+" 折り畳み設定 {{{
+
+set foldmethod=marker
+set foldlevel=0
+
+" }}}
+" -------------------------------------------------------------
+
 syntax on
 
 nnoremap <SPACE> <PageDown>
 
 autocmd Filetype help nnoremap <buffer> q <C-w>c
 
+" -------------------------------------------------------------
+" Java の設定 {{{
+
 let java_highlight_all=1
 let java_highlight_debug=1
 let java_space_errors=1
 let java_highlight_functions=1
+
+" }}}
+" -------------------------------------------------------------
+
+" -------------------------------------------------------------
+" neocomplcache の設定 {{{
 
 let g:neocomplcache_enable_at_startup = 1
 let g:neocomplcache_enable_smart_case = 1
@@ -94,7 +148,24 @@ let g:neocomplcache_enable_underbar_completion = 1
 let g:neocomplcache_min_syntax_length = 3
 let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
 
+" }}}
+" -------------------------------------------------------------
+
+" -------------------------------------------------------------
+" VimFiler の設定 {{{
+
 let g:vimfiler_as_default_explorer = 1
+
+" }}}
+" -------------------------------------------------------------
+
+" -------------------------------------------------------------
+" Unite.vim の設定 {{{
+
+noremap <C-U><C-B> :Unite buffer<CR>
+
+" }}}
+" -------------------------------------------------------------
 
 
 " EOF
