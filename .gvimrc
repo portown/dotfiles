@@ -17,6 +17,12 @@ autocmd GUIEnter * simalt ~x
 set guioptions-=T
 set guioptions-=m
 
+" スクロールバーを消す
+set guioptions-=l
+set guioptions-=L
+set guioptions-=r
+set guioptions-=R
+
 " タイトルを固定する
 set titlestring=gVim
 
