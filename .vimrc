@@ -175,6 +175,7 @@ let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
 " VimFiler の設定 {{{
 
 let g:vimfiler_as_default_explorer = 1
+let g:vimfiler_enable_auto_cd = 1
 
 " }}}
 " -------------------------------------------------------------
