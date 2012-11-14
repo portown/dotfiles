@@ -23,6 +23,8 @@ endif
 set nomousefocus
 set mousehide
 
+set shortmess+=I
+
 
 " EOF
 
