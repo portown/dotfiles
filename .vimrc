@@ -134,6 +134,20 @@ nnoremap <SPACE> <PageDown>
 autocmd Filetype help nnoremap <buffer> q <C-w>c
 
 " -------------------------------------------------------------
+" 保存時に行末スペースを消去 {{{
+
+function! RTrim()
+  let s:cursor_pos = getpos( '.' )
+  %s/\s\+$//e
+  call setpos( '.', s:cursor_pos )
+endfunction
+
+autocmd BufWritePre * call RTrim()
+
+" }}}
+" -------------------------------------------------------------
+
+" -------------------------------------------------------------
 " Java の設定 {{{
 
 let java_highlight_all=1
