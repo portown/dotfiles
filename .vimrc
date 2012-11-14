@@ -33,6 +33,7 @@ NeoBundle 'Shougo/vimshell'
 NeoBundle 'Shougo/neocomplcache'
 NeoBundle 'Shougo/vimfiler'
 NeoBundle 'Shougo/unite.vim'
+NeoBundle 'tpope/vim-surround'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'thinca/vim-logcat'
 
