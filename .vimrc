@@ -170,6 +170,27 @@ let g:neocomplcache_enable_underbar_completion = 1
 let g:neocomplcache_min_syntax_length = 3
 let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
 
+let g:neocomplcache_vim_completefuncs = {
+      \   'Unite' : 'unite#complete_source',
+      \   'VimShellExecute' : 'vimshell#vimshell_execute_complete',
+      \   'VimShellInteractive' : 'vimshell#vimshell_execute_complete',
+      \   'VimShellTerminal' : 'vimshell#vimshell_execute_complete',
+      \   'VimShell' : 'vimshell#complete',
+      \   'VimFiler' : 'vimfiler#complete',
+      \ }
+
+" }}}
+" -------------------------------------------------------------
+
+" -------------------------------------------------------------
+" VimShell の設定 {{{
+
+if s:is_windows
+  let g:vimshell_prompt = $USERNAME.'$ '
+else
+  let g:vimshell_prompt = $USER.'$ '
+endif
+
 " }}}
 " -------------------------------------------------------------
 
