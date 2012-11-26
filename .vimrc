@@ -216,7 +216,12 @@ let g:vimfiler_enable_auto_cd = 1
 " -------------------------------------------------------------
 " Unite.vim の設定 {{{
 
-noremap <C-U><C-B> :Unite buffer<CR>
+nnoremap [unite] <Nop>
+nmap <C-U> [unite]
+
+nnoremap [unite]<C-B> :<C-U>Unite buffer<CR>
+nnoremap [unite]<C-F> :<C-U>UniteWithBufferDir -buffer-name=files file<CR>
+nnoremap [unite]<C-M> :<C-U>Unite file_mru<CR>
 
 " }}}
 " -------------------------------------------------------------
