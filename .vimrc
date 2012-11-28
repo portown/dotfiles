@@ -36,6 +36,7 @@ NeoBundle 'Shougo/unite.vim'
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'thinca/vim-logcat'
+NeoBundle 'motemen/hatena-vim'
 
 filetype plugin indent on
 
@@ -216,6 +217,14 @@ let g:vimfiler_enable_auto_cd = 1
 " Unite.vim の設定 {{{
 
 noremap <C-U><C-B> :Unite buffer<CR>
+
+" }}}
+" -------------------------------------------------------------
+
+" -------------------------------------------------------------
+" hatena.vim の設定 {{{
+
+let g:hatena_user = 'portown'
 
 " }}}
 " -------------------------------------------------------------
