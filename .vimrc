@@ -67,7 +67,16 @@ endif
 " }}}
 " -------------------------------------------------------------
 
-set autoindent smartindent
+" -------------------------------------------------------------
+" インデントの設定 {{{
+
+set smartindent
+
+set cinoptions+=l1,g0,t0
+autocmd Filetype c,cpp set cindent
+
+" }}}
+" -------------------------------------------------------------
 
 set clipboard=unnamed
 
