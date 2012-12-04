@@ -38,6 +38,7 @@ NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'thinca/vim-logcat'
 NeoBundle 'motemen/hatena-vim'
 NeoBundle 'aklt/plantuml-syntax'
+NeoBundle 'vim-scripts/sudo.vim.git'
 
 filetype plugin indent on
 
