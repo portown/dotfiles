@@ -198,7 +198,7 @@ let g:neocomplcache_vim_completefuncs = {
 " VimShell の設定 {{{
 
 if s:is_windows
-  let g:vimshell_prompt = $USERNAME.'$ '
+  let g:vimshell_prompt = $USERNAME.hostname().'$ '
 else
   let g:vimshell_prompt = $USER.'$ '
 endif
