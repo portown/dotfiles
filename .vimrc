@@ -247,8 +247,15 @@ let g:hatena_user = 'portown'
 
 let s:uncrustify_config = expand( '~/.uncrustify.cfg' )
 if executable( 'uncrustify' ) && filereadable( s:uncrustify_config )
-  autocmd Portown BufWritePre *.c,*.cpp,*.cxx :silent execute '%!uncrustify -q -c '.s:uncrustify_config
+  autocmd Portown BufWritePre *.c,*.h call Uncrustify( 'C', s:uncrustify_config )
+  autocmd Portown BufWritePre *.cpp,*.cxx,*.hpp,*.hxx call Uncrustify( 'CPP', s:uncrustify_config )
 endif
+
+function! Uncrustify( lang, config_file )
+  let l:cursor_pos = getpos( '.' )
+  :silent execute '%!uncrustify -q -l '.a:lang.' -c '.a:config_file
+  call setpos( '.', l:cursor_pos )
+endfunction
 
 " }}}
 " -------------------------------------------------------------
