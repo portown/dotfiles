@@ -8,6 +8,10 @@ set nocompatible
 
 let s:is_windows = has( 'win32' ) || has( 'win64' )
 
+augroup Portown
+  autocmd!
+augroup END
+
 " }}}
 " -------------------------------------------------------------
 
@@ -76,7 +80,7 @@ endif
 set smartindent
 
 set cinoptions+=l1,g0,t0
-autocmd Filetype c,cpp set cindent
+autocmd Portown Filetype c,cpp set cindent
 
 " }}}
 " -------------------------------------------------------------
@@ -145,7 +149,7 @@ syntax on
 
 nnoremap <SPACE> <PageDown>
 
-autocmd Filetype help nnoremap <buffer> q <C-w>c
+autocmd Portown Filetype help nnoremap <buffer> q <C-w>c
 
 " -------------------------------------------------------------
 " 保存時に行末スペースを消去 {{{
@@ -156,7 +160,7 @@ function! RTrim()
   call setpos( '.', s:cursor_pos )
 endfunction
 
-autocmd BufWritePre * call RTrim()
+autocmd Portown BufWritePre * call RTrim()
 
 " }}}
 " -------------------------------------------------------------
@@ -232,6 +236,17 @@ nnoremap [unite]<C-M> :<C-U>Unite file_mru<CR>
 " hatena.vim の設定 {{{
 
 let g:hatena_user = 'portown'
+
+" }}}
+" -------------------------------------------------------------
+
+" -------------------------------------------------------------
+" uncrustify の設定 {{{
+
+let s:uncrustify_config = expand( '~/.uncrustify.cfg' )
+if executable( 'uncrustify' ) && filereadable( s:uncrustify_config )
+  autocmd Portown BufWritePre *.c,*.cpp,*.cxx :silent execute '%!uncrustify -q -c '.s:uncrustify_config
+endif
 
 " }}}
 " -------------------------------------------------------------
