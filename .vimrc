@@ -45,6 +45,7 @@ NeoBundle 'motemen/hatena-vim'
 NeoBundle 'aklt/plantuml-syntax'
 NeoBundle 'vim-scripts/sudo.vim.git'
 NeoBundle 'vim-jp/cpp-vim'
+NeoBundle 'tpope/vim-markdown'
 
 filetype plugin indent on
 
