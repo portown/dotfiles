@@ -155,9 +155,9 @@ autocmd Portown Filetype help nnoremap <buffer> q <C-w>c
 " 保存時に行末スペースを消去 {{{
 
 function! RTrim()
-  let s:cursor_pos = getpos( '.' )
+  let l:cursor_pos = getpos( '.' )
   %s/\s\+$//e
-  call setpos( '.', s:cursor_pos )
+  call setpos( '.', l:cursor_pos )
 endfunction
 
 autocmd Portown BufWritePre * call RTrim()
@@ -202,7 +202,7 @@ let g:neocomplcache_vim_completefuncs = {
 " VimShell の設定 {{{
 
 if s:is_windows
-  let g:vimshell_prompt = $USERNAME.hostname().'$ '
+  let g:vimshell_prompt = $USERNAME.'@'.hostname().'$ '
 else
   let g:vimshell_prompt = $USER.'$ '
 endif
