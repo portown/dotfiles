@@ -34,6 +34,7 @@ NeoBundle 'Shougo/vimproc', {
       \   },
       \ }
 NeoBundle 'Shougo/vimshell'
+NeoBundle 'ujihisa/vimshell-ssh'
 NeoBundle 'Shougo/neocomplcache'
 NeoBundle 'Shougo/vimfiler'
 NeoBundle 'Shougo/unite.vim'
