@@ -234,6 +234,8 @@ nnoremap [unite]<C-B> :<C-U>Unite buffer<CR>
 nnoremap [unite]<C-F> :<C-U>UniteWithBufferDir -buffer-name=files file<CR>
 nnoremap [unite]<C-M> :<C-U>Unite file_mru<CR>
 
+let g:unite_enable_start_insert = 1
+
 " }}}
 " -------------------------------------------------------------
 
