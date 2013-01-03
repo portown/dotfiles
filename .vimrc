@@ -190,6 +190,14 @@ autocmd Portown BufWritePre *.java call Uncrustify( 'JAVA', expand( '~/.uncrusti
 " -------------------------------------------------------------
 
 " -------------------------------------------------------------
+" Gradle の設定 {{{
+
+autocmd BufRead,BufNewFile *.gradle set filetype=groovy
+
+" }}}
+" -------------------------------------------------------------
+
+" -------------------------------------------------------------
 " neocomplcache の設定 {{{
 
 let g:neocomplcache_enable_at_startup = 1
