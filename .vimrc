@@ -235,7 +235,6 @@ endif
 " VimFiler の設定 {{{
 
 let g:vimfiler_as_default_explorer = 1
-let g:vimfiler_enable_auto_cd = 1
 
 nnoremap <silent> <Leader>fi :<C-U>VimFilerBufferDir -split -simple -winwidth=35 -no-quit<CR>
 
