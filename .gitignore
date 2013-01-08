@@ -8,6 +8,8 @@
 # vim
 !/.vimrc
 !/.gvimrc
+!/.vim/
+/.vim/bundle/
 
 !/.uncrustify.cfg
 
