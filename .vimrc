@@ -245,6 +245,7 @@ nnoremap <silent> <Leader>fi :<C-U>VimFilerBufferDir -split -simple -winwidth=35
 " Unite.vim の設定 {{{
 
 let g:unite_enable_start_insert = 1
+let g:unite_kind_file_use_trashbox = 0
 
 nnoremap [unite] <Nop>
 nmap <C-U> [unite]
