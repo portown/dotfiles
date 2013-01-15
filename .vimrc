@@ -149,7 +149,7 @@ set foldlevel=0
 " }}}
 " -------------------------------------------------------------
 
-syntax on
+syntax enable
 
 nnoremap <SPACE> <PageDown>
 nnoremap Y y$
