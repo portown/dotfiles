@@ -30,6 +30,35 @@ set titlestring=gVim
 " -------------------------------------------------------------
 
 " -------------------------------------------------------------
+" タブ設定 {{{
+
+" タブ名設定関数
+function! GuiTabLabel()
+  let l:label = ''
+
+  let l:buflist = tabpagebuflist( v:lnum )
+
+  let l:bufname = fnamemodify( bufname( l:buflist[tabpagewinnr( v:lnum ) - 1] ), ':t' )
+  let l:label .= ( l:bufname == '' ? 'No title' : l:bufname )
+
+  " 変更されたバッファがあるかチェック
+  for buf in l:buflist
+    if getbufvar( buf, '&modified' )
+      let label .= '[+]'
+      break
+    endif
+  endfor
+
+  return l:label
+endfunction
+
+" タブ番号と共にタブ名を表示させる
+set guitablabel=%N:\ %{GuiTabLabel()}
+
+" }}}
+" -------------------------------------------------------------
+
+" -------------------------------------------------------------
 " フォント設定 {{{
 
 if s:is_windows

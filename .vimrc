@@ -97,7 +97,7 @@ set tags=~/.tags
 colorscheme ron
 
 " -------------------------------------------------------------
-" タブ設定 {{{
+" タブ文字設定 {{{
 
 set expandtab
 set shiftwidth=2
