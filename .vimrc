@@ -152,6 +152,7 @@ set foldlevel=0
 syntax on
 
 nnoremap <SPACE> <PageDown>
+nnoremap Y y$
 
 autocmd Portown Filetype help nnoremap <buffer> q <C-w>c
 
