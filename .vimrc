@@ -48,6 +48,7 @@ NeoBundle 'aklt/plantuml-syntax'
 NeoBundle 'vim-scripts/sudo.vim.git'
 NeoBundle 'vim-jp/cpp-vim'
 NeoBundle 'tpope/vim-markdown'
+NeoBundle 'ujihisa/shadow.vim'
 
 filetype plugin indent on
 
