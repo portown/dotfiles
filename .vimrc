@@ -50,6 +50,7 @@ NeoBundle 'vim-jp/cpp-vim'
 NeoBundle 'tpope/vim-markdown'
 NeoBundle 'ujihisa/shadow.vim'
 NeoBundle 'kchmck/vim-coffee-script'
+NeoBundle 'tpope/vim-haml'
 
 filetype plugin indent on
 
