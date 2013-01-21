@@ -12,6 +12,11 @@ augroup Portown
   autocmd!
 augroup END
 
+" Go の設定
+if $GOROOT != ''
+  set rtp+=$GOROOT/misc/vim
+endif
+
 " }}}
 " -------------------------------------------------------------
 
