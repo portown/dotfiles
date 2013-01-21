@@ -38,6 +38,7 @@ NeoBundle 'ujihisa/vimshell-ssh'
 NeoBundle 'Shougo/neocomplcache'
 NeoBundle 'Shougo/vimfiler'
 NeoBundle 'Shougo/unite.vim'
+NeoBundle 'tsukkee/unite-help'
 NeoBundle 'Shougo/unite-ssh'
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'kana/vim-tabpagecd'
@@ -261,6 +262,7 @@ nmap <C-U> [unite]
 nnoremap [unite]<C-B> :<C-U>Unite buffer<CR>
 nnoremap [unite]<C-F> :<C-U>UniteWithBufferDir -buffer-name=files file<CR>
 nnoremap [unite]<C-M> :<C-U>Unite file_mru<CR>
+nnoremap [unite]<C-H> :<C-U>Unite help<CR>
 
 " }}}
 " -------------------------------------------------------------
