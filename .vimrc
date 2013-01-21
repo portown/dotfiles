@@ -94,6 +94,17 @@ autocmd Portown Filetype c,cpp set cindent
 " }}}
 " -------------------------------------------------------------
 
+" -------------------------------------------------------------
+" タブ設定 {{{
+
+nnoremap [tab] <Nop>
+nmap <Leader>t [tab]
+
+nnoremap [tab]n :<C-U>tabnew<CR>
+
+" }}}
+" -------------------------------------------------------------
+
 set clipboard=unnamed
 
 set tags=~/.tags
