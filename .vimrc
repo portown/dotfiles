@@ -275,10 +275,13 @@ let g:unite_kind_file_use_trashbox = 0
 nnoremap [unite] <Nop>
 nmap <C-U> [unite]
 
-nnoremap [unite]<C-B> :<C-U>Unite buffer<CR>
-nnoremap [unite]<C-F> :<C-U>UniteWithBufferDir -buffer-name=files file<CR>
-nnoremap [unite]<C-M> :<C-U>Unite file_mru<CR>
-nnoremap [unite]<C-H> :<C-U>Unite help<CR>
+nnoremap <silent> [unite]<C-B> :<C-U>Unite -buffer-name=buffers buffer<CR>
+nnoremap <silent> [unite]<C-F> :<C-U>Unite -buffer-name=files file file/new<CR>
+nnoremap <silent> [unite]<C-M> :<C-U>Unite -buffer-name=file_history file_mru<CR>
+nnoremap <silent> [unite]<C-H> :<C-U>Unite -buffer-name=help help<CR>
+
+nnoremap <silent> / :<C-U>Unite -buffer-name=search line<CR>
+nnoremap <silent> ? :<C-U>Unite -buffer-name=search line:backward<CR>
 
 " }}}
 " -------------------------------------------------------------
