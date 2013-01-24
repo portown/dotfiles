@@ -11,7 +11,13 @@ colorscheme torte
 " ウィンドウ設定 {{{
 
 " 起動時にウィンドウ最大化
-autocmd GUIEnter * simalt ~x
+if s:is_windows
+  autocmd Portown GUIEnter * simalt ~x
+else
+  autocmd Portown GUIEnter * winpos 0 0
+  set lines=52
+  set columns=239
+endif
 
 " ツールバーとメニューバーを消す
 set guioptions-=T
@@ -64,7 +70,7 @@ set guitablabel=%N:\ %{GuiTabLabel()}
 if s:is_windows
   set guifont=Migu\ 1M:h11:cSHIFTJIS
 else
-  set guifont=Migu\ 1M\ 11
+  set guifont=Migu\ 1M:h16
 endif
 
 " }}}
