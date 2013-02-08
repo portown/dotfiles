@@ -15,7 +15,7 @@ if s:is_windows
   autocmd Portown GUIEnter * simalt ~x
 else
   autocmd Portown GUIEnter * winpos 0 0
-  set lines=52
+  set lines=59
   set columns=239
 endif
 
