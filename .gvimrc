@@ -68,9 +68,9 @@ set guitablabel=%N:\ %{GuiTabLabel()}
 " フォント設定 {{{
 
 if s:is_windows
-  set guifont=Migu\ 1M:h11:cSHIFTJIS
+  set guifont=Ricty:h12:cSHIFTJIS
 else
-  set guifont=Migu\ 1M:h16
+  set guifont=Ricty:h16
 endif
 
 " }}}
