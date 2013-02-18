@@ -288,6 +288,7 @@ nmap <C-U> [unite]
 
 nnoremap <silent> [unite]<C-B> :<C-U>Unite -buffer-name=buffers buffer<CR>
 nnoremap <silent> [unite]<C-F> :<C-U>Unite -buffer-name=files file file/new<CR>
+nnoremap <silent> [unite]<C-D> :<C-U>UniteWithBufferDir -buffer-name=files file file/new<CR>
 nnoremap <silent> [unite]<C-M> :<C-U>Unite -buffer-name=file_history file_mru<CR>
 nnoremap <silent> [unite]<C-H> :<C-U>Unite -buffer-name=help help<CR>
 
