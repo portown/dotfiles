@@ -116,7 +116,7 @@ autocmd Portown Filetype c,cpp set cindent
 nnoremap [tab] <Nop>
 nmap <Leader>t [tab]
 
-nnoremap [tab]n :<C-U>tabnew<CR>
+nnoremap <silent> [tab]n :<C-U>tabnew<CR>
 
 " }}}
 " -------------------------------------------------------------
