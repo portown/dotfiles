@@ -285,13 +285,13 @@ let g:unite_enable_start_insert = 1
 let g:unite_kind_file_use_trashbox = 0
 
 nnoremap [unite] <Nop>
-nmap <C-U> [unite]
+nmap <Leader>u [unite]
 
-nnoremap <silent> [unite]<C-B> :<C-U>Unite -buffer-name=buffers buffer<CR>
-nnoremap <silent> [unite]<C-F> :<C-U>Unite -buffer-name=files file file/new<CR>
-nnoremap <silent> [unite]<C-D> :<C-U>UniteWithBufferDir -buffer-name=files file file/new<CR>
-nnoremap <silent> [unite]<C-M> :<C-U>Unite -buffer-name=file_history file_mru<CR>
-nnoremap <silent> [unite]<C-H> :<C-U>Unite -buffer-name=help help<CR>
+nnoremap <silent> [unite]b :<C-U>Unite -buffer-name=buffers buffer<CR>
+nnoremap <silent> [unite]f :<C-U>Unite -buffer-name=files file file/new<CR>
+nnoremap <silent> [unite]d :<C-U>UniteWithBufferDir -buffer-name=files file file/new<CR>
+nnoremap <silent> [unite]m :<C-U>Unite -buffer-name=file_history file_mru<CR>
+nnoremap <silent> [unite]h :<C-U>Unite -buffer-name=help help<CR>
 
 nnoremap <silent> / :<C-U>Unite -buffer-name=search line<CR>
 nnoremap <silent> ? :<C-U>Unite -buffer-name=search line:backward<CR>
