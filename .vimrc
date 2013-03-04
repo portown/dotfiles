@@ -23,8 +23,8 @@ endif
 " -------------------------------------------------------------
 " ローカル設定の読み込み {{{
 
-if filereadable( expand( '~/.vimrc.local' ) )
-  source ~/.vimrc.local
+if filereadable( expand( '~/.vimrc.local.before' ) )
+  source ~/.vimrc.local.before
 endif
 
 " }}}
@@ -327,6 +327,16 @@ endfunction
 
 " 起動時のメッセージを表示しない
 set shortmess+=I
+
+" -------------------------------------------------------------
+" ローカル設定の読み込み {{{
+
+if filereadable( expand( '~/.vimrc.local.after' ) )
+  source ~/.vimrc.local.after
+endif
+
+" }}}
+" -------------------------------------------------------------
 
 
 " EOF
