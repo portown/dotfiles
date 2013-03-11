@@ -192,7 +192,13 @@ autocmd Portown Filetype help nnoremap <buffer> q <C-w>c
 " -------------------------------------------------------------
 " 保存時に行末スペースを消去 {{{
 
+let g:portown_rtrim_enable = 1
+
 function! RTrim()
+  if !g:portown_rtrim_enable
+    return
+  endif
+
   let l:cursor_pos = getpos( '.' )
   %s/\s\+$//e
   call setpos( '.', l:cursor_pos )
