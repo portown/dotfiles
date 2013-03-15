@@ -342,6 +342,24 @@ endif
 " }}}
 " -------------------------------------------------------------
 
+" -------------------------------------------------------------
+" ディレクトリローカルな設定の読み込み {{{
+
+augroup vimrc-local
+  autocmd!
+  autocmd BufNewFile,BufReadPost * call s:vimrc_local( expand( '<afile>:p:h' ) )
+augroup END
+
+function! s:vimrc_local( location )
+  let files = findfile( '.vimrc.local', escape( a:location, ' ' ) . ';', -1 )
+  for i in reverse( filter( files, 'filereadable( v:val )' ) )
+    source `=i`
+  endfor
+endfunction
+
+" }}}
+" -------------------------------------------------------------
+
 
 " EOF
 
