@@ -319,6 +319,10 @@ let g:hatena_user = 'portown'
 let g:uncrustify_command = 'uncrustify'
 
 function! Uncrustify( lang, config_file )
+  if exists( 'b:uncrustify_enable' ) && !b:uncrustify_enable
+    return
+  endif
+
   if !executable( g:uncrustify_command ) || !filereadable( a:config_file )
     return
   endif
