@@ -186,6 +186,7 @@ nnoremap <SPACE> <PageDown>
 nnoremap Y y$
 
 autocmd Portown Filetype help nnoremap <buffer> q <C-w>c
+autocmd Portown Filetype help nnoremap <buffer> <C-]> :<C-U>tag <C-R><C-W><CR>
 
 " -------------------------------------------------------------
 " 保存時に行末スペースを消去 {{{
@@ -325,6 +326,14 @@ function! Uncrustify( lang, config_file )
   :silent execute '%!uncrustify -q -l '.a:lang.' -c '.a:config_file
   call setpos( '.', l:cursor_pos )
 endfunction
+
+" }}}
+" -------------------------------------------------------------
+
+" -------------------------------------------------------------
+" GNU Global の設定 {{{
+
+nnoremap <C-]> :<C-U>GtagsCursor<CR>
 
 " }}}
 " -------------------------------------------------------------
