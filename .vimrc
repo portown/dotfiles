@@ -123,6 +123,7 @@ nnoremap <silent> [tab]n :<C-U>tabnew<CR>
 " -------------------------------------------------------------
 
 set clipboard=unnamed
+set tags+=~/tags
 
 colorscheme ron
 
