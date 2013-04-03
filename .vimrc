@@ -122,6 +122,32 @@ nnoremap <silent> [tab]n :<C-U>tabnew<CR>
 " }}}
 " -------------------------------------------------------------
 
+" -------------------------------------------------------------
+" コマンドライン設定 {{{
+
+nnoremap <SID>(command-line-enter) q:
+xnoremap <SID>(command-line-enter) q:
+nnoremap <SID>(command-line-norange) q:<C-U>
+
+nmap : <SID>(command-line-enter)
+xmap : <SID>(command-line-enter)
+
+autocmd Portown CmdwinEnter * call s:init_cmdwin()
+function! s:init_cmdwin()
+  nnoremap <buffer> q :<C-U>quit<CR>
+  nnoremap <buffer> <TAB> :<C-U>quit<CR>
+  inoremap <buffer><expr> <CR> pumvisible() ? "\<C-Y>\<CR>" : "\<CR>"
+  inoremap <buffer><expr> <C-H> pumvisible() ? "\<C-Y>\<C-H>" : "\<C-H>"
+  inoremap <buffer><expr> <BS> pumvisible() ? "\<C-Y>\<C-H>" : "\<C-H>"
+
+  inoremap <buffer><expr> <TAB> pumvisible() ? "\<C-N>" : "\<TAB>"
+
+  startinsert!
+endfunction
+
+" }}}
+" -------------------------------------------------------------
+
 set clipboard=unnamed
 set tags+=~/tags
 
