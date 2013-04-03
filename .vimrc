@@ -299,9 +299,6 @@ nnoremap <silent> [unite]d :<C-U>UniteWithBufferDir -buffer-name=files file file
 nnoremap <silent> [unite]m :<C-U>Unite -buffer-name=file_history file_mru<CR>
 nnoremap <silent> [unite]h :<C-U>Unite -buffer-name=help help<CR>
 
-nnoremap <silent> / :<C-U>Unite -buffer-name=search line<CR>
-nnoremap <silent> ? :<C-U>Unite -buffer-name=search line:backward<CR>
-
 " }}}
 " -------------------------------------------------------------
 
