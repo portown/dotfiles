@@ -71,6 +71,7 @@ NeoBundle 'kchmck/vim-coffee-script'
 NeoBundle 'tpope/vim-haml'
 NeoBundle 'Shougo/unite-outline'
 NeoBundle 'hrsh7th/vim-versions'
+NeoBundle 'hewes/unite-gtags'
 
 filetype plugin indent on
 
@@ -318,6 +319,11 @@ nnoremap <silent> [unite]m :<C-U>Unite -buffer-name=file_history file_mru<CR>
 nnoremap <silent> [unite]h :<C-U>Unite -buffer-name=help help<CR>
 nnoremap <silent> [unite]o :<C-U>Unite -buffer-name=outline outline<CR>
 
+nnoremap [unite-gtags] <Nop>
+nmap [unite]g [unite-gtags]
+nnoremap <silent> [unite-gtags]r :<C-U>Unite gtags/ref<CR>
+nnoremap <silent> <C-]> :<C-U>Unite gtags/context<CR>
+
 nnoremap [unite-versions] <Nop>
 nmap [unite]v [unite-versions]
 nnoremap <silent> [unite-versions]v :<C-U>UniteVersions<CR>
@@ -349,14 +355,6 @@ function! g:uncrustify( lang, config_file )
   :silent execute '%!uncrustify -q -l '.a:lang.' -c '.a:config_file
   call setpos( '.', l:cursor_pos )
 endfunction
-
-" }}}
-" -------------------------------------------------------------
-
-" -------------------------------------------------------------
-" GNU Global の設定 {{{
-
-nnoremap <C-]> :<C-U>GtagsCursor<CR>
 
 " }}}
 " -------------------------------------------------------------
