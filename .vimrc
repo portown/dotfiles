@@ -305,6 +305,8 @@ nnoremap <silent> <Leader>fi :<C-U>VimFilerBufferDir -split -simple -winwidth=35
 let g:unite_enable_start_insert = 1
 let g:unite_kind_file_use_trashbox = 0
 
+let g:unite_source_grep_default_opts = '-Hn --color=never'
+
 nnoremap [unite] <Nop>
 nmap <Leader>u [unite]
 
