@@ -69,6 +69,7 @@ NeoBundle 'tpope/vim-markdown'
 NeoBundle 'ujihisa/shadow.vim'
 NeoBundle 'kchmck/vim-coffee-script'
 NeoBundle 'tpope/vim-haml'
+NeoBundle 'Shougo/unite-outline'
 
 filetype plugin indent on
 
@@ -312,6 +313,7 @@ nnoremap <silent> [unite]f :<C-U>Unite -buffer-name=files file file/new<CR>
 nnoremap <silent> [unite]d :<C-U>UniteWithBufferDir -buffer-name=files file file/new<CR>
 nnoremap <silent> [unite]m :<C-U>Unite -buffer-name=file_history file_mru<CR>
 nnoremap <silent> [unite]h :<C-U>Unite -buffer-name=help help<CR>
+nnoremap <silent> [unite]o :<C-U>Unite -buffer-name=outline outline<CR>
 
 " }}}
 " -------------------------------------------------------------
