@@ -236,24 +236,12 @@ autocmd Portown BufWritePre * call RTrim()
 " -------------------------------------------------------------
 
 " -------------------------------------------------------------
-" C++ の設定 {{{
-
-let s:uncrustify_cpp_config = expand( '~/.uncrustify.cfg' )
-autocmd Portown BufWritePre *.c,*.h call Uncrustify( 'C', s:uncrustify_cpp_config )
-autocmd Portown BufWritePre *.cpp,*.cxx,*.hpp,*.hxx call Uncrustify( 'CPP', s:uncrustify_cpp_config )
-
-" }}}
-" -------------------------------------------------------------
-
-" -------------------------------------------------------------
 " Java の設定 {{{
 
 let java_highlight_all=1
 let java_highlight_debug=1
 let java_space_errors=1
 let java_highlight_functions=1
-
-autocmd Portown BufWritePre *.java call Uncrustify( 'JAVA', expand( '~/.uncrustify.java.cfg' ) )
 
 " }}}
 " -------------------------------------------------------------
@@ -341,11 +329,7 @@ let g:hatena_user = 'portown'
 
 let g:uncrustify_command = 'uncrustify'
 
-function! Uncrustify( lang, config_file )
-  if exists( 'b:uncrustify_enable' ) && !b:uncrustify_enable
-    return
-  endif
-
+function! g:uncrustify( lang, config_file )
   if !executable( g:uncrustify_command ) || !filereadable( a:config_file )
     return
   endif
