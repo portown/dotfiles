@@ -299,7 +299,7 @@ endif
 
 let g:vimfiler_as_default_explorer = 1
 
-nnoremap <silent> <Leader>fi :<C-U>VimFilerBufferDir -split -simple -winwidth=35 -no-quit<CR>
+nnoremap <silent> <Leader>fi :<C-U>VimFilerBufferDir -buffer-name=explorer -direction=topleft -toggle -split -simple -winwidth=35 -no-quit<CR>
 
 " }}}
 " -------------------------------------------------------------
