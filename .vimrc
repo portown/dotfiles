@@ -65,6 +65,7 @@ NeoBundle 'kchmck/vim-coffee-script'
 NeoBundle 'motemen/hatena-vim'
 NeoBundle 'tpope/vim-markdown'
 NeoBundle 'aklt/plantuml-syntax'
+NeoBundle 'vim-scripts/scons.vim'
 
 " Others
 NeoBundle 'Shougo/vimshell'
@@ -262,6 +263,14 @@ let java_highlight_functions=1
 " Gradle の設定 {{{
 
 autocmd BufRead,BufNewFile *.gradle set filetype=groovy
+
+" }}}
+" -------------------------------------------------------------
+
+" -------------------------------------------------------------
+" SCons の設定 {{{
+
+autocmd Portown BufRead,BufNewFile SConstruct set filetype=scons
 
 " }}}
 " -------------------------------------------------------------
