@@ -316,17 +316,19 @@ let g:unite_source_grep_recursive_opt = '-r'
 nnoremap [unite] <Nop>
 nmap <Leader>u [unite]
 
-nnoremap <silent> [unite]b :<C-U>Unite -buffer-name=buffers buffer<CR>
+nnoremap <silent> [unite]b :<C-U>Unite -buffer-name=buffers buffer_tab<CR>
 nnoremap <silent> [unite]f :<C-U>Unite -buffer-name=files file file/new<CR>
 nnoremap <silent> [unite]d :<C-U>UniteWithBufferDir -buffer-name=files file file/new<CR>
+nnoremap <silent> [unite]r :<C-U>Unite -buffer-name=files file_rec/async<CR>
 nnoremap <silent> [unite]m :<C-U>Unite -buffer-name=file_history file_mru<CR>
 nnoremap <silent> [unite]h :<C-U>Unite -buffer-name=help help<CR>
 nnoremap <silent> [unite]o :<C-U>Unite -buffer-name=outline outline<CR>
+nnoremap <silent> [unite]u :<C-U>UniteResume<CR>
 
 nnoremap [unite-gtags] <Nop>
 nmap [unite]g [unite-gtags]
 nnoremap <silent> [unite-gtags]r :<C-U>Unite gtags/ref<CR>
-nnoremap <silent> <C-]> :<C-U>Unite gtags/context<CR>
+nnoremap <silent> <C-]> :<C-U>Unite -immediately -no-start-insert -no-quit -keep-focus gtags/context<CR>
 
 nnoremap [unite-versions] <Nop>
 nmap [unite]v [unite-versions]
