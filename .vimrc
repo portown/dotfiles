@@ -190,6 +190,9 @@ set showmatch
 
 set number
 set ruler
+set laststatus=2
+set cmdheight=2
+set showcmd
 
 " -------------------------------------------------------------
 " 検索設定 {{{

@@ -82,12 +82,16 @@ endif
 " 日本語入力オン時のカーソル色を変更する
 highlight CursorIM guibg=Red
 
+set iminsert=0
+set imsearch=0
+
 " }}}
 " -------------------------------------------------------------
 
 " -------------------------------------------------------------
 " マウス設定 {{{
 
+set mouse=
 set nomousefocus
 set mousehide
 
