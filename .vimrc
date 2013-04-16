@@ -262,7 +262,7 @@ let java_highlight_functions=1
 " -------------------------------------------------------------
 " Gradle の設定 {{{
 
-autocmd BufRead,BufNewFile *.gradle set filetype=groovy
+autocmd Portown BufRead,BufNewFile *.gradle set filetype=groovy
 
 " }}}
 " -------------------------------------------------------------
