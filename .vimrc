@@ -50,28 +50,34 @@ NeoBundle 'Shougo/vimproc', {
       \     'unix' : 'make -f make_unix.mak',
       \   },
       \ }
+
+" Unite
+NeoBundle 'Shougo/unite.vim'
+NeoBundle 'tsukkee/unite-help'
+NeoBundle 'Shougo/unite-ssh'
+NeoBundle 'Shougo/unite-outline'
+NeoBundle 'hewes/unite-gtags'
+
+" Language
+NeoBundle 'vim-jp/cpp-vim'
+NeoBundle 'tpope/vim-haml'
+NeoBundle 'kchmck/vim-coffee-script'
+NeoBundle 'motemen/hatena-vim'
+NeoBundle 'tpope/vim-markdown'
+NeoBundle 'aklt/plantuml-syntax'
+
+" Others
 NeoBundle 'Shougo/vimshell'
 NeoBundle 'ujihisa/vimshell-ssh'
 NeoBundle 'Shougo/neocomplcache'
 NeoBundle 'Shougo/vimfiler'
-NeoBundle 'Shougo/unite.vim'
-NeoBundle 'tsukkee/unite-help'
-NeoBundle 'Shougo/unite-ssh'
 NeoBundle 'anyakichi/vim-surround'
 NeoBundle 'kana/vim-tabpagecd'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'thinca/vim-logcat'
-NeoBundle 'motemen/hatena-vim'
-NeoBundle 'aklt/plantuml-syntax'
 NeoBundle 'vim-scripts/sudo.vim.git'
-NeoBundle 'vim-jp/cpp-vim'
-NeoBundle 'tpope/vim-markdown'
 NeoBundle 'ujihisa/shadow.vim'
-NeoBundle 'kchmck/vim-coffee-script'
-NeoBundle 'tpope/vim-haml'
-NeoBundle 'Shougo/unite-outline'
 NeoBundle 'hrsh7th/vim-versions'
-NeoBundle 'hewes/unite-gtags'
 
 filetype plugin indent on
 
