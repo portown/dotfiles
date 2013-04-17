@@ -56,6 +56,7 @@ NeoBundle 'Shougo/unite.vim'
 NeoBundle 'tsukkee/unite-help'
 NeoBundle 'Shougo/unite-ssh'
 NeoBundle 'Shougo/unite-outline'
+NeoBundle 'ryotakato/unite-outline-objc'
 NeoBundle 'hewes/unite-gtags'
 
 " Language
