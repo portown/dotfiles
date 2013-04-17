@@ -332,13 +332,17 @@ nnoremap [unite] <Nop>
 nmap <Leader>u [unite]
 
 nnoremap <silent> [unite]b :<C-U>Unite -buffer-name=buffers buffer_tab<CR>
-nnoremap <silent> [unite]f :<C-U>Unite -buffer-name=files file file/new<CR>
-nnoremap <silent> [unite]d :<C-U>UniteWithBufferDir -buffer-name=files file file/new<CR>
-nnoremap <silent> [unite]r :<C-U>Unite -buffer-name=files file_rec/async<CR>
-nnoremap <silent> [unite]m :<C-U>Unite -buffer-name=file_history file_mru<CR>
 nnoremap <silent> [unite]h :<C-U>Unite -buffer-name=help help<CR>
 nnoremap <silent> [unite]o :<C-U>Unite -buffer-name=outline outline<CR>
 nnoremap <silent> [unite]u :<C-U>UniteResume<CR>
+
+nnoremap [unite-file] <Nop>
+nmap [unite]f [unite-file]
+nnoremap <silent> [unite-file]f :<C-U>Unite -buffer-name=files file file/new<CR>
+nnoremap <silent> [unite-file]d :<C-U>UniteWithBufferDir -buffer-name=files file file/new<CR>
+nnoremap <silent> [unite-file]r :<C-U>Unite -buffer-name=files file_rec/async<CR>
+nnoremap <silent> [unite-file]m :<C-U>Unite -buffer-name=files file_mru<CR>
+nnoremap <silent> [unite-file]b :<C-U>Unite -buffer-name=files bookmark<CR>
 
 nnoremap [unite-gtags] <Nop>
 nmap [unite]g [unite-gtags]
