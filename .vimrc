@@ -347,7 +347,7 @@ nnoremap <silent> [unite-file]b :<C-U>Unite -buffer-name=files bookmark<CR>
 nnoremap [unite-gtags] <Nop>
 nmap [unite]g [unite-gtags]
 nnoremap <silent> [unite-gtags]r :<C-U>Unite gtags/ref<CR>
-nnoremap <silent> <C-]> :<C-U>Unite -immediately -no-start-insert -no-quit -keep-focus gtags/context<CR>
+nnoremap <silent> <C-]> :<C-U>Unite -immediately -no-start-insert -no-quit -keep-focus -winheight=10 gtags/context<CR>
 
 nnoremap [unite-versions] <Nop>
 nmap [unite]v [unite-versions]
