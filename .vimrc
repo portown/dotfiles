@@ -144,13 +144,12 @@ xmap : <SID>(command-line-enter)
 
 autocmd Portown CmdwinEnter * call s:init_cmdwin()
 function! s:init_cmdwin()
-  nnoremap <buffer> q :<C-U>quit<CR>
-  nnoremap <buffer> <TAB> :<C-U>quit<CR>
-  inoremap <buffer><expr> <CR> pumvisible() ? "\<C-Y>\<CR>" : "\<CR>"
-  inoremap <buffer><expr> <C-H> pumvisible() ? "\<C-Y>\<C-H>" : "\<C-H>"
-  inoremap <buffer><expr> <BS> pumvisible() ? "\<C-Y>\<C-H>" : "\<C-H>"
+  nnoremap <silent> <buffer> q :<C-U>quit<CR>
+  inoremap <silent> <buffer><expr> <CR> pumvisible() ? "\<C-Y>\<CR>" : "\<CR>"
+  inoremap <silent> <buffer><expr> <C-H> col('.') == 1 ? "\<ESC>:q\<CR>" : pumvisible() ? "\<C-Y>\<C-H>" : "\<C-H>"
+  inoremap <silent> <buffer><expr> <BS> col('.') == 1 ? "\<ESC>:q\<CR>" : pumvisible() ? "\<C-Y>\<C-H>" : "\<C-H>"
 
-  inoremap <buffer><expr> <TAB> pumvisible() ? "\<C-N>" : "\<TAB>"
+  inoremap <silent> <buffer><expr> <TAB> pumvisible() ? "\<C-N>" : "\<TAB>"
 
   startinsert!
 endfunction
