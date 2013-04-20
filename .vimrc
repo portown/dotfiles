@@ -320,7 +320,9 @@ nnoremap [vimshell]s :<C-U>VimShellBufferDir -buffer-name=shell -toggle -split -
 
 let g:vimfiler_as_default_explorer = 1
 
-nnoremap <silent> <Leader>fi :<C-U>VimFilerBufferDir -buffer-name=explorer -direction=topleft -toggle -split -simple -winwidth=35 -no-quit<CR>
+nnoremap [vimfiler] <Nop>
+nmap <Leader>f [vimfiler]
+nnoremap <silent> [vimfiler]f :<C-U>VimFilerBufferDir -buffer-name=explorer -direction=topleft -toggle -split -simple -winwidth=35 -no-quit<CR>
 
 " }}}
 " -------------------------------------------------------------
