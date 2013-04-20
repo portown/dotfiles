@@ -306,6 +306,12 @@ else
   let g:vimshell_prompt = $USER.'$ '
 endif
 
+command! PortownVimShellSplit :topleft 10split
+
+nnoremap [vimshell] <Nop>
+nmap <Leader>s [vimshell]
+nnoremap [vimshell]s :<C-U>VimShellBufferDir -buffer-name=shell -toggle -split -split-command=PortownVimShellSplit -project<CR>
+
 " }}}
 " -------------------------------------------------------------
 
