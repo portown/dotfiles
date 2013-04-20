@@ -349,6 +349,11 @@ nmap [unite]g [unite-gtags]
 nnoremap <silent> [unite-gtags]r :<C-U>Unite gtags/ref<CR>
 nnoremap <silent> <C-]> :<C-U>Unite -immediately -no-start-insert -no-quit -keep-focus -winheight=10 gtags/context<CR>
 
+nnoremap [unite-neobundle] <Nop>
+nmap [unite]n [unite-neobundle]
+nnoremap <silent> [unite-neobundle]u :<C-U>Unite -no-start-insert -no-cursor-line -buffer-name=neobundle neobundle/update<CR>
+nnoremap <silent> [unite-neobundle]c :<C-U>UniteClose neobundle<CR>
+
 nnoremap [unite-versions] <Nop>
 nmap [unite]v [unite-versions]
 nnoremap <silent> [unite-versions]v :<C-U>UniteVersions<CR>
