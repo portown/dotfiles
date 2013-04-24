@@ -13,6 +13,9 @@ colorscheme torte
 " 起動時にウィンドウ最大化
 if s:is_windows
   autocmd Portown GUIEnter * simalt ~x
+elseif has( 'gui_macvim' )
+  set fuoptions=maxhorz,maxvert
+  autocmd Portown GUIEnter * set fullscreen
 else
   autocmd Portown GUIEnter * winpos 0 0
   set lines=59
