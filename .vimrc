@@ -309,7 +309,7 @@ command! PortownVimShellSplit :topleft 10split
 
 nnoremap [vimshell] <Nop>
 nmap <Leader>s [vimshell]
-nnoremap <silent> [vimshell]s :<C-U>VimShellBufferDir -buffer-name=shell -toggle -split -split-command=PortownVimShellSplit<CR>
+nnoremap <silent> [vimshell]s :<C-U>VimShellCurrentDir -buffer-name=shell -toggle -split -split-command=PortownVimShellSplit<CR>
 
 " }}}
 " -------------------------------------------------------------
