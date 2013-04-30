@@ -329,7 +329,7 @@ nnoremap <silent> [vimfiler]f :<C-U>VimFilerBufferDir -buffer-name=explorer -dir
 " -------------------------------------------------------------
 " Unite.vim の設定 {{{
 
-let g:unite_enable_start_insert = 1
+let g:unite_enable_start_insert = 0
 let g:unite_kind_file_use_trashbox = 0
 
 let g:unite_source_grep_default_opts = '-Hn'
@@ -338,27 +338,27 @@ let g:unite_source_grep_recursive_opt = '-r'
 nnoremap [unite] <Nop>
 nmap <Leader>u [unite]
 
-nnoremap <silent> [unite]b :<C-U>Unite -buffer-name=buffers buffer_tab<CR>
-nnoremap <silent> [unite]h :<C-U>Unite -buffer-name=help help<CR>
-nnoremap <silent> [unite]o :<C-U>Unite -buffer-name=outline outline<CR>
+nnoremap <silent> [unite]b :<C-U>Unite -buffer-name=buffers -start-insert buffer_tab<CR>
+nnoremap <silent> [unite]h :<C-U>Unite -buffer-name=help -start-insert help<CR>
+nnoremap <silent> [unite]o :<C-U>Unite -buffer-name=outline -start-insert outline<CR>
 nnoremap <silent> [unite]u :<C-U>UniteResume<CR>
 
 nnoremap [unite-file] <Nop>
 nmap [unite]f [unite-file]
-nnoremap <silent> [unite-file]f :<C-U>Unite -buffer-name=files file file/new<CR>
-nnoremap <silent> [unite-file]d :<C-U>UniteWithBufferDir -buffer-name=files file file/new<CR>
-nnoremap <silent> [unite-file]r :<C-U>Unite -buffer-name=files file_rec/async<CR>
-nnoremap <silent> [unite-file]m :<C-U>Unite -buffer-name=files file_mru<CR>
-nnoremap <silent> [unite-file]b :<C-U>Unite -buffer-name=files bookmark<CR>
+nnoremap <silent> [unite-file]f :<C-U>Unite -buffer-name=files -start-insert file file/new<CR>
+nnoremap <silent> [unite-file]d :<C-U>UniteWithBufferDir -buffer-name=files -start-insert file file/new<CR>
+nnoremap <silent> [unite-file]r :<C-U>Unite -buffer-name=files -start-insert file_rec/async<CR>
+nnoremap <silent> [unite-file]m :<C-U>Unite -buffer-name=files -start-insert file_mru<CR>
+nnoremap <silent> [unite-file]b :<C-U>Unite -buffer-name=files -start-insert bookmark<CR>
 
 nnoremap [unite-gtags] <Nop>
 nmap [unite]g [unite-gtags]
-nnoremap <silent> [unite-gtags]r :<C-U>Unite gtags/ref<CR>
-nnoremap <silent> <C-]> :<C-U>Unite -immediately -no-start-insert -no-quit -keep-focus -winheight=10 gtags/context<CR>
+nnoremap <silent> [unite-gtags]r :<C-U>Unite -immediately -no-quit -keep-focus -winheight=10 gtags/ref<CR>
+nnoremap <silent> <C-]> :<C-U>Unite -immediately -no-quit -keep-focus -winheight=10 gtags/context<CR>
 
 nnoremap [unite-neobundle] <Nop>
 nmap [unite]n [unite-neobundle]
-nnoremap <silent> [unite-neobundle]u :<C-U>Unite -no-start-insert -no-cursor-line -buffer-name=neobundle neobundle/update<CR>
+nnoremap <silent> [unite-neobundle]u :<C-U>Unite -buffer-name=neobundle -no-cursor-line -log neobundle/update<CR>
 nnoremap <silent> [unite-neobundle]c :<C-U>UniteClose neobundle<CR>
 
 nnoremap [unite-versions] <Nop>
