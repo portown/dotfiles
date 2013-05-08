@@ -73,11 +73,13 @@ set guitablabel=%N:\ %{GuiTabLabel()}
 if s:is_windows
   set guifont=Ricty:h12:cSHIFTJIS
 
-  " DirectWrite の設定
-  "   pixelGeometry: RGB
-  "   renderingMode: NATURAL_SYMMETRIC
-  "   textAntialiasMode: CLEARTYPE
-  set rop=type:directx,gamma:1.7,contrast:1.0,level:0.8,geom:1,renmode:5,taamode:1
+  if exists( '&rop' )
+    " DirectWrite の設定
+    "   pixelGeometry: RGB
+    "   renderingMode: NATURAL_SYMMETRIC
+    "   textAntialiasMode: CLEARTYPE
+    set rop=type:directx,gamma:1.7,contrast:1.0,level:0.8,geom:1,renmode:5,taamode:1
+  endif
 else
   set guifont=Ricty:h16
 endif
