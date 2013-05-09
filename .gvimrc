@@ -5,7 +5,7 @@ let s:is_windows = has( 'win32' ) || has( 'win64' )
 
 
 " GUI 用のカラースキームを設定（こちらで設定しないと反映されない）
-colorscheme torte
+colorscheme hybrid
 
 " -------------------------------------------------------------
 " ウィンドウ設定 {{{

@@ -79,6 +79,7 @@ NeoBundle 'thinca/vim-logcat'
 NeoBundle 'vim-scripts/sudo.vim.git'
 NeoBundle 'ujihisa/shadow.vim'
 NeoBundle 'hrsh7th/vim-versions'
+NeoBundle 'w0ng/vim-hybrid'
 
 filetype plugin indent on
 
@@ -160,7 +161,7 @@ endfunction
 set clipboard=unnamed
 set tags+=~/tags
 
-colorscheme ron
+colorscheme hybrid
 
 " -------------------------------------------------------------
 " タブ文字設定 {{{
