@@ -72,6 +72,7 @@ NeoBundle 'vim-scripts/scons.vim'
 NeoBundle 'Shougo/vimshell'
 NeoBundle 'ujihisa/vimshell-ssh'
 NeoBundle 'Shougo/neocomplcache'
+NeoBundle 'Shougo/neosnippet'
 NeoBundle 'Shougo/vimfiler'
 NeoBundle 'anyakichi/vim-surround'
 NeoBundle 'thinca/vim-logcat'
@@ -291,6 +292,28 @@ let g:neocomplcache_vim_completefuncs = {
       \   'VimShell' : 'vimshell#complete',
       \   'VimFiler' : 'vimfiler#complete',
       \ }
+
+" }}}
+" -------------------------------------------------------------
+
+" -------------------------------------------------------------
+" neosnippet の設定 {{{
+
+imap <C-K> <Plug>(neosnippet_expand_or_jump)
+smap <C-K> <Plug>(neosnippet_expand_or_jump)
+xmap <C-K> <Plug>(neosnippet_expand_target)
+
+imap <expr><Tab> neosnippet#expandable_or_jumpable() ?
+      \ "\<Plug>(neosnippet_expand_or_jump)"
+      \: pumvisible() ? "\<C-N>" : "\<Tab>"
+smap <expr><Tab> neosnippet#expandable_or_jumpable() ?
+      \ "\<Plug>(neosnippet_expand_or_jump)"
+      \: "\<Tab>"
+
+if has( 'conceal' )
+  set conceallevel=2
+  set concealcursor=i
+endif
 
 " }}}
 " -------------------------------------------------------------
