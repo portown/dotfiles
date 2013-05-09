@@ -181,13 +181,6 @@ set smarttab
 set list
 set listchars=tab:^\ ,trail:_,extends:<
 
-" 全角スペースの表示 `　' ← これ
-augroup JpSpace
-  autocmd!
-  autocmd ColorScheme * highlight JpSpace term=underline ctermbg=Blue guibg=Blue
-  autocmd VimEnter,WinEnter * match JpSpace /\%u3000/
-augroup END
-
 " }}}
 " -------------------------------------------------------------
 
