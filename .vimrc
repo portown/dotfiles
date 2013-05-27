@@ -95,6 +95,12 @@ if s:is_windows
   set termencoding=cp932
 endif
 
+if has('kaoriya')
+  set fileencodings=guess
+else
+  set fileencodings=ucs-bom,iso-2022-jp,euc-jp,cp932,utf-8
+endif
+
 scriptencoding utf-8
 
 set fileformat=unix
