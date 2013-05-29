@@ -167,7 +167,12 @@ endfunction
 " }}}
 " -------------------------------------------------------------
 
-set clipboard=unnamed
+if has('unnamedplus')
+  set clipboard=unnamedplus
+else
+  set clipboard=unnamed
+endif
+
 set tags+=~/tags
 
 colorscheme hybrid
