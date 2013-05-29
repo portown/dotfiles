@@ -53,6 +53,7 @@ NeoBundle 'Shougo/vimproc', {
 
 " Unite
 NeoBundle 'Shougo/unite.vim'
+NeoBundle 'thinca/vim-unite-history'
 NeoBundle 'tsukkee/unite-help'
 NeoBundle 'Shougo/unite-ssh'
 NeoBundle 'Shougo/unite-outline'
@@ -390,6 +391,12 @@ nmap [unite]v [unite-versions]
 nnoremap <silent> [unite-versions]v :<C-U>UniteVersions<CR>
 nnoremap <silent> [unite-versions]s :<C-U>UniteVersions status:!<CR>
 nnoremap <silent> [unite-versions]l :<C-U>UniteVersions log:!<CR>
+
+nnoremap q: :<C-U>Unite -buffer-name=commands -winheight=8 -direction=botright history/command<CR>
+xnoremap q: :<C-U>Unite -buffer-name=commands -winheight=8 -direction=botright history/command<CR>
+
+nnoremap q/ :<C-U>Unite -buffer-name=commands -winheight=8 -direction=botright history/search<CR>
+xnoremap q/ :<C-U>Unite -buffer-name=commands -winheight=8 -direction=botright history/search<CR>
 
 " }}}
 " -------------------------------------------------------------
