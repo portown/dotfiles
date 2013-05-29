@@ -80,6 +80,8 @@ if s:is_windows
     "   textAntialiasMode: CLEARTYPE
     set rop=type:directx,gamma:1.7,contrast:1.0,level:0.8,geom:1,renmode:5,taamode:1
   endif
+elseif has('gui_gtk2')
+  set guifont=Ricty\ 12
 else
   set guifont=Ricty:h16
 endif
