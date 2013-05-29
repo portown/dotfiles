@@ -134,10 +134,10 @@ autocmd Portown Filetype c,cpp set cindent
 " -------------------------------------------------------------
 " タブ設定 {{{
 
-nnoremap [tab] <Nop>
-nmap <Leader>t [tab]
+nnoremap <SID>[tab] <Nop>
+nmap <Leader>t <SID>[tab]
 
-nnoremap <silent> [tab]n :<C-U>tabnew<CR>
+nnoremap <silent> <SID>[tab]n :<C-U>tabnew<CR>
 
 " }}}
 " -------------------------------------------------------------
@@ -332,9 +332,9 @@ endif
 
 command! PortownVimShellSplit :topleft 10split
 
-nnoremap [vimshell] <Nop>
-nmap <Leader>s [vimshell]
-nnoremap <silent> [vimshell]s :<C-U>VimShellCurrentDir -buffer-name=shell -toggle -split -split-command=PortownVimShellSplit<CR>
+nnoremap <SID>[vimshell] <Nop>
+nmap <Leader>s <SID>[vimshell]
+nnoremap <silent> <SID>[vimshell]s :<C-U>VimShellCurrentDir -buffer-name=shell -toggle -split -split-command=PortownVimShellSplit<CR>
 
 " }}}
 " -------------------------------------------------------------
@@ -344,9 +344,9 @@ nnoremap <silent> [vimshell]s :<C-U>VimShellCurrentDir -buffer-name=shell -toggl
 
 let g:vimfiler_as_default_explorer = 1
 
-nnoremap [vimfiler] <Nop>
-nmap <Leader>f [vimfiler]
-nnoremap <silent> [vimfiler]f :<C-U>VimFilerBufferDir -buffer-name=explorer -direction=topleft -toggle -split -simple -winwidth=35 -no-quit<CR>
+nnoremap <SID>[vimfiler] <Nop>
+nmap <Leader>f <SID>[vimfiler]
+nnoremap <silent> <SID>[vimfiler]f :<C-U>VimFilerBufferDir -buffer-name=explorer -direction=topleft -toggle -split -simple -winwidth=35 -no-quit<CR>
 
 " }}}
 " -------------------------------------------------------------
@@ -360,37 +360,37 @@ let g:unite_kind_file_use_trashbox = 0
 let g:unite_source_grep_default_opts = '-Hn'
 let g:unite_source_grep_recursive_opt = '-r'
 
-nnoremap [unite] <Nop>
-nmap <Leader>u [unite]
+nnoremap <SID>[unite] <Nop>
+nmap <Leader>u <SID>[unite]
 
-nnoremap <silent> [unite]b :<C-U>Unite -buffer-name=buffers -start-insert buffer_tab<CR>
-nnoremap <silent> [unite]h :<C-U>Unite -buffer-name=help -start-insert help<CR>
-nnoremap <silent> [unite]o :<C-U>Unite -buffer-name=outline -start-insert outline<CR>
-nnoremap <silent> [unite]u :<C-U>UniteResume<CR>
+nnoremap <silent> <SID>[unite]b :<C-U>Unite -buffer-name=buffers -start-insert buffer_tab<CR>
+nnoremap <silent> <SID>[unite]h :<C-U>Unite -buffer-name=help -start-insert help<CR>
+nnoremap <silent> <SID>[unite]o :<C-U>Unite -buffer-name=outline -start-insert outline<CR>
+nnoremap <silent> <SID>[unite]u :<C-U>UniteResume<CR>
 
-nnoremap [unite-file] <Nop>
-nmap [unite]f [unite-file]
-nnoremap <silent> [unite-file]f :<C-U>Unite -buffer-name=files -start-insert file file/new<CR>
-nnoremap <silent> [unite-file]d :<C-U>UniteWithBufferDir -buffer-name=files -start-insert file file/new<CR>
-nnoremap <silent> [unite-file]r :<C-U>Unite -buffer-name=files -start-insert file_rec/async<CR>
-nnoremap <silent> [unite-file]m :<C-U>Unite -buffer-name=files -start-insert file_mru<CR>
-nnoremap <silent> [unite-file]b :<C-U>Unite -buffer-name=files -start-insert bookmark<CR>
+nnoremap <SID>[unite-file] <Nop>
+nmap <SID>[unite]f <SID>[unite-file]
+nnoremap <silent> <SID>[unite-file]f :<C-U>Unite -buffer-name=files -start-insert file file/new<CR>
+nnoremap <silent> <SID>[unite-file]d :<C-U>UniteWithBufferDir -buffer-name=files -start-insert file file/new<CR>
+nnoremap <silent> <SID>[unite-file]r :<C-U>Unite -buffer-name=files -start-insert file_rec/async<CR>
+nnoremap <silent> <SID>[unite-file]m :<C-U>Unite -buffer-name=files -start-insert file_mru<CR>
+nnoremap <silent> <SID>[unite-file]b :<C-U>Unite -buffer-name=files -start-insert bookmark<CR>
 
-nnoremap [unite-gtags] <Nop>
-nmap [unite]g [unite-gtags]
-nnoremap <silent> [unite-gtags]r :<C-U>Unite -immediately -no-quit -keep-focus -winheight=10 gtags/ref<CR>
+nnoremap <SID>[unite-gtags] <Nop>
+nmap <SID>[unite]g <SID>[unite-gtags]
+nnoremap <silent> <SID>[unite-gtags]r :<C-U>Unite -immediately -no-quit -keep-focus -winheight=10 gtags/ref<CR>
 nnoremap <silent> <C-]> :<C-U>Unite -immediately -no-quit -keep-focus -winheight=10 gtags/context<CR>
 
-nnoremap [unite-neobundle] <Nop>
-nmap [unite]n [unite-neobundle]
-nnoremap <silent> [unite-neobundle]u :<C-U>Unite -buffer-name=neobundle -no-cursor-line -log neobundle/update<CR>
-nnoremap <silent> [unite-neobundle]c :<C-U>UniteClose neobundle<CR>
+nnoremap <SID>[unite-neobundle] <Nop>
+nmap <SID>[unite]n <SID>[unite-neobundle]
+nnoremap <silent> <SID>[unite-neobundle]u :<C-U>Unite -buffer-name=neobundle -no-cursor-line -log neobundle/update<CR>
+nnoremap <silent> <SID>[unite-neobundle]c :<C-U>UniteClose neobundle<CR>
 
-nnoremap [unite-versions] <Nop>
-nmap [unite]v [unite-versions]
-nnoremap <silent> [unite-versions]v :<C-U>UniteVersions<CR>
-nnoremap <silent> [unite-versions]s :<C-U>UniteVersions status:!<CR>
-nnoremap <silent> [unite-versions]l :<C-U>UniteVersions log:!<CR>
+nnoremap <SID>[unite-versions] <Nop>
+nmap <SID>[unite]v <SID>[unite-versions]
+nnoremap <silent> <SID>[unite-versions]v :<C-U>UniteVersions<CR>
+nnoremap <silent> <SID>[unite-versions]s :<C-U>UniteVersions status:!<CR>
+nnoremap <silent> <SID>[unite-versions]l :<C-U>UniteVersions log:!<CR>
 
 nnoremap q: :<C-U>Unite -buffer-name=commands -winheight=8 -direction=botright history/command<CR>
 xnoremap q: :<C-U>Unite -buffer-name=commands -winheight=8 -direction=botright history/command<CR>
