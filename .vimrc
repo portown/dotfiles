@@ -99,11 +99,13 @@ if has('kaoriya')
   set fileencodings=guess
 else
   set fileencodings=ucs-bom,iso-2022-jp,euc-jp,cp932,utf-8
+
+  " Subversion のコミットログ文字コード指定
+  autocmd Portown BufRead,BufNewFile svn-commit.tmp setlocal fileencoding=utf-8
 endif
 
 scriptencoding utf-8
 
-set fileformat=unix
 set fileformats=unix,dos,mac
 
 if exists( '&ambiwidth' )
