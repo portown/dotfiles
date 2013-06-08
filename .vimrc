@@ -340,6 +340,7 @@ command! PortownVimShellSplit :topleft 10split
 nnoremap <SID>[vimshell] <Nop>
 nmap <Leader>s <SID>[vimshell]
 nnoremap <silent> <SID>[vimshell]s :<C-U>VimShellCurrentDir -buffer-name=shell -toggle -split -split-command=PortownVimShellSplit<CR>
+nnoremap <silent> <SID>[vimshell]f :<C-U>VimShellCurrentDir -buffer-name=shell<CR>
 
 " }}}
 " -------------------------------------------------------------
@@ -351,7 +352,9 @@ let g:vimfiler_as_default_explorer = 1
 
 nnoremap <SID>[vimfiler] <Nop>
 nmap <Leader>f <SID>[vimfiler]
-nnoremap <silent> <SID>[vimfiler]f :<C-U>VimFilerBufferDir -buffer-name=explorer -direction=topleft -toggle -split -simple -winwidth=35 -no-quit<CR>
+nnoremap <silent> <SID>[vimfiler]e :<C-U>VimFilerBufferDir -buffer-name=explorer -direction=topleft -toggle -split -simple -winwidth=35 -no-quit<CR>
+nnoremap <silent> <SID>[vimfiler]f :<C-U>VimFilerBufferDir -buffer-name=explorer<CR>
+nnoremap <silent> <SID>[vimfiler]d :<C-U>VimFilerBufferDir -double<CR>
 
 " }}}
 " -------------------------------------------------------------
