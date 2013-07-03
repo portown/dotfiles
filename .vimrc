@@ -101,8 +101,13 @@ if has('kaoriya')
 else
   set fileencodings=ucs-bom,iso-2022-jp,euc-jp,cp932,utf-8
 
-  " Subversion のコミットログ文字コード指定
-  autocmd Portown BufRead,BufNewFile svn-commit.tmp setlocal fileencoding=utf-8
+  " 日本語を含まない場合は fenc = enc
+  function! RecheckIso2022Jp()
+    if &fileencoding =~# 'iso-2022-jp' && search('[^\x01-\x7e]', 'n') == 0
+      let &fileencoding = &encoding
+    endif
+  endfunction
+  autocmd Portown BufReadPost * call RecheckIso2022Jp()
 endif
 
 scriptencoding utf-8
