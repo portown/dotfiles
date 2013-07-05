@@ -72,7 +72,7 @@ NeoBundle 'vim-scripts/scons.vim'
 " Others
 NeoBundle 'Shougo/vimshell'
 NeoBundle 'ujihisa/vimshell-ssh'
-NeoBundle 'Shougo/neocomplcache'
+NeoBundle 'Shougo/neocomplete'
 NeoBundle 'Shougo/neosnippet'
 NeoBundle 'Shougo/vimfiler'
 NeoBundle 'anyakichi/vim-surround'
@@ -288,23 +288,23 @@ autocmd Portown BufRead,BufNewFile SConstruct set filetype=scons
 " -------------------------------------------------------------
 
 " -------------------------------------------------------------
-" neocomplcache の設定 {{{
+" neocomplete の設定 {{{
 
-let g:neocomplcache_enable_at_startup = 1
-let g:neocomplcache_enable_smart_case = 1
-let g:neocomplcache_enable_camel_case_completion = 1
-let g:neocomplcache_enable_underbar_completion = 1
-let g:neocomplcache_min_syntax_length = 3
-let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
+let g:neocomplete#enable_at_startup = 1
+let g:neocomplete#enable_smart_case = 1
+let g:neocomplete#sources#syntax#min_keyword_length = 3
+let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
 
-let g:neocomplcache_vim_completefuncs = {
-      \   'Unite' : 'unite#complete_source',
-      \   'VimShellExecute' : 'vimshell#vimshell_execute_complete',
-      \   'VimShellInteractive' : 'vimshell#vimshell_execute_complete',
-      \   'VimShellTerminal' : 'vimshell#vimshell_execute_complete',
-      \   'VimShell' : 'vimshell#complete',
-      \   'VimFiler' : 'vimfiler#complete',
-      \ }
+if !exists('g:neocomplete#keyword_patterns')
+  let g:neocomplete#keyword_patterns = {}
+endif
+let g:neocomplete#keyword_patterns['default'] = '\h\w*'
+
+if !exists('g:neocomplete#sources#omni#input_patterns')
+  let g:neocomplete#sources#omni#input_patterns = {}
+endif
+let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
+let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
 
 " }}}
 " -------------------------------------------------------------
