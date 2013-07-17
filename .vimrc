@@ -68,6 +68,7 @@ NeoBundle 'motemen/hatena-vim'
 NeoBundle 'tpope/vim-markdown'
 NeoBundle 'aklt/plantuml-syntax'
 NeoBundle 'vim-scripts/scons.vim'
+NeoBundle 'ebnf.vim'
 
 " Others
 NeoBundle 'Shougo/vimshell'
@@ -283,6 +284,14 @@ autocmd Portown BufRead,BufNewFile *.gradle set filetype=groovy
 " SCons の設定 {{{
 
 autocmd Portown BufRead,BufNewFile SConstruct set filetype=scons
+
+" }}}
+" -------------------------------------------------------------
+
+" -------------------------------------------------------------
+" EBNF の設定 {{{
+
+autocmd Portown BufRead,BufNewFile *.ebnf set filetype=ebnf
 
 " }}}
 " -------------------------------------------------------------
