@@ -70,6 +70,7 @@ NeoBundle 'aklt/plantuml-syntax'
 NeoBundle 'vim-scripts/scons.vim'
 NeoBundle 'ebnf.vim'
 NeoBundle 'timcharper/textile.vim'
+NeoBundle 'msanders/cocoa.vim'
 
 " Others
 NeoBundle 'Shougo/vimshell'
