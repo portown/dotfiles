@@ -77,7 +77,10 @@ NeoBundle 'Shougo/vimshell'
 NeoBundle 'ujihisa/vimshell-ssh'
 NeoBundle 'Shougo/neocomplete'
 NeoBundle 'Shougo/neosnippet'
-NeoBundle 'Shougo/vimfiler'
+NeoBundleLazy 'Shougo/vimfiler', {
+      \   'autoload' : { 'commands' : ['VimFilerBufferDir'] },
+      \   'depends' : ['Shougo/unite.vim'],
+      \ }
 NeoBundle 'anyakichi/vim-surround'
 NeoBundle 'thinca/vim-logcat'
 NeoBundle 'vim-scripts/sudo.vim.git'
@@ -364,7 +367,9 @@ nnoremap <silent> <SID>[vimshell]f :<C-U>VimShellCurrentDir -buffer-name=shell<C
 " -------------------------------------------------------------
 " VimFiler の設定 {{{
 
-let g:vimfiler_as_default_explorer = 1
+let s:bundle = neobundle#get('vimfiler')
+function! s:bundle.hooks.on_source(bundle)
+endfunction
 
 nnoremap <SID>[vimfiler] <Nop>
 nmap <Leader>f <SID>[vimfiler]
