@@ -89,7 +89,9 @@ NeoBundleLazy 'Shougo/vimfiler', {
       \   'depends' : ['Shougo/unite.vim'],
       \ }
 NeoBundle 'anyakichi/vim-surround'
-NeoBundle 'thinca/vim-logcat'
+NeoBundleLazy 'thinca/vim-logcat', {
+      \   'autoload' : { 'commands' : ['Logcat', 'Logcat!', 'LogcatClean'] },
+      \ }
 NeoBundle 'vim-scripts/sudo.vim.git'
 NeoBundle 'ujihisa/shadow.vim'
 NeoBundle 'hrsh7th/vim-versions'
