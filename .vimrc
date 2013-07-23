@@ -52,7 +52,9 @@ NeoBundle 'Shougo/vimproc', {
       \ }
 
 " Unite
-NeoBundle 'Shougo/unite.vim'
+NeoBundleLazy 'Shougo/unite.vim', {
+      \   'autoload' : { 'commands' : ['Unite', 'UniteResume', 'UniteWithBufferDir'] },
+      \ }
 NeoBundle 'thinca/vim-unite-history'
 NeoBundle 'tsukkee/unite-help'
 NeoBundle 'Shougo/unite-ssh'
@@ -389,11 +391,14 @@ nnoremap <silent> <SID>[vimfiler]d :<C-U>VimFilerBufferDir -double<CR>
 " -------------------------------------------------------------
 " Unite.vim の設定 {{{
 
-let g:unite_enable_start_insert = 0
-let g:unite_kind_file_use_trashbox = 0
+let s:bundle = neobundle#get('unite.vim')
+function! s:bundle.hooks.on_source(bundle)
+  let g:unite_enable_start_insert = 0
+  let g:unite_kind_file_use_trashbox = 0
 
-let g:unite_source_grep_default_opts = '-Hn'
-let g:unite_source_grep_recursive_opt = '-r'
+  let g:unite_source_grep_default_opts = '-Hn'
+  let g:unite_source_grep_recursive_opt = '-r'
+endfunction
 
 nnoremap <SID>[unite] <Nop>
 nmap <Leader>u <SID>[unite]
