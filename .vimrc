@@ -73,7 +73,10 @@ NeoBundle 'timcharper/textile.vim'
 NeoBundle 'msanders/cocoa.vim'
 
 " Others
-NeoBundle 'Shougo/vimshell'
+NeoBundleLazy 'Shougo/vimshell', {
+      \   'autoload' : { 'commands' : ['VimShellCurrentDir'] },
+      \   'depends' : ['Shougo/vimproc'],
+      \ }
 NeoBundle 'ujihisa/vimshell-ssh'
 NeoBundle 'Shougo/neocomplete'
 NeoBundle 'Shougo/neosnippet'
@@ -348,11 +351,14 @@ endif
 " -------------------------------------------------------------
 " VimShell の設定 {{{
 
-if s:is_windows
-  let g:vimshell_prompt = $USERNAME.'@'.hostname().'$ '
-else
-  let g:vimshell_prompt = $USER.'$ '
-endif
+let s:bundle = neobundle#get('vimshell')
+function! s:bundle.hooks.on_source(bundle)
+  if s:is_windows
+    let g:vimshell_prompt = $USERNAME.'@'.hostname().'$ '
+  else
+    let g:vimshell_prompt = $USER.'$ '
+  endif
+endfunction
 
 command! PortownVimShellSplit :topleft 10split
 
