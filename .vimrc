@@ -63,7 +63,9 @@ NeoBundle 'ryotakato/unite-outline-objc'
 NeoBundle 'hewes/unite-gtags'
 
 " Language
-NeoBundle 'vim-jp/cpp-vim'
+NeoBundleLazy 'vim-jp/cpp-vim', {
+      \   'autoload' : { 'filetypes' : ['cpp'] }
+      \ }
 NeoBundle 'tpope/vim-haml'
 NeoBundle 'kchmck/vim-coffee-script'
 NeoBundle 'motemen/hatena-vim'
