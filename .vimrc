@@ -318,6 +318,10 @@ let g:neocomplete#enable_smart_case = 1
 let g:neocomplete#sources#syntax#min_keyword_length = 3
 let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
 
+let g:neocomplete#sources#dictionary#dictionaries = {
+      \   'default' : ''
+      \ }
+
 if !exists('g:neocomplete#keyword_patterns')
   let g:neocomplete#keyword_patterns = {}
 endif
@@ -328,6 +332,9 @@ if !exists('g:neocomplete#sources#omni#input_patterns')
 endif
 let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
 let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
+
+" Cocoa.vim の omni 補完を無効化する（neocomplete と相性が悪い？）
+autocmd FileType objc setlocal omnifunc=
 
 " }}}
 " -------------------------------------------------------------
