@@ -14,7 +14,9 @@ augroup END
 
 " Go の設定
 if $GOROOT != ''
-  set rtp+=$GOROOT/misc/vim
+  if has('vim_starting')
+    set rtp+=$GOROOT/misc/vim
+  endif
 endif
 
 " }}}
@@ -32,8 +34,6 @@ endif
 
 " -------------------------------------------------------------
 " neobundle.vim の設定 {{{
-
-filetype off
 
 if has( 'vim_starting' )
   set runtimepath+=~/.vim/bundle/neobundle.vim/
@@ -145,7 +145,7 @@ endif
 
 set smartindent
 
-set cinoptions+=l1,g0,t0
+set cinoptions& cinoptions+=l1,g0,t0
 autocmd Portown Filetype c,cpp set cindent
 
 " }}}
@@ -193,7 +193,7 @@ else
   set clipboard=unnamed
 endif
 
-set tags+=~/tags
+set tags& tags+=~/tags
 
 colorscheme hybrid
 
@@ -333,24 +333,21 @@ endif
 let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
 let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
 
-" Cocoa.vim の omni 補完を無効化する（neocomplete と相性が悪い？）
-autocmd FileType objc setlocal omnifunc=
-
 " }}}
 " -------------------------------------------------------------
 
 " -------------------------------------------------------------
 " neosnippet の設定 {{{
 
-imap <C-K> <Plug>(neosnippet_expand_or_jump)
-smap <C-K> <Plug>(neosnippet_expand_or_jump)
+imap <C-K> <Plug>(neosnippet_expand)
+smap <C-K> <Plug>(neosnippet_expand)
 xmap <C-K> <Plug>(neosnippet_expand_target)
 
-imap <expr><Tab> neosnippet#expandable_or_jumpable() ?
-      \ "\<Plug>(neosnippet_expand_or_jump)"
+imap <expr><Tab> neosnippet#jumpable() ?
+      \ "\<Plug>(neosnippet_jump)"
       \: pumvisible() ? "\<C-N>" : "\<Tab>"
-smap <expr><Tab> neosnippet#expandable_or_jumpable() ?
-      \ "\<Plug>(neosnippet_expand_or_jump)"
+smap <expr><Tab> neosnippet#jumpable() ?
+      \ "\<Plug>(neosnippet_jump)"
       \: "\<Tab>"
 
 if has( 'conceal' )
@@ -479,7 +476,7 @@ endfunction
 " -------------------------------------------------------------
 
 " 起動時のメッセージを表示しない
-set shortmess+=I
+set shortmess& shortmess+=I
 
 " -------------------------------------------------------------
 " ローカル設定の読み込み {{{
@@ -508,7 +505,3 @@ endfunction
 
 " }}}
 " -------------------------------------------------------------
-
-
-" EOF
-

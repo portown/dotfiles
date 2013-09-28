@@ -22,6 +22,8 @@ else
   set columns=239
 endif
 
+set guioptions&
+
 " ツールバーとメニューバーを消す
 set guioptions-=T
 set guioptions-=m
@@ -110,7 +112,3 @@ set mousehide
 
 " }}}
 " -------------------------------------------------------------
-
-
-" EOF
-
