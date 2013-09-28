@@ -479,6 +479,18 @@ endfunction
 set shortmess& shortmess+=I
 
 " -------------------------------------------------------------
+" .vimrc の設定 {{{
+
+nnoremap <SID>[vimrc] <Nop>
+nmap <Leader>v <SID>[vimrc]
+
+nnoremap <silent> <SID>[vimrc]e :<C-U>edit $MYVIMRC<CR>
+nnoremap <silent> <SID>[vimrc]l :<C-U>source $MYVIMRC \| if has('gui_running') \| source $MYGVIMRC \| endif<CR>
+
+" }}}
+" -------------------------------------------------------------
+
+" -------------------------------------------------------------
 " ローカル設定の読み込み {{{
 
 if filereadable( expand( '~/.vimrc.local.after' ) )
