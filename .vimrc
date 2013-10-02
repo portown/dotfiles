@@ -61,6 +61,7 @@ NeoBundle 'Shougo/unite-ssh'
 NeoBundle 'Shougo/unite-outline'
 NeoBundle 'ryotakato/unite-outline-objc'
 NeoBundle 'hewes/unite-gtags'
+NeoBundle 'Shougo/unite-build'
 
 " Language
 NeoBundleLazy 'vim-jp/cpp-vim', {
@@ -439,6 +440,15 @@ nmap <SID>[unite]v <SID>[unite-versions]
 nnoremap <silent> <SID>[unite-versions]v :<C-U>UniteVersions<CR>
 nnoremap <silent> <SID>[unite-versions]s :<C-U>UniteVersions status:!<CR>
 nnoremap <silent> <SID>[unite-versions]l :<C-U>UniteVersions log:!<CR>
+
+function! g:portown_build()
+  Unite -buffer-name=build -winheight=8 -direction=botright -no-quit -no-focus -resume build
+endfunction
+
+nnoremap <SID>[unite-build] <Nop>
+nmap <SID>[unite]b <SID>[unite-build]
+nnoremap <silent> <SID>[unite-build]b :<C-U>call g:portown_build()<CR>
+nnoremap <silent> <SID>[unite-build]c :<C-U>UniteClose build<CR>
 
 nnoremap q: :<C-U>Unite -buffer-name=commands -winheight=8 -direction=botright history/command<CR>
 xnoremap q: :<C-U>Unite -buffer-name=commands -winheight=8 -direction=botright history/command<CR>
