@@ -442,13 +442,14 @@ nnoremap <silent> <SID>[unite-versions]s :<C-U>UniteVersions status:!<CR>
 nnoremap <silent> <SID>[unite-versions]l :<C-U>UniteVersions log:!<CR>
 
 function! g:portown_build()
-  Unite -buffer-name=build -winheight=8 -direction=botright -no-quit -no-focus -resume build
+  Unite -buffer-name=build -winheight=8 -direction=botright -no-quit -no-focus build
 endfunction
 
-nnoremap <SID>[unite-build] <Nop>
-nmap <SID>[unite]b <SID>[unite-build]
-nnoremap <silent> <SID>[unite-build]b :<C-U>call g:portown_build()<CR>
-nnoremap <silent> <SID>[unite-build]c :<C-U>UniteClose build<CR>
+" build の b は buffer と被る……
+nnoremap <SID>[unite-make] <Nop>
+nmap <SID>[unite]m <SID>[unite-make]
+nnoremap <silent> <SID>[unite-make]m :<C-U>call g:portown_build()<CR>
+nnoremap <silent> <SID>[unite-make]c :<C-U>UniteClose build<CR>
 
 nnoremap q: :<C-U>Unite -buffer-name=commands -winheight=8 -direction=botright history/command<CR>
 xnoremap q: :<C-U>Unite -buffer-name=commands -winheight=8 -direction=botright history/command<CR>
