@@ -271,7 +271,7 @@ function! RTrim()
   call setpos( '.', l:cursor_pos )
 endfunction
 
-autocmd Portown BufWritePre * call RTrim()
+autocmd Portown BufWritePre * if &ft !=# 'diff' | call RTrim() | endif
 
 " }}}
 " -------------------------------------------------------------
