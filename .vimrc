@@ -505,7 +505,14 @@ nnoremap <silent> <SID>[unite-versions]s :<C-U>UniteVersions status:!<CR>
 nnoremap <silent> <SID>[unite-versions]l :<C-U>UniteVersions log:!<CR>
 
 function! g:portown_build()
-  Unite -buffer-name=build -winheight=8 -direction=botright -no-quit -no-focus build
+  let base = 'Unite -buffer-name=build -winheight=8 -direction=botright -no-quit -no-focus build'
+  if exists('b:portown_build_builder')
+    let base = base.':'.b:portown_build_builder
+    if exists('b:portown_build_args')
+      let base = base.':'.b:portown_build_args
+    endif
+  endif
+  execute base
 endfunction
 
 " build の b は buffer と被る……
