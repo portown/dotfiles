@@ -521,7 +521,7 @@ augroup END
 
 function! s:vimrc_local( location )
   let files = findfile( '.vimrc.local', escape( a:location, ' ' ) . ';', -1 )
-  for i in reverse( filter( files, 'filereadable( v:val )' ) )
+  for i in reverse( filter( map( files, 'fnamemodify( v:val, ":p" )' ), 'filereadable( v:val )' ) )
     source `=i`
   endfor
 endfunction
