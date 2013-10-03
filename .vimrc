@@ -130,7 +130,7 @@ scriptencoding utf-8
 set fileformats=unix,dos,mac
 
 if exists( '&ambiwidth' )
-  if has( 'kaoriya' )
+  if has( 'kaoriya' ) && s:is_windows
     set ambiwidth=auto
   else
     set ambiwidth=double
