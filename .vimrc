@@ -176,9 +176,8 @@ xmap : <SID>(command-line-enter)
 autocmd Portown CmdwinEnter * call s:init_cmdwin()
 function! s:init_cmdwin()
   nnoremap <silent> <buffer> q :<C-U>quit<CR>
-  inoremap <silent> <buffer><expr> <CR> pumvisible() ? "\<C-Y>\<CR>" : "\<CR>"
-  inoremap <silent> <buffer><expr> <C-H> col('.') == 1 ? "\<ESC>:q\<CR>" : pumvisible() ? "\<C-Y>\<C-H>" : "\<C-H>"
-  inoremap <silent> <buffer><expr> <BS> col('.') == 1 ? "\<ESC>:q\<CR>" : pumvisible() ? "\<C-Y>\<C-H>" : "\<C-H>"
+  inoremap <silent> <buffer><expr> <CR> neocomplete#close_popup()."\<CR>"
+  inoremap <silent> <buffer><expr> <C-H> col('.') == 1 ? "\<ESC>:q\<CR>" : neocomplete#cancel_popup()."\<C-H>"
 
   inoremap <silent> <buffer><expr> <TAB> pumvisible() ? "\<C-N>" : "\<TAB>"
 
