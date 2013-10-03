@@ -14,8 +14,7 @@ colorscheme hybrid
 if s:is_windows
   autocmd Portown GUIEnter * simalt ~x
 elseif has( 'gui_macvim' )
-  set fuoptions=maxhorz,maxvert
-  autocmd Portown GUIEnter * set fullscreen
+  set lines=999 columns=9999
 else
   autocmd Portown GUIEnter * winpos 0 0
   set lines=59
