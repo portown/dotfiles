@@ -504,22 +504,38 @@ nnoremap <silent> <SID>[unite-versions]v :<C-U>UniteVersions<CR>
 nnoremap <silent> <SID>[unite-versions]s :<C-U>UniteVersions status:!<CR>
 nnoremap <silent> <SID>[unite-versions]l :<C-U>UniteVersions log:!<CR>
 
-function! g:portown_build()
+function! g:portown_build(...)
+  let clean = a:0 >= 1 ? a:1 : 0
+
   let base = 'Unite -buffer-name=build -winheight=8 -direction=botright -no-quit -no-focus build'
+
+  let builder = ''
   if exists('b:portown_build_builder')
-    let base = base.':'.b:portown_build_builder
-    if exists('b:portown_build_args')
-      let base = base.':'.b:portown_build_args
+    let builder = b:portown_build_builder
+  endif
+
+  let args = []
+  if exists('b:portown_build_args')
+    let args = split(b:portown_build_args)
+  endif
+
+  if clean
+    if exists('b:portown_build_clean_args')
+      let args = add(args, split(args.b:portown_build_clean_args))
+    else
+      let args = add(args, 'clean')
     endif
   endif
-  execute base
+
+  execute join([base, builder, join(args, '\\ ')], ':')
 endfunction
 
 " build の b は buffer と被る……
 nnoremap <SID>[unite-make] <Nop>
 nmap <SID>[unite]m <SID>[unite-make]
 nnoremap <silent> <SID>[unite-make]m :<C-U>call g:portown_build()<CR>
-nnoremap <silent> <SID>[unite-make]c :<C-U>UniteClose build<CR>
+nnoremap <silent> <SID>[unite-make]c :<C-U>call g:portown_build(1)<CR>
+nnoremap <silent> <SID>[unite-make]q :<C-U>UniteClose build<CR>
 
 nnoremap q: :<C-U>Unite -buffer-name=commands -winheight=8 -direction=botright history/command<CR>
 xnoremap q: :<C-U>Unite -buffer-name=commands -winheight=8 -direction=botright history/command<CR>
