@@ -514,6 +514,7 @@ nnoremap <silent> <C-]> :<C-U>Unite -immediately -no-quit -keep-focus -winheight
 nnoremap <SID>[unite-neobundle] <Nop>
 nmap <SID>[unite]n <SID>[unite-neobundle]
 nnoremap <silent> <SID>[unite-neobundle]u :<C-U>Unite -buffer-name=neobundle -no-cursor-line -log neobundle/update<CR>
+nnoremap <silent> <SID>[unite-neobundle]i :<C-U>Unite -buffer-name=neobundle -no-cursor-line -log neobundle/install<CR>
 nnoremap <silent> <SID>[unite-neobundle]c :<C-U>UniteClose neobundle<CR>
 
 nnoremap <SID>[unite-versions] <Nop>
