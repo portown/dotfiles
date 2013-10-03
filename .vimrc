@@ -315,6 +315,7 @@ autocmd Portown BufRead,BufNewFile *.ebnf set filetype=ebnf
 
 let g:neocomplete#enable_at_startup = 1
 let g:neocomplete#enable_smart_case = 1
+let g:neocomplete#enable_fuzzy_completion = 1
 let g:neocomplete#sources#syntax#min_keyword_length = 3
 let g:neocomplete#auto_completion_start_length = 2
 let g:neocomplete#manual_completion_start_length = 0
@@ -325,7 +326,8 @@ let g:neocomplete#enable_auto_select = 1
 let g:neocomplete#enable_refresh_always = 0
 
 let g:neocomplete#sources#dictionary#dictionaries = {
-      \   'default' : ''
+      \   'default': '',
+      \   'vimshell': $HOME.'/.vimshell/command-history',
       \ }
 
 let g:neocomplete#enable_auto_delimiter = 1
@@ -389,6 +391,22 @@ let g:neocomplete#sources#vim#complete_functions = {
       \   'VimShell' : 'vimshell#complete',
       \   'VimFiler' : 'vimfiler#complete',
       \ }
+
+inoremap <expr><C-F> pumvisible() ? "\<PageDown>" : "\<Right>"
+inoremap <expr><C-B> pumvisible() ? "\<PageUp>" : "\<Left>"
+inoremap <expr><C-Y> pumvisible() ? neocomplete#close_popup() : "\<C-R>\""
+inoremap <expr><C-E> pumvisible() ? neocomplete#cancel_popup() : "\<End>"
+inoremap <expr><C-H> neocomplete#smart_close_popup()."\<C-H>"
+inoremap <expr><C-N> pumvisible() ? "\<C-N>" : "\<C-X>\<C-U>\<C-P>\<Down>"
+inoremap <expr><C-P> pumvisible() ? "\<C-P>" : "\<C-P>\<C-N>"
+
+inoremap <expr><C-G> neocomplete#undo_completion()
+inoremap <expr><C-L> neocomplete#complete_common_string()
+
+inoremap <silent> <CR> <C-R>=<SID>my_cr_function()<CR>
+function! s:my_cr_function()
+  return neocomplete#smart_close_popup()."\<CR>"
+endfunction
 
 " }}}
 " -------------------------------------------------------------
