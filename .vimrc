@@ -316,17 +316,28 @@ autocmd Portown BufRead,BufNewFile *.ebnf set filetype=ebnf
 let g:neocomplete#enable_at_startup = 1
 let g:neocomplete#enable_smart_case = 1
 let g:neocomplete#sources#syntax#min_keyword_length = 3
+let g:neocomplete#auto_completion_start_length = 2
+let g:neocomplete#manual_completion_start_length = 0
+let g:neocomplete#min_keyword_length = 3
 let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
+
+let g:neocomplete#enable_auto_select = 1
+let g:neocomplete#enable_refresh_always = 0
 
 let g:neocomplete#sources#dictionary#dictionaries = {
       \   'default' : ''
       \ }
 
-if !exists('g:neocomplete#keyword_patterns')
-  let g:neocomplete#keyword_patterns = {}
-endif
-let g:neocomplete#keyword_patterns['default'] = '\h\w*'
+let g:neocomplete#enable_auto_delimiter = 1
+let g:neocomplete#enable_auto_close_preview = 1
 
+let s:keyword_patterns = {}
+let s:keyword_patterns._ = '\h\w*'
+call neocomplete#custom#source('dictionary',
+      \   'keyword_patterns', s:keyword_patterns
+      \ )
+
+let g:neocomplete#force_overwrite_completefunc = 1
 if !exists('g:neocomplete#sources#omni#input_patterns')
   let g:neocomplete#sources#omni#input_patterns = {}
 endif
@@ -334,6 +345,50 @@ let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
 let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
 let g:neocomplete#sources#omni#input_patterns.objc = '[^.[:digit:] *\t]\%(\.\|->\)\w*'
 let g:neocomplete#sources#omni#input_patterns.objcpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
+
+if !exists('g:neocomplete#sources#file_include#exts')
+  let g:neocomplete#sources#file_include#exts = {}
+endif
+let g:neocomplete#sources#file_include#exts.objc = ['h']
+
+if !exists('g:neocomplete#sources#include#patterns')
+  let g:neocomplete#sources#include#patterns = {}
+endif
+let g:neocomplete#sources#include#patterns.c = '^\s*#\s*include'
+let g:neocomplete#sources#include#patterns.cpp = '^\s*#\s*include'
+let g:neocomplete#sources#include#patterns.objc = '^\s*#\s*import'
+let g:neocomplete#sources#include#patterns.objcpp = '^\s*#\s*import'
+
+if !exists('g:neocomplete#sources#include#paths')
+  let g:neocomplete#sources#include#paths = {}
+endif
+let g:neocomplete#sources#include#paths.objc = '.,/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk/System/Library/Frameworks'
+
+if !exists('g:neocomplete#sources#include#exprs')
+  let g:neocomplete#sources#include#exprs = {}
+endif
+function! g:objc_include_expr(fname)
+  let pattern = '\([^/]\+\)/\([^/]\+\).h'
+  if a:fname =~# pattern
+    let dir = substitute(a:fname, pattern, '\1', '')
+    let file = substitute(a:fname, pattern, '\2', '')
+    if dir ==# file
+      return dir.'.framework/Headers/'.file.'.h'
+    endif
+  endif
+  return a:fname
+endfunction
+let g:neocomplete#sources#include#exprs.objc = 'g:objc_include_expr(v:fname)'
+
+let g:neocomplete#sources#vim#complete_functions = {
+      \   'Ref' : 'ref#complete',
+      \   'Unite' : 'unite#complete_source',
+      \   'VimShellExecute' : 'vimshell#vimshell_execute_complete',
+      \   'VimShellInteractive' : 'vimshell#vimshell_execute_complete',
+      \   'VimShellTerminal' : 'vimshell#vimshell_execute_complete',
+      \   'VimShell' : 'vimshell#complete',
+      \   'VimFiler' : 'vimfiler#complete',
+      \ }
 
 " }}}
 " -------------------------------------------------------------
