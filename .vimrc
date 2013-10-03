@@ -62,6 +62,7 @@ NeoBundle 'Shougo/unite-outline'
 NeoBundle 'ryotakato/unite-outline-objc'
 NeoBundle 'hewes/unite-gtags'
 NeoBundle 'Shougo/unite-build'
+NeoBundle 'thinca/vim-ref'
 
 " Language
 NeoBundleLazy 'vim-jp/cpp-vim', {
@@ -561,6 +562,21 @@ xnoremap q: :<C-U>Unite -buffer-name=commands -winheight=8 -direction=botright h
 
 nnoremap q/ :<C-U>Unite -buffer-name=commands -winheight=8 -direction=botright history/search<CR>
 xnoremap q/ :<C-U>Unite -buffer-name=commands -winheight=8 -direction=botright history/search<CR>
+
+" }}}
+" -------------------------------------------------------------
+
+" -------------------------------------------------------------
+" vim-ref の設定 {{{
+
+let g:ref_source_webdict_sites = {
+      \   'wikipedia:ja': {
+      \     'url': 'http://ja.wikipedia.org/wiki/%s',
+      \     'keyword_encoding': 'utf-8',
+      \     'cache': 1,
+      \   },
+      \ }
+let g:ref_source_webdict_sites.default = 'wikipedia:ja'
 
 " }}}
 " -------------------------------------------------------------
