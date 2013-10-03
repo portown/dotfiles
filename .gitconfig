@@ -1,0 +1,26 @@
+# .gitconfig
+# vim: set noexpandtab:
+
+[core]
+	excludesfile = ~/.gitignore.global
+[alias]
+	st = status -sb
+	ci = commit -q
+	ci-am = commit -q --amend --no-edit
+	ci-am-edit = commit -q --amend
+	co = checkout
+	tree = log --pretty=format:'%C(yellow)%h %Cblue%ad %Cgreen%<(16)%an%C(auto)%d%Creset%s' --date=short --graph
+[ui]
+	color = auto
+[color]
+	status = auto
+	branch = auto
+	diff = auto
+[branch]
+	autosetuprebase = always
+[push]
+	default = simple
+[merge]
+	ff = false
+[include]
+	path = ~/.gitconfig.local
