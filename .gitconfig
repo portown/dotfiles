@@ -22,5 +22,7 @@
 	default = simple
 [merge]
 	ff = false
+[diff]
+	tool = vimdiff
 [include]
 	path = ~/.gitconfig.local
