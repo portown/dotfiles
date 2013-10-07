@@ -208,13 +208,7 @@ set tags& tags+=~/tags
 " -------------------------------------------------------------
 " カラースキームの設定 {{{
 
-let s:mycolorscheme = { 'name': 'landscape' }
-function! s:mycolorscheme.apply()
-  execute 'colorscheme '.self['name']
-endfunction
-
-autocmd Portown GUIEnter * call s:mycolorscheme.apply()
-call s:mycolorscheme.apply()
+colorscheme landscape
 
 " }}}
 " -------------------------------------------------------------
