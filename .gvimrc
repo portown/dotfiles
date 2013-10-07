@@ -69,7 +69,7 @@ set guitablabel=%N:\ %{GuiTabLabel()}
 " フォント設定 {{{
 
 if s:is_windows
-  set guifont=Ricty:h12:cSHIFTJIS
+  set guifont=Ricty\ for\ Powerline:h12:cSHIFTJIS
 
   if exists( '&rop' )
     " DirectWrite の設定
