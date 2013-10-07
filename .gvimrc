@@ -81,7 +81,7 @@ if s:is_windows
 elseif has('gui_gtk2')
   set guifont=Ricty\ 12
 else
-  set guifont=Ricty:h16
+  set guifont=Ricty\ for\ Powerline:h16
 endif
 
 " }}}

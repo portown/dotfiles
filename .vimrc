@@ -97,6 +97,7 @@ NeoBundle 'vim-scripts/sudo.vim.git'
 NeoBundle 'ujihisa/shadow.vim'
 NeoBundle 'hrsh7th/vim-versions'
 NeoBundle 'itchyny/landscape.vim'
+NeoBundle 'itchyny/lightline.vim'
 
 filetype plugin indent on
 
@@ -235,6 +236,75 @@ set smarttab
 
 set list
 set listchars=tab:^\ ,trail:_,extends:<
+
+" }}}
+" -------------------------------------------------------------
+
+" -------------------------------------------------------------
+" lightline の設定 {{{
+
+let g:lightline = {
+      \   'colorscheme': 'wombat',
+      \   'active': {
+      \     'left': [['mode'], ['filename']],
+      \   },
+      \   'component_function': {
+      \     'filename': 'MyFilename',
+      \     'fileformat': 'MyFileformat',
+      \     'filetype': 'MyFiletype',
+      \     'fileencoding': 'MyFileencoding',
+      \     'mode': 'MyMode',
+      \   },
+      \   'separator': { 'left': "\u2b80", 'right': "\u2b82" },
+      \   'subseparator': { 'left': "\u2b81", 'right': "\u2b83" },
+      \ }
+
+function! MyModified()
+  if &filetype =~# 'help\|vimfiler'
+    return ''
+  elseif &modified
+    return '+'
+  elseif &modifiable
+    return ''
+  else
+    return ''
+  endif
+endfunction
+
+function! MyReadonly()
+  if &filetype =~# 'help\|vimfiler'
+    return ''
+  elseif &readonly
+    return "\u2b64"
+  else
+    return ''
+  endif
+endfunction
+
+function! MyFilename()
+  return ('' != MyReadonly() ? MyReadonly() . ' ' : '') .
+        \ (&ft == 'vimfiler' ? vimfiler#get_status_string() :
+        \  &ft == 'unite' ? unite#get_status_string() :
+        \  &ft == 'vimshell' ? vimshell#get_status_string() :
+        \  '' != expand('%:t') ? expand('%:t') : '[No Name]') .
+        \ ('' != MyModified() ? ' ' . MyModified() : '')
+endfunction
+
+function! MyFileformat()
+  return winwidth(0) > 70 ? &fileformat : ''
+endfunction
+
+function! MyFiletype()
+  return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype : 'no ft') : ''
+endfunction
+
+function! MyFileencoding()
+  return winwidth(0) > 70 ? (strlen(&fenc) ? &fenc : &enc) : ''
+endfunction
+
+function! MyMode()
+  return winwidth(0) > 60 ? lightline#mode() : ''
+endfunction
 
 " }}}
 " -------------------------------------------------------------
