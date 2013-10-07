@@ -250,9 +250,10 @@ unlet s:listchars
 let g:lightline = {
       \   'colorscheme': 'wombat',
       \   'active': {
-      \     'left': [['mode'], ['filename']],
+      \     'left': [['mode'], ['fugitive', 'filename']],
       \   },
       \   'component_function': {
+      \     'fugitive': 'MyFugitive',
       \     'filename': 'MyFilename',
       \     'fileformat': 'MyFileformat',
       \     'filetype': 'MyFiletype',
@@ -262,6 +263,14 @@ let g:lightline = {
       \   'separator': { 'left': "\u2b80", 'right': "\u2b82" },
       \   'subseparator': { 'left': "\u2b81", 'right': "\u2b83" },
       \ }
+
+function! MyFugitive()
+  if &filetype !~? 'vimfiler' && exists("*fugitive#head")
+    let _ = fugitive#head()
+    return strlen(_) ? "\u2b60 "._ : ''
+  endif
+  return ''
+endfunction
 
 function! MyModified()
   if &filetype =~# 'help\|vimfiler'
