@@ -96,7 +96,7 @@ NeoBundleLazy 'thinca/vim-logcat', {
 NeoBundle 'vim-scripts/sudo.vim.git'
 NeoBundle 'ujihisa/shadow.vim'
 NeoBundle 'hrsh7th/vim-versions'
-NeoBundle 'w0ng/vim-hybrid'
+NeoBundle 'itchyny/landscape.vim'
 
 filetype plugin indent on
 
@@ -207,7 +207,7 @@ set tags& tags+=~/tags
 " -------------------------------------------------------------
 " カラースキームの設定 {{{
 
-let s:mycolorscheme = { 'name': 'hybrid' }
+let s:mycolorscheme = { 'name': 'landscape' }
 function! s:mycolorscheme.apply()
   execute 'colorscheme '.self['name']
 endfunction
