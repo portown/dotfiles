@@ -56,7 +56,7 @@ NeoBundleLazy 'Shougo/unite.vim', {
       \   'autoload' : { 'commands' : ['Unite', 'UniteResume', 'UniteWithBufferDir'] },
       \ }
 NeoBundle 'thinca/vim-unite-history'
-NeoBundle 'tsukkee/unite-help'
+NeoBundle 'Shougo/unite-help'
 NeoBundle 'Shougo/unite-ssh'
 NeoBundle 'Shougo/unite-outline'
 NeoBundle 'ryotakato/unite-outline-objc'
