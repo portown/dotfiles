@@ -682,8 +682,18 @@ let g:ref_source_webdict_sites = {
       \     'keyword_encoding': 'utf-8',
       \     'cache': 1,
       \   },
+      \   'wiktionary': {
+      \     'url': 'http://ja.wiktionary.org/wiki/%s',
+      \     'keyword_encoding': 'utf-8',
+      \     'cache': 1,
+      \   },
       \ }
-let g:ref_source_webdict_sites.default = 'wikipedia:ja'
+function! g:ref_source_webdict_sites.wiktionary.filter(output)
+  return join(split(a:output, "\n")[18 :], "\n")
+endfunction
+let g:ref_source_webdict_sites.default = 'wiktionary'
+
+autocmd Portown FileType ref-webdict nnoremap <buffer> q <C-W>c
 
 " }}}
 " -------------------------------------------------------------
