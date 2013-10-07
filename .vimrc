@@ -432,20 +432,23 @@ let g:neocomplete#sources#dictionary#dictionaries = {
 let g:neocomplete#enable_auto_delimiter = 1
 let g:neocomplete#enable_auto_close_preview = 1
 
-let s:keyword_patterns = {}
-let s:keyword_patterns._ = '\h\w*'
-call neocomplete#custom#source('dictionary',
-      \   'keyword_patterns', s:keyword_patterns
-      \ )
+if !exists('g:neocomplete#keyword_patterns')
+  let g:neocomplete#keyword_patterns = {}
+endif
+let g:neocomplete#keyword_patterns._ = '\h\w*'
 
 let g:neocomplete#force_overwrite_completefunc = 1
 if !exists('g:neocomplete#sources#omni#input_patterns')
   let g:neocomplete#sources#omni#input_patterns = {}
 endif
-let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
-let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
-let g:neocomplete#sources#omni#input_patterns.objc = '[^.[:digit:] *\t]\%(\.\|->\)\w*'
-let g:neocomplete#sources#omni#input_patterns.objcpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
+let s:omni_c = '[^.[:digit:] *\t]\%(\.\|->\)'
+let s:omni_cpp = s:omni_c.'\|\h\w*::'
+let s:omni_objc_specific = '\[\|\[[^.[:digit:] *\t]* \|\] '
+let g:neocomplete#sources#omni#input_patterns.c = s:omni_c
+let g:neocomplete#sources#omni#input_patterns.cpp = s:omni_cpp
+let g:neocomplete#sources#omni#input_patterns.objc = s:omni_c.'\|'.s:omni_objc_specific
+let g:neocomplete#sources#omni#input_patterns.objcpp = s:omni_cpp.'\|'.s:omni_objc_specific
+unlet s:omni_c s:omni_cpp s:omni_objc_specific
 
 if !exists('g:neocomplete#sources#file_include#exts')
   let g:neocomplete#sources#file_include#exts = {}
