@@ -100,6 +100,7 @@ NeoBundle 'itchyny/lightline.vim'
 NeoBundle 'rbtnn/vimconsole.vim'
 NeoBundle 'thinca/vim-prettyprint'
 NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'gregsexton/gitv'
 
 filetype plugin indent on
 
