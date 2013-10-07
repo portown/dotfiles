@@ -160,6 +160,9 @@ nmap <Leader>t <SID>[tab]
 
 nnoremap <silent> <SID>[tab]n :<C-U>tabnew<CR>
 
+nnoremap <C-N> gt
+nnoremap <C-P> gT
+
 " }}}
 " -------------------------------------------------------------
 
