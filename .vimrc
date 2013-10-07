@@ -95,11 +95,11 @@ NeoBundleLazy 'thinca/vim-logcat', {
       \ }
 NeoBundle 'vim-scripts/sudo.vim.git'
 NeoBundle 'ujihisa/shadow.vim'
-NeoBundle 'hrsh7th/vim-versions'
 NeoBundle 'itchyny/landscape.vim'
 NeoBundle 'itchyny/lightline.vim'
 NeoBundle 'rbtnn/vimconsole.vim'
 NeoBundle 'thinca/vim-prettyprint'
+NeoBundle 'tpope/vim-fugitive'
 
 filetype plugin indent on
 
@@ -614,12 +614,6 @@ nmap <SID>[unite]n <SID>[unite-neobundle]
 nnoremap <silent> <SID>[unite-neobundle]u :<C-U>Unite -buffer-name=neobundle -no-cursor-line -log neobundle/update<CR>
 nnoremap <silent> <SID>[unite-neobundle]i :<C-U>Unite -buffer-name=neobundle -no-cursor-line -log neobundle/install<CR>
 nnoremap <silent> <SID>[unite-neobundle]c :<C-U>UniteClose neobundle<CR>
-
-nnoremap <SID>[unite-versions] <Nop>
-nmap <SID>[unite]v <SID>[unite-versions]
-nnoremap <silent> <SID>[unite-versions]v :<C-U>UniteVersions<CR>
-nnoremap <silent> <SID>[unite-versions]s :<C-U>UniteVersions status:!<CR>
-nnoremap <silent> <SID>[unite-versions]l :<C-U>UniteVersions log:!<CR>
 
 function! g:portown_build(...)
   let clean = a:0 >= 1 ? a:1 : 0
