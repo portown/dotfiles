@@ -323,6 +323,8 @@ set laststatus=2
 set cmdheight=2
 set showcmd
 
+set directory-=.
+
 " -------------------------------------------------------------
 " 検索設定 {{{
 
