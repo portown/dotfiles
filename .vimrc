@@ -590,7 +590,7 @@ nnoremap <SID>[unite] <Nop>
 nmap <Leader>u <SID>[unite]
 
 nnoremap <silent> <SID>[unite]b :<C-U>Unite -buffer-name=buffers -start-insert buffer_tab<CR>
-nnoremap <silent> <SID>[unite]h :<C-U>Unite -buffer-name=help -start-insert help<CR>
+nnoremap <silent> <SID>[unite]h :<C-U>Unite -buffer-name=help -start-insert -immediately -no-empty help<CR>
 nnoremap <silent> <SID>[unite]o :<C-U>Unite -buffer-name=outline -start-insert outline<CR>
 nnoremap <silent> <SID>[unite]u :<C-U>UniteResume<CR>
 
