@@ -235,7 +235,15 @@ set smarttab
 " 空白文字の設定 {{{
 
 set list
-set listchars=tab:^\ ,trail:_,extends:<
+
+let s:listchars = {
+      \   'tab': "\u25b8\\ ",
+      \   'trail': '_',
+      \   'extends': "\u00bb",
+      \   'precedes': "\u00ab",
+      \ }
+execute 'set listchars='.join(map(items(s:listchars), 'join(v:val, ":")'), ',')
+unlet s:listchars
 
 " }}}
 " -------------------------------------------------------------
