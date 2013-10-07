@@ -98,6 +98,8 @@ NeoBundle 'ujihisa/shadow.vim'
 NeoBundle 'hrsh7th/vim-versions'
 NeoBundle 'itchyny/landscape.vim'
 NeoBundle 'itchyny/lightline.vim'
+NeoBundle 'rbtnn/vimconsole.vim'
+NeoBundle 'thinca/vim-prettyprint'
 
 filetype plugin indent on
 
