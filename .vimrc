@@ -627,6 +627,17 @@ nmap <Leader>v <SID>[vimrc]
 nnoremap <silent> <SID>[vimrc]e :<C-U>edit $MYVIMRC<CR>
 nnoremap <silent> <SID>[vimrc]l :<C-U>source $MYVIMRC \| if has('gui_running') \| source $MYGVIMRC \| endif<CR>
 
+" .gvimrc の編集は CUI/GUI 関係なくコマンドでできるようにする
+nnoremap <SID>[gvimrc] <Nop>
+nmap <SID>[vimrc]g <SID>[gvimrc]
+
+nnoremap <silent> <SID>[gvimrc]e :<C-U>edit $MYGVIMRC<CR>
+
+" .gvimrc の再読み込みは GUI のみ
+if has('gui_running')
+  nnoremap <silent> <SID>[gvimrc]l :<C-U>source $MYGVIMRC<CR>
+endif
+
 " }}}
 " -------------------------------------------------------------
 

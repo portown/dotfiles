@@ -111,15 +111,3 @@ set mousehide
 
 " }}}
 " -------------------------------------------------------------
-
-" -------------------------------------------------------------
-" .gvimrc の設定 {{{
-
-nnoremap <SID>[gvimrc] <Nop>
-nmap <SID>[vimrc]g <SID>[gvimrc]
-
-nnoremap <silent> <SID>[gvimrc]e :<C-U>edit $MYGVIMRC<CR>
-nnoremap <silent> <SID>[gvimrc]l :<C-U>source $MYGVIMRC<CR>
-
-" }}}
-" -------------------------------------------------------------
