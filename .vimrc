@@ -204,7 +204,19 @@ endif
 
 set tags& tags+=~/tags
 
-colorscheme hybrid
+" -------------------------------------------------------------
+" カラースキームの設定 {{{
+
+let s:mycolorscheme = { 'name': 'hybrid' }
+function! s:mycolorscheme.apply()
+  execute 'colorscheme '.self['name']
+endfunction
+
+autocmd Portown GUIEnter * call s:mycolorscheme.apply()
+call s:mycolorscheme.apply()
+
+" }}}
+" -------------------------------------------------------------
 
 " -------------------------------------------------------------
 " タブ文字設定 {{{
