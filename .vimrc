@@ -661,6 +661,15 @@ xnoremap q: :<C-U>Unite -buffer-name=commands -winheight=8 -direction=botright h
 nnoremap q/ :<C-U>Unite -buffer-name=commands -winheight=8 -direction=botright history/search<CR>
 xnoremap q/ :<C-U>Unite -buffer-name=commands -winheight=8 -direction=botright history/search<CR>
 
+if !exists('g:unite_source_alias_aliases')
+  let g:unite_source_alias_aliases = {}
+endif
+let g:unite_source_alias_aliases.message = {
+      \   'source': 'output',
+      \   'args': 'message',
+      \ }
+call unite#custom#source('message', 'sorters', 'sorter_reverse')
+
 " }}}
 " -------------------------------------------------------------
 
