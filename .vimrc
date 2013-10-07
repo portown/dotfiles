@@ -101,6 +101,7 @@ NeoBundle 'rbtnn/vimconsole.vim'
 NeoBundle 'thinca/vim-prettyprint'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'gregsexton/gitv'
+NeoBundle 'airblade/vim-gitgutter'
 
 filetype plugin indent on
 
@@ -725,6 +726,15 @@ function! g:uncrustify( lang, config_file )
   :silent execute '%!uncrustify -q -l '.a:lang.' -c '.a:config_file
   call setpos( '.', l:cursor_pos )
 endfunction
+
+" }}}
+" -------------------------------------------------------------
+
+" -------------------------------------------------------------
+" Vim Git Gutter の設定 {{{
+
+let g:gitgutter_realtime = 0
+let g:gitgutter_eager = 0
 
 " }}}
 " -------------------------------------------------------------
