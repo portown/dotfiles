@@ -764,6 +764,21 @@ nnoremap <SID>[git]c :<C-U>Gcommit -v<CR>
 " -------------------------------------------------------------
 
 " -------------------------------------------------------------
+" Gitv の設定 {{{
+
+let g:Gitv_TruncateCommitSubjects = 1
+let g:Gitv_DoNotMapCtrlKey = 1
+
+nnoremap <SID>[gitv] <Nop>
+nmap <SID>[git]v <SID>[gitv]
+nnoremap <silent> <SID>[gitv]v :<C-U>Gitv<CR>
+nnoremap <silent> <SID>[gitv]a :<C-U>Gitv --all<CR>
+nnoremap <silent> <SID>[gitv]f :<C-U>Gitv!<CR>
+
+" }}}
+" -------------------------------------------------------------
+
+" -------------------------------------------------------------
 " Vim Git Gutter の設定 {{{
 
 let g:gitgutter_realtime = 0
