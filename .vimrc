@@ -252,10 +252,11 @@ unlet s:listchars
 let g:lightline = {
       \   'colorscheme': 'wombat',
       \   'active': {
-      \     'left': [['mode'], ['fugitive', 'filename']],
+      \     'left': [['mode'], ['fugitive', 'gitgutter', 'filename']],
       \   },
       \   'component_function': {
       \     'fugitive': 'MyFugitive',
+      \     'gitgutter': 'MyGitGutter',
       \     'filename': 'MyFilename',
       \     'fileformat': 'MyFileformat',
       \     'filetype': 'MyFiletype',
@@ -272,6 +273,27 @@ function! MyFugitive()
     return strlen(_) ? "\u2b60 "._ : ''
   endif
   return ''
+endfunction
+
+function! MyGitGutter()
+  if !exists('*GitGutterGetHunkSummary')
+        \ || !get(g:, 'gitgutter_enabled', 0)
+        \ || winwidth('.') <= 90
+    return ''
+  endif
+  let symbols = [
+        \   g:gitgutter_sign_added.' ',
+        \   g:gitgutter_sign_modified.' ',
+        \   g:gitgutter_sign_removed.' ',
+        \ ]
+  let hunks = GitGutterGetHunkSummary()
+  let ret = []
+  for i in [0, 1, 2]
+    if hunks[i] > 0
+      call add(ret, symbols[i].hunks[i])
+    endif
+  endfor
+  return join(ret, ' ')
 endfunction
 
 function! MyModified()
