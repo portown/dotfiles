@@ -736,6 +736,10 @@ endfunction
 let g:gitgutter_realtime = 0
 let g:gitgutter_eager = 0
 
+let g:gitgutter_sign_added = "\u271a"
+let g:gitgutter_sign_modified = "\u279c"
+let g:gitgutter_sign_removed = "\u2718"
+
 " }}}
 " -------------------------------------------------------------
 
