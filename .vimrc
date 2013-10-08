@@ -78,6 +78,7 @@ NeoBundle 'ebnf.vim'
 NeoBundle 'timcharper/textile.vim'
 
 " Others
+NeoBundle 'vim-jp/vital.vim'
 NeoBundleLazy 'Shougo/vimshell', {
       \   'autoload' : { 'commands' : ['VimShellCurrentDir'] },
       \   'depends' : ['Shougo/vimproc'],
