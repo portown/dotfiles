@@ -4,8 +4,6 @@
 " -------------------------------------------------------------
 " 初期化 {{{
 
-set nocompatible
-
 let s:is_windows = has( 'win32' ) || has( 'win64' )
 
 augroup Portown
