@@ -101,6 +101,7 @@ NeoBundle 'thinca/vim-prettyprint'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'gregsexton/gitv'
 NeoBundle 'airblade/vim-gitgutter'
+NeoBundle 'kana/vim-smartinput'
 
 filetype plugin indent on
 
@@ -396,6 +397,15 @@ autocmd Portown Filetype help nnoremap <buffer> q <C-w>c
 autocmd Portown Filetype help nnoremap <buffer> <C-]> :<C-U>tag <C-R><C-W><CR>
 
 " -------------------------------------------------------------
+" vim-smartinput {{{
+
+call smartinput#map_to_trigger('i', '<Plug>(smartinput_CR)', '<CR>', '<CR>')
+call smartinput#map_to_trigger('i', '<Plug>(smartinput_C-H)', '<BS>', '<C-H>')
+
+" }}}
+" -------------------------------------------------------------
+
+" -------------------------------------------------------------
 " 保存時に行末スペースを消去 {{{
 
 let g:portown_rtrim_enable = 1
@@ -539,17 +549,14 @@ inoremap <expr><C-F> pumvisible() ? "\<PageDown>" : "\<Right>"
 inoremap <expr><C-B> pumvisible() ? "\<PageUp>" : "\<Left>"
 inoremap <expr><C-Y> pumvisible() ? neocomplete#close_popup() : "\<C-R>\""
 inoremap <expr><C-E> pumvisible() ? neocomplete#cancel_popup() : "\<End>"
-inoremap <expr><C-H> neocomplete#smart_close_popup()."\<C-H>"
+imap <expr><C-H> neocomplete#smart_close_popup() . "\<Plug>(smartinput_C-H)"
 inoremap <expr><C-N> pumvisible() ? "\<C-N>" : "\<C-X>\<C-U>\<C-P>\<Down>"
 inoremap <expr><C-P> pumvisible() ? "\<C-P>" : "\<C-P>\<C-N>"
 
 inoremap <expr><C-G> neocomplete#undo_completion()
 inoremap <expr><C-L> neocomplete#complete_common_string()
 
-inoremap <silent> <CR> <C-R>=<SID>my_cr_function()<CR>
-function! s:my_cr_function()
-  return neocomplete#smart_close_popup()."\<CR>"
-endfunction
+imap <expr><CR> neocomplete#smart_close_popup() . "\<Plug>(smartinput_CR)"
 
 " }}}
 " -------------------------------------------------------------
