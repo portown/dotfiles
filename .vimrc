@@ -255,6 +255,10 @@ let g:lightline = {
       \   'active': {
       \     'left': [['mode'], ['fugitive', 'gitgutter', 'filename']],
       \   },
+      \   'tabline': {
+      \     'left': [['tabs']],
+      \     'right': [['cwd']],
+      \   },
       \   'component_function': {
       \     'fugitive': 'MyFugitive',
       \     'gitgutter': 'MyGitGutter',
@@ -263,6 +267,7 @@ let g:lightline = {
       \     'filetype': 'MyFiletype',
       \     'fileencoding': 'MyFileencoding',
       \     'mode': 'MyMode',
+      \     'cwd': 'MyCwd',
       \   },
       \   'separator': { 'left': "\u2b80", 'right': "\u2b82" },
       \   'subseparator': { 'left': "\u2b81", 'right': "\u2b83" },
@@ -342,6 +347,10 @@ endfunction
 
 function! MyMode()
   return winwidth(0) > 60 ? lightline#mode() : ''
+endfunction
+
+function! MyCwd()
+  return fnamemodify(getcwd(), ':~')
 endfunction
 
 " }}}
