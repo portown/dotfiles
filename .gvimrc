@@ -33,6 +33,9 @@ set guioptions-=L
 set guioptions-=r
 set guioptions-=R
 
+" テキストベースの tabline を使用する
+set guioptions-=e
+
 " タイトルを固定する
 set titlestring=gVim
 

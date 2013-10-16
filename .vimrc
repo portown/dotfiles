@@ -159,6 +159,8 @@ autocmd Portown Filetype c,cpp set cindent
 " -------------------------------------------------------------
 " タブ設定 {{{
 
+set showtabline=2
+
 nnoremap <SID>[tab] <Nop>
 nmap <Leader>t <SID>[tab]
 
