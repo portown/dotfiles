@@ -406,21 +406,40 @@ call smartinput#map_to_trigger('i', '<Plug>(smartinput_C-H)', '<BS>', '<C-H>')
 " -------------------------------------------------------------
 
 " -------------------------------------------------------------
-" 保存時に行末スペースを消去 {{{
+" Delete trailing spaces {{{
 
-let g:portown_rtrim_enable = 1
+function! DeleteSurroundingWhitespaces()
+  let line = getline('.')
+  let pos = getpos('.')
+  let col = pos[2]
 
-function! RTrim()
-  if get(b:, 'portown_rtrim_enable', g:portown_rtrim_enable)
+  let left = substitute(line[0 : col - 2], '\s\+$', '', '')
+  let right = substitute(line[col - 1 :], '^\s\+', '', '')
+  let pos[2] = len(left) + 1
+
+  call setline('.', left . right)
+  call setpos('.', pos)
+endfunction
+call smartinput#define_rule({
+      \   'at': '\s\%#\|\%#\s',
+      \   'char': '<CR>',
+      \   'input': '<C-O>:call DeleteSurroundingWhitespaces()<CR><CR>',
+      \ })
+
+function! DeleteTrailingWhitespacesIfCursorIsAtLast()
+  let line = getline('.')
+  if col('.') != len(line)
     return
   endif
 
-  let l:cursor_pos = getpos( '.' )
-  %s/\s\+$//e
-  call setpos( '.', l:cursor_pos )
-endfunction
+  let newline = substitute(line, '\s\+$', '', '')
+  if newline == line
+    return
+  endif
 
-autocmd Portown BufWritePre * if &ft !=# 'diff' | call RTrim() | endif
+  call setline('.', newline)
+endfunction
+autocmd Portown InsertLeave * call DeleteTrailingWhitespacesIfCursorIsAtLast()
 
 " }}}
 " -------------------------------------------------------------
