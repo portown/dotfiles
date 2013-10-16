@@ -409,6 +409,10 @@ call smartinput#map_to_trigger('i', '<Plug>(smartinput_C-H)', '<BS>', '<C-H>')
 " Delete trailing spaces {{{
 
 function! DeleteSurroundingWhitespaces()
+  if &filetype =~# 'unite'
+    return
+  endif
+
   let line = getline('.')
   let pos = getpos('.')
   let col = pos[2]
@@ -427,6 +431,10 @@ call smartinput#define_rule({
       \ })
 
 function! DeleteTrailingWhitespacesIfCursorIsAtLast()
+  if &filetype =~# 'unite'
+    return
+  endif
+
   let line = getline('.')
   if col('.') != len(line)
     return
