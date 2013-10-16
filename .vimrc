@@ -401,7 +401,7 @@ autocmd Portown Filetype help nnoremap <buffer> <C-]> :<C-U>tag <C-R><C-W><CR>
 let g:portown_rtrim_enable = 1
 
 function! RTrim()
-  if !g:portown_rtrim_enable || ( exists( 'b:portown_rtrim_enable' ) && !b:portown_rtrim_enable )
+  if get(b:, 'portown_rtrim_enable', g:portown_rtrim_enable)
     return
   endif
 
