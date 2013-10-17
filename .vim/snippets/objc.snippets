@@ -1,6 +1,15 @@
 # objc.snippets
 # vim:set noexpandtab:
 
+snippet file-header
+alias fh
+options head
+	//
+	//  `expand('%:t')`
+	//  `fileutil#get_xcode_proj_name(expand('%:h'))`
+	//
+	${0}
+
 snippet import-user-header
 alias imp
 options head
@@ -145,4 +154,3 @@ options head
 	{
 		${0}
 	}
-
