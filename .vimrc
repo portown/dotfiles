@@ -611,7 +611,7 @@ if !exists('g:neosnippet#snippets_directory')
   let g:neosnippet#snippets_directory = ''
 endif
 let g:neosnippet#snippets_directory = join([
-      \   '~/snippets',
+      \   '~/.vim/snippets',
       \ ], ',')
 
 " }}}
