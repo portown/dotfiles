@@ -13,12 +13,12 @@ options head
 snippet import-user-header
 alias imp
 options head
-	#import "${1}.h"${0}
+	#import "${1:`expand('%:t:r')`}.h"${0}
 
 snippet import-system-header
 alias Imp
 options head
-	#import <${1:Foundation}/$1.h>${0}
+	#import <${1:Foundation}/${2:$1}.h>${0}
 
 snippet pragma-mark-with-separator
 alias prag
