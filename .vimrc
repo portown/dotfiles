@@ -430,7 +430,7 @@ call smartinput#define_rule({
       \ })
 
 function! DeleteTrailingWhitespacesIfCursorIsAtLast()
-  if &filetype =~# 'unite'
+  if &filetype =~# 'unite\|vimshell'
     return
   endif
 
