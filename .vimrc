@@ -304,25 +304,23 @@ function! MyGitGutter()
 endfunction
 
 function! MyModified()
-  if &filetype =~# 'help\|vimfiler'
-    return ''
-  elseif &modified
+  if &modifiable && &modified
     return '+'
-  elseif &modifiable
-    return ''
   else
     return ''
   endif
 endfunction
 
 function! MyReadonly()
-  if &filetype =~# 'help\|vimfiler'
-    return ''
-  elseif &readonly
+  if &modifiable && &readonly
     return "\u2b64"
   else
     return ''
   endif
+endfunction
+
+function! MyModifiable()
+  return &modifiable ? '' : "\u2718"
 endfunction
 
 function! MyFilename()
@@ -331,7 +329,8 @@ function! MyFilename()
         \  &ft == 'unite' ? unite#get_status_string() :
         \  &ft == 'vimshell' ? vimshell#get_status_string() :
         \  '' != expand('%:t') ? expand('%:t') : '[No Name]') .
-        \ ('' != MyModified() ? ' ' . MyModified() : '')
+        \ ('' != MyModified() ? ' ' . MyModified() : '') .
+        \ ('' != MyModifiable() ? ' ' . MyModifiable() : '')
 endfunction
 
 function! MyFileformat()
