@@ -180,8 +180,8 @@ nnoremap <SID>(command-line-enter) q:
 xnoremap <SID>(command-line-enter) q:
 nnoremap <SID>(command-line-norange) q:<C-U>
 
-nmap : <SID>(command-line-enter)
-xmap : <SID>(command-line-enter)
+nmap ; <SID>(command-line-enter)
+xmap ; <SID>(command-line-enter)
 
 autocmd Portown CmdwinEnter * call s:init_cmdwin()
 function! s:init_cmdwin()
@@ -378,6 +378,9 @@ syntax enable
 nunmap <Space>
 nnoremap <Space><Space> <PageDown>
 nnoremap Y y$
+
+"nnoremap ; :
+nnoremap : ;
 
 autocmd Portown Filetype help nnoremap <buffer> q <C-w>c
 autocmd Portown Filetype help nnoremap <buffer> <C-]> :<C-U>tag <C-R><C-W><CR>
