@@ -375,7 +375,6 @@ set foldlevel=0
 
 syntax enable
 
-nunmap <Space>
 nnoremap <Space><Space> <PageDown>
 nnoremap Y y$
 
