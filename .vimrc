@@ -163,7 +163,7 @@ autocmd Portown Filetype c,cpp set cindent
 set showtabline=2
 
 nnoremap <SID>[tab] <Nop>
-nmap <Leader>t <SID>[tab]
+nmap <Space>t <SID>[tab]
 
 nnoremap <silent> <SID>[tab]n :<C-U>tabnew<CR>
 
@@ -375,7 +375,8 @@ set foldlevel=0
 
 syntax enable
 
-nnoremap <SPACE> <PageDown>
+nunmap <Space>
+nnoremap <Space><Space> <PageDown>
 nnoremap Y y$
 
 autocmd Portown Filetype help nnoremap <buffer> q <C-w>c
@@ -617,7 +618,7 @@ endfunction
 command! PortownVimShellSplit :topleft 10split
 
 nnoremap <SID>[vimshell] <Nop>
-nmap <Leader>s <SID>[vimshell]
+nmap <Space>s <SID>[vimshell]
 nnoremap <silent> <SID>[vimshell]s :<C-U>VimShellCurrentDir -buffer-name=shell -toggle -split -split-command=PortownVimShellSplit<CR>
 nnoremap <silent> <SID>[vimshell]f :<C-U>VimShellCurrentDir -buffer-name=shell<CR>
 
@@ -633,7 +634,7 @@ function! s:bundle.hooks.on_source(bundle)
 endfunction
 
 nnoremap <SID>[vimfiler] <Nop>
-nmap <Leader>f <SID>[vimfiler]
+nmap <Space>f <SID>[vimfiler]
 nnoremap <silent> <SID>[vimfiler]e :<C-U>VimFilerBufferDir -buffer-name=explorer -direction=topleft -toggle -split -simple -winwidth=35 -no-quit<CR>
 nnoremap <silent> <SID>[vimfiler]f :<C-U>VimFilerBufferDir -buffer-name=explorer<CR>
 nnoremap <silent> <SID>[vimfiler]d :<C-U>VimFilerBufferDir -double<CR>
@@ -656,7 +657,7 @@ function! s:bundle.hooks.on_source(bundle)
 endfunction
 
 nnoremap <SID>[unite] <Nop>
-nmap <Leader>u <SID>[unite]
+nmap <Space>u <SID>[unite]
 
 nnoremap <silent> <SID>[unite]b :<C-U>Unite -buffer-name=buffers -start-insert buffer_tab<CR>
 nnoremap <silent> <SID>[unite]h :<C-U>Unite -buffer-name=help -start-insert -immediately -no-empty help<CR>
@@ -788,7 +789,7 @@ endfunction
 " fugitive.vim の設定 {{{
 
 nnoremap <SID>[git] <Nop>
-nmap <Leader>g <SID>[git]
+nmap <Space>g <SID>[git]
 nnoremap <SID>[git]d :<C-U>Gdiff<CR>
 nnoremap <SID>[git]s :<C-U>Gstatus<CR>
 nnoremap <SID>[git]c :<C-U>Gcommit -v<CR>
@@ -831,7 +832,7 @@ set shortmess& shortmess+=I
 " .vimrc の設定 {{{
 
 nnoremap <SID>[vimrc] <Nop>
-nmap <Leader>v <SID>[vimrc]
+nmap <Space>v <SID>[vimrc]
 
 nnoremap <silent> <SID>[vimrc]e :<C-U>edit $MYVIMRC<CR>
 nnoremap <silent> <SID>[vimrc]l :<C-U>source $MYVIMRC \| if has('gui_running') \| source $MYGVIMRC \| endif<CR>
