@@ -629,6 +629,7 @@ nnoremap <silent> <SID>[vimshell]f :<C-U>VimShellCurrentDir -buffer-name=shell<C
 
 let s:bundle = neobundle#get('vimfiler')
 function! s:bundle.hooks.on_source(bundle)
+  let g:vimfiler_force_overwrite_statusline = 0
 endfunction
 
 nnoremap <SID>[vimfiler] <Nop>
@@ -650,6 +651,8 @@ function! s:bundle.hooks.on_source(bundle)
 
   let g:unite_source_grep_default_opts = '-Hn'
   let g:unite_source_grep_recursive_opt = '-r'
+
+  let g:unite_force_overwrite_statusline = 0
 endfunction
 
 nnoremap <SID>[unite] <Nop>
