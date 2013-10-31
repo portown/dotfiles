@@ -134,7 +134,7 @@ options head
 		static dispatch_once_t onceToken;
 
 		dispatch_once(&onceToken, ^{
-			$3 = [[$2 alloc] init];
+			$3 = [[self alloc] init];
 		});
 
 		return $3;
@@ -147,6 +147,13 @@ options head
 snippet a
 options word
 	[[${1:NSObject} alloc] init${2}]${0}
+
+snippet for
+options head
+	for (${1:NSUInteger} ${2:i} = ${3:0}; ${4:$2 < 10}; ${5:++i})
+	{
+		${0}
+	}
 
 snippet forin
 options head
