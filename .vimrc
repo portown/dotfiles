@@ -611,14 +611,15 @@ let g:neosnippet#snippets_directory = join([
 " -------------------------------------------------------------
 " VimShell の設定 {{{
 
-let s:bundle = neobundle#get('vimshell')
-function! s:bundle.hooks.on_source(bundle)
+let s:hooks = neobundle#get_hooks('vimshell')
+function! s:hooks.on_source(bundle)
   if s:is_windows
     let g:vimshell_prompt = $USERNAME.'@'.hostname().'$ '
   else
     let g:vimshell_prompt = $USER.'$ '
   endif
 endfunction
+unlet s:hooks
 
 command! PortownVimShellSplit :topleft 10split
 
@@ -635,10 +636,11 @@ autocmd Portown FileType vimshell execute 'nunmap <buffer> <C-N>' | nunmap <buff
 " -------------------------------------------------------------
 " VimFiler の設定 {{{
 
-let s:bundle = neobundle#get('vimfiler')
-function! s:bundle.hooks.on_source(bundle)
+let s:hooks = neobundle#get_hooks('vimfiler')
+function! s:hooks.on_source(bundle)
   let g:vimfiler_force_overwrite_statusline = 0
 endfunction
+unlet s:hooks
 
 nnoremap <SID>[vimfiler] <Nop>
 nmap <Space>f <SID>[vimfiler]
@@ -652,8 +654,8 @@ nnoremap <silent> <SID>[vimfiler]d :<C-U>VimFilerBufferDir -double<CR>
 " -------------------------------------------------------------
 " Unite.vim の設定 {{{
 
-let s:bundle = neobundle#get('unite.vim')
-function! s:bundle.hooks.on_source(bundle)
+let s:hooks = neobundle#get_hooks('unite.vim')
+function! s:hooks.on_source(bundle)
   let g:unite_enable_start_insert = 0
   let g:unite_kind_file_use_trashbox = 0
 
@@ -662,6 +664,7 @@ function! s:bundle.hooks.on_source(bundle)
 
   let g:unite_force_overwrite_statusline = 0
 endfunction
+unlet s:hooks
 
 nnoremap <SID>[unite] <Nop>
 nmap <Space>u <SID>[unite]
