@@ -70,7 +70,6 @@ NeoBundleLazy 'vim-jp/cpp-vim', {
       \ }
 NeoBundle 'tpope/vim-haml'
 NeoBundle 'kchmck/vim-coffee-script'
-NeoBundle 'motemen/hatena-vim'
 NeoBundle 'tpope/vim-markdown'
 NeoBundle 'aklt/plantuml-syntax'
 NeoBundle 'vim-scripts/scons.vim'
@@ -763,14 +762,6 @@ endfunction
 let g:ref_source_webdict_sites.default = 'wiktionary'
 
 autocmd Portown FileType ref-webdict nnoremap <buffer> q <C-W>c
-
-" }}}
-" -------------------------------------------------------------
-
-" -------------------------------------------------------------
-" hatena.vim の設定 {{{
-
-let g:hatena_user = 'portown'
 
 " }}}
 " -------------------------------------------------------------
