@@ -104,6 +104,7 @@ NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'gregsexton/gitv'
 NeoBundle 'airblade/vim-gitgutter'
 NeoBundle 'kana/vim-smartinput'
+NeoBundle 'thinca/vim-localrc'
 
 filetype plugin indent on
 syntax enable
@@ -864,24 +865,6 @@ endif
 if filereadable( expand( '~/.vimrc.local.after' ) )
   source ~/.vimrc.local.after
 endif
-
-" }}}
-" -------------------------------------------------------------
-
-" -------------------------------------------------------------
-" ディレクトリローカルな設定の読み込み {{{
-
-augroup vimrc-local
-  autocmd!
-  autocmd BufNewFile,BufReadPost * call s:vimrc_local( expand( '<afile>:p:h' ) )
-augroup END
-
-function! s:vimrc_local( location )
-  let files = findfile( '.vimrc.local', escape( a:location, ' ' ) . ';', -1 )
-  for i in reverse( filter( map( files, 'fnamemodify( v:val, ":p" )' ), 'filereadable( v:val )' ) )
-    source `=i`
-  endfor
-endfunction
 
 " }}}
 " -------------------------------------------------------------
