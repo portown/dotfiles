@@ -151,7 +151,7 @@ endif
 set smartindent
 
 set cinoptions& cinoptions+=l1,g0,t0
-autocmd Portown Filetype c,cpp set cindent
+autocmd Portown Filetype c,cpp setlocal cindent
 
 " }}}
 " -------------------------------------------------------------
