@@ -243,12 +243,12 @@ set smarttab
 set list
 
 let s:listchars = {
-      \   'tab': "\u25b8\\ ",
+      \   'tab': '▸ ',
       \   'trail': '_',
-      \   'extends': "\u00bb",
-      \   'precedes': "\u00ab",
+      \   'extends': '»',
+      \   'precedes': '«',
       \ }
-execute 'set listchars='.join(map(items(s:listchars), 'join(v:val, ":")'), ',')
+let &listchars = join(map(items(s:listchars), 'join(v:val, ":")'), ',')
 unlet s:listchars
 
 " }}}
