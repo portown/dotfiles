@@ -2,4 +2,4 @@
 *.swp
 .DS_Store
 .localized
-.vimrc.local
+.local.vimrc
