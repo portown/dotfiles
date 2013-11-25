@@ -663,6 +663,8 @@ function! s:hooks.on_source(bundle)
   let g:unite_source_grep_recursive_opt = '-r'
 
   let g:unite_force_overwrite_statusline = 0
+
+  call unite#custom#source('message', 'sorters', 'sorter_reverse')
 endfunction
 unlet s:hooks
 
@@ -739,7 +741,6 @@ let g:unite_source_alias_aliases.message = {
       \   'source': 'output',
       \   'args': 'message',
       \ }
-call unite#custom#source('message', 'sorters', 'sorter_reverse')
 
 " }}}
 " -------------------------------------------------------------
