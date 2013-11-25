@@ -540,7 +540,7 @@ let g:neocomplete#sources#include#paths.objc = '.,/Applications/Xcode.app/Conten
 if !exists('g:neocomplete#sources#include#exprs')
   let g:neocomplete#sources#include#exprs = {}
 endif
-function! g:objc_include_expr(fname)
+function! ObjcIncludeExpr(fname)
   let pattern = '\([^/]\+\)/\([^/]\+\).h'
   if a:fname =~# pattern
     let dir = substitute(a:fname, pattern, '\1', '')
@@ -551,7 +551,7 @@ function! g:objc_include_expr(fname)
   endif
   return a:fname
 endfunction
-let g:neocomplete#sources#include#exprs.objc = 'g:objc_include_expr(v:fname)'
+let g:neocomplete#sources#include#exprs.objc = 'ObjcIncludeExpr(v:fname)'
 
 let g:neocomplete#sources#vim#complete_functions = {
       \   'Ref' : 'ref#complete',
@@ -690,7 +690,7 @@ nnoremap <silent> <SID>[unite-neobundle]u :<C-U>Unite -buffer-name=neobundle -no
 nnoremap <silent> <SID>[unite-neobundle]i :<C-U>Unite -buffer-name=neobundle -no-cursor-line -log neobundle/install<CR>
 nnoremap <silent> <SID>[unite-neobundle]c :<C-U>UniteClose neobundle<CR>
 
-function! g:portown_build(...)
+function! PortownBuild(...)
   let clean = a:0 >= 1 ? a:1 : 0
 
   let base = 'Unite -buffer-name=build -winheight=8 -direction=botright -no-quit -no-focus build'
@@ -719,8 +719,8 @@ endfunction
 " build の b は buffer と被る……
 nnoremap <SID>[unite-make] <Nop>
 nmap <SID>[unite]m <SID>[unite-make]
-nnoremap <silent> <SID>[unite-make]m :<C-U>call g:portown_build()<CR>
-nnoremap <silent> <SID>[unite-make]c :<C-U>call g:portown_build(1)<CR>
+nnoremap <silent> <SID>[unite-make]m :<C-U>call PortownBuild()<CR>
+nnoremap <silent> <SID>[unite-make]c :<C-U>call PortownBuild(1)<CR>
 nnoremap <silent> <SID>[unite-make]q :<C-U>UniteClose build<CR>
 
 nnoremap q: :<C-U>Unite -buffer-name=commands -winheight=8 -direction=botright history/command<CR>
@@ -779,7 +779,7 @@ let g:hatena_user = 'portown'
 
 let g:uncrustify_command = 'uncrustify'
 
-function! g:uncrustify( lang, config_file )
+function! Uncrustify( lang, config_file )
   if !executable( g:uncrustify_command ) || !filereadable( a:config_file )
     return
   endif
