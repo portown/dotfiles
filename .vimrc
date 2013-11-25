@@ -1,5 +1,7 @@
 " .vimrc
 
+set encoding=utf-8
+scriptencoding utf-8
 
 " -------------------------------------------------------------
 " 初期化 {{{
@@ -111,8 +113,6 @@ filetype plugin indent on
 " -------------------------------------------------------------
 " 文字コードの設定 {{{
 
-set encoding=utf-8
-
 if s:is_windows
   set termencoding=cp932
 endif
@@ -130,8 +130,6 @@ else
   endfunction
   autocmd Portown BufReadPost * call RecheckIso2022Jp()
 endif
-
-scriptencoding utf-8
 
 set fileformats=unix,dos,mac
 
