@@ -106,6 +106,7 @@ NeoBundle 'airblade/vim-gitgutter'
 NeoBundle 'kana/vim-smartinput'
 
 filetype plugin indent on
+syntax enable
 
 " }}}
 " -------------------------------------------------------------
@@ -212,7 +213,13 @@ set tags& tags+=~/tags
 " -------------------------------------------------------------
 " カラースキームの設定 {{{
 
-colorscheme landscape
+let s:my_colorscheme = 'landscape'
+if s:is_windows && has('gui_running')
+  execute 'autocmd Portown GUIEnter * colorscheme' s:my_colorscheme
+  execute 'autocmd Portown GUIEnter * call lightline#colorscheme()'
+else
+  execute 'colorscheme' s:my_colorscheme
+endif
 
 " }}}
 " -------------------------------------------------------------
@@ -370,8 +377,6 @@ set foldlevel=0
 
 " }}}
 " -------------------------------------------------------------
-
-syntax enable
 
 nnoremap <Space><Space> <PageDown>
 nnoremap Y y$
