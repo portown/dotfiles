@@ -797,6 +797,7 @@ nmap <Space>g <SID>[git]
 nnoremap <SID>[git]d :<C-U>Gdiff<CR>
 nnoremap <SID>[git]s :<C-U>Gstatus<CR>
 nnoremap <SID>[git]c :<C-U>Gcommit -v<CR>
+nnoremap <SID>[git]b :<C-U>Gblame<CR>
 
 " }}}
 " -------------------------------------------------------------
