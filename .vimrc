@@ -104,6 +104,7 @@ NeoBundle 'gregsexton/gitv'
 NeoBundle 'airblade/vim-gitgutter'
 NeoBundle 'kana/vim-smartinput'
 NeoBundle 'thinca/vim-localrc'
+NeoBundle 'thinca/vim-quickrun'
 
 filetype plugin indent on
 syntax enable
