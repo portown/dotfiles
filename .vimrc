@@ -646,10 +646,22 @@ function! s:hooks.on_source(bundle)
   let g:unite_enable_start_insert = 0
   let g:unite_kind_file_use_trashbox = 0
 
-  let g:unite_source_grep_default_opts = '-Hn'
-  let g:unite_source_grep_recursive_opt = '-r'
-
   let g:unite_force_overwrite_statusline = 0
+
+  let g:unite_source_process_enable_confirm = 0
+
+  let s:file_patterns_to_be_ignored = '\%(png\|gif\|jpeg\|jpg\)$\|^.git$'
+  call unite#custom#source('file_rec/async', 'ignore_pattern', s:file_patterns_to_be_ignored)
+  call unite#custom#source('grep', 'ignore_pattern', s:file_patterns_to_be_ignored)
+
+  if executable('ag')
+    let g:unite_source_grep_command = 'ag'
+    let g:unite_source_grep_default_opts = '--nocolor --nogroup --column'
+    let g:unite_source_grep_recursive_opt = ''
+  else
+    let g:unite_source_grep_default_opts = '-Hn'
+    let g:unite_source_grep_recursive_opt = '-r'
+  endif
 
   call unite#custom#source('message', 'sorters', 'sorter_reverse')
 endfunction
@@ -669,7 +681,7 @@ nnoremap <silent> <SID>[unite-file]f :<C-U>Unite -buffer-name=files -start-inser
 nnoremap <silent> <SID>[unite-file]d :<C-U>UniteWithBufferDir -buffer-name=files -start-insert file file/new<CR>
 nnoremap <silent> <SID>[unite-file]r :<C-U>Unite -buffer-name=files -start-insert file_rec/async<CR>
 nnoremap <silent> <SID>[unite-file]m :<C-U>Unite -buffer-name=files -start-insert file_mru<CR>
-nnoremap <silent> <SID>[unite-file]b :<C-U>Unite -buffer-name=files -start-insert bookmark<CR>
+nnoremap <silent> <SID>[unite-file]b :<C-U>Unite -buffer-name=files -start-insert -default-action=lcd bookmark<CR>
 
 nnoremap <SID>[unite-gtags] <Nop>
 nmap <SID>[unite]g <SID>[unite-gtags]
