@@ -85,6 +85,8 @@ NeoBundleLazy 'Shougo/vimshell', {
 NeoBundle 'ujihisa/vimshell-ssh'
 NeoBundle 'Shougo/neocomplete'
 NeoBundle 'Shougo/neosnippet'
+NeoBundle 'Rip-Rip/clang_complete'
+NeoBundle 'tokorom/clang_complete-getopts-ios'
 NeoBundleLazy 'Shougo/vimfiler', {
       \   'autoload' : { 'commands' : ['VimFilerBufferDir'] },
       \   'depends' : ['Shougo/unite.vim'],
@@ -508,16 +510,14 @@ endif
 let g:neocomplete#keyword_patterns._ = '\h\w*'
 
 let g:neocomplete#force_overwrite_completefunc = 1
-if !exists('g:neocomplete#sources#omni#input_patterns')
-  let g:neocomplete#sources#omni#input_patterns = {}
+if !exists('g:neocomplete#force_omni_input_patterns')
+  let g:neocomplete#force_omni_input_patterns = {}
 endif
 let s:omni_c = '[^.[:digit:] *\t]\%(\.\|->\)'
 let s:omni_cpp = s:omni_c.'\|\h\w*::'
 let s:omni_objc_specific = '\[\|\[[^.[:digit:] *\t]* \|\] '
-let g:neocomplete#sources#omni#input_patterns.c = s:omni_c
-let g:neocomplete#sources#omni#input_patterns.cpp = s:omni_cpp
-let g:neocomplete#sources#omni#input_patterns.objc = s:omni_c.'\|'.s:omni_objc_specific
-let g:neocomplete#sources#omni#input_patterns.objcpp = s:omni_cpp.'\|'.s:omni_objc_specific
+let g:neocomplete#force_omni_input_patterns.objc = s:omni_c . '\|' . s:omni_objc_specific
+let g:neocomplete#force_omni_input_patterns.objcpp = s:omni_cpp . '\|' . s:omni_objc_specific
 unlet s:omni_c s:omni_cpp s:omni_objc_specific
 
 if !exists('g:neocomplete#sources#file_include#exts')
@@ -528,31 +528,8 @@ let g:neocomplete#sources#file_include#exts.objc = ['h']
 if !exists('g:neocomplete#sources#include#patterns')
   let g:neocomplete#sources#include#patterns = {}
 endif
-let g:neocomplete#sources#include#patterns.c = '^\s*#\s*include'
-let g:neocomplete#sources#include#patterns.cpp = '^\s*#\s*include'
 let g:neocomplete#sources#include#patterns.objc = '^\s*#\s*import'
 let g:neocomplete#sources#include#patterns.objcpp = '^\s*#\s*import'
-
-if !exists('g:neocomplete#sources#include#paths')
-  let g:neocomplete#sources#include#paths = {}
-endif
-let g:neocomplete#sources#include#paths.objc = '.,/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk/System/Library/Frameworks'
-
-if !exists('g:neocomplete#sources#include#exprs')
-  let g:neocomplete#sources#include#exprs = {}
-endif
-function! ObjcIncludeExpr(fname)
-  let pattern = '\([^/]\+\)/\([^/]\+\).h'
-  if a:fname =~# pattern
-    let dir = substitute(a:fname, pattern, '\1', '')
-    let file = substitute(a:fname, pattern, '\2', '')
-    if dir ==# file
-      return dir.'.framework/Headers/'.file.'.h'
-    endif
-  endif
-  return a:fname
-endfunction
-let g:neocomplete#sources#include#exprs.objc = 'ObjcIncludeExpr(v:fname)'
 
 let g:neocomplete#sources#vim#complete_functions = {
       \   'Ref' : 'ref#complete',
@@ -576,6 +553,15 @@ inoremap <expr><C-G> neocomplete#undo_completion()
 inoremap <expr><C-L> neocomplete#complete_common_string()
 
 imap <expr><CR> neocomplete#smart_close_popup() . "\<Plug>(smartinput_CR)"
+
+" }}}
+" -------------------------------------------------------------
+
+" -------------------------------------------------------------
+" clang_complete {{{
+
+let g:clang_complete_auto = 0
+let g:clang_auto_select = 0
 
 " }}}
 " -------------------------------------------------------------
