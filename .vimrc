@@ -107,6 +107,7 @@ NeoBundle 'airblade/vim-gitgutter'
 NeoBundle 'kana/vim-smartinput'
 NeoBundle 'thinca/vim-localrc'
 NeoBundle 'thinca/vim-quickrun'
+NeoBundle 'scrooloose/syntastic'
 
 filetype plugin indent on
 syntax enable
@@ -263,7 +264,7 @@ let g:lightline = {
       \   'colorscheme': 'wombat',
       \   'active': {
       \     'left': [['mode'], ['fugitive', 'filename']],
-      \     'right': [['lineinfo'], ['fileformat', 'fileencoding', 'filetype']],
+      \     'right': [['syntastic', 'lineinfo'], ['fileformat', 'fileencoding', 'filetype']],
       \   },
       \   'inactive': {
       \     'left': [['filename']],
@@ -284,6 +285,12 @@ let g:lightline = {
       \     'fileencoding': 'MyFileencoding',
       \     'mode': 'MyMode',
       \     'cwd': 'MyCwd',
+      \   },
+      \   'component_expand': {
+      \     'syntastic': 'SyntasticStatuslineFlag',
+      \   },
+      \   'component_type': {
+      \     'syntastic': 'error',
       \   },
       \   'separator': { 'left': "\u2b80", 'right': "\u2b82" },
       \   'subseparator': { 'left': "\u2b81", 'right': "\u2b83" },
@@ -825,6 +832,19 @@ let g:gitgutter_eager = 0
 let g:gitgutter_sign_added = "\u271a"
 let g:gitgutter_sign_modified = "\u279c"
 let g:gitgutter_sign_removed = "\u2718"
+
+" }}}
+" -------------------------------------------------------------
+
+" -------------------------------------------------------------
+" Syntastic {{{
+
+let g:syntastic_mode_map = { 'mode': 'passive' }
+
+function! g:myvimrc_syntastic()
+  SyntasticCheck
+  call lightline#update()
+endfunction
 
 " }}}
 " -------------------------------------------------------------
