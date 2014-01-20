@@ -675,7 +675,7 @@ function! s:hooks.on_source(bundle)
 
   let g:unite_source_process_enable_confirm = 0
 
-  let s:file_patterns_to_be_ignored = '\%(png\|gif\|jpeg\|jpg\)$\|^.git$'
+  let s:file_patterns_to_be_ignored = '\.\%(png\|gif\|jpeg\|jpg\|class\|jar\)$\|^.git$'
   call unite#custom#source('file_rec/async', 'ignore_pattern', s:file_patterns_to_be_ignored)
   call unite#custom#source('grep', 'ignore_pattern', s:file_patterns_to_be_ignored)
 
