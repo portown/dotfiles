@@ -599,6 +599,11 @@ let g:neosnippet#snippets_directory = join([
       \   '~/.vim/snippets',
       \ ], ',')
 
+if !exists('g:neosnippet#disable_runtime_snippets')
+  let g:neosnippet#disable_runtime_snippets = {}
+endif
+let g:neosnippet#disable_runtime_snippets._ = 1
+
 " }}}
 " -------------------------------------------------------------
 
