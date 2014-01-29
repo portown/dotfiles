@@ -76,6 +76,7 @@ NeoBundle 'aklt/plantuml-syntax'
 NeoBundle 'vim-scripts/scons.vim'
 NeoBundle 'ebnf.vim'
 NeoBundle 'timcharper/textile.vim'
+NeoBundle 'jam.vim'
 
 " Others
 NeoBundle 'vim-jp/vital.vim'
