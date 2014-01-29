@@ -7,6 +7,7 @@ scriptencoding utf-8
 " 初期化 {{{
 
 let s:is_windows = has( 'win32' ) || has( 'win64' )
+let s:is_mac = has('mac')
 
 augroup Portown
   autocmd!
@@ -85,8 +86,10 @@ NeoBundleLazy 'Shougo/vimshell', {
 NeoBundle 'ujihisa/vimshell-ssh'
 NeoBundle 'Shougo/neocomplete'
 NeoBundle 'Shougo/neosnippet'
-NeoBundle 'Rip-Rip/clang_complete'
-NeoBundle 'tokorom/clang_complete-getopts-ios'
+if s:is_mac
+  NeoBundle 'Rip-Rip/clang_complete'
+  NeoBundle 'tokorom/clang_complete-getopts-ios'
+endif
 NeoBundleLazy 'Shougo/vimfiler', {
       \   'autoload' : { 'commands' : ['VimFilerBufferDir'] },
       \   'depends' : ['Shougo/unite.vim'],
