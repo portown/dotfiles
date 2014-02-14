@@ -693,8 +693,8 @@ nnoremap <silent> <SID>[unite]u :<C-U>UniteResume<CR>
 
 nnoremap <SID>[unite-file] <Nop>
 nmap <SID>[unite]f <SID>[unite-file]
-nnoremap <silent> <SID>[unite-file]f :<C-U>Unite -buffer-name=files -start-insert file file/new<CR>
-nnoremap <silent> <SID>[unite-file]d :<C-U>UniteWithBufferDir -buffer-name=files -start-insert file file/new<CR>
+nnoremap <silent> <SID>[unite-file]f :<C-U>Unite -buffer-name=files -start-insert file file/new directory/new<CR>
+nnoremap <silent> <SID>[unite-file]d :<C-U>UniteWithBufferDir -buffer-name=files -start-insert file file/new directory/new<CR>
 nnoremap <silent> <SID>[unite-file]r :<C-U>Unite -buffer-name=files -start-insert file_rec/async<CR>
 nnoremap <silent> <SID>[unite-file]m :<C-U>Unite -buffer-name=files -start-insert file_mru<CR>
 nnoremap <silent> <SID>[unite-file]b :<C-U>Unite -buffer-name=files -start-insert -default-action=lcd bookmark<CR>
