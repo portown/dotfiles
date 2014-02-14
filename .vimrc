@@ -6,7 +6,7 @@ scriptencoding utf-8
 " -------------------------------------------------------------
 " 初期化 {{{
 
-let s:is_windows = has( 'win32' ) || has( 'win64' )
+let s:is_windows = has('win32') || has('win64')
 let s:is_mac = has('mac')
 
 augroup Portown
@@ -26,7 +26,7 @@ endif
 " -------------------------------------------------------------
 " ローカル設定の読み込み {{{
 
-if filereadable( expand( '~/.vimrc.local.before' ) )
+if filereadable(expand('~/.vimrc.local.before'))
   source ~/.vimrc.local.before
 endif
 
@@ -36,11 +36,11 @@ endif
 " -------------------------------------------------------------
 " neobundle.vim の設定 {{{
 
-if has( 'vim_starting' )
+if has('vim_starting')
   set runtimepath+=~/.vim/bundle/neobundle.vim/
 endif
 
-call neobundle#rc( expand( '~/.vim/bundle' ) )
+call neobundle#rc(expand('~/.vim/bundle'))
 
 NeoBundleFetch 'Shougo/neobundle.vim'
 
@@ -142,8 +142,8 @@ endif
 
 set fileformats=unix,dos,mac
 
-if exists( '&ambiwidth' )
-  if has( 'kaoriya' ) && s:is_windows
+if exists('&ambiwidth')
+  if has('kaoriya') && s:is_windows
     set ambiwidth=auto
   else
     set ambiwidth=double
@@ -221,7 +221,7 @@ set tags& tags+=~/tags
 " -------------------------------------------------------------
 " カラースキームの設定 {{{
 
-function! g:myvimrc_config_colorscheme()
+function! MyVimrcConfigColorscheme()
   colorscheme landscape
 
   " landscape.vim に ModeMsg が設定されていないので設定
@@ -229,10 +229,10 @@ function! g:myvimrc_config_colorscheme()
 endfunction
 
 if s:is_windows && has('gui_running')
-  execute 'autocmd Portown GUIEnter * call g:myvimrc_config_colorscheme()'
+  execute 'autocmd Portown GUIEnter * call MyVimrcConfigColorscheme()'
   execute 'autocmd Portown GUIEnter * call lightline#colorscheme()'
 else
-  call g:myvimrc_config_colorscheme()
+  call MyvimrcConfigColorscheme()
 endif
 
 " }}}
@@ -466,10 +466,10 @@ autocmd Portown InsertLeave * call DeleteTrailingWhitespacesIfCursorIsAtLast()
 " -------------------------------------------------------------
 " Java の設定 {{{
 
-let java_highlight_all=1
-let java_highlight_debug=1
-let java_space_errors=1
-let java_highlight_functions=1
+let java_highlight_all = 1
+let java_highlight_debug = 1
+let java_space_errors = 1
+let java_highlight_functions = 1
 
 " }}}
 " -------------------------------------------------------------
@@ -597,7 +597,7 @@ smap <expr><Tab> neosnippet#jumpable() ?
       \ "\<Plug>(neosnippet_jump)"
       \: "\<Tab>"
 
-if has( 'conceal' )
+if has('conceal')
   set conceallevel=2
   set concealcursor=i
 endif
@@ -796,14 +796,14 @@ autocmd Portown FileType ref-webdict nnoremap <buffer> q <C-W>c
 
 let g:uncrustify_command = 'uncrustify'
 
-function! Uncrustify( lang, config_file )
-  if !executable( g:uncrustify_command ) || !filereadable( a:config_file )
+function! Uncrustify(lang, config_file)
+  if !executable(g:uncrustify_command) || !filereadable(a:config_file)
     return
   endif
 
-  let l:cursor_pos = getpos( '.' )
+  let l:cursor_pos = getpos('.')
   :silent execute '%!uncrustify -q -l '.a:lang.' -c '.a:config_file
-  call setpos( '.', l:cursor_pos )
+  call setpos('.', l:cursor_pos)
 endfunction
 
 " }}}
@@ -852,7 +852,7 @@ let g:gitgutter_eager = 0
 
 let g:syntastic_mode_map = { 'mode': 'passive' }
 
-function! g:myvimrc_syntastic()
+function! MyVimrcSyntastic()
   SyntasticCheck
   call lightline#update()
 endfunction
@@ -889,7 +889,7 @@ endif
 " -------------------------------------------------------------
 " ローカル設定の読み込み {{{
 
-if filereadable( expand( '~/.vimrc.local.after' ) )
+if filereadable(expand('~/.vimrc.local.after'))
   source ~/.vimrc.local.after
 endif
 
