@@ -221,12 +221,18 @@ set tags& tags+=~/tags
 " -------------------------------------------------------------
 " カラースキームの設定 {{{
 
-let s:my_colorscheme = 'landscape'
+function! g:myvimrc_config_colorscheme()
+  colorscheme landscape
+
+  " landscape.vim に ModeMsg が設定されていないので設定
+  highlight ModeMsg gui=bold guifg=fg
+endfunction
+
 if s:is_windows && has('gui_running')
-  execute 'autocmd Portown GUIEnter * colorscheme' s:my_colorscheme
+  execute 'autocmd Portown GUIEnter * call g:myvimrc_config_colorscheme()'
   execute 'autocmd Portown GUIEnter * call lightline#colorscheme()'
 else
-  execute 'colorscheme' s:my_colorscheme
+  call g:myvimrc_config_colorscheme()
 endif
 
 " }}}
