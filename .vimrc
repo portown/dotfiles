@@ -232,7 +232,7 @@ if s:is_windows && has('gui_running')
   execute 'autocmd Portown GUIEnter * call MyVimrcConfigColorscheme()'
   execute 'autocmd Portown GUIEnter * call lightline#colorscheme()'
 else
-  call MyvimrcConfigColorscheme()
+  call MyVimrcConfigColorscheme()
 endif
 
 " }}}
