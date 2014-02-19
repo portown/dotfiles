@@ -56,6 +56,9 @@ NeoBundle 'Shougo/vimproc', {
 NeoBundleLazy 'Shougo/unite.vim', {
       \   'autoload' : { 'commands' : ['Unite', 'UniteResume', 'UniteWithBufferDir'] },
       \ }
+NeoBundle 'Shougo/neomru.vim', {
+      \   'depends': ['Shougo/unite.vim'],
+      \ }
 NeoBundle 'thinca/vim-unite-history'
 NeoBundle 'Shougo/unite-help'
 NeoBundle 'Shougo/unite-ssh'
