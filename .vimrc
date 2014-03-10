@@ -140,6 +140,24 @@ NeoBundleLazy 'jam.vim', {
       \   'autoload': { 'filename_patterns': '\%(\.jam\|Jamfile\|Jamroot\)$' },
       \ }
 
+" Textobjs
+NeoBundle 'kana/vim-textobj-user'
+NeoBundle 'kana/vim-textobj-entire', {
+      \   'depends': 'kana/vim-textobj-user',
+      \ }
+NeoBundle 'kana/vim-textobj-line', {
+      \   'depends': 'kana/vim-textobj-user',
+      \ }
+NeoBundle 'thinca/vim-textobj-between', {
+      \   'depends': 'kana/vim-textobj-user',
+      \ }
+NeoBundle 'h1mesuke/textobj-wiw', {
+      \   'depends': 'kana/vim-textobj-user',
+      \ }
+NeoBundle 'anyakichi/vim-textobj-xbrackets', {
+      \   'depends': 'kana/vim-textobj-user',
+      \ }
+
 " Others
 NeoBundle 'vim-jp/vital.vim'
 NeoBundleLazy 'Shougo/vimshell', {
