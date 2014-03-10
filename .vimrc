@@ -187,7 +187,6 @@ NeoBundleLazy 'Shougo/vimfiler', {
       \   'recipe': 'vimfiler',
       \   'autoload': { 'commands': ['VimFilerBufferDir'] },
       \ }
-NeoBundle 'anyakichi/vim-surround'
 NeoBundleLazy 'thinca/vim-logcat', {
       \   'autoload': { 'commands': ['Logcat', 'Logcat!', 'LogcatClean'] },
       \   'external_commands': 'adb',
