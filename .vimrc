@@ -157,6 +157,9 @@ NeoBundle 'h1mesuke/textobj-wiw', {
 NeoBundle 'anyakichi/vim-textobj-xbrackets', {
       \   'depends': 'kana/vim-textobj-user',
       \ }
+NeoBundle 'rhysd/vim-textobj-anyblock', {
+      \   'depends': 'kana/vim-textobj-user',
+      \ }
 
 " Operators
 NeoBundle 'kana/vim-operator-user'
@@ -949,6 +952,17 @@ function! MyVimrcSyntastic()
   SyntasticCheck
   call lightline#update()
 endfunction
+
+" }}}
+" -------------------------------------------------------------
+
+" -------------------------------------------------------------
+" vim-textobj-anyblock {{{
+
+omap ab <Plug>(textobj-anyblock-a)
+omap ib <Plug>(textobj-anyblock-i)
+xmap ab <Plug>(textobj-anyblock-a)
+xmap ib <Plug>(textobj-anyblock-i)
 
 " }}}
 " -------------------------------------------------------------
