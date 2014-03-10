@@ -45,19 +45,19 @@ call neobundle#rc(expand('~/.vim/bundle'))
 NeoBundleFetch 'Shougo/neobundle.vim'
 
 NeoBundle 'Shougo/vimproc', {
-      \   'build' : {
-      \     'cygwin' : 'make -f make_cygwin.mak',
-      \     'mac' : 'make -f make_mac.mak',
-      \     'unix' : 'make -f make_unix.mak',
+      \   'build': {
+      \     'cygwin': 'make -f make_cygwin.mak',
+      \     'mac': 'make -f make_mac.mak',
+      \     'unix': 'make -f make_unix.mak',
       \   },
       \ }
 
 " Unite
 NeoBundleLazy 'Shougo/unite.vim', {
-      \   'autoload' : { 'commands' : ['Unite', 'UniteResume', 'UniteWithBufferDir'] },
+      \   'autoload': { 'commands': ['Unite', 'UniteResume', 'UniteWithBufferDir'] },
       \ }
 NeoBundle 'Shougo/neomru.vim', {
-      \   'depends': ['Shougo/unite.vim'],
+      \   'depends': 'Shougo/unite.vim',
       \ }
 NeoBundle 'thinca/vim-unite-history'
 NeoBundle 'Shougo/unite-help'
@@ -70,7 +70,7 @@ NeoBundle 'thinca/vim-ref'
 
 " Language
 NeoBundleLazy 'vim-jp/cpp-vim', {
-      \   'autoload' : { 'filetypes' : ['cpp'] }
+      \   'autoload': { 'filetypes': ['cpp'] }
       \ }
 NeoBundle 'tpope/vim-haml'
 NeoBundle 'kchmck/vim-coffee-script'
@@ -84,8 +84,8 @@ NeoBundle 'jam.vim'
 " Others
 NeoBundle 'vim-jp/vital.vim'
 NeoBundleLazy 'Shougo/vimshell', {
-      \   'autoload' : { 'commands' : ['VimShellCurrentDir'] },
-      \   'depends' : ['Shougo/vimproc'],
+      \   'autoload': { 'commands': ['VimShellCurrentDir'] },
+      \   'depends': ['Shougo/vimproc'],
       \ }
 NeoBundle 'ujihisa/vimshell-ssh'
 NeoBundle 'Shougo/neocomplete'
@@ -95,12 +95,12 @@ if s:is_mac
   NeoBundle 'tokorom/clang_complete-getopts-ios'
 endif
 NeoBundleLazy 'Shougo/vimfiler', {
-      \   'autoload' : { 'commands' : ['VimFilerBufferDir'] },
-      \   'depends' : ['Shougo/unite.vim'],
+      \   'autoload': { 'commands': ['VimFilerBufferDir'] },
+      \   'depends': ['Shougo/unite.vim'],
       \ }
 NeoBundle 'anyakichi/vim-surround'
 NeoBundleLazy 'thinca/vim-logcat', {
-      \   'autoload' : { 'commands' : ['Logcat', 'Logcat!', 'LogcatClean'] },
+      \   'autoload': { 'commands': ['Logcat', 'Logcat!', 'LogcatClean'] },
       \ }
 NeoBundle 'vim-scripts/sudo.vim.git'
 NeoBundle 'ujihisa/shadow.vim'
@@ -552,13 +552,13 @@ let g:neocomplete#sources#include#patterns.objc = '^\s*#\s*import'
 let g:neocomplete#sources#include#patterns.objcpp = '^\s*#\s*import'
 
 let g:neocomplete#sources#vim#complete_functions = {
-      \   'Ref' : 'ref#complete',
-      \   'Unite' : 'unite#complete_source',
-      \   'VimShellExecute' : 'vimshell#vimshell_execute_complete',
-      \   'VimShellInteractive' : 'vimshell#vimshell_execute_complete',
-      \   'VimShellTerminal' : 'vimshell#vimshell_execute_complete',
-      \   'VimShell' : 'vimshell#complete',
-      \   'VimFiler' : 'vimfiler#complete',
+      \   'Ref': 'ref#complete',
+      \   'Unite': 'unite#complete_source',
+      \   'VimShellExecute': 'vimshell#vimshell_execute_complete',
+      \   'VimShellInteractive': 'vimshell#vimshell_execute_complete',
+      \   'VimShellTerminal': 'vimshell#vimshell_execute_complete',
+      \   'VimShell': 'vimshell#complete',
+      \   'VimFiler': 'vimfiler#complete',
       \ }
 
 inoremap <expr><C-F> pumvisible() ? "\<PageDown>" : "\<Right>"
