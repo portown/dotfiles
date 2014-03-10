@@ -178,6 +178,7 @@ NeoBundle 'kana/vim-smartinput'
 NeoBundle 'thinca/vim-localrc'
 NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'scrooloose/syntastic'
+NeoBundle 'rhysd/conflict-marker.vim'
 
 filetype plugin indent on
 syntax enable
