@@ -56,30 +56,89 @@ NeoBundle 'Shougo/vimproc', {
 NeoBundleLazy 'Shougo/unite.vim', {
       \   'autoload': { 'commands': ['Unite', 'UniteResume', 'UniteWithBufferDir'] },
       \ }
-NeoBundle 'Shougo/neomru.vim', {
+NeoBundleLazy 'Shougo/neomru.vim', {
       \   'depends': 'Shougo/unite.vim',
+      \   'autoload': {
+      \     'unite_sources': 'file_mru',
+      \   },
       \ }
-NeoBundle 'thinca/vim-unite-history'
-NeoBundle 'Shougo/unite-help'
-NeoBundle 'Shougo/unite-ssh'
-NeoBundle 'Shougo/unite-outline'
-NeoBundle 'ryotakato/unite-outline-objc'
-NeoBundle 'hewes/unite-gtags'
-NeoBundle 'Shougo/unite-build'
-NeoBundle 'thinca/vim-ref'
+NeoBundleLazy 'thinca/vim-unite-history', {
+      \   'depends': 'Shougo/unite.vim',
+      \   'autoload': {
+      \     'unite_sources': ['history/command', 'history/search'],
+      \   },
+      \ }
+NeoBundleLazy 'Shougo/unite-help', {
+      \   'depends': 'Shougo/unite.vim',
+      \   'autoload': {
+      \     'unite_sources': 'help',
+      \   },
+      \ }
+NeoBundleLazy 'Shougo/unite-ssh', {
+      \   'depends': 'Shougo/unite.vim',
+      \   'autoload': {
+      \     'unite_sources': 'ssh',
+      \   },
+      \ }
+NeoBundleLazy 'Shougo/unite-outline', {
+      \   'depends': 'Shougo/unite.vim',
+      \   'autoload': {
+      \     'unite_sources': 'outline',
+      \   },
+      \ }
+NeoBundleLazy 'ryotakato/unite-outline-objc', {
+      \   'depends': 'Shougo/unite.vim',
+      \   'autoload': {
+      \     'filetype': 'objc',
+      \   },
+      \ }
+NeoBundleLazy 'hewes/unite-gtags', {
+      \   'depends': 'Shougo/unite.vim',
+      \   'autoload': {
+      \     'unite_sources': ['gtags/ref', 'gtags/context'],
+      \   },
+      \ }
+NeoBundleLazy 'Shougo/unite-build', {
+      \   'depends': 'Shougo/unite.vim',
+      \   'autoload': {
+      \     'unite_sources': 'build',
+      \   },
+      \ }
+NeoBundleLazy 'thinca/vim-ref', {
+      \   'depends': 'Shougo/unite.vim',
+      \   'autoload': {
+      \     'unite_sources': 'ref',
+      \   },
+      \ }
 
 " Language
 NeoBundleLazy 'vim-jp/cpp-vim', {
-      \   'autoload': { 'filetypes': ['cpp'] }
+      \   'autoload': { 'filetypes': ['cpp', 'objcpp'] },
       \ }
-NeoBundle 'tpope/vim-haml'
-NeoBundle 'kchmck/vim-coffee-script'
-NeoBundle 'tpope/vim-markdown'
-NeoBundle 'aklt/plantuml-syntax'
-NeoBundle 'vim-scripts/scons.vim'
-NeoBundle 'ebnf.vim'
-NeoBundle 'timcharper/textile.vim'
-NeoBundle 'jam.vim'
+NeoBundleLazy 'tpope/vim-haml', {
+      \   'autoload': { 'filename_patterns': '\.haml$' },
+      \ }
+NeoBundleLazy 'kchmck/vim-coffee-script', {
+      \   'autoload': { 'filename_patterns': '\.coffee$' },
+      \ }
+NeoBundleLazy 'tpope/vim-markdown', {
+      \   'autoload': { 'filename_patterns': '\.md$' },
+      \ }
+NeoBundleLazy 'aklt/plantuml-syntax', {
+      \   'autoload': { 'filename_patterns': '\.p\%(lant\)\?uml$' },
+      \ }
+NeoBundleLazy 'vim-scripts/scons.vim', {
+      \   'autoload': { 'filename_patterns': 'SConstruct$' },
+      \ }
+NeoBundleLazy 'ebnf.vim', {
+      \   'autoload': { 'filename_patterns': '\.ebnf$' },
+      \ }
+NeoBundleLazy 'timcharper/textile.vim', {
+      \   'autoload': { 'filename_patterns': '\.textile$' },
+      \ }
+NeoBundleLazy 'jam.vim', {
+      \   'autoload': { 'filename_patterns': '\%(\.jam\|Jamfile\|Jamroot\)$' },
+      \ }
 
 " Others
 NeoBundle 'vim-jp/vital.vim'
@@ -87,7 +146,10 @@ NeoBundleLazy 'Shougo/vimshell', {
       \   'autoload': { 'commands': ['VimShellCurrentDir'] },
       \   'depends': ['Shougo/vimproc'],
       \ }
-NeoBundle 'ujihisa/vimshell-ssh'
+NeoBundleLazy 'ujihisa/vimshell-ssh', {
+      \   'autoload': { 'commands': ['VimShellCurrentDir'] },
+      \   'depends': ['Shougo/vimshell'],
+      \ }
 NeoBundle 'Shougo/neocomplete'
 NeoBundle 'Shougo/neosnippet'
 if s:is_mac
@@ -101,6 +163,7 @@ NeoBundleLazy 'Shougo/vimfiler', {
 NeoBundle 'anyakichi/vim-surround'
 NeoBundleLazy 'thinca/vim-logcat', {
       \   'autoload': { 'commands': ['Logcat', 'Logcat!', 'LogcatClean'] },
+      \   'external_commands': 'adb',
       \ }
 NeoBundle 'vim-scripts/sudo.vim.git'
 NeoBundle 'ujihisa/shadow.vim'
