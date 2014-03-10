@@ -967,6 +967,20 @@ xmap ib <Plug>(textobj-anyblock-i)
 " }}}
 " -------------------------------------------------------------
 
+" -------------------------------------------------------------
+" vim-operator-surround {{{
+
+nmap <silent>ys <Plug>(operator-surround-append)
+nmap <silent>cs <Plug>(operator-surround-replace)
+nmap <silent>ds <Plug>(operator-surround-delete)
+
+xmap <silent>s <Plug>(operator-surround-append)
+xmap <silent>cs <Plug>(operator-surround-replace)
+xmap <silent>ds <Plug>(operator-surround-delete)
+
+" }}}
+" -------------------------------------------------------------
+
 " 起動時のメッセージを表示しない
 set shortmess& shortmess+=I
 
