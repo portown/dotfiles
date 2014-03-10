@@ -158,6 +158,15 @@ NeoBundle 'anyakichi/vim-textobj-xbrackets', {
       \   'depends': 'kana/vim-textobj-user',
       \ }
 
+" Operators
+NeoBundle 'kana/vim-operator-user'
+NeoBundle 'kana/vim-operator-replace', {
+      \   'depends': 'kana/vim-operator-user',
+      \ }
+NeoBundle 'rhysd/vim-operator-surround', {
+      \   'depends': 'kana/vim-operator-user',
+      \ }
+
 " Others
 NeoBundle 'vim-jp/vital.vim'
 NeoBundleLazy 'Shougo/vimshell', {
