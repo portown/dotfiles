@@ -981,8 +981,6 @@ nmap <silent>cs <Plug>(operator-surround-replace)
 nmap <silent>ds <Plug>(operator-surround-delete)
 
 xmap <silent>s <Plug>(operator-surround-append)
-xmap <silent>cs <Plug>(operator-surround-replace)
-xmap <silent>ds <Plug>(operator-surround-delete)
 
 " }}}
 " -------------------------------------------------------------
