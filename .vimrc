@@ -768,10 +768,11 @@ function! s:hooks.on_source(bundle)
 
   let g:unite_source_process_enable_confirm = 0
 
-  let s:file_patterns_to_be_ignored = '\.\%(png\|gif\|jpeg\|jpg\|class\|jar\)$\|^.git$'
-  call unite#custom#source('file_rec', 'ignore_pattern', s:file_patterns_to_be_ignored)
-  call unite#custom#source('file_rec/async', 'ignore_pattern', s:file_patterns_to_be_ignored)
-  call unite#custom#source('grep', 'ignore_pattern', s:file_patterns_to_be_ignored)
+  let s:file_patterns_to_be_ignored = '\%(png\|gif\|jpeg\|jpg\|class\|jar\)$'
+  let s:rec_default_pattern = unite#sources#rec#define()[0]['ignore_pattern']
+  call unite#custom#source('file_rec', 'ignore_pattern', s:rec_default_pattern . '\|' . s:file_patterns_to_be_ignored)
+  call unite#custom#source('file_rec/async', 'ignore_pattern', s:rec_default_pattern . '\|' . s:file_patterns_to_be_ignored)
+  call unite#custom#source('grep', 'ignore_pattern', unite#sources#grep#define()['ignore_pattern'] . '\|' . s:file_patterns_to_be_ignored)
 
   if executable('ag')
     let g:unite_source_grep_command = 'ag'
