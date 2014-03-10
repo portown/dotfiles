@@ -783,6 +783,13 @@ function! s:hooks.on_source(bundle)
     let g:unite_source_grep_recursive_opt = '-r'
   endif
 
+  if !exists('g:unite_source_alias_aliases')
+    let g:unite_source_alias_aliases = {}
+  endif
+  let g:unite_source_alias_aliases.message = {
+        \   'source': 'output',
+        \   'args': 'message',
+        \ }
   call unite#custom#source('message', 'sorters', 'sorter_reverse')
 endfunction
 unlet s:hooks
@@ -857,36 +864,33 @@ xnoremap q: :<C-U>Unite -buffer-name=commands -winheight=8 -direction=botright h
 nnoremap q/ :<C-U>Unite -buffer-name=commands -winheight=8 -direction=botright history/search<CR>
 xnoremap q/ :<C-U>Unite -buffer-name=commands -winheight=8 -direction=botright history/search<CR>
 
-if !exists('g:unite_source_alias_aliases')
-  let g:unite_source_alias_aliases = {}
-endif
-let g:unite_source_alias_aliases.message = {
-      \   'source': 'output',
-      \   'args': 'message',
-      \ }
-
 " }}}
 " -------------------------------------------------------------
 
 " -------------------------------------------------------------
 " vim-ref の設定 {{{
 
-let g:ref_source_webdict_sites = {
-      \   'wikipedia:ja': {
-      \     'url': 'http://ja.wikipedia.org/wiki/%s',
-      \     'keyword_encoding': 'utf-8',
-      \     'cache': 1,
-      \   },
-      \   'wiktionary': {
-      \     'url': 'http://ja.wiktionary.org/wiki/%s',
-      \     'keyword_encoding': 'utf-8',
-      \     'cache': 1,
-      \   },
-      \ }
-function! g:ref_source_webdict_sites.wiktionary.filter(output)
-  return join(split(a:output, "\n")[18 :], "\n")
+let s:hooks = neobundle#get_hooks('vim-ref')
+function! s:hooks.on_source(bundle)
+  let g:ref_source_webdict_sites = {
+        \   'wikipedia:ja': {
+        \     'url': 'http://ja.wikipedia.org/wiki/%s',
+        \     'keyword_encoding': 'utf-8',
+        \     'cache': 1,
+        \   },
+        \   'wiktionary': {
+        \     'url': 'http://ja.wiktionary.org/wiki/%s',
+        \     'keyword_encoding': 'utf-8',
+        \     'cache': 1,
+        \   },
+        \ }
+  function! g:ref_source_webdict_sites.wiktionary.filter(output)
+    return join(split(a:output, "\n")[18 :], "\n")
+  endfunction
+
+  let g:ref_source_webdict_sites.default = 'wiktionary'
 endfunction
-let g:ref_source_webdict_sites.default = 'wiktionary'
+unlet s:hooks
 
 autocmd Portown FileType ref-webdict nnoremap <buffer> q <C-W>c
 
