@@ -42,18 +42,18 @@ endif
 
 call neobundle#rc(expand('~/.vim/bundle'))
 
-NeoBundleFetch 'Shougo/neobundle.vim'
-
+" Core
+NeoBundle 'Shougo/neobundle-vim-recipes'
+NeoBundleFetch 'Shougo/neobundle.vim', {
+      \   'recipe': 'neobundle',
+      \ }
 NeoBundle 'Shougo/vimproc', {
-      \   'build': {
-      \     'cygwin': 'make -f make_cygwin.mak',
-      \     'mac': 'make -f make_mac.mak',
-      \     'unix': 'make -f make_unix.mak',
-      \   },
+      \   'recipe': 'vimproc',
       \ }
 
 " Unite
 NeoBundleLazy 'Shougo/unite.vim', {
+      \   'recipe': 'unite',
       \   'autoload': { 'commands': ['Unite', 'UniteResume', 'UniteWithBufferDir'] },
       \ }
 NeoBundleLazy 'Shougo/neomru.vim', {
@@ -143,8 +143,8 @@ NeoBundleLazy 'jam.vim', {
 " Others
 NeoBundle 'vim-jp/vital.vim'
 NeoBundleLazy 'Shougo/vimshell', {
+      \   'recipe': 'vimshell',
       \   'autoload': { 'commands': ['VimShellCurrentDir'] },
-      \   'depends': ['Shougo/vimproc'],
       \ }
 NeoBundleLazy 'ujihisa/vimshell-ssh', {
       \   'autoload': { 'commands': ['VimShellCurrentDir'] },
@@ -157,8 +157,8 @@ if s:is_mac
   NeoBundle 'tokorom/clang_complete-getopts-ios'
 endif
 NeoBundleLazy 'Shougo/vimfiler', {
+      \   'recipe': 'vimfiler',
       \   'autoload': { 'commands': ['VimFilerBufferDir'] },
-      \   'depends': ['Shougo/unite.vim'],
       \ }
 NeoBundle 'anyakichi/vim-surround'
 NeoBundleLazy 'thinca/vim-logcat', {
