@@ -858,11 +858,12 @@ nnoremap <silent> <SID>[unite-make]m :<C-U>call PortownBuild()<CR>
 nnoremap <silent> <SID>[unite-make]c :<C-U>call PortownBuild(1)<CR>
 nnoremap <silent> <SID>[unite-make]q :<C-U>UniteClose build<CR>
 
-nnoremap q: :<C-U>Unite -buffer-name=commands -winheight=8 -direction=botright history/command<CR>
-xnoremap q: :<C-U>Unite -buffer-name=commands -winheight=8 -direction=botright history/command<CR>
-
-nnoremap q/ :<C-U>Unite -buffer-name=commands -winheight=8 -direction=botright history/search<CR>
-xnoremap q/ :<C-U>Unite -buffer-name=commands -winheight=8 -direction=botright history/search<CR>
+nnoremap <SID>[unite-history] <Nop>
+nmap <SID>[unite]i <SID>[unite-history]
+nnoremap <silent> <SID>[unite-history]c :<C-U>Unite -buffer-name=commands -winheight=8 -direction=botright history/command<CR>
+xnoremap <silent> <SID>[unite-history]c :<C-U>Unite -buffer-name=commands -winheight=8 -direction=botright history/command<CR>
+nnoremap <silent> <SID>[unite-history]s :<C-U>Unite -buffer-name=commands -winheight=8 -direction=botright history/search<CR>
+xnoremap <silent> <SID>[unite-history]s :<C-U>Unite -buffer-name=commands -winheight=8 -direction=botright history/search<CR>
 
 " }}}
 " -------------------------------------------------------------
