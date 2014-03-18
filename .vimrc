@@ -981,8 +981,8 @@ xmap ib <Plug>(textobj-anyblock-i)
 " vim-operator-surround {{{
 
 nmap <silent>ys <Plug>(operator-surround-append)
-nmap <silent>cs <Plug>(operator-surround-replace)
-nmap <silent>ds <Plug>(operator-surround-delete)
+nmap <silent>csb <Plug>(operator-surround-replace)<Plug>(textobj-anyblock-a)
+nmap <silent>dsb <Plug>(operator-surround-delete)<Plug>(textobj-anyblock-a)
 
 xmap <silent>s <Plug>(operator-surround-append)
 
