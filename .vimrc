@@ -985,7 +985,9 @@ xmap ib <Plug>(textobj-anyblock-i)
 
 nmap <silent>ys <Plug>(operator-surround-append)
 nmap <silent>csb <Plug>(operator-surround-replace)<Plug>(textobj-anyblock-a)
+nmap <silent>csc <Plug>(operator-surround-replace)<Plug>(textobj-between-a)
 nmap <silent>dsb <Plug>(operator-surround-delete)<Plug>(textobj-anyblock-a)
+nmap <silent>dsc <Plug>(operator-surround-delete)<Plug>(textobj-between-a)
 
 xmap <silent>s <Plug>(operator-surround-append)
 
