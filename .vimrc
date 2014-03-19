@@ -970,6 +970,8 @@ endfunction
 " -------------------------------------------------------------
 " vim-textobj-anyblock {{{
 
+let g:textobj#anyblock#blocks = ['(', '{', '[', '<', '"', "'", '`']
+
 omap ab <Plug>(textobj-anyblock-a)
 omap ib <Plug>(textobj-anyblock-i)
 xmap ab <Plug>(textobj-anyblock-a)
