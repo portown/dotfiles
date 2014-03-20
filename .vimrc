@@ -52,9 +52,8 @@ NeoBundle 'Shougo/vimproc', {
       \ }
 
 " Unite
-NeoBundleLazy 'Shougo/unite.vim', {
+NeoBundle 'Shougo/unite.vim', {
       \   'recipe': 'unite',
-      \   'autoload': { 'commands': ['Unite', 'UniteResume', 'UniteWithBufferDir'] },
       \ }
 NeoBundleLazy 'Shougo/neomru.vim', {
       \   'depends': 'Shougo/unite.vim',
@@ -87,9 +86,9 @@ NeoBundleLazy 'Shougo/unite-outline', {
       \   },
       \ }
 NeoBundleLazy 'ryotakato/unite-outline-objc', {
-      \   'depends': 'Shougo/unite.vim',
+      \   'depends': ['Shougo/unite.vim', 'Shougo/unite-outline'],
       \   'autoload': {
-      \     'filetype': 'objc',
+      \     'filetypes': 'objc',
       \   },
       \ }
 NeoBundleLazy 'hewes/unite-gtags', {
