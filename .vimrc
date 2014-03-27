@@ -156,7 +156,7 @@ NeoBundle 'h1mesuke/textobj-wiw', {
 NeoBundle 'anyakichi/vim-textobj-xbrackets', {
       \   'depends': 'kana/vim-textobj-user',
       \ }
-NeoBundle 'rhysd/vim-textobj-anyblock', {
+NeoBundle 'osyo-manga/vim-textobj-multiblock', {
       \   'depends': 'kana/vim-textobj-user',
       \ }
 
@@ -967,14 +967,24 @@ endfunction
 " -------------------------------------------------------------
 
 " -------------------------------------------------------------
-" vim-textobj-anyblock {{{
+" vim-textobj-multiblock {{{
 
-let g:textobj#anyblock#blocks = ['(', '{', '[', '<', '"', "'", '`']
+let g:textobj_multiblock_blocks = [
+      \   ['(', ')'],
+      \   ['{', '}'],
+      \   ['[', ']'],
+      \   ['<', '>'],
+      \   ['"', '"', 1],
+      \   ["'", "'", 1],
+      \   ['`', '`', 1],
+      \ ]
 
-omap ab <Plug>(textobj-anyblock-a)
-omap ib <Plug>(textobj-anyblock-i)
-xmap ab <Plug>(textobj-anyblock-a)
-xmap ib <Plug>(textobj-anyblock-i)
+let g:textobj#multiblock#enable_block_in_cursor = 1
+
+omap ab <Plug>(textobj-multiblock-a)
+omap ib <Plug>(textobj-multiblock-i)
+xmap ab <Plug>(textobj-multiblock-a)
+xmap ib <Plug>(textobj-multiblock-i)
 
 " }}}
 " -------------------------------------------------------------
@@ -983,9 +993,9 @@ xmap ib <Plug>(textobj-anyblock-i)
 " vim-operator-surround {{{
 
 nmap <silent>ys <Plug>(operator-surround-append)
-nmap <silent>csb <Plug>(operator-surround-replace)<Plug>(textobj-anyblock-a)
+nmap <silent>csb <Plug>(operator-surround-replace)<Plug>(textobj-multiblock-a)
 nmap <silent>csc <Plug>(operator-surround-replace)<Plug>(textobj-between-a)
-nmap <silent>dsb <Plug>(operator-surround-delete)<Plug>(textobj-anyblock-a)
+nmap <silent>dsb <Plug>(operator-surround-delete)<Plug>(textobj-multiblock-a)
 nmap <silent>dsc <Plug>(operator-surround-delete)<Plug>(textobj-between-a)
 
 xmap <silent>s <Plug>(operator-surround-append)
