@@ -515,53 +515,6 @@ call smartinput#map_to_trigger('i', '<Plug>(smartinput_C-H)', '<BS>', '<C-H>')
 " -------------------------------------------------------------
 
 " -------------------------------------------------------------
-" Delete trailing spaces {{{
-
-function! DeleteSurroundingWhitespaces()
-  if &filetype =~# 'unite'
-    return
-  endif
-
-  let line = getline('.')
-  let pos = getpos('.')
-  let col = pos[2]
-
-  let left = substitute(line[0 : col - 2], '\s\+$', '', '')
-  let right = substitute(line[col - 1 :], '^\s\+', '', '')
-  let pos[2] = len(left) + 1
-
-  call setline('.', left . right)
-  call setpos('.', pos)
-endfunction
-call smartinput#define_rule({
-      \   'at': '\s\%#\|\%#\s',
-      \   'char': '<CR>',
-      \   'input': '<C-O>:call DeleteSurroundingWhitespaces()<CR><CR>',
-      \ })
-
-function! DeleteTrailingWhitespacesIfCursorIsAtLast()
-  if &filetype =~# 'unite\|vimshell'
-    return
-  endif
-
-  let line = getline('.')
-  if col('.') != len(line)
-    return
-  endif
-
-  let newline = substitute(line, '\s\+$', '', '')
-  if newline == line
-    return
-  endif
-
-  call setline('.', newline)
-endfunction
-autocmd Portown InsertLeave * call DeleteTrailingWhitespacesIfCursorIsAtLast()
-
-" }}}
-" -------------------------------------------------------------
-
-" -------------------------------------------------------------
 " Java の設定 {{{
 
 let java_highlight_all = 1
