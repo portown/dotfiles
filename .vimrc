@@ -138,6 +138,9 @@ NeoBundleLazy 'timcharper/textile.vim', {
 NeoBundleLazy 'jam.vim', {
       \   'autoload': { 'filename_patterns': '\%(\.jam\|Jamfile\|Jamroot\)$' },
       \ }
+NeoBundleLazy 'groovyindent', {
+      \   'autoload': { 'filetypes': ['groovy'] },
+      \ }
 
 " Textobjs
 NeoBundle 'kana/vim-textobj-user'
