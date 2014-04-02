@@ -210,6 +210,7 @@ NeoBundle 'thinca/vim-localrc'
 NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'scrooloose/syntastic'
 NeoBundle 'rhysd/conflict-marker.vim'
+NeoBundle 'tpope/vim-repeat'
 
 filetype plugin indent on
 syntax enable
