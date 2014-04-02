@@ -58,7 +58,7 @@ NeoBundle 'Shougo/unite.vim', {
 NeoBundleLazy 'Shougo/neomru.vim', {
       \   'depends': 'Shougo/unite.vim',
       \   'autoload': {
-      \     'unite_sources': 'file_mru',
+      \     'unite_sources': 'neomru/file',
       \   },
       \ }
 NeoBundleLazy 'thinca/vim-unite-history', {
@@ -752,6 +752,12 @@ function! s:hooks.on_source(bundle)
 endfunction
 unlet s:hooks
 
+let s:hooks = neobundle#get_hooks('neomru.vim')
+function! s:hooks.on_source(bundle)
+  call unite#custom#source('neomru/file', 'ignore_pattern', s:file_patterns_to_be_ignored)
+endfunction
+unlet s:hooks
+
 nnoremap <SID>[unite] <Nop>
 nmap <Space>u <SID>[unite]
 
@@ -769,7 +775,7 @@ if s:is_windows
 else
   nnoremap <silent> <SID>[unite-file]r :<C-U>Unite -buffer-name=files -start-insert file_rec/async<CR>
 endif
-nnoremap <silent> <SID>[unite-file]m :<C-U>Unite -buffer-name=files -start-insert file_mru<CR>
+nnoremap <silent> <SID>[unite-file]m :<C-U>Unite -buffer-name=files -start-insert neomru/file<CR>
 nnoremap <silent> <SID>[unite-file]b :<C-U>Unite -buffer-name=files -start-insert -default-action=lcd bookmark<CR>
 
 nnoremap <SID>[unite-gtags] <Nop>
