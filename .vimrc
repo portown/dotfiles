@@ -934,14 +934,15 @@ endfunction
 " -------------------------------------------------------------
 " vim-textobj-multiblock {{{
 
+let g:textobj#multiblock#default_blocks = []
 let g:textobj_multiblock_blocks = [
+      \   ['"', '"', 1],
+      \   ["'", "'", 1],
+      \   ['`', '`', 1],
       \   ['(', ')'],
       \   ['{', '}'],
       \   ['[', ']'],
       \   ['<', '>'],
-      \   ['"', '"', 1],
-      \   ["'", "'", 1],
-      \   ['`', '`', 1],
       \ ]
 
 let g:textobj#multiblock#enable_block_in_cursor = 1
