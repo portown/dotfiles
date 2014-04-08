@@ -40,7 +40,7 @@ if has('vim_starting')
   set runtimepath+=~/.vim/bundle/neobundle.vim/
 endif
 
-call neobundle#rc(expand('~/.vim/bundle'))
+call neobundle#begin(expand('~/.vim/bundle'))
 
 " Core
 NeoBundle 'Shougo/neobundle-vim-recipes'
@@ -211,6 +211,8 @@ NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'scrooloose/syntastic'
 NeoBundle 'rhysd/conflict-marker.vim'
 NeoBundle 'tpope/vim-repeat'
+
+call neobundle#end()
 
 filetype plugin indent on
 syntax enable
