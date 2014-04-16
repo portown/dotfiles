@@ -61,7 +61,7 @@ NeoBundle 'Shougo/unite.vim', {
 NeoBundleLazy 'Shougo/neomru.vim', {
       \   'depends': 'Shougo/unite.vim',
       \   'autoload': {
-      \     'unite_sources': 'neomru/file',
+      \     'unite_sources': ['neomru/file', 'neomru/directory'],
       \   },
       \ }
 NeoBundleLazy 'thinca/vim-unite-history', {
