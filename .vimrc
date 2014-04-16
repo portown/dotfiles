@@ -38,12 +38,15 @@ endif
 
 if has('vim_starting')
   set runtimepath+=~/.vim/bundle/neobundle.vim/
+  if isdirectory(expand('~/.vim/bundle/neobundle-vim-recipes/'))
+    set runtimepath+=~/.vim/bundle/neobundle-vim-recipes/
+  endif
 endif
 
 call neobundle#begin(expand('~/.vim/bundle'))
 
 " Core
-NeoBundle 'Shougo/neobundle-vim-recipes'
+NeoBundleFetch 'Shougo/neobundle-vim-recipes'
 NeoBundleFetch 'Shougo/neobundle.vim', {
       \   'recipe': 'neobundle',
       \ }
