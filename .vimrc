@@ -737,9 +737,9 @@ function! s:hooks.on_source(bundle)
   call unite#custom#source('file_rec/async', 'ignore_pattern', s:file_patterns_to_be_ignored)
   call unite#custom#source('grep', 'ignore_pattern', s:file_patterns_to_be_ignored)
 
-  if executable('ag')
-    let g:unite_source_grep_command = 'ag'
-    let g:unite_source_grep_default_opts = '--nocolor --nogroup --column'
+  if executable('pt')
+    let g:unite_source_grep_command = 'pt'
+    let g:unite_source_grep_default_opts = '--nocolor --nogroup'
     let g:unite_source_grep_recursive_opt = ''
   else
     let g:unite_source_grep_default_opts = '-Hn'
