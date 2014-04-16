@@ -769,6 +769,7 @@ nmap <Space>u <SID>[unite]
 nnoremap <silent> <SID>[unite]b :<C-U>Unite -buffer-name=buffers -start-insert buffer_tab<CR>
 nnoremap <silent> <SID>[unite]h :<C-U>Unite -buffer-name=help -start-insert -immediately -no-empty help<CR>
 nnoremap <silent> <SID>[unite]o :<C-U>Unite -buffer-name=outline -start-insert outline<CR>
+nnoremap <silent> <SID>[unite]g :<C-U>Unite -buffer-name=grep grep:.<CR>
 nnoremap <silent> <SID>[unite]u :<C-U>UniteResume<CR>
 
 nnoremap <SID>[unite-file] <Nop>
@@ -784,7 +785,7 @@ nnoremap <silent> <SID>[unite-file]m :<C-U>Unite -buffer-name=files -start-inser
 nnoremap <silent> <SID>[unite-file]b :<C-U>Unite -buffer-name=files -start-insert -default-action=lcd bookmark<CR>
 
 nnoremap <SID>[unite-gtags] <Nop>
-nmap <SID>[unite]g <SID>[unite-gtags]
+nmap <SID>[unite]t <SID>[unite-gtags]
 nnoremap <silent> <SID>[unite-gtags]r :<C-U>Unite -immediately -no-quit -keep-focus -winheight=10 gtags/ref<CR>
 nnoremap <silent> <C-]> :<C-U>Unite -immediately -no-quit -keep-focus -winheight=10 gtags/context<CR>
 
