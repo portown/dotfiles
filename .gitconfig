@@ -24,5 +24,7 @@
 	ff = false
 [diff]
 	tool = vimdiff
+[status]
+	showUntrackedFile = all
 [include]
 	path = ~/.gitconfig.local
