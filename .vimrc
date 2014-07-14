@@ -144,6 +144,9 @@ NeoBundleLazy 'jam.vim', {
 NeoBundleLazy 'groovyindent', {
       \   'autoload': { 'filetypes': ['groovy'] },
       \ }
+NeoBundleLazy 'honza/dockerfile.vim', {
+      \   'autoload': { 'filename_patterns': 'Dockerfile$' },
+      \ }
 
 " Textobjs
 NeoBundle 'kana/vim-textobj-user'
