@@ -147,6 +147,9 @@ NeoBundleLazy 'groovyindent', {
 NeoBundleLazy 'honza/dockerfile.vim', {
       \   'autoload': { 'filename_patterns': 'Dockerfile$' },
       \ }
+NeoBundleLazy 'https://fedorapeople.org/cgit/wwoods/public_git/vim-scripts.git', {
+      \   'autoload': { 'filename_patterns': '\%(\.service\)$' },
+      \ }
 
 " Textobjs
 NeoBundle 'kana/vim-textobj-user'
