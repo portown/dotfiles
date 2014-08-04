@@ -334,18 +334,20 @@ set tags& tags+=~/tags
 " -------------------------------------------------------------
 " カラースキームの設定 {{{
 
-function! MyVimrcConfigColorscheme()
-  colorscheme landscape
+if neobundle#is_installed('landscape.vim')
+  function! MyVimrcConfigColorscheme()
+    colorscheme landscape
 
-  " landscape.vim に ModeMsg が設定されていないので設定
-  highlight ModeMsg gui=bold guifg=fg
-endfunction
+    " landscape.vim に ModeMsg が設定されていないので設定
+    highlight ModeMsg gui=bold guifg=fg
+  endfunction
 
-if s:is_windows && has('gui_running')
-  execute 'autocmd Portown GUIEnter * call MyVimrcConfigColorscheme()'
-  execute 'autocmd Portown GUIEnter * call lightline#colorscheme()'
-else
-  call MyVimrcConfigColorscheme()
+  if s:is_windows && has('gui_running')
+    execute 'autocmd Portown GUIEnter * call MyVimrcConfigColorscheme()'
+    execute 'autocmd Portown GUIEnter * call lightline#colorscheme()'
+  else
+    call MyVimrcConfigColorscheme()
+  endif
 endif
 
 " }}}
@@ -521,8 +523,12 @@ autocmd Portown Filetype help nnoremap <buffer> <C-]> :<C-U>tag <C-R><C-W><CR>
 " -------------------------------------------------------------
 " vim-smartinput {{{
 
-call smartinput#map_to_trigger('i', '<Plug>(smartinput_CR)', '<CR>', '<CR>')
-call smartinput#map_to_trigger('i', '<Plug>(smartinput_C-H)', '<BS>', '<C-H>')
+let s:hooks = neobundle#get_hooks('vim-smartinput')
+function! s:hooks.on_source(bundle)
+  call smartinput#map_to_trigger('i', '<Plug>(smartinput_CR)', '<CR>', '<CR>')
+  call smartinput#map_to_trigger('i', '<Plug>(smartinput_C-H)', '<BS>', '<C-H>')
+endfunction
+unlet s:hooks
 
 " }}}
 " -------------------------------------------------------------
