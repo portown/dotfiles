@@ -144,6 +144,9 @@ NeoBundleLazy 'jam.vim', {
 NeoBundleLazy 'groovyindent', {
       \   'autoload': { 'filetypes': ['groovy'] },
       \ }
+NeoBundleLazy 'udalov/kotlin-vim', {
+      \   'autoload': { 'filename_patterns': '\%(\.kt\|\.kts\)$' },
+      \ }
 NeoBundleLazy 'honza/dockerfile.vim', {
       \   'autoload': { 'filename_patterns': 'Dockerfile$' },
       \ }
