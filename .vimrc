@@ -371,7 +371,7 @@ set smarttab
 set list
 
 let s:listchars = {
-      \   'tab': '▸ ',
+      \   'tab': '^ ',
       \   'trail': '_',
       \   'extends': '»',
       \   'precedes': '«',
