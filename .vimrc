@@ -366,8 +366,8 @@ endif
 " タブ文字設定 {{{
 
 set expandtab
-set shiftwidth=2
-set tabstop=2
+set shiftwidth=4
+set tabstop=4
 set softtabstop=0
 set smarttab
 
