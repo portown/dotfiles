@@ -147,6 +147,12 @@ NeoBundleLazy 'groovyindent', {
 NeoBundleLazy 'udalov/kotlin-vim', {
       \   'autoload': { 'filename_patterns': '\%(\.kt\|\.kts\)$' },
       \ }
+NeoBundleLazy 'dag/vim2hs', {
+      \   'autoload': { 'filetypes': ['haskell'] },
+      \ }
+NeoBundle 'eagletmt/neco-ghc', {
+      \   'external_commands': ['ghc-mod'],
+      \ }
 NeoBundleLazy 'honza/dockerfile.vim', {
       \   'autoload': { 'filename_patterns': 'Dockerfile$' },
       \ }
@@ -543,6 +549,14 @@ let java_highlight_all = 1
 let java_highlight_debug = 1
 let java_space_errors = 1
 let java_highlight_functions = 1
+
+" }}}
+" -------------------------------------------------------------
+
+" -------------------------------------------------------------
+" Haskell の設定 {{{
+
+let g:haskell_conceal = 0
 
 " }}}
 " -------------------------------------------------------------
