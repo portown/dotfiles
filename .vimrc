@@ -923,7 +923,7 @@ endfunction
 
 nnoremap <SID>[git] <Nop>
 nmap <Space>g <SID>[git]
-nnoremap <SID>[git]d :<C-U>Gdiff<CR>
+nnoremap <SID>[git]d :<C-U>Gvdiff<CR>
 nnoremap <SID>[git]s :<C-U>Gstatus<CR>
 nnoremap <SID>[git]cc :<C-U>Gcommit -v<CR>
 nnoremap <SID>[git]ca :<C-U>Gcommit -av<CR>
