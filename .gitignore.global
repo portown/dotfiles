@@ -3,3 +3,4 @@
 .DS_Store
 .localized
 .local.vimrc
+.local.*.vimrc
