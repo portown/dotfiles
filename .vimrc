@@ -349,8 +349,6 @@ if neobundle#is_installed('landscape.vim')
 
         " landscape.vim に ModeMsg が設定されていないので設定
         highlight ModeMsg gui=bold guifg=fg
-        " landscape.vim でカーソルが出なくなってしまったため設定
-        highlight Cursor gui=none
     endfunction
 
     if s:is_windows && has('gui_running')
