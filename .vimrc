@@ -147,9 +147,6 @@ NeoBundleLazy 'udalov/kotlin-vim', {
 NeoBundleLazy 'dag/vim2hs', {
             \   'autoload': { 'filetypes': ['haskell'] },
             \ }
-NeoBundle 'eagletmt/neco-ghc', {
-            \   'external_commands': ['ghc-mod'],
-            \ }
 NeoBundleLazy 'honza/dockerfile.vim', {
             \   'autoload': { 'filename_patterns': 'Dockerfile$' },
             \ }
@@ -187,6 +184,17 @@ NeoBundle 'rhysd/vim-operator-surround', {
             \   'depends': 'kana/vim-operator-user',
             \ }
 
+" Completions
+NeoBundle 'Shougo/neocomplete'
+NeoBundle 'Shougo/neosnippet'
+if s:is_mac
+    NeoBundle 'Rip-Rip/clang_complete'
+    NeoBundle 'tokorom/clang_complete-getopts-ios'
+endif
+NeoBundle 'eagletmt/neco-ghc', {
+            \       'external_commands': ['ghc-mod'],
+            \   }
+
 " Others
 NeoBundle 'vim-jp/vital.vim'
 NeoBundle 'Shougo/tabpagebuffer.vim'
@@ -198,12 +206,6 @@ NeoBundleLazy 'ujihisa/vimshell-ssh', {
             \   'autoload': { 'commands': ['VimShellCurrentDir'] },
             \   'depends': ['Shougo/vimshell'],
             \ }
-NeoBundle 'Shougo/neocomplete'
-NeoBundle 'Shougo/neosnippet'
-if s:is_mac
-    NeoBundle 'Rip-Rip/clang_complete'
-    NeoBundle 'tokorom/clang_complete-getopts-ios'
-endif
 NeoBundleLazy 'Shougo/vimfiler', {
             \   'autoload': { 'commands': ['VimFilerBufferDir'] },
             \   'depends': ['Shougo/unite.vim'],
