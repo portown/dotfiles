@@ -189,6 +189,7 @@ NeoBundle 'rhysd/vim-operator-surround', {
 
 " Others
 NeoBundle 'vim-jp/vital.vim'
+NeoBundle 'Shougo/tabpagebuffer.vim'
 NeoBundleLazy 'Shougo/vimshell', {
             \   'autoload': { 'commands': ['VimShellCurrentDir'] },
             \   'depends': ['Shougo/vimproc'],
