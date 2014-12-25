@@ -38,26 +38,23 @@ endif
 
 if has('vim_starting')
     set runtimepath+=~/.vim/bundle/neobundle.vim/
-    if isdirectory(expand('~/.vim/bundle/neobundle-vim-recipes/'))
-        set runtimepath+=~/.vim/bundle/neobundle-vim-recipes/
-    endif
 endif
 
 call neobundle#begin(expand('~/.vim/bundle'))
 
 " Core
-NeoBundleFetch 'Shougo/neobundle-vim-recipes'
-NeoBundleFetch 'Shougo/neobundle.vim', {
-            \   'recipe': 'neobundle',
-            \ }
+NeoBundleFetch 'Shougo/neobundle.vim'
 NeoBundle 'Shougo/vimproc', {
-            \   'recipe': 'vimproc',
-            \ }
+            \       'build' : {
+            \           'windows' : 'echo "Sorry, cannot update vimproc binary file in Windows."',
+            \           'cygwin' : 'make -f make_cygwin.mak',
+            \           'mac' : 'make -f make_mac.mak',
+            \           'unix' : 'make -f make_unix.mak',
+            \       },
+            \   }
 
 " Unite
-NeoBundle 'Shougo/unite.vim', {
-            \   'recipe': 'unite',
-            \ }
+NeoBundle 'Shougo/unite.vim'
 NeoBundleLazy 'Shougo/neomru.vim', {
             \   'depends': 'Shougo/unite.vim',
             \   'autoload': {
@@ -193,8 +190,8 @@ NeoBundle 'rhysd/vim-operator-surround', {
 " Others
 NeoBundle 'vim-jp/vital.vim'
 NeoBundleLazy 'Shougo/vimshell', {
-            \   'recipe': 'vimshell',
             \   'autoload': { 'commands': ['VimShellCurrentDir'] },
+            \   'depends': ['Shougo/vimproc'],
             \ }
 NeoBundleLazy 'ujihisa/vimshell-ssh', {
             \   'autoload': { 'commands': ['VimShellCurrentDir'] },
@@ -207,8 +204,8 @@ if s:is_mac
     NeoBundle 'tokorom/clang_complete-getopts-ios'
 endif
 NeoBundleLazy 'Shougo/vimfiler', {
-            \   'recipe': 'vimfiler',
             \   'autoload': { 'commands': ['VimFilerBufferDir'] },
+            \   'depends': ['Shougo/unite.vim'],
             \ }
 NeoBundleLazy 'thinca/vim-logcat', {
             \   'autoload': { 'commands': ['Logcat', 'Logcat!', 'LogcatClean'] },
