@@ -215,8 +215,6 @@ NeoBundle 'vim-scripts/sudo.vim.git'
 NeoBundle 'ujihisa/shadow.vim'
 NeoBundle 'itchyny/landscape.vim'
 NeoBundle 'itchyny/lightline.vim'
-NeoBundle 'rbtnn/vimconsole.vim'
-NeoBundle 'thinca/vim-prettyprint'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'gregsexton/gitv'
 NeoBundle 'airblade/vim-gitgutter'
@@ -226,9 +224,6 @@ NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'scrooloose/syntastic'
 NeoBundle 'rhysd/conflict-marker.vim'
 NeoBundle 'tpope/vim-repeat'
-NeoBundleLazy 'itchyny/calendar.vim', {
-            \   'autoload': { 'commands': 'Calendar' },
-            \ }
 
 call neobundle#end()
 
@@ -1008,18 +1003,6 @@ xmap <silent>s <Plug>(operator-surround-append)
 " vim-operator-replace {{{
 
 nmap <silent>_ <Plug>(operator-replace)
-
-" }}}
-" -------------------------------------------------------------
-
-" -------------------------------------------------------------
-" Calendar.vim {{{
-
-autocmd Portown Filetype calendar call s:myvimrc_calendar_setting()
-function! s:myvimrc_calendar_setting()
-    nnoremap <buffer> <C-P> gT
-    nnoremap <buffer> <C-N> gt
-endfunction
 
 " }}}
 " -------------------------------------------------------------
