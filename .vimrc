@@ -521,6 +521,9 @@ nnoremap Y y$
 "nnoremap ; :
 nnoremap : ;
 
+cnoremap <C-P> <Up>
+cnoremap <C-N> <Down>
+
 autocmd Portown Filetype help nnoremap <buffer> q <C-w>c
 autocmd Portown Filetype help nnoremap <buffer> <C-]> :<C-U>tag <C-R><C-W><CR>
 
