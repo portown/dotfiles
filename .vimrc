@@ -260,7 +260,7 @@ endif
 set fileformats=unix,dos,mac
 
 if exists('&ambiwidth')
-    if has('kaoriya') && s:is_windows
+    if has('kaoriya') && s:is_windows && has('gui_running')
         set ambiwidth=auto
     else
         set ambiwidth=double
