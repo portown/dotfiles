@@ -153,6 +153,14 @@ NeoBundleLazy 'honza/dockerfile.vim', {
 NeoBundleLazy 'https://fedorapeople.org/cgit/wwoods/public_git/vim-scripts.git', {
             \   'autoload': { 'filename_patterns': '\%(\.service\)$' },
             \ }
+if s:is_mac
+    NeoBundleLazy 'b4winckler/vim-objc', {
+                \       'autoload': { 'filetypes': ['objc', 'objcpp'] }
+                \   }
+    NeoBundleLazy 'toyamarinyon/vim-swift', {
+            \   'autoload': { 'filename_patterns': '\.swift' },
+            \ }
+endif
 
 " Textobjs
 NeoBundle 'kana/vim-textobj-user'
