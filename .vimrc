@@ -538,12 +538,8 @@ autocmd Portown Filetype help nnoremap <buffer> <C-]> :<C-U>tag <C-R><C-W><CR>
 " -------------------------------------------------------------
 " vim-smartinput {{{
 
-let s:hooks = neobundle#get_hooks('vim-smartinput')
-function! s:hooks.on_post_source(bundle)
-    call smartinput#map_to_trigger('i', '<Plug>(smartinput_CR)', '<CR>', '<CR>')
-    call smartinput#map_to_trigger('i', '<Plug>(smartinput_C-H)', '<BS>', '<C-H>')
-endfunction
-unlet s:hooks
+call smartinput#map_to_trigger('i', '<Plug>(smartinput_CR)', '<CR>', '<CR>')
+call smartinput#map_to_trigger('i', '<Plug>(smartinput_C-H)', '<BS>', '<C-H>')
 
 " }}}
 " -------------------------------------------------------------
