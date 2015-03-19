@@ -592,6 +592,31 @@ autocmd Portown BufRead,BufNewFile *.ebnf set filetype=ebnf
 " -------------------------------------------------------------
 
 " -------------------------------------------------------------
+" m4 の設定 {{{
+
+call smartinput#define_rule({
+      \   'at': '\%#',
+      \   'char': '`',
+      \   'input': "`'<Left>",
+      \   'filetype': ['m4'],
+      \ })
+call smartinput#define_rule({
+      \   'at': "`\%#'",
+      \   'char': "'",
+      \   'input': '<Right>',
+      \   'filetype': ['m4'],
+      \ })
+call smartinput#define_rule({
+      \   'at': "`\%#'",
+      \   'char': '<BS>',
+      \   'input': '<Del><BS>',
+      \   'filetype': ['m4'],
+      \ })
+
+" }}}
+" -------------------------------------------------------------
+
+" -------------------------------------------------------------
 " neocomplete の設定 {{{
 
 let g:neocomplete#enable_at_startup = 1
