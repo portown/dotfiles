@@ -70,6 +70,15 @@ alias deleg
 
 	@end
 
+
+snippet protocol-definition
+alias proto
+	@protocol ${1:`expand('%:t:r')`} <NSObject${2}>
+
+	${0}
+
+	@end
+
 snippet property-definition
 alias prop
 options head
@@ -78,8 +87,7 @@ options head
 snippet synchronization-block
 alias sync
 options head
-	@synchronized (${1:self})
-	{
+	@synchronized (${1:self}) {
 		${0}
 	}
 
@@ -92,8 +100,7 @@ options head
 	- (instancetype)init${1}
 	{
 		self = [super init${2:$1}];
-		if (self)
-		{
+		if (self != nil) {
 			${0}
 		}
 
@@ -150,14 +157,12 @@ options word
 
 snippet for
 options head
-	for (${1:NSUInteger} ${2:i} = ${3:0}; ${4:$2 < 10}; ${5:++i})
-	{
+	for (${1:NSUInteger} ${2:i} = ${3:0}; ${4:$2 < 10}; ${5:++i}) {
 		${0}
 	}
 
 snippet forin
 options head
-	for (${1:NSObject}* ${2:obj} in ${3:container})
-	{
+	for (${1:NSObject}* ${2:obj} in ${3:container}) {
 		${0}
 	}
