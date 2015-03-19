@@ -504,6 +504,9 @@ set showcmd
 
 set directory-=.
 
+set ttyfast
+set lazyredraw
+
 " -------------------------------------------------------------
 " 検索設定 {{{
 
