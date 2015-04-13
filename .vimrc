@@ -182,6 +182,9 @@ NeoBundle 'anyakichi/vim-textobj-xbrackets', {
 NeoBundle 'osyo-manga/vim-textobj-multiblock', {
             \   'depends': 'kana/vim-textobj-user',
             \ }
+NeoBundle 'rhysd/vim-textobj-ruby', {
+            \       'depends': 'kana/vim-textobj-user',
+            \   }
 
 " Operators
 NeoBundle 'kana/vim-operator-user'
