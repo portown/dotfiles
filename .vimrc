@@ -227,7 +227,7 @@ NeoBundle 'ujihisa/shadow.vim'
 NeoBundle 'itchyny/landscape.vim'
 NeoBundle 'itchyny/lightline.vim'
 NeoBundle 'tpope/vim-fugitive'
-NeoBundle 'gregsexton/gitv'
+NeoBundle 'cohama/agit.vim'
 NeoBundle 'airblade/vim-gitgutter'
 NeoBundle 'kana/vim-smartinput'
 NeoBundle 'thinca/vim-localrc'
@@ -967,16 +967,17 @@ nnoremap <SID>[git]b :<C-U>Gblame<CR>
 " -------------------------------------------------------------
 
 " -------------------------------------------------------------
-" Gitv の設定 {{{
+" agit.vim の設定 {{{
 
-let g:Gitv_TruncateCommitSubjects = 1
-let g:Gitv_DoNotMapCtrlKey = 1
+let g:agit_enable_auto_show_commit = 1
+let g:agit_enable_auto_refresh = 0
 
-nnoremap <SID>[gitv] <Nop>
-nmap <SID>[git]v <SID>[gitv]
-nnoremap <silent> <SID>[gitv]v :<C-U>Gitv<CR>
-nnoremap <silent> <SID>[gitv]a :<C-U>Gitv --all<CR>
-nnoremap <silent> <SID>[gitv]f :<C-U>Gitv!<CR>
+nnoremap <SID>[agit] <Nop>
+nmap <SID>[git]v <SID>[agit]
+nnoremap <silent> <SID>[agit]v :<C-U>Agit<CR>
+nnoremap <silent> <SID>[agit]f :<C-U>AgitFile<CR>
+
+autocmd Portown filetype agit nnoremap <buffer> git :<C-U>AgitGit 
 
 " }}}
 " -------------------------------------------------------------
