@@ -1090,6 +1090,9 @@ let g:quickrun_config._ = {
 let g:quickrun_config.haskell = {
             \       'command': 'runghc',
             \   }
+if s:is_windows
+    let g:quickrun_config.haskell['hook/output_encode/encoding'] = 'cp932'
+endif
 
 " }}}
 " -------------------------------------------------------------
