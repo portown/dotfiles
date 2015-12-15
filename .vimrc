@@ -234,7 +234,11 @@ NeoBundleLazy 'Shougo/vimfiler', {
             \   'depends': ['Shougo/unite.vim'],
             \ }
 NeoBundleLazy 'thinca/vim-logcat', {
-            \   'autoload': { 'commands': ['Logcat', 'Logcat!', 'LogcatClean'] },
+            \   'autoload': {
+            \       'commands': ['Logcat', 'Logcat!', 'LogcatClear'],
+            \       'filetypes': 'logcat',
+            \       'filename_patterns': '\.logcat$'
+            \   },
             \   'external_commands': 'adb',
             \ }
 NeoBundle 'vim-scripts/sudo.vim.git'
