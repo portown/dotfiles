@@ -257,6 +257,7 @@ NeoBundle 'rhysd/conflict-marker.vim'
 NeoBundle 'tpope/vim-repeat'
 NeoBundle 'fuenor/qfixgrep'
 NeoBundle 'fuenor/qfixhowm'
+NeoBundle 'Shougo/junkfile.vim'
 
 call neobundle#end()
 
@@ -871,6 +872,7 @@ else
 endif
 nnoremap <silent> <SID>[unite-file]m :<C-U>Unite -buffer-name=files -start-insert neomru/file<CR>
 nnoremap <silent> <SID>[unite-file]b :<C-U>Unite -buffer-name=files -start-insert -default-action=lcd bookmark<CR>
+nnoremap <silent> <SID>[unite-file]j :<C-U>Unite -buffer-name=files -start-insert junkfile/new junkfile<CR>
 
 nnoremap <SID>[unite-gtags] <Nop>
 nmap <SID>[unite]t <SID>[unite-gtags]
