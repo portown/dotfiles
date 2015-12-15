@@ -630,7 +630,7 @@ function! s:hooks.on_source(bundle)
 
     if executable('pt')
         let g:unite_source_grep_command = 'pt'
-        let g:unite_source_grep_default_opts = '--nocolor --nogroup'
+        let g:unite_source_grep_default_opts = '--nocolor --nogroup -e'
         let g:unite_source_grep_recursive_opt = ''
     else
         let g:unite_source_grep_default_opts = '-Hn'
@@ -660,7 +660,7 @@ nmap <Space>u <SID>[unite]
 nnoremap <silent> <SID>[unite]b :<C-U>Unite -buffer-name=buffers -start-insert buffer_tab<CR>
 nnoremap <silent> <SID>[unite]h :<C-U>Unite -buffer-name=help -start-insert -immediately -no-empty help<CR>
 nnoremap <silent> <SID>[unite]o :<C-U>Unite -buffer-name=outline -start-insert outline<CR>
-if executable('grep')
+if executable('grep') || executable('pt')
     nnoremap <silent> <SID>[unite]g :<C-U>Unite -buffer-name=grep -no-quit grep:.<CR>
 else
     nnoremap <silent> <SID>[unite]g :<C-U>Unite -buffer-name=grep -no-quit vimgrep:**<CR>
