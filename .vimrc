@@ -259,6 +259,8 @@ NeoBundle 'fuenor/qfixgrep'
 NeoBundle 'fuenor/qfixhowm'
 NeoBundle 'Shougo/junkfile.vim'
 
+call neobundle#local('~/.vim', {}, ['local'])
+
 call neobundle#end()
 
 filetype plugin indent on

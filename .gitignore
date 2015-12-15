@@ -13,6 +13,8 @@
 !/.vim/
 /.vim/.netrwhist
 /.vim/bundle/
+/.vim/local/*
+!/.vim/local/.gitkeep
 
 !/.uncrustify.cfg
 
