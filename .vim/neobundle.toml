@@ -44,6 +44,10 @@ depends = 'kana/vim-operator-user'
 repository = 'rhysd/vim-operator-surround'
 depends = 'kana/vim-operator-user'
 
+[[plugins]]
+repository = 'osyo-manga/vim-operator-jump_side'
+depends = 'kana/vim-operator-user'
+
 # Completions
 
 [[plugins]]
