@@ -1,0 +1,116 @@
+# Textobjs
+
+[[plugins]]
+repository = 'kana/vim-textobj-user'
+
+[[plugins]]
+repository = 'kana/vim-textobj-entire'
+depends = 'kana/vim-textobj-user'
+
+[[plugins]]
+repository = 'kana/vim-textobj-line'
+depends = 'kana/vim-textobj-user'
+
+[[plugins]]
+repository = 'thinca/vim-textobj-between'
+depends = 'kana/vim-textobj-user'
+
+[[plugins]]
+repository = 'h1mesuke/textobj-wiw'
+depends = 'kana/vim-textobj-user'
+
+[[plugins]]
+repository = 'anyakichi/vim-textobj-xbrackets'
+depends = 'kana/vim-textobj-user'
+
+[[plugins]]
+repository = 'osyo-manga/vim-textobj-multiblock'
+depends = 'kana/vim-textobj-user'
+
+[[plugins]]
+repository = 'rhysd/vim-textobj-ruby'
+depends = 'kana/vim-textobj-user'
+
+# Operators
+
+[[plugins]]
+repository = 'kana/vim-operator-user'
+
+[[plugins]]
+repository = 'kana/vim-operator-replace'
+depends = 'kana/vim-operator-user'
+
+[[plugins]]
+repository = 'rhysd/vim-operator-surround'
+depends = 'kana/vim-operator-user'
+
+# Completions
+
+[[plugins]]
+repository = 'Shougo/neocomplete'
+
+[[plugins]]
+repository = 'Shougo/neosnippet'
+
+[[plugins]]
+repository = 'eagletmt/neco-ghc'
+external_commands = ['ghc-mod']
+
+# Others
+
+[[plugins]]
+repository = 'vim-jp/vital.vim'
+
+[[plugins]]
+repository = 'Shougo/tabpagebuffer.vim'
+
+[[plugins]]
+repository = 'vim-scripts/sudo.vim.git'
+
+[[plugins]]
+repository = 'ujihisa/shadow.vim'
+
+[[plugins]]
+repository = 'itchyny/landscape.vim'
+
+[[plugins]]
+repository = 'itchyny/lightline.vim'
+
+[[plugins]]
+repository = 'tpope/vim-fugitive'
+
+[[plugins]]
+repository = 'cohama/agit.vim'
+
+[[plugins]]
+repository = 'rhysd/committia.vim'
+
+[[plugins]]
+repository = 'airblade/vim-gitgutter'
+
+[[plugins]]
+repository = 'kana/vim-smartinput'
+
+[[plugins]]
+repository = 'thinca/vim-localrc'
+
+[[plugins]]
+repository = 'thinca/vim-quickrun'
+
+[[plugins]]
+repository = 'scrooloose/syntastic'
+
+[[plugins]]
+repository = 'rhysd/conflict-marker.vim'
+
+[[plugins]]
+repository = 'tpope/vim-repeat'
+
+[[plugins]]
+repository = 'fuenor/qfixgrep'
+
+[[plugins]]
+repository = 'fuenor/qfixhowm'
+
+[[plugins]]
+repository = 'Shougo/junkfile.vim'

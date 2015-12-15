@@ -1,0 +1,151 @@
+# Unite
+
+[[plugins]]
+repository = 'Shougo/neomru.vim'
+on_ft = 'all'
+
+[[plugins]]
+repository = 'Shougo/unite.vim'
+depends = 'Shougo/neomru.vim'
+
+  [plugins.on_cmd]
+  name = 'Unite'
+  complete = 'customlist,unite#complete_source'
+
+[[plugins]]
+repository = 'thinca/vim-unite-history'
+depends = 'Shougo/unite.vim'
+on_unite = ['history/command', 'history/search']
+
+[[plugins]]
+repository = 'Shougo/unite-help'
+depends = 'Shougo/unite.vim'
+on_unite = 'help'
+
+[[plugins]]
+repository = 'Shougo/unite-ssh'
+depends = 'Shougo/unite.vim'
+on_unite = 'ssh'
+
+[[plugins]]
+repository = 'Shougo/unite-outline'
+depends = 'Shougo/unite.vim'
+on_unite = 'outline'
+
+[[plugins]]
+repository = 'ryotakato/unite-outline-objc'
+depends = ['Shougo/unite.vim', 'Shougo/unite-outline']
+on_ft = 'objc'
+
+[[plugins]]
+repository = 'hewes/unite-gtags'
+depends = 'Shougo/unite.vim'
+on_unite = ['gtags/ref', 'gtags/context']
+
+[[plugins]]
+repository = 'Shougo/unite-build'
+depends = 'Shougo/unite.vim'
+on_unite = 'build'
+
+[[plugins]]
+repository = 'thinca/vim-ref'
+depends = 'Shougo/unite.vim'
+on_unite = 'ref'
+
+# Language
+
+[[plugins]]
+repository = 'vim-jp/cpp-vim'
+on_ft = ['cpp', 'objcpp']
+
+[[plugins]]
+repository = 'tpope/vim-haml'
+on_path = '\.haml$'
+
+[[plugins]]
+repository = 'kchmck/vim-coffee-script'
+on_path = '\.coffee$'
+
+[[plugins]]
+repository = 'plasticboy/vim-markdown'
+on_path = '\.md$'
+
+[[plugins]]
+repository = 'aklt/plantuml-syntax'
+on_path = '\.p\%(lant\)\?uml$'
+
+[[plugins]]
+repository = 'vim-scripts/scons.vim'
+on_path = 'SConstruct$'
+
+[[plugins]]
+repository = 'ebnf.vim'
+on_path = '\.ebnf$'
+
+[[plugins]]
+repository = 'timcharper/textile.vim'
+on_path = '\.textile$'
+
+[[plugins]]
+repository = 'jam.vim'
+on_path = '\%(\.jam\|Jamfile\|Jamroot\)$'
+
+[[plugins]]
+repository = 'groovyindent'
+on_ft = ['groovy']
+
+[[plugins]]
+repository = 'udalov/kotlin-vim'
+on_path = '\%(\.kt\|\.kts\)$'
+
+[[plugins]]
+repository = 'dag/vim2hs'
+on_ft = ['haskell']
+
+[[plugins]]
+repository = 'eagletmt/ghcmod-vim'
+on_ft = ['haskell']
+
+[[plugins]]
+repository = 'honza/dockerfile.vim'
+on_path = 'Dockerfile$'
+
+[[plugins]]
+repository = 'https://fedorapeople.org/cgit/wwoods/public_git/vim-scripts.git'
+on_path = '\%(\.service\)$'
+
+[[plugins]]
+repository = 'jvoorhis/coq.vim'
+on_path = '\.v$'
+
+[[plugins]]
+repository = 'vim-scripts/CoqIDE'
+on_ft = ['coq']
+
+[[plugins]]
+repository = 'PProvost/vim-ps1'
+on_path = '\.ps1$'
+
+# Others
+
+[[plugins]]
+repository = 'Shougo/vimshell'
+on_cmd = ['VimShellCurrentDir']
+depends = ['Shougo/vimproc']
+
+[[plugins]]
+repository = 'ujihisa/vimshell-ssh'
+on_cmd = ['VimShellCurrentDir']
+depends = ['Shougo/vimshell']
+
+[[plugins]]
+repository = 'Shougo/vimfiler'
+on_cmd = ['VimFilerBufferDir']
+depends = ['Shougo/unite.vim']
+
+[[plugins]]
+repository = 'thinca/vim-logcat'
+on_cmd = ['Logcat', 'Logcat!', 'LogcatClear']
+on_ft = 'logcat'
+on_path = '\.logcat$'
+external_commands = 'adb'

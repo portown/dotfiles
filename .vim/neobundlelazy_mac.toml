@@ -1,0 +1,9 @@
+# Language
+
+[[plugins]]
+repository = 'b4winckler/vim-objc'
+on_ft = ['objc', 'objcpp']
+
+[[plugins]]
+repository = 'toyamarinyon/vim-swift'
+on_path = '\.swift'
