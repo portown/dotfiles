@@ -255,6 +255,8 @@ NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'scrooloose/syntastic'
 NeoBundle 'rhysd/conflict-marker.vim'
 NeoBundle 'tpope/vim-repeat'
+NeoBundle 'fuenor/qfixgrep'
+NeoBundle 'fuenor/qfixhowm'
 
 call neobundle#end()
 
@@ -1086,6 +1088,24 @@ let g:quickrun_config._ = {
 let g:quickrun_config.haskell = {
             \       'command': 'runghc',
             \   }
+
+" }}}
+" -------------------------------------------------------------
+
+" -------------------------------------------------------------
+" QFixHowm {{{
+
+let howm_dir = '~/howm'
+let howm_filename = '%Y/%m/%Y-%m-%d-%H%M%S.md'
+let QFixHowm_RootDir = howm_dir
+let QFixHowm_FileType = 'markdown'
+let QFixHowm_Title = '#'
+let QFixMRU_Title = {}
+let QFixMRU_Title['md'] = '^#[^#]'
+let QFixHowm_HolidayFile = $HOME . '.vim/bundle/qfixhowm/misc/holiday/Sche-Hd-0000-00-00-000000.utf8'
+
+let QFixHowm_ScheduleSearchDir = howm_dir . '/schedule'
+let QFixHowm_ScheduleSearchFile = ''
 
 " }}}
 " -------------------------------------------------------------
