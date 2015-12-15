@@ -126,6 +126,10 @@ on_ft = ['coq']
 repository = 'PProvost/vim-ps1'
 on_path = '\.ps1$'
 
+[[plugins]]
+repository = 'cespare/vim-toml'
+on_path = '\.toml$'
+
 # Others
 
 [[plugins]]
