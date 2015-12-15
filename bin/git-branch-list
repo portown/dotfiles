@@ -1,0 +1,31 @@
+#!/bin/sh
+
+fmt='
+    refname="%(refname:short)"
+    upstream="%(upstream:short)"
+    head="%(HEAD)"
+
+    if test "x$upstream" = "x"
+    then
+        ups=""
+    else
+        ups=" -> %(color:red)$upstream%(color:reset)%(upstream:track)"
+        git show-ref --verify --quiet %(upstream)
+        if test $? -ne 0
+        then
+            ups="$ups [x]"
+        fi
+    fi
+
+    if test "x$head" = "x*"
+    then
+        ref="%(color:green)$refname%(color:reset)"
+    else
+        ref="$refname"
+    fi
+
+    echo "$head $ref$ups"
+'
+
+eval=`git for-each-ref --format="$fmt" refs/heads`
+eval "$eval"

@@ -1,0 +1,3 @@
+#!/bin/sh
+
+git diff --unified=7 $1^..$1
