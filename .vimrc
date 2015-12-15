@@ -164,6 +164,12 @@ if s:is_mac
             \   'autoload': { 'filename_patterns': '\.swift' },
             \ }
 endif
+NeoBundleLazy 'jvoorhis/coq.vim', {
+            \       'autoload': { 'filename_patterns': '\.v$' },
+            \   }
+NeoBundleLazy 'vim-scripts/CoqIDE', {
+            \       'autoload': { 'filetypes': ['coq'] },
+            \   }
 
 " Textobjs
 NeoBundle 'kana/vim-textobj-user'
