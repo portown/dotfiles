@@ -24,8 +24,6 @@
 	default = simple
 [merge]
 	ff = false
-[diff]
-	tool = vimdiff
 [status]
 	showUntrackedFiles = all
 [include]
