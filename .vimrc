@@ -147,6 +147,9 @@ NeoBundleLazy 'udalov/kotlin-vim', {
 NeoBundleLazy 'dag/vim2hs', {
             \   'autoload': { 'filetypes': ['haskell'] },
             \ }
+NeoBundleLazy 'eagletmt/ghcmod-vim', {
+            \       'autoload': { 'filetypes': ['haskell'] },
+            \   }
 NeoBundleLazy 'honza/dockerfile.vim', {
             \   'autoload': { 'filename_patterns': 'Dockerfile$' },
             \ }
