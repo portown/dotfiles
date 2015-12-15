@@ -795,8 +795,9 @@ nnoremap <SID>[git]b :<C-U>Gblame<CR>
 " -------------------------------------------------------------
 " agit.vim の設定 {{{
 
-let g:agit_enable_auto_show_commit = 1
+let g:agit_enable_auto_show_commit = 0
 let g:agit_enable_auto_refresh = 0
+let g:agit_max_log_lines = 60
 
 nnoremap <SID>[agit] <Nop>
 nmap <SID>[git]v <SID>[agit]
