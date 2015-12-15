@@ -120,7 +120,7 @@ NeoBundleLazy 'tpope/vim-haml', {
 NeoBundleLazy 'kchmck/vim-coffee-script', {
             \   'autoload': { 'filename_patterns': '\.coffee$' },
             \ }
-NeoBundleLazy 'tpope/vim-markdown', {
+NeoBundleLazy 'plasticboy/vim-markdown', {
             \   'autoload': { 'filename_patterns': '\.md$' },
             \ }
 NeoBundleLazy 'aklt/plantuml-syntax', {
