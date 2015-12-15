@@ -42,25 +42,28 @@ endif
 
 call neobundle#begin(expand('~/.vim/bundle'))
 
-" Core
-NeoBundleFetch 'Shougo/neobundle.vim'
-NeoBundle 'Shougo/vimproc', {
-            \       'build' : {
-            \           'windows' : 'echo "Sorry, cannot update vimproc binary file in Windows."',
-            \           'cygwin' : 'make -f make_cygwin.mak',
-            \           'mac' : 'make -f make_mac.mak',
-            \           'unix' : 'make -f make_unix.mak',
-            \       },
-            \   }
+if neobundle#load_cache()
+    NeoBundleFetch 'Shougo/neobundle.vim'
+    NeoBundle 'Shougo/vimproc', {
+                \       'build': {
+                \           'windows' : 'echo "Sorry, cannot update vimproc binary file in Windows."',
+                \           'cygwin' : 'make -f make_cygwin.mak',
+                \           'mac' : 'make -f make_mac.mak',
+                \           'unix' : 'make -f make_unix.mak',
+                \       },
+                \   }
 
-call neobundle#load_toml('~/.vim/neobundle.toml')
-call neobundle#load_toml('~/.vim/neobundlelazy.toml', {'lazy': 1})
-if s:is_mac
-    call neobundle#load_toml('~/.vim/neobundle_mac.toml')
-    call neobundle#load_toml('~/.vim/neobundlelazy_mac.toml', {'lazy': 1})
+    call neobundle#load_toml('~/.vim/neobundle.toml')
+    call neobundle#load_toml('~/.vim/neobundlelazy.toml', {'lazy': 1})
+    if s:is_mac
+        call neobundle#load_toml('~/.vim/neobundle_mac.toml')
+        call neobundle#load_toml('~/.vim/neobundlelazy_mac.toml', {'lazy': 1})
+    endif
+
+    call neobundle#local('~/.vim', {}, ['local'])
+
+    NeoBundleSaveCache
 endif
-
-call neobundle#local('~/.vim', {}, ['local'])
 
 call neobundle#end()
 
