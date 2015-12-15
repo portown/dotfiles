@@ -1094,6 +1094,10 @@ if s:is_windows
     let g:quickrun_config.haskell['hook/output_encode/encoding'] = 'cp932'
 endif
 
+let g:quickrun_config.ruby = {
+            \       'command': 'ruby',
+            \   }
+
 " }}}
 " -------------------------------------------------------------
 
