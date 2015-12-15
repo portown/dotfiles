@@ -170,6 +170,9 @@ NeoBundleLazy 'jvoorhis/coq.vim', {
 NeoBundleLazy 'vim-scripts/CoqIDE', {
             \       'autoload': { 'filetypes': ['coq'] },
             \   }
+NeoBundleLazy 'PProvost/vim-ps1', {
+            \       'autoload': { 'filename_patterns': '\.ps1$' },
+            \   }
 
 " Textobjs
 NeoBundle 'kana/vim-textobj-user'
