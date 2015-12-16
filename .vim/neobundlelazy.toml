@@ -138,6 +138,10 @@ on_ft = 'toml'
 # Completions
 
 [[plugins]]
+repository = 'Shougo/neoinclude.vim'
+on_ft = 'all'
+
+[[plugins]]
 repository = 'Shougo/neocomplete'
 depends = 'Shougo/context_filetype.vim'
 on_i = 1
