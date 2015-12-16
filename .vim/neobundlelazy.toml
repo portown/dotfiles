@@ -139,10 +139,12 @@ on_ft = 'toml'
 
 [[plugins]]
 repository = 'Shougo/neocomplete'
+depends = 'Shougo/context_filetype.vim'
 on_i = 1
 
 [[plugins]]
 repository = 'Shougo/neosnippet'
+depends = 'Shougo/context_filetype.vim'
 on_i = 1
 on_ft = 'snippet'
 on_unite = ['neosnippet', 'neosnippet/user', 'neosnippet/runtime']
@@ -153,6 +155,10 @@ on_ft = 'haskell'
 external_commands = ['ghc-mod']
 
 # Others
+
+[[plugins]]
+repository = 'Shougo/context_filetype.vim'
+on_i = 1
 
 [[plugins]]
 repository = 'vim-jp/vital.vim'
