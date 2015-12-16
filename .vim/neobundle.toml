@@ -48,25 +48,7 @@ depends = 'kana/vim-operator-user'
 repository = 'osyo-manga/vim-operator-jump_side'
 depends = 'kana/vim-operator-user'
 
-# Completions
-
-[[plugins]]
-repository = 'Shougo/neocomplete'
-
-[[plugins]]
-repository = 'Shougo/neosnippet'
-
-[[plugins]]
-repository = 'eagletmt/neco-ghc'
-external_commands = ['ghc-mod']
-
 # Others
-
-[[plugins]]
-repository = 'vim-jp/vital.vim'
-
-[[plugins]]
-repository = 'Shougo/tabpagebuffer.vim'
 
 [[plugins]]
 repository = 'vim-scripts/sudo.vim.git'
@@ -85,9 +67,6 @@ repository = 'tpope/vim-fugitive'
 
 [[plugins]]
 repository = 'cohama/agit.vim'
-
-[[plugins]]
-repository = 'rhysd/committia.vim'
 
 [[plugins]]
 repository = 'airblade/vim-gitgutter'
@@ -115,6 +94,3 @@ repository = 'fuenor/qfixgrep'
 
 [[plugins]]
 repository = 'fuenor/qfixhowm'
-
-[[plugins]]
-repository = 'Shougo/junkfile.vim'
