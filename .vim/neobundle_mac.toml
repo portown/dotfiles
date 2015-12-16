@@ -1,7 +1,0 @@
-# Completions
-
-[[plugins]]
-repository = 'Rip-Rip/clang_complete'
-
-[[plugins]]
-repository = 'tokorom/clang_complete-getopts-ios'

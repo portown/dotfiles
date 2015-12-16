@@ -56,7 +56,6 @@ if neobundle#load_cache()
     call neobundle#load_toml('~/.vim/neobundle.toml')
     call neobundle#load_toml('~/.vim/neobundlelazy.toml', {'lazy': 1})
     if s:is_mac
-        call neobundle#load_toml('~/.vim/neobundle_mac.toml')
         call neobundle#load_toml('~/.vim/neobundlelazy_mac.toml', {'lazy': 1})
     endif
 
