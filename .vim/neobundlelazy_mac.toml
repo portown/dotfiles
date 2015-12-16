@@ -6,4 +6,4 @@ on_ft = ['objc', 'objcpp']
 
 [[plugins]]
 repository = 'keith/swift.vim'
-on_path = '\.swift$'
+on_ft = 'swift'
