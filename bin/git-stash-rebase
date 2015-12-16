@@ -1,0 +1,20 @@
+#!/bin/sh
+
+if test $# -eq 0; then
+    echo no arguments
+    exit 1
+fi
+
+for b in $@; do
+    git --no-pager show --no-patch --oneline $b -- > /dev/null
+    if test $? -ne 0; then
+        exit 1
+    fi
+done
+
+diffs=`git status -s | wc -l`
+if test $diffs -eq 0; then
+    git rebase $@
+else
+    git stash save && git rebase $@ && git stash pop
+fi
