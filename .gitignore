@@ -8,8 +8,6 @@
 !/.gitignore.global
 
 # vim
-!/.vimrc
-!/.gvimrc
 !/.vim/
 /.vim/.netrwhist
 /.vim/bundle/
