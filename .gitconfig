@@ -20,8 +20,6 @@
 	status = auto
 	branch = auto
 	diff = auto
-[branch]
-	autosetuprebase = always
 [push]
 	default = simple
 [merge]
