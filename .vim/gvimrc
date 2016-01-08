@@ -1,14 +1,10 @@
 " .gvimrc
 
-
-let s:is_windows = has( 'win32' ) || has( 'win64' )
-
-
 " -------------------------------------------------------------
 " ウィンドウ設定 {{{
 
 " 起動時にウィンドウ最大化
-if s:is_windows
+if IsWindows()
   autocmd Portown GUIEnter * simalt ~x
 elseif has( 'gui_macvim' )
   set lines=999 columns=9999
@@ -42,7 +38,7 @@ set titlestring=gVim
 " -------------------------------------------------------------
 " フォント設定 {{{
 
-if s:is_windows
+if IsWindows()
   set guifont=Ricty\ for\ Powerline:h12:cSHIFTJIS
 
   if exists( '&rop' )
