@@ -1,53 +1,3 @@
-# Textobjs
-
-[[plugins]]
-repository = 'kana/vim-textobj-user'
-
-[[plugins]]
-repository = 'kana/vim-textobj-entire'
-depends = 'kana/vim-textobj-user'
-
-[[plugins]]
-repository = 'kana/vim-textobj-line'
-depends = 'kana/vim-textobj-user'
-
-[[plugins]]
-repository = 'thinca/vim-textobj-between'
-depends = 'kana/vim-textobj-user'
-
-[[plugins]]
-repository = 'h1mesuke/textobj-wiw'
-depends = 'kana/vim-textobj-user'
-
-[[plugins]]
-repository = 'anyakichi/vim-textobj-xbrackets'
-depends = 'kana/vim-textobj-user'
-
-[[plugins]]
-repository = 'osyo-manga/vim-textobj-multiblock'
-depends = 'kana/vim-textobj-user'
-
-[[plugins]]
-repository = 'rhysd/vim-textobj-ruby'
-depends = 'kana/vim-textobj-user'
-
-# Operators
-
-[[plugins]]
-repository = 'kana/vim-operator-user'
-
-[[plugins]]
-repository = 'kana/vim-operator-replace'
-depends = 'kana/vim-operator-user'
-
-[[plugins]]
-repository = 'rhysd/vim-operator-surround'
-depends = 'kana/vim-operator-user'
-
-[[plugins]]
-repository = 'osyo-manga/vim-operator-jump_side'
-depends = 'kana/vim-operator-user'
-
 # Others
 
 [[plugins]]
@@ -66,13 +16,7 @@ repository = 'itchyny/lightline.vim'
 repository = 'tpope/vim-fugitive'
 
 [[plugins]]
-repository = 'cohama/agit.vim'
-
-[[plugins]]
 repository = 'airblade/vim-gitgutter'
-
-[[plugins]]
-repository = 'kana/vim-smartinput'
 
 [[plugins]]
 repository = 'thinca/vim-localrc'
@@ -82,9 +26,6 @@ repository = 'thinca/vim-quickrun'
 
 [[plugins]]
 repository = 'scrooloose/syntastic'
-
-[[plugins]]
-repository = 'rhysd/conflict-marker.vim'
 
 [[plugins]]
 repository = 'tpope/vim-repeat'

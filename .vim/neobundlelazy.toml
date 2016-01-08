@@ -158,6 +158,66 @@ repository = 'eagletmt/neco-ghc'
 on_ft = 'haskell'
 external_commands = ['ghc-mod']
 
+# Textobjs
+
+[[plugins]]
+repository = 'kana/vim-textobj-user'
+
+[[plugins]]
+repository = 'kana/vim-textobj-entire'
+depends = 'kana/vim-textobj-user'
+on_map = '<Plug>'
+
+[[plugins]]
+repository = 'kana/vim-textobj-line'
+depends = 'kana/vim-textobj-user'
+on_map = '<Plug>'
+
+[[plugins]]
+repository = 'thinca/vim-textobj-between'
+depends = 'kana/vim-textobj-user'
+on_map = '<Plug>'
+
+[[plugins]]
+repository = 'h1mesuke/textobj-wiw'
+depends = 'kana/vim-textobj-user'
+on_map = '<Plug>'
+
+[[plugins]]
+repository = 'anyakichi/vim-textobj-xbrackets'
+depends = 'kana/vim-textobj-user'
+on_map = '<Plug>'
+
+[[plugins]]
+repository = 'osyo-manga/vim-textobj-multiblock'
+depends = 'kana/vim-textobj-user'
+on_map = '<Plug>'
+
+[[plugins]]
+repository = 'rhysd/vim-textobj-ruby'
+depends = 'kana/vim-textobj-user'
+on_map = '<Plug>'
+
+# Operators
+
+[[plugins]]
+repository = 'kana/vim-operator-user'
+
+[[plugins]]
+repository = 'kana/vim-operator-replace'
+depends = 'kana/vim-operator-user'
+on_map = '<Plug>'
+
+[[plugins]]
+repository = 'rhysd/vim-operator-surround'
+depends = 'kana/vim-operator-user'
+on_map = '<Plug>'
+
+[[plugins]]
+repository = 'osyo-manga/vim-operator-jump_side'
+depends = 'kana/vim-operator-user'
+on_map = '<Plug>'
+
 # Others
 
 [[plugins]]
@@ -197,3 +257,16 @@ external_commands = 'adb'
 [[plugins]]
 repository = 'Yggdroot/indentLine'
 on_ft = 'all'
+
+[[plugins]]
+repository = 'cohama/agit.vim'
+on_cmd = ['Agit', 'AgitFile', 'AgitGit', 'AgitDiff']
+
+[[plugins]]
+repository = 'kana/vim-smartinput'
+on_i = 1
+
+[[plugins]]
+repository = 'rhysd/conflict-marker.vim'
+on_ft = 'all'
+on_unite = 'conflict'
