@@ -449,12 +449,6 @@ if neobundle#tap('agit.vim') "{{{
     call neobundle#untap()
 endif "}}}
 
-if neobundle#tap('committia.vim') "{{{
-    let g:committia_open_only_vim_starting = 0
-
-    call neobundle#untap()
-endif "}}}
-
 if neobundle#tap('vim-gitgutter') "{{{
     let g:gitgutter_realtime = 0
     let g:gitgutter_eager = 0

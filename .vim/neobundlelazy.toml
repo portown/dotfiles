@@ -193,7 +193,3 @@ on_cmd = ['Logcat', 'Logcat!', 'LogcatClear']
 on_ft = 'logcat'
 on_path = '\.logcat$'
 external_commands = 'adb'
-
-[[plugins]]
-repository = 'rhysd/committia.vim'
-on_path = 'COMMIT_EDITMSG'
