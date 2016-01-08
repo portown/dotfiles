@@ -230,105 +230,103 @@ unlet s:listchars
 " }}}
 " -------------------------------------------------------------
 
-" -------------------------------------------------------------
-" lightline の設定 {{{
+if neobundle#tap('lightline.vim') "{{{
+    let g:lightline = {
+                \   'colorscheme': 'wombat',
+                \   'active': {
+                \     'left': [['mode'], ['fugitive', 'filename']],
+                \     'right': [['syntastic', 'lineinfo'], ['fileformat', 'fileencoding', 'filetype']],
+                \   },
+                \   'inactive': {
+                \     'left': [['filename']],
+                \     'right': [['fileformat', 'fileencoding', 'filetype']],
+                \   },
+                \   'tabline': {
+                \     'left': [['tabs']],
+                \     'right': [['cwd']],
+                \   },
+                \   'component': {
+                \     'lineinfo': '%3l/%{line("$")}:%-2v',
+                \   },
+                \   'component_function': {
+                \     'fugitive': 'MyFugitive',
+                \     'filename': 'MyFilename',
+                \     'fileformat': 'MyFileformat',
+                \     'filetype': 'MyFiletype',
+                \     'fileencoding': 'MyFileencoding',
+                \     'mode': 'MyMode',
+                \     'cwd': 'MyCwd',
+                \   },
+                \   'component_expand': {
+                \     'syntastic': 'SyntasticStatuslineFlag',
+                \   },
+                \   'component_type': {
+                \     'syntastic': 'error',
+                \   },
+                \   'separator': { 'left': "\u2b80", 'right': "\u2b82" },
+                \   'subseparator': { 'left': "\u2b81", 'right': "\u2b83" },
+                \ }
 
-let g:lightline = {
-            \   'colorscheme': 'wombat',
-            \   'active': {
-            \     'left': [['mode'], ['fugitive', 'filename']],
-            \     'right': [['syntastic', 'lineinfo'], ['fileformat', 'fileencoding', 'filetype']],
-            \   },
-            \   'inactive': {
-            \     'left': [['filename']],
-            \     'right': [['fileformat', 'fileencoding', 'filetype']],
-            \   },
-            \   'tabline': {
-            \     'left': [['tabs']],
-            \     'right': [['cwd']],
-            \   },
-            \   'component': {
-            \     'lineinfo': '%3l/%{line("$")}:%-2v',
-            \   },
-            \   'component_function': {
-            \     'fugitive': 'MyFugitive',
-            \     'filename': 'MyFilename',
-            \     'fileformat': 'MyFileformat',
-            \     'filetype': 'MyFiletype',
-            \     'fileencoding': 'MyFileencoding',
-            \     'mode': 'MyMode',
-            \     'cwd': 'MyCwd',
-            \   },
-            \   'component_expand': {
-            \     'syntastic': 'SyntasticStatuslineFlag',
-            \   },
-            \   'component_type': {
-            \     'syntastic': 'error',
-            \   },
-            \   'separator': { 'left': "\u2b80", 'right': "\u2b82" },
-            \   'subseparator': { 'left': "\u2b81", 'right': "\u2b83" },
-            \ }
-
-function! MyFugitive()
-    if &filetype !~? 'unite\|vimfiler' && exists("*fugitive#head")
-        let _ = fugitive#head()
-        return strlen(_) ? "\u2b60 "._ : ''
-    endif
-    return ''
-endfunction
-
-function! MyModified()
-    if &modifiable && &modified
-        return '+'
-    else
+    function! MyFugitive()
+        if &filetype !~? 'unite\|vimfiler' && exists("*fugitive#head")
+            let _ = fugitive#head()
+            return strlen(_) ? "\u2b60 "._ : ''
+        endif
         return ''
-    endif
-endfunction
+    endfunction
 
-function! MyReadonly()
-    if &modifiable && &readonly
-        return "\u2b64"
-    else
-        return ''
-    endif
-endfunction
+    function! MyModified()
+        if &modifiable && &modified
+            return '+'
+        else
+            return ''
+        endif
+    endfunction
 
-function! MyModifiable()
-    return &modifiable ? '' : "\u2718"
-endfunction
+    function! MyReadonly()
+        if &modifiable && &readonly
+            return "\u2b64"
+        else
+            return ''
+        endif
+    endfunction
 
-function! MyFilename()
-    return ('' != MyReadonly() ? MyReadonly() . ' ' : '') .
-                \ (&ft ==# 'vimfiler' ? vimfiler#get_status_string() :
-                \  &ft ==# 'unite' ? unite#get_status_string() :
-                \  &ft ==# 'vimshell' ? vimshell#get_status_string() :
-                \  '' != expand('%:t') ? expand('%:t') : '[No Name]') .
-                \ ('' != MyModified() ? ' ' . MyModified() : '') .
-                \ ('' != MyModifiable() ? ' ' . MyModifiable() : '')
-endfunction
+    function! MyModifiable()
+        return &modifiable ? '' : "\u2718"
+    endfunction
 
-function! MyFileformat()
-    return winwidth(0) > 70 ? &fileformat : ''
-endfunction
+    function! MyFilename()
+        return ('' != MyReadonly() ? MyReadonly() . ' ' : '') .
+                    \ (&ft ==# 'vimfiler' ? vimfiler#get_status_string() :
+                    \  &ft ==# 'unite' ? unite#get_status_string() :
+                    \  &ft ==# 'vimshell' ? vimshell#get_status_string() :
+                    \  '' != expand('%:t') ? expand('%:t') : '[No Name]') .
+                    \ ('' != MyModified() ? ' ' . MyModified() : '') .
+                    \ ('' != MyModifiable() ? ' ' . MyModifiable() : '')
+    endfunction
 
-function! MyFiletype()
-    return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype : 'no ft') : ''
-endfunction
+    function! MyFileformat()
+        return winwidth(0) > 70 ? &fileformat : ''
+    endfunction
 
-function! MyFileencoding()
-    return winwidth(0) > 70 ? (strlen(&fenc) ? &fenc : &enc) : ''
-endfunction
+    function! MyFiletype()
+        return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype : 'no ft') : ''
+    endfunction
 
-function! MyMode()
-    return winwidth(0) > 60 ? lightline#mode() : ''
-endfunction
+    function! MyFileencoding()
+        return winwidth(0) > 70 ? (strlen(&fenc) ? &fenc : &enc) : ''
+    endfunction
 
-function! MyCwd()
-    return fnamemodify(getcwd(), ':~')
-endfunction
+    function! MyMode()
+        return winwidth(0) > 60 ? lightline#mode() : ''
+    endfunction
 
-" }}}
-" -------------------------------------------------------------
+    function! MyCwd()
+        return fnamemodify(getcwd(), ':~')
+    endfunction
+
+    call neobundle#untap()
+endif "}}}
 
 set backspace=indent,start,eol
 
@@ -374,14 +372,32 @@ cnoremap <C-N> <Down>
 autocmd Portown Filetype help nnoremap <buffer> q <C-w>c
 autocmd Portown Filetype help nnoremap <buffer> <C-]> :<C-U>tag <C-R><C-W><CR>
 
-" -------------------------------------------------------------
-" vim-smartinput {{{
+if neobundle#tap('vim-smartinput') "{{{
+    call smartinput#map_to_trigger('i', '<Plug>(smartinput_CR)', '<CR>', '<CR>')
+    call smartinput#map_to_trigger('i', '<Plug>(smartinput_C-H)', '<BS>', '<C-H>')
 
-call smartinput#map_to_trigger('i', '<Plug>(smartinput_CR)', '<CR>', '<CR>')
-call smartinput#map_to_trigger('i', '<Plug>(smartinput_C-H)', '<BS>', '<C-H>')
+    " for m4
+    call smartinput#define_rule({
+                \   'at': '\%#',
+                \   'char': '`',
+                \   'input': "`'<Left>",
+                \   'filetype': ['m4'],
+                \ })
+    call smartinput#define_rule({
+                \   'at': "`\%#'",
+                \   'char': "'",
+                \   'input': '<Right>',
+                \   'filetype': ['m4'],
+                \ })
+    call smartinput#define_rule({
+                \   'at': "`\%#'",
+                \   'char': '<BS>',
+                \   'input': '<Del><BS>',
+                \   'filetype': ['m4'],
+                \ })
 
-" }}}
-" -------------------------------------------------------------
+    call neobundle#untap()
+endif "}}}
 
 " -------------------------------------------------------------
 " Java の設定 {{{
@@ -394,349 +410,300 @@ let java_highlight_functions = 1
 " }}}
 " -------------------------------------------------------------
 
-" -------------------------------------------------------------
-" Haskell の設定 {{{
+if neobundle#tap('vim2hs') "{{{
+    let g:haskell_conceal = 0
 
-let g:haskell_conceal = 0
+    call neobundle#untap()
+endif "}}}
 
-" }}}
-" -------------------------------------------------------------
+if neobundle#tap('neocomplete') "{{{
+    let g:neocomplete#enable_at_startup = 1
+    let g:neocomplete#enable_smart_case = 1
+    let g:neocomplete#enable_fuzzy_completion = 1
+    let g:neocomplete#sources#syntax#min_keyword_length = 3
+    let g:neocomplete#auto_completion_start_length = 3
+    let g:neocomplete#manual_completion_start_length = 0
+    let g:neocomplete#min_keyword_length = 3
+    let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
 
-" -------------------------------------------------------------
-" m4 の設定 {{{
+    let g:neocomplete#enable_auto_select = 1
+    let g:neocomplete#enable_refresh_always = 0
 
-call smartinput#define_rule({
-      \   'at': '\%#',
-      \   'char': '`',
-      \   'input': "`'<Left>",
-      \   'filetype': ['m4'],
-      \ })
-call smartinput#define_rule({
-      \   'at': "`\%#'",
-      \   'char': "'",
-      \   'input': '<Right>',
-      \   'filetype': ['m4'],
-      \ })
-call smartinput#define_rule({
-      \   'at': "`\%#'",
-      \   'char': '<BS>',
-      \   'input': '<Del><BS>',
-      \   'filetype': ['m4'],
-      \ })
-
-" }}}
-" -------------------------------------------------------------
-
-" -------------------------------------------------------------
-" neocomplete の設定 {{{
-
-let g:neocomplete#enable_at_startup = 1
-let g:neocomplete#enable_smart_case = 1
-let g:neocomplete#enable_fuzzy_completion = 1
-let g:neocomplete#sources#syntax#min_keyword_length = 3
-let g:neocomplete#auto_completion_start_length = 3
-let g:neocomplete#manual_completion_start_length = 0
-let g:neocomplete#min_keyword_length = 3
-let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
-
-let g:neocomplete#enable_auto_select = 1
-let g:neocomplete#enable_refresh_always = 0
-
-let g:neocomplete#sources#dictionary#dictionaries = {
-            \   'default': '',
-            \   'vimshell': $HOME.'/.vimshell/command-history',
-            \ }
-
-let g:neocomplete#enable_auto_delimiter = 1
-let g:neocomplete#enable_auto_close_preview = 1
-
-if !exists('g:neocomplete#keyword_patterns')
-    let g:neocomplete#keyword_patterns = {}
-endif
-let g:neocomplete#keyword_patterns._ = '\h\w*'
-
-let g:neocomplete#force_overwrite_completefunc = 1
-if !exists('g:neocomplete#force_omni_input_patterns')
-    let g:neocomplete#force_omni_input_patterns = {}
-endif
-let s:omni_c = '[^.[:digit:] *\t]\%(\.\|->\)'
-let s:omni_cpp = s:omni_c.'\|\h\w*::'
-let s:omni_objc_specific = '\[\|\[[^.[:digit:] *\t]* \|\] '
-let g:neocomplete#force_omni_input_patterns.objc = s:omni_c . '\|' . s:omni_objc_specific
-let g:neocomplete#force_omni_input_patterns.objcpp = s:omni_cpp . '\|' . s:omni_objc_specific
-unlet s:omni_c s:omni_cpp s:omni_objc_specific
-
-if !exists('g:neocomplete#sources#file_include#exts')
-    let g:neocomplete#sources#file_include#exts = {}
-endif
-let g:neocomplete#sources#file_include#exts.objc = ['h']
-
-if !exists('g:neocomplete#sources#include#patterns')
-    let g:neocomplete#sources#include#patterns = {}
-endif
-let g:neocomplete#sources#include#patterns.objc = '^\s*#\s*import'
-let g:neocomplete#sources#include#patterns.objcpp = '^\s*#\s*import'
-
-let g:neocomplete#sources#vim#complete_functions = {
-            \   'Ref': 'ref#complete',
-            \   'Unite': 'unite#complete_source',
-            \   'VimShellExecute': 'vimshell#vimshell_execute_complete',
-            \   'VimShellInteractive': 'vimshell#vimshell_execute_complete',
-            \   'VimShellTerminal': 'vimshell#vimshell_execute_complete',
-            \   'VimShell': 'vimshell#complete',
-            \   'VimFiler': 'vimfiler#complete',
-            \ }
-
-inoremap <expr><C-F> pumvisible() ? "\<PageDown>" : "\<Right>"
-inoremap <expr><C-B> pumvisible() ? "\<PageUp>" : "\<Left>"
-inoremap <expr><C-Y> pumvisible() ? neocomplete#close_popup() : "\<C-R>\""
-inoremap <expr><C-E> pumvisible() ? neocomplete#cancel_popup() : "\<End>"
-imap <expr><C-H> neocomplete#smart_close_popup() . "\<Plug>(smartinput_C-H)"
-inoremap <expr><C-N> pumvisible() ? "\<C-N>" : "\<C-X>\<C-U>\<C-P>\<Down>"
-inoremap <expr><C-P> pumvisible() ? "\<C-P>" : "\<C-P>\<C-N>"
-
-inoremap <expr><C-G> neocomplete#undo_completion()
-inoremap <expr><C-L> neocomplete#complete_common_string()
-
-imap <expr><CR> neocomplete#smart_close_popup() . "\<Plug>(smartinput_CR)"
-
-" }}}
-" -------------------------------------------------------------
-
-" -------------------------------------------------------------
-" clang_complete {{{
-
-let g:clang_complete_auto = 0
-let g:clang_auto_select = 0
-
-" }}}
-" -------------------------------------------------------------
-
-" -------------------------------------------------------------
-" neosnippet の設定 {{{
-
-imap <C-K> <Plug>(neosnippet_expand)
-smap <C-K> <Plug>(neosnippet_expand)
-xmap <C-K> <Plug>(neosnippet_expand_target)
-
-imap <expr><Tab> neosnippet#jumpable() ?
-            \ "\<Plug>(neosnippet_jump)"
-            \: pumvisible() ? "\<C-N>" : "\<Tab>"
-smap <expr><Tab> neosnippet#jumpable() ?
-            \ "\<Plug>(neosnippet_jump)"
-            \: "\<Tab>"
-
-if has('conceal')
-    set conceallevel=2
-    set concealcursor=i
-endif
-
-if !exists('g:neosnippet#snippets_directory')
-    let g:neosnippet#snippets_directory = ''
-endif
-let g:neosnippet#snippets_directory = join([
-            \   '~/.vim/snippets',
-            \ ], ',')
-
-if !exists('g:neosnippet#disable_runtime_snippets')
-    let g:neosnippet#disable_runtime_snippets = {}
-endif
-let g:neosnippet#disable_runtime_snippets._ = 1
-
-" }}}
-" -------------------------------------------------------------
-
-" -------------------------------------------------------------
-" VimShell の設定 {{{
-
-let s:hooks = neobundle#get_hooks('vimshell')
-function! s:hooks.on_source(bundle)
-    if IsWindows()
-        let g:vimshell_prompt = $USERNAME.'@'.hostname().'$ '
-    else
-        let g:vimshell_prompt = $USER.'$ '
-    endif
-endfunction
-unlet s:hooks
-
-command! PortownVimShellSplit :topleft 10split
-
-nnoremap <SID>[vimshell] <Nop>
-nmap <Space>s <SID>[vimshell]
-nnoremap <silent> <SID>[vimshell]s :<C-U>VimShellCurrentDir -buffer-name=shell -toggle -split -split-command=PortownVimShellSplit<CR>
-nnoremap <silent> <SID>[vimshell]f :<C-U>VimShellCurrentDir -buffer-name=shell<CR>
-
-autocmd Portown FileType vimshell execute 'nunmap <buffer> <C-N>' | nunmap <buffer> <C-P>
-
-" }}}
-" -------------------------------------------------------------
-
-" -------------------------------------------------------------
-" VimFiler の設定 {{{
-
-let s:hooks = neobundle#get_hooks('vimfiler')
-function! s:hooks.on_source(bundle)
-    let g:vimfiler_force_overwrite_statusline = 0
-endfunction
-unlet s:hooks
-
-nnoremap <SID>[vimfiler] <Nop>
-nmap <Space>f <SID>[vimfiler]
-nnoremap <silent> <SID>[vimfiler]e :<C-U>VimFilerBufferDir -buffer-name=explorer -direction=topleft -toggle -split -simple -winwidth=35 -no-quit<CR>
-nnoremap <silent> <SID>[vimfiler]f :<C-U>VimFilerBufferDir -buffer-name=explorer<CR>
-nnoremap <silent> <SID>[vimfiler]d :<C-U>VimFilerBufferDir -double<CR>
-
-" }}}
-" -------------------------------------------------------------
-
-" -------------------------------------------------------------
-" Unite.vim の設定 {{{
-
-let s:file_patterns_to_be_ignored =
-            \ '\%(^\|/\)\.$'
-            \ . '\|\~$'
-            \ . '\|\.\%(o\|exe\|dll\|bak\|DS_Store\|zwc\|pyc\|sw[po]\|class\|jar\|png\|gif\|jpe\?g\|fugitiveblame\)$'
-            \ . '\|\%(^\|/\)\%(\.hg\|\.git\|\.bzr\|\.svn\|tags\%(-.*\)\?\)\%($\|/\)'
-
-let s:hooks = neobundle#get_hooks('unite.vim')
-function! s:hooks.on_source(bundle)
-    let g:unite_enable_start_insert = 0
-    let g:unite_kind_file_use_trashbox = 0
-
-    let g:unite_force_overwrite_statusline = 0
-
-    let g:unite_source_process_enable_confirm = 0
-
-    call unite#custom#source('file_rec', 'ignore_pattern', s:file_patterns_to_be_ignored)
-    call unite#custom#source('file_rec/async', 'ignore_pattern', s:file_patterns_to_be_ignored)
-    call unite#custom#source('grep', 'ignore_pattern', s:file_patterns_to_be_ignored)
-    call unite#custom#source('neomru/file', 'ignore_pattern', s:file_patterns_to_be_ignored)
-
-    if executable('pt')
-        let g:unite_source_grep_command = 'pt'
-        let g:unite_source_grep_default_opts = '--nocolor --nogroup -e'
-        let g:unite_source_grep_recursive_opt = ''
-    else
-        let g:unite_source_grep_default_opts = '-Hn'
-        let g:unite_source_grep_recursive_opt = '-r'
-    endif
-
-    if !exists('g:unite_source_alias_aliases')
-        let g:unite_source_alias_aliases = {}
-    endif
-    let g:unite_source_alias_aliases.message = {
-                \   'source': 'output',
-                \   'args': 'message',
+    let g:neocomplete#sources#dictionary#dictionaries = {
+                \   'default': '',
+                \   'vimshell': $HOME.'/.vimshell/command-history',
                 \ }
-    call unite#custom#source('message', 'sorters', 'sorter_reverse')
-endfunction
-unlet s:hooks
 
-nnoremap <SID>[unite] <Nop>
-nmap <Space>u <SID>[unite]
+    let g:neocomplete#enable_auto_delimiter = 1
+    let g:neocomplete#enable_auto_close_preview = 1
 
-nnoremap <silent> <SID>[unite]b :<C-U>Unite -buffer-name=buffers -start-insert buffer_tab<CR>
-nnoremap <silent> <SID>[unite]h :<C-U>Unite -buffer-name=help -start-insert -immediately -no-empty help<CR>
-nnoremap <silent> <SID>[unite]o :<C-U>Unite -buffer-name=outline -start-insert outline<CR>
-if executable('grep') || executable('pt')
-    nnoremap <silent> <SID>[unite]g :<C-U>Unite -buffer-name=grep -no-quit grep:.<CR>
-else
-    nnoremap <silent> <SID>[unite]g :<C-U>Unite -buffer-name=grep -no-quit vimgrep:**<CR>
-endif
-nnoremap <silent> <SID>[unite]u :<C-U>UniteResume<CR>
+    if !exists('g:neocomplete#keyword_patterns')
+        let g:neocomplete#keyword_patterns = {}
+    endif
+    let g:neocomplete#keyword_patterns._ = '\h\w*'
 
-nnoremap <SID>[unite-file] <Nop>
-nmap <SID>[unite]f <SID>[unite-file]
-nnoremap <silent> <SID>[unite-file]f :<C-U>Unite -buffer-name=files -start-insert file file/new directory/new<CR>
-nnoremap <silent> <SID>[unite-file]d :<C-U>UniteWithBufferDir -buffer-name=files -start-insert file file/new directory/new<CR>
-nnoremap <silent> <SID>[unite-file]r :<C-U>Unite -buffer-name=files -start-insert file_rec/git<CR>
-nnoremap <silent> <SID>[unite-file]m :<C-U>Unite -buffer-name=files -start-insert neomru/file<CR>
-nnoremap <silent> <SID>[unite-file]b :<C-U>Unite -buffer-name=files -start-insert -default-action=lcd bookmark<CR>
-nnoremap <silent> <SID>[unite-file]j :<C-U>Unite -buffer-name=files -start-insert junkfile/new junkfile<CR>
+    let g:neocomplete#force_overwrite_completefunc = 1
+    if !exists('g:neocomplete#force_omni_input_patterns')
+        let g:neocomplete#force_omni_input_patterns = {}
+    endif
+    let s:omni_c = '[^.[:digit:] *\t]\%(\.\|->\)'
+    let s:omni_cpp = s:omni_c.'\|\h\w*::'
+    let s:omni_objc_specific = '\[\|\[[^.[:digit:] *\t]* \|\] '
+    let g:neocomplete#force_omni_input_patterns.objc = s:omni_c . '\|' . s:omni_objc_specific
+    let g:neocomplete#force_omni_input_patterns.objcpp = s:omni_cpp . '\|' . s:omni_objc_specific
+    unlet s:omni_c s:omni_cpp s:omni_objc_specific
 
-nnoremap <SID>[unite-gtags] <Nop>
-nmap <SID>[unite]t <SID>[unite-gtags]
-nnoremap <silent> <SID>[unite-gtags]r :<C-U>Unite -immediately -no-quit -keep-focus -winheight=10 gtags/ref<CR>
-nnoremap <silent> <C-]> :<C-U>Unite -immediately -no-quit -keep-focus -winheight=10 gtags/context<CR>
+    if !exists('g:neocomplete#sources#file_include#exts')
+        let g:neocomplete#sources#file_include#exts = {}
+    endif
+    let g:neocomplete#sources#file_include#exts.objc = ['h']
 
-nnoremap <SID>[unite-neobundle] <Nop>
-nmap <SID>[unite]n <SID>[unite-neobundle]
-nnoremap <silent> <SID>[unite-neobundle]u :<C-U>Unite -buffer-name=neobundle -no-cursor-line -log neobundle/update<CR>
-nnoremap <silent> <SID>[unite-neobundle]i :<C-U>Unite -buffer-name=neobundle -no-cursor-line -log neobundle/install<CR>
-nnoremap <silent> <SID>[unite-neobundle]c :<C-U>UniteClose neobundle<CR>
+    if !exists('g:neocomplete#sources#include#patterns')
+        let g:neocomplete#sources#include#patterns = {}
+    endif
+    let g:neocomplete#sources#include#patterns.objc = '^\s*#\s*import'
+    let g:neocomplete#sources#include#patterns.objcpp = '^\s*#\s*import'
 
-function! PortownBuild(...)
-    let clean = a:0 >= 1 ? a:1 : 0
+    let g:neocomplete#sources#vim#complete_functions = {
+                \   'Ref': 'ref#complete',
+                \   'Unite': 'unite#complete_source',
+                \   'VimShellExecute': 'vimshell#vimshell_execute_complete',
+                \   'VimShellInteractive': 'vimshell#vimshell_execute_complete',
+                \   'VimShellTerminal': 'vimshell#vimshell_execute_complete',
+                \   'VimShell': 'vimshell#complete',
+                \   'VimFiler': 'vimfiler#complete',
+                \ }
 
-    let base = 'Unite -buffer-name=build -winheight=8 -direction=botright -no-quit -no-focus build'
+    inoremap <expr><C-F> pumvisible() ? "\<PageDown>" : "\<Right>"
+    inoremap <expr><C-B> pumvisible() ? "\<PageUp>" : "\<Left>"
+    inoremap <expr><C-Y> pumvisible() ? neocomplete#close_popup() : "\<C-R>\""
+    inoremap <expr><C-E> pumvisible() ? neocomplete#cancel_popup() : "\<End>"
+    imap <expr><C-H> neocomplete#smart_close_popup() . "\<Plug>(smartinput_C-H)"
+    inoremap <expr><C-N> pumvisible() ? "\<C-N>" : "\<C-X>\<C-U>\<C-P>\<Down>"
+    inoremap <expr><C-P> pumvisible() ? "\<C-P>" : "\<C-P>\<C-N>"
 
-    let builder = ''
-    if exists('b:portown_build_builder')
-        let builder = b:portown_build_builder
+    inoremap <expr><C-G> neocomplete#undo_completion()
+    inoremap <expr><C-L> neocomplete#complete_common_string()
+
+    imap <expr><CR> neocomplete#smart_close_popup() . "\<Plug>(smartinput_CR)"
+
+    call neobundle#untap()
+endif "}}}
+
+if neobundle#tap('clang_complete') "{{{
+    let g:clang_complete_auto = 0
+    let g:clang_auto_select = 0
+
+    call neobundle#untap()
+endif "}}}
+
+if neobundle#tap('neosnippet') "{{{
+    imap <C-K> <Plug>(neosnippet_expand)
+    smap <C-K> <Plug>(neosnippet_expand)
+    xmap <C-K> <Plug>(neosnippet_expand_target)
+
+    imap <expr><Tab> neosnippet#jumpable() ?
+                \ "\<Plug>(neosnippet_jump)"
+                \: pumvisible() ? "\<C-N>" : "\<Tab>"
+    smap <expr><Tab> neosnippet#jumpable() ?
+                \ "\<Plug>(neosnippet_jump)"
+                \: "\<Tab>"
+
+    if has('conceal')
+        set conceallevel=2
+        set concealcursor=i
     endif
 
-    let args = []
-    if exists('b:portown_build_args')
-        let args = split(b:portown_build_args)
+    if !exists('g:neosnippet#snippets_directory')
+        let g:neosnippet#snippets_directory = ''
     endif
+    let g:neosnippet#snippets_directory = join([
+                \   '~/.vim/snippets',
+                \ ], ',')
 
-    if clean
-        if exists('b:portown_build_clean_args')
-            let args = add(args, split(args.b:portown_build_clean_args))
+    if !exists('g:neosnippet#disable_runtime_snippets')
+        let g:neosnippet#disable_runtime_snippets = {}
+    endif
+    let g:neosnippet#disable_runtime_snippets._ = 1
+
+    call neobundle#untap()
+endif "}}}
+
+if neobundle#tap('vimshell') "{{{
+    function! neobundle#hooks.on_source(bundle)
+        if IsWindows()
+            let g:vimshell_prompt = $USERNAME.'@'.hostname().'$ '
         else
-            let args = add(args, 'clean')
+            let g:vimshell_prompt = $USER.'$ '
         endif
-    endif
-
-    execute join([base, builder, join(args, '\\ ')], ':')
-endfunction
-
-" build の b は buffer と被る……
-nnoremap <SID>[unite-make] <Nop>
-nmap <SID>[unite]m <SID>[unite-make]
-nnoremap <silent> <SID>[unite-make]m :<C-U>call PortownBuild()<CR>
-nnoremap <silent> <SID>[unite-make]c :<C-U>call PortownBuild(1)<CR>
-nnoremap <silent> <SID>[unite-make]q :<C-U>UniteClose build<CR>
-
-nnoremap <SID>[unite-history] <Nop>
-nmap <SID>[unite]i <SID>[unite-history]
-nnoremap <silent> <SID>[unite-history]c :<C-U>Unite -buffer-name=commands -winheight=8 -direction=botright history/command<CR>
-xnoremap <silent> <SID>[unite-history]c :<C-U>Unite -buffer-name=commands -winheight=8 -direction=botright history/command<CR>
-nnoremap <silent> <SID>[unite-history]s :<C-U>Unite -buffer-name=commands -winheight=8 -direction=botright history/search<CR>
-xnoremap <silent> <SID>[unite-history]s :<C-U>Unite -buffer-name=commands -winheight=8 -direction=botright history/search<CR>
-
-" }}}
-" -------------------------------------------------------------
-
-" -------------------------------------------------------------
-" vim-ref の設定 {{{
-
-let s:hooks = neobundle#get_hooks('vim-ref')
-function! s:hooks.on_source(bundle)
-    let g:ref_source_webdict_sites = {
-                \   'wikipedia:ja': {
-                \     'url': 'http://ja.wikipedia.org/wiki/%s',
-                \     'keyword_encoding': 'utf-8',
-                \     'cache': 1,
-                \   },
-                \   'wiktionary': {
-                \     'url': 'http://ja.wiktionary.org/wiki/%s',
-                \     'keyword_encoding': 'utf-8',
-                \     'cache': 1,
-                \   },
-                \ }
-    function! g:ref_source_webdict_sites.wiktionary.filter(output)
-        return join(split(a:output, "\n")[18 :], "\n")
     endfunction
 
-    let g:ref_source_webdict_sites.default = 'wiktionary'
-endfunction
-unlet s:hooks
+    command! PortownVimShellSplit :topleft 10split
 
-autocmd Portown FileType ref-webdict nnoremap <buffer> q <C-W>c
+    nnoremap <SID>[vimshell] <Nop>
+    nmap <Space>s <SID>[vimshell]
+    nnoremap <silent> <SID>[vimshell]s :<C-U>VimShellCurrentDir -buffer-name=shell -toggle -split -split-command=PortownVimShellSplit<CR>
+    nnoremap <silent> <SID>[vimshell]f :<C-U>VimShellCurrentDir -buffer-name=shell<CR>
 
-" }}}
-" -------------------------------------------------------------
+    autocmd Portown FileType vimshell execute 'nunmap <buffer> <C-N>' | nunmap <buffer> <C-P>
+
+    call neobundle#untap()
+endif "}}}
+
+if neobundle#tap('vimfiler') "{{{
+    function! neobundle#hooks.on_source(bundle)
+        let g:vimfiler_force_overwrite_statusline = 0
+    endfunction
+
+    nnoremap <SID>[vimfiler] <Nop>
+    nmap <Space>f <SID>[vimfiler]
+    nnoremap <silent> <SID>[vimfiler]e :<C-U>VimFilerBufferDir -buffer-name=explorer -direction=topleft -toggle -split -simple -winwidth=35 -no-quit<CR>
+    nnoremap <silent> <SID>[vimfiler]f :<C-U>VimFilerBufferDir -buffer-name=explorer<CR>
+    nnoremap <silent> <SID>[vimfiler]d :<C-U>VimFilerBufferDir -double<CR>
+
+    call neobundle#untap()
+endif "}}}
+
+if neobundle#tap('unite.vim') "{{{
+    let s:file_patterns_to_be_ignored =
+                \ '\%(^\|/\)\.$'
+                \ . '\|\~$'
+                \ . '\|\.\%(o\|exe\|dll\|bak\|DS_Store\|zwc\|pyc\|sw[po]\|class\|jar\|png\|gif\|jpe\?g\|fugitiveblame\)$'
+                \ . '\|\%(^\|/\)\%(\.hg\|\.git\|\.bzr\|\.svn\|tags\%(-.*\)\?\)\%($\|/\)'
+
+    function! neobundle#hooks.on_source(bundle)
+        let g:unite_enable_start_insert = 0
+        let g:unite_kind_file_use_trashbox = 0
+
+        let g:unite_force_overwrite_statusline = 0
+
+        let g:unite_source_process_enable_confirm = 0
+
+        call unite#custom#source('file_rec', 'ignore_pattern', s:file_patterns_to_be_ignored)
+        call unite#custom#source('file_rec/async', 'ignore_pattern', s:file_patterns_to_be_ignored)
+        call unite#custom#source('grep', 'ignore_pattern', s:file_patterns_to_be_ignored)
+        call unite#custom#source('neomru/file', 'ignore_pattern', s:file_patterns_to_be_ignored)
+
+        if executable('pt')
+            let g:unite_source_grep_command = 'pt'
+            let g:unite_source_grep_default_opts = '--nocolor --nogroup -e'
+            let g:unite_source_grep_recursive_opt = ''
+        else
+            let g:unite_source_grep_default_opts = '-Hn'
+            let g:unite_source_grep_recursive_opt = '-r'
+        endif
+
+        if !exists('g:unite_source_alias_aliases')
+            let g:unite_source_alias_aliases = {}
+        endif
+        let g:unite_source_alias_aliases.message = {
+                    \   'source': 'output',
+                    \   'args': 'message',
+                    \ }
+        call unite#custom#source('message', 'sorters', 'sorter_reverse')
+    endfunction
+
+    nnoremap <SID>[unite] <Nop>
+    nmap <Space>u <SID>[unite]
+
+    nnoremap <silent> <SID>[unite]b :<C-U>Unite -buffer-name=buffers -start-insert buffer_tab<CR>
+    nnoremap <silent> <SID>[unite]h :<C-U>Unite -buffer-name=help -start-insert -immediately -no-empty help<CR>
+    nnoremap <silent> <SID>[unite]o :<C-U>Unite -buffer-name=outline -start-insert outline<CR>
+    if executable('grep') || executable('pt')
+        nnoremap <silent> <SID>[unite]g :<C-U>Unite -buffer-name=grep -no-quit grep:.<CR>
+    else
+        nnoremap <silent> <SID>[unite]g :<C-U>Unite -buffer-name=grep -no-quit vimgrep:**<CR>
+    endif
+    nnoremap <silent> <SID>[unite]u :<C-U>UniteResume<CR>
+
+    nnoremap <SID>[unite-file] <Nop>
+    nmap <SID>[unite]f <SID>[unite-file]
+    nnoremap <silent> <SID>[unite-file]f :<C-U>Unite -buffer-name=files -start-insert file file/new directory/new<CR>
+    nnoremap <silent> <SID>[unite-file]d :<C-U>UniteWithBufferDir -buffer-name=files -start-insert file file/new directory/new<CR>
+    nnoremap <silent> <SID>[unite-file]r :<C-U>Unite -buffer-name=files -start-insert file_rec/git<CR>
+    nnoremap <silent> <SID>[unite-file]m :<C-U>Unite -buffer-name=files -start-insert neomru/file<CR>
+    nnoremap <silent> <SID>[unite-file]b :<C-U>Unite -buffer-name=files -start-insert -default-action=lcd bookmark<CR>
+    nnoremap <silent> <SID>[unite-file]j :<C-U>Unite -buffer-name=files -start-insert junkfile/new junkfile<CR>
+
+    nnoremap <SID>[unite-gtags] <Nop>
+    nmap <SID>[unite]t <SID>[unite-gtags]
+    nnoremap <silent> <SID>[unite-gtags]r :<C-U>Unite -immediately -no-quit -keep-focus -winheight=10 gtags/ref<CR>
+    nnoremap <silent> <C-]> :<C-U>Unite -immediately -no-quit -keep-focus -winheight=10 gtags/context<CR>
+
+    nnoremap <SID>[unite-neobundle] <Nop>
+    nmap <SID>[unite]n <SID>[unite-neobundle]
+    nnoremap <silent> <SID>[unite-neobundle]u :<C-U>Unite -buffer-name=neobundle -no-cursor-line -log neobundle/update<CR>
+    nnoremap <silent> <SID>[unite-neobundle]i :<C-U>Unite -buffer-name=neobundle -no-cursor-line -log neobundle/install<CR>
+    nnoremap <silent> <SID>[unite-neobundle]c :<C-U>UniteClose neobundle<CR>
+
+    function! PortownBuild(...)
+        let clean = a:0 >= 1 ? a:1 : 0
+
+        let base = 'Unite -buffer-name=build -winheight=8 -direction=botright -no-quit -no-focus build'
+
+        let builder = ''
+        if exists('b:portown_build_builder')
+            let builder = b:portown_build_builder
+        endif
+
+        let args = []
+        if exists('b:portown_build_args')
+            let args = split(b:portown_build_args)
+        endif
+
+        if clean
+            if exists('b:portown_build_clean_args')
+                let args = add(args, split(args.b:portown_build_clean_args))
+            else
+                let args = add(args, 'clean')
+            endif
+        endif
+
+        execute join([base, builder, join(args, '\\ ')], ':')
+    endfunction
+
+    " build の b は buffer と被る……
+    nnoremap <SID>[unite-make] <Nop>
+    nmap <SID>[unite]m <SID>[unite-make]
+    nnoremap <silent> <SID>[unite-make]m :<C-U>call PortownBuild()<CR>
+    nnoremap <silent> <SID>[unite-make]c :<C-U>call PortownBuild(1)<CR>
+    nnoremap <silent> <SID>[unite-make]q :<C-U>UniteClose build<CR>
+
+    nnoremap <SID>[unite-history] <Nop>
+    nmap <SID>[unite]i <SID>[unite-history]
+    nnoremap <silent> <SID>[unite-history]c :<C-U>Unite -buffer-name=commands -winheight=8 -direction=botright history/command<CR>
+    xnoremap <silent> <SID>[unite-history]c :<C-U>Unite -buffer-name=commands -winheight=8 -direction=botright history/command<CR>
+    nnoremap <silent> <SID>[unite-history]s :<C-U>Unite -buffer-name=commands -winheight=8 -direction=botright history/search<CR>
+    xnoremap <silent> <SID>[unite-history]s :<C-U>Unite -buffer-name=commands -winheight=8 -direction=botright history/search<CR>
+
+    call neobundle#untap()
+endif "}}}
+
+if neobundle#tap('vim-ref') "{{{
+    function! neobundle#hooks.on_source(bundle)
+        let g:ref_source_webdict_sites = {
+                    \   'wikipedia:ja': {
+                    \     'url': 'http://ja.wikipedia.org/wiki/%s',
+                    \     'keyword_encoding': 'utf-8',
+                    \     'cache': 1,
+                    \   },
+                    \   'wiktionary': {
+                    \     'url': 'http://ja.wiktionary.org/wiki/%s',
+                    \     'keyword_encoding': 'utf-8',
+                    \     'cache': 1,
+                    \   },
+                    \ }
+        function! g:ref_source_webdict_sites.wiktionary.filter(output)
+            return join(split(a:output, "\n")[18 :], "\n")
+        endfunction
+
+        let g:ref_source_webdict_sites.default = 'wiktionary'
+    endfunction
+
+    autocmd Portown FileType ref-webdict nnoremap <buffer> q <C-W>c
+
+    call neobundle#untap()
+endif "}}}
 
 " -------------------------------------------------------------
 " uncrustify の設定 {{{
@@ -756,161 +723,141 @@ endfunction
 " }}}
 " -------------------------------------------------------------
 
-" -------------------------------------------------------------
-" fugitive.vim の設定 {{{
+if neobundle#tap('vim-fugitive') "{{{
+    nnoremap <SID>[git] <Nop>
+    nmap <Space>g <SID>[git]
+    nnoremap <SID>[git]d :<C-U>Gvdiff<CR>
+    nnoremap <SID>[git]s :<C-U>Gstatus<CR>
+    nnoremap <SID>[git]cc :<C-U>Gcommit -v<CR>
+    nnoremap <SID>[git]ca :<C-U>Gcommit -av<CR>
+    nnoremap <SID>[git]b :<C-U>Gblame<CR>
 
-nnoremap <SID>[git] <Nop>
-nmap <Space>g <SID>[git]
-nnoremap <SID>[git]d :<C-U>Gvdiff<CR>
-nnoremap <SID>[git]s :<C-U>Gstatus<CR>
-nnoremap <SID>[git]cc :<C-U>Gcommit -v<CR>
-nnoremap <SID>[git]ca :<C-U>Gcommit -av<CR>
-nnoremap <SID>[git]b :<C-U>Gblame<CR>
+    call neobundle#untap()
+endif "}}}
 
-" }}}
-" -------------------------------------------------------------
+if neobundle#tap('agit.vim') "{{{
+    let g:agit_enable_auto_show_commit = 0
+    let g:agit_enable_auto_refresh = 0
+    let g:agit_max_log_lines = 60
 
-" -------------------------------------------------------------
-" agit.vim の設定 {{{
+    nnoremap <SID>[agit] <Nop>
+    nmap <SID>[git]v <SID>[agit]
+    nnoremap <silent> <SID>[agit]v :<C-U>Agit<CR>
+    nnoremap <silent> <SID>[agit]f :<C-U>AgitFile<CR>
 
-let g:agit_enable_auto_show_commit = 0
-let g:agit_enable_auto_refresh = 0
-let g:agit_max_log_lines = 60
+    autocmd Portown filetype agit nnoremap <buffer> git :<C-U>AgitGit 
 
-nnoremap <SID>[agit] <Nop>
-nmap <SID>[git]v <SID>[agit]
-nnoremap <silent> <SID>[agit]v :<C-U>Agit<CR>
-nnoremap <silent> <SID>[agit]f :<C-U>AgitFile<CR>
+    call neobundle#untap()
+endif "}}}
 
-autocmd Portown filetype agit nnoremap <buffer> git :<C-U>AgitGit 
+if neobundle#tap('committia.vim') "{{{
+    let g:committia_open_only_vim_starting = 0
 
-" }}}
-" -------------------------------------------------------------
+    call neobundle#untap()
+endif "}}}
 
-" -------------------------------------------------------------
-" committia.vim の設定 {{{
+if neobundle#tap('vim-gitgutter') "{{{
+    let g:gitgutter_realtime = 0
+    let g:gitgutter_eager = 0
 
-let g:committia_open_only_vim_starting = 0
+    call neobundle#untap()
+endif "}}}
 
-" }}}
-" -------------------------------------------------------------
+if neobundle#tap('syntastic') "{{{
+    let g:syntastic_mode_map = { 'mode': 'passive' }
 
-" -------------------------------------------------------------
-" Vim Git Gutter の設定 {{{
+    function! MyVimrcSyntastic()
+        SyntasticCheck
+        call lightline#update()
+    endfunction
 
-let g:gitgutter_realtime = 0
-let g:gitgutter_eager = 0
+    let g:syntastic_enable_signs = 1
+    let g:syntastic_error_symbol = 'x'
+    let g:syntastic_warning_symbol = 'w'
 
-" }}}
-" -------------------------------------------------------------
+    call neobundle#untap()
+endif "}}}
 
-" -------------------------------------------------------------
-" Syntastic {{{
+if neobundle#tap('vim-textobj-multiblock') "{{{
+    let g:textobj#multiblock#default_blocks = []
+    let g:textobj_multiblock_blocks = [
+                \   ['"', '"', 1],
+                \   ["'", "'", 1],
+                \   ['`', '`', 1],
+                \   ['(', ')'],
+                \   ['{', '}'],
+                \   ['[', ']'],
+                \   ['<', '>'],
+                \ ]
 
-let g:syntastic_mode_map = { 'mode': 'passive' }
+    let g:textobj#multiblock#enable_block_in_cursor = 1
 
-function! MyVimrcSyntastic()
-    SyntasticCheck
-    call lightline#update()
-endfunction
+    omap ab <Plug>(textobj-multiblock-a)
+    omap ib <Plug>(textobj-multiblock-i)
+    xmap ab <Plug>(textobj-multiblock-a)
+    xmap ib <Plug>(textobj-multiblock-i)
 
-let g:syntastic_enable_signs = 1
-let g:syntastic_error_symbol = 'x'
-let g:syntastic_warning_symbol = 'w'
+    call neobundle#untap()
+endif "}}}
 
-" }}}
-" -------------------------------------------------------------
+if neobundle#tap('vim-operator-surround') "{{{
+    nmap <silent>ys <Plug>(operator-surround-append)
+    nmap <silent>csb <Plug>(operator-surround-replace)<Plug>(textobj-multiblock-a)
+    nmap <silent>csc <Plug>(operator-surround-replace)<Plug>(textobj-between-a)
+    nmap <silent>dsb <Plug>(operator-surround-delete)<Plug>(textobj-multiblock-a)
+    nmap <silent>dsc <Plug>(operator-surround-delete)<Plug>(textobj-between-a)
 
-" -------------------------------------------------------------
-" vim-textobj-multiblock {{{
+    xmap <silent>s <Plug>(operator-surround-append)
 
-let g:textobj#multiblock#default_blocks = []
-let g:textobj_multiblock_blocks = [
-            \   ['"', '"', 1],
-            \   ["'", "'", 1],
-            \   ['`', '`', 1],
-            \   ['(', ')'],
-            \   ['{', '}'],
-            \   ['[', ']'],
-            \   ['<', '>'],
-            \ ]
+    call neobundle#untap()
+endif "}}}
 
-let g:textobj#multiblock#enable_block_in_cursor = 1
+if neobundle#tap('vim-operator-replace') "{{{
+    nmap <silent>_ <Plug>(operator-replace)
 
-omap ab <Plug>(textobj-multiblock-a)
-omap ib <Plug>(textobj-multiblock-i)
-xmap ab <Plug>(textobj-multiblock-a)
-xmap ib <Plug>(textobj-multiblock-i)
+    call neobundle#untap()
+endif "}}}
 
-" }}}
-" -------------------------------------------------------------
+if neobundle#tap('vim-quickrun') "{{{
+    let g:quickrun_config = {}
 
-" -------------------------------------------------------------
-" vim-operator-surround {{{
+    let g:quickrun_config._ = {
+                \       'runner': 'vimproc',
+                \       'runner/vimproc/updatetime': 60,
+                \       'outputter': 'error',
+                \       'outputter/error/success': 'buffer',
+                \       'outputter/error/error': 'quickfix',
+                \   }
 
-nmap <silent>ys <Plug>(operator-surround-append)
-nmap <silent>csb <Plug>(operator-surround-replace)<Plug>(textobj-multiblock-a)
-nmap <silent>csc <Plug>(operator-surround-replace)<Plug>(textobj-between-a)
-nmap <silent>dsb <Plug>(operator-surround-delete)<Plug>(textobj-multiblock-a)
-nmap <silent>dsc <Plug>(operator-surround-delete)<Plug>(textobj-between-a)
+    let g:quickrun_config.haskell = {
+                \       'command': 'runghc',
+                \   }
+    if IsWindows()
+        let g:quickrun_config.haskell['hook/output_encode/encoding'] = 'cp932'
+    endif
 
-xmap <silent>s <Plug>(operator-surround-append)
+    let g:quickrun_config.ruby = {
+                \       'command': 'ruby',
+                \   }
 
-" }}}
-" -------------------------------------------------------------
+    call neobundle#untap()
+endif "}}}
 
-" -------------------------------------------------------------
-" vim-operator-replace {{{
+if neobundle#tap('qfixhowm') "{{{
+    let howm_dir = '~/howm'
+    let howm_filename = '%Y/%m/%Y-%m-%d-%H%M%S.md'
+    let QFixHowm_RootDir = howm_dir
+    let QFixHowm_FileType = 'markdown'
+    let QFixHowm_Title = '#'
+    let QFixMRU_Title = {}
+    let QFixMRU_Title['md'] = '^#[^#]'
+    let QFixHowm_HolidayFile = $HOME . '.vim/bundle/qfixhowm/misc/holiday/Sche-Hd-0000-00-00-000000.utf8'
 
-nmap <silent>_ <Plug>(operator-replace)
+    let QFixHowm_ScheduleSearchDir = howm_dir . '/schedule'
+    let QFixHowm_ScheduleSearchFile = ''
 
-" }}}
-" -------------------------------------------------------------
-
-" -------------------------------------------------------------
-" QuickRun {{{
-
-let g:quickrun_config = {}
-
-let g:quickrun_config._ = {
-            \       'runner': 'vimproc',
-            \       'runner/vimproc/updatetime': 60,
-            \       'outputter': 'error',
-            \       'outputter/error/success': 'buffer',
-            \       'outputter/error/error': 'quickfix',
-            \   }
-
-let g:quickrun_config.haskell = {
-            \       'command': 'runghc',
-            \   }
-if IsWindows()
-    let g:quickrun_config.haskell['hook/output_encode/encoding'] = 'cp932'
-endif
-
-let g:quickrun_config.ruby = {
-            \       'command': 'ruby',
-            \   }
-
-" }}}
-" -------------------------------------------------------------
-
-" -------------------------------------------------------------
-" QFixHowm {{{
-
-let howm_dir = '~/howm'
-let howm_filename = '%Y/%m/%Y-%m-%d-%H%M%S.md'
-let QFixHowm_RootDir = howm_dir
-let QFixHowm_FileType = 'markdown'
-let QFixHowm_Title = '#'
-let QFixMRU_Title = {}
-let QFixMRU_Title['md'] = '^#[^#]'
-let QFixHowm_HolidayFile = $HOME . '.vim/bundle/qfixhowm/misc/holiday/Sche-Hd-0000-00-00-000000.utf8'
-
-let QFixHowm_ScheduleSearchDir = howm_dir . '/schedule'
-let QFixHowm_ScheduleSearchFile = ''
-
-" }}}
-" -------------------------------------------------------------
+    call neobundle#untap()
+endif "}}}
 
 " 起動時のメッセージを表示しない
 set shortmess& shortmess+=I
