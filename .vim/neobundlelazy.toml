@@ -193,3 +193,7 @@ on_cmd = ['Logcat', 'Logcat!', 'LogcatClear']
 on_ft = 'logcat'
 on_path = '\.logcat$'
 external_commands = 'adb'
+
+[[plugins]]
+repository = 'Yggdroot/indentLine'
+on_ft = 'all'
