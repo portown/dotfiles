@@ -282,12 +282,6 @@ if neobundle#tap('vimfiler') "{{{
 endif "}}}
 
 if neobundle#tap('unite.vim') "{{{
-    let s:file_patterns_to_be_ignored =
-                \ '\%(^\|/\)\.$'
-                \ . '\|\~$'
-                \ . '\|\.\%(o\|exe\|dll\|bak\|DS_Store\|zwc\|pyc\|sw[po]\|class\|jar\|png\|gif\|jpe\?g\|fugitiveblame\)$'
-                \ . '\|\%(^\|/\)\%(\.hg\|\.git\|\.bzr\|\.svn\|tags\%(-.*\)\?\)\%($\|/\)'
-
     function! neobundle#hooks.on_source(bundle)
         let g:unite_enable_start_insert = 0
         let g:unite_kind_file_use_trashbox = 0
@@ -296,10 +290,12 @@ if neobundle#tap('unite.vim') "{{{
 
         let g:unite_source_process_enable_confirm = 0
 
-        call unite#custom#source('file_rec', 'ignore_pattern', s:file_patterns_to_be_ignored)
-        call unite#custom#source('file_rec/async', 'ignore_pattern', s:file_patterns_to_be_ignored)
-        call unite#custom#source('grep', 'ignore_pattern', s:file_patterns_to_be_ignored)
-        call unite#custom#source('neomru/file', 'ignore_pattern', s:file_patterns_to_be_ignored)
+        call unite#custom#source('file_rec,file_rec/async,grep,neomru/file', 'ignore_pattern',
+                    \   '\%(^\|/\)\.$'
+                    \   . '\|\~$'
+                    \   . '\|\.\%(o\|exe\|dll\|bak\|DS_Store\|zwc\|pyc\|sw[po]\|class\|jar\|png\|gif\|jpe\?g\|fugitiveblame\)$'
+                    \   . '\|\%(^\|/\)\%(\.hg\|\.git\|\.bzr\|\.svn\|tags\%(-.*\)\?\)\%($\|/\)')
+        call unite#custom#source('file/async,file_rec,file_rec/async,file_rec/git', 'syntax', 'uniteSource__File')
 
         if executable('pt')
             let g:unite_source_grep_command = 'pt'
@@ -324,6 +320,7 @@ if neobundle#tap('unite.vim') "{{{
     nmap <Space>u <SID>[unite]
 
     nnoremap <silent> <SID>[unite]b :<C-U>Unite -buffer-name=buffers -start-insert buffer_tab<CR>
+    nnoremap <silent> <SID>[unite]B :<C-U>Unite -buffer-name=buffers -start-insert buffer<CR>
     nnoremap <silent> <SID>[unite]h :<C-U>Unite -buffer-name=help -start-insert -immediately -no-empty help<CR>
     nnoremap <silent> <SID>[unite]o :<C-U>Unite -buffer-name=outline -start-insert outline<CR>
     if executable('grep') || executable('pt')
@@ -332,6 +329,7 @@ if neobundle#tap('unite.vim') "{{{
         nnoremap <silent> <SID>[unite]g :<C-U>Unite -buffer-name=grep -no-quit vimgrep:**<CR>
     endif
     nnoremap <silent> <SID>[unite]u :<C-U>UniteResume<CR>
+    nnoremap <SID>[unite]<Space> :<C-U>Unite 
 
     nnoremap <SID>[unite-file] <Nop>
     nmap <SID>[unite]f <SID>[unite-file]
