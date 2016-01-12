@@ -1,0 +1,31 @@
+#!/bin/sh
+
+fmt='
+    refname="%(refname:short)"
+    upstream="%(upstream:short)"
+    head="%(HEAD)"
+
+    merged=0
+    if test "x$upstream" != "x"
+    then
+        git show-ref --verify --quiet %(upstream)
+        if test $? -ne 0
+        then
+            merged=1
+        fi
+    fi
+
+    h=0
+    if test "x$head" = "x*"
+    then
+        h=1
+    fi
+
+    if test \( $merged -eq 1 \) -a \( $h -eq 0 \)
+    then
+        git branch -D $refname
+    fi
+'
+
+eval=`git for-each-ref --format="$fmt" refs/heads`
+eval "$eval"
