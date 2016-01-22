@@ -5,8 +5,11 @@ repository = 'Shougo/neomru.vim'
 on_ft = 'all'
 
 [[plugins]]
+repository = 'osyo-manga/unite-filters-collection'
+
+[[plugins]]
 repository = 'Shougo/unite.vim'
-depends = 'Shougo/neomru.vim'
+depends = ['Shougo/neomru.vim', 'osyo-manga/unite-filters-collection']
 
   [plugins.on_cmd]
   name = 'Unite'

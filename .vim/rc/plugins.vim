@@ -296,6 +296,7 @@ if neobundle#tap('unite.vim') "{{{
                     \   . '\|\.\%(o\|exe\|dll\|bak\|DS_Store\|zwc\|pyc\|sw[po]\|class\|jar\|png\|gif\|jpe\?g\|fugitiveblame\)$'
                     \   . '\|\%(^\|/\)\%(\.hg\|\.git\|\.bzr\|\.svn\|tags\%(-.*\)\?\)\%($\|/\)')
         call unite#custom#source('file/async,file_rec,file_rec/async,file_rec/git', 'syntax', 'uniteSource__File')
+        call unite#custom#source('file_rec,file_rec/async,file_rec/git', 'matchers', 'matcher_file_name')
 
         if executable('pt')
             let g:unite_source_grep_command = 'pt'
