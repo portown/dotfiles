@@ -469,6 +469,42 @@ if neobundle#tap('syntastic') "{{{
     call neobundle#untap()
 endif "}}}
 
+if neobundle#tap('vim-textobj-entire') "{{{
+    " for lazy loading
+    let g:textobj_entire_no_default_key_mappings = 1
+
+    omap ae <Plug>(textobj-entire-a)
+    omap ie <Plug>(textobj-entire-i)
+    xmap ae <Plug>(textobj-entire-a)
+    xmap ie <Plug>(textobj-entire-i)
+
+    call neobundle#untap()
+endif "}}}
+
+if neobundle#tap('vim-textobj-line') "{{{
+    " for lazy loading
+    let g:textobj_line_no_default_key_mappings = 1
+
+    omap al <Plug>(textobj-line-a)
+    omap il <Plug>(textobj-line-i)
+    xmap al <Plug>(textobj-line-a)
+    xmap il <Plug>(textobj-line-i)
+
+    call neobundle#untap()
+endif "}}}
+
+if neobundle#tap('vim-textobj-between') "{{{
+    " for lazy loading
+    let g:textobj_between_no_default_key_mappings = 1
+
+    omap af <Plug>(textobj-between-a)
+    omap if <Plug>(textobj-between-i)
+    xmap af <Plug>(textobj-between-a)
+    xmap if <Plug>(textobj-between-i)
+
+    call neobundle#untap()
+endif "}}}
+
 if neobundle#tap('vim-textobj-multiblock') "{{{
     let g:textobj#multiblock#default_blocks = []
     let g:textobj_multiblock_blocks = [
@@ -487,6 +523,18 @@ if neobundle#tap('vim-textobj-multiblock') "{{{
     omap ib <Plug>(textobj-multiblock-i)
     xmap ab <Plug>(textobj-multiblock-a)
     xmap ib <Plug>(textobj-multiblock-i)
+
+    call neobundle#untap()
+endif "}}}
+
+if neobundle#tap('vim-textobj-ruby') "{{{
+    " for lazy loading
+    let g:textobj_ruby_no_default_key_mappings = 1
+
+    omap ar <Plug>(textobj-ruby-a)
+    omap ir <Plug>(textobj-ruby-i)
+    xmap ar <Plug>(textobj-ruby-a)
+    xmap ir <Plug>(textobj-ruby-i)
 
     call neobundle#untap()
 endif "}}}
