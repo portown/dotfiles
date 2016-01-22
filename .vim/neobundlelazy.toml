@@ -179,16 +179,6 @@ depends = 'kana/vim-textobj-user'
 on_map = '<Plug>'
 
 [[plugins]]
-repository = 'h1mesuke/textobj-wiw'
-depends = 'kana/vim-textobj-user'
-on_map = '<Plug>'
-
-[[plugins]]
-repository = 'anyakichi/vim-textobj-xbrackets'
-depends = 'kana/vim-textobj-user'
-on_map = '<Plug>'
-
-[[plugins]]
 repository = 'osyo-manga/vim-textobj-multiblock'
 depends = 'kana/vim-textobj-user'
 on_map = '<Plug>'
