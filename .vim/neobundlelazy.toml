@@ -150,6 +150,12 @@ depends = 'Shougo/context_filetype.vim'
 on_i = 1
 
 [[plugins]]
+repository = 'Shougo/deoplete.nvim'
+depends = 'Shougo/context_filetype.vim'
+on_i = 1
+external_commands = ['nvim']
+
+[[plugins]]
 repository = 'Shougo/neosnippet'
 depends = 'Shougo/context_filetype.vim'
 on_i = 1
