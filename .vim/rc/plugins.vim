@@ -590,7 +590,7 @@ if neobundle#tap('qfixhowm') "{{{
     let QFixHowm_Title = '#'
     let QFixMRU_Title = {}
     let QFixMRU_Title['md'] = '^#[^#]'
-    let QFixHowm_HolidayFile = $HOME . '.vim/bundle/qfixhowm/misc/holiday/Sche-Hd-0000-00-00-000000.utf8'
+    let QFixHowm_HolidayFile = $HOME . '/.vim/bundle/qfixhowm/misc/holiday/Sche-Hd-0000-00-00-000000.utf8'
 
     let QFixHowm_ScheduleSearchDir = howm_dir . '/schedule'
     let QFixHowm_ScheduleSearchFile = ''
