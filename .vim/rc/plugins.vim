@@ -557,10 +557,13 @@ if neobundle#tap('vim-textobj-ruby') "{{{
     " for lazy loading
     let g:textobj_ruby_no_default_key_mappings = 1
 
-    omap ar <Plug>(textobj-ruby-a)
-    omap ir <Plug>(textobj-ruby-i)
-    xmap ar <Plug>(textobj-ruby-a)
-    xmap ir <Plug>(textobj-ruby-i)
+    function! s:vim_textobj_ruby_settings()
+        omap <buffer> ar <Plug>(textobj-ruby-a)
+        omap <buffer> ir <Plug>(textobj-ruby-i)
+        xmap <buffer> ar <Plug>(textobj-ruby-a)
+        xmap <buffer> ir <Plug>(textobj-ruby-i)
+    endfunction
+    autocmd Portown FileType ruby call s:vim_textobj_ruby_settings()
 
     call neobundle#untap()
 endif "}}}
