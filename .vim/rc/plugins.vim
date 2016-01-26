@@ -232,13 +232,6 @@ if has('nvim') && neobundle#tap('deoplete.nvim') "{{{
     call neobundle#untap()
 endif "}}}
 
-if neobundle#tap('clang_complete') "{{{
-    let g:clang_complete_auto = 0
-    let g:clang_auto_select = 0
-
-    call neobundle#untap()
-endif "}}}
-
 if neobundle#tap('neosnippet') "{{{
     imap <C-K> <Plug>(neosnippet_expand)
     smap <C-K> <Plug>(neosnippet_expand)

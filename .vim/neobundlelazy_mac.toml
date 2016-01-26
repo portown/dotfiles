@@ -7,13 +7,3 @@ on_ft = ['objc', 'objcpp']
 [[plugins]]
 repository = 'keith/swift.vim'
 on_ft = 'swift'
-
-# Completions
-
-[[plugins]]
-repository = 'Rip-Rip/clang_complete'
-depends = 'tokorom/clang_complete-getopts-ios'
-on_ft = ['objc', 'objcpp']
-
-[[plugins]]
-repository = 'tokorom/clang_complete-getopts-ios'
