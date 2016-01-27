@@ -142,6 +142,10 @@ on_ft = 'toml'
 repository = 'elzr/vim-json'
 on_ft = 'json'
 
+[[plugins]]
+repository = 'leafgarland/typescript-vim'
+on_ft = 'typescript'
+
 # Completions
 
 [[plugins]]
