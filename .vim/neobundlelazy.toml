@@ -138,6 +138,10 @@ on_path = '\.ps1$'
 repository = 'cespare/vim-toml'
 on_ft = 'toml'
 
+[[plugins]]
+repository = 'elzr/vim-json'
+on_ft = 'json'
+
 # Completions
 
 [[plugins]]

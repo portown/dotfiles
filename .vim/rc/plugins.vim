@@ -621,3 +621,11 @@ if neobundle#tap('qfixhowm') "{{{
 
     call neobundle#untap()
 endif "}}}
+
+if neobundle#tap('vim-json') "{{{
+    function! neobundle#hooks.on_source(bundle)
+        let g:vim_json_syntax_conceal = 0
+    endfunction
+
+    call neobundle#untap()
+endif"}}}
