@@ -197,8 +197,7 @@ if neobundle#is_installed('landscape.vim')
     endfunction
 
     if IsWindows() && has('gui_running')
-        execute 'autocmd Portown GUIEnter * call MyVimrcConfigColorscheme()'
-        execute 'autocmd Portown GUIEnter * call lightline#colorscheme()'
+        autocmd Portown GUIEnter * call MyVimrcConfigColorscheme() | call lightline#colorscheme()
     else
         call MyVimrcConfigColorscheme()
     endif
