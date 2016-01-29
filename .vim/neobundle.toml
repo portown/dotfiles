@@ -22,9 +22,6 @@ repository = 'airblade/vim-gitgutter'
 repository = 'thinca/vim-localrc'
 
 [[plugins]]
-repository = 'thinca/vim-quickrun'
-
-[[plugins]]
 repository = 'tpope/vim-repeat'
 
 [[plugins]]
