@@ -25,9 +25,6 @@ repository = 'thinca/vim-localrc'
 repository = 'thinca/vim-quickrun'
 
 [[plugins]]
-repository = 'scrooloose/syntastic'
-
-[[plugins]]
 repository = 'tpope/vim-repeat'
 
 [[plugins]]

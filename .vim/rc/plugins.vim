@@ -5,7 +5,7 @@ if neobundle#tap('lightline.vim') "{{{
                 \   'colorscheme': 'wombat',
                 \   'active': {
                 \     'left': [['mode'], ['fugitive', 'filename']],
-                \     'right': [['syntastic', 'lineinfo'], ['fileformat', 'fileencoding', 'filetype']],
+                \     'right': [['lineinfo'], ['fileformat', 'fileencoding', 'filetype']],
                 \   },
                 \   'inactive': {
                 \     'left': [['filename']],
@@ -26,12 +26,6 @@ if neobundle#tap('lightline.vim') "{{{
                 \     'fileencoding': 'MyFileencoding',
                 \     'mode': 'MyMode',
                 \     'cwd': 'MyCwd',
-                \   },
-                \   'component_expand': {
-                \     'syntastic': 'SyntasticStatuslineFlag',
-                \   },
-                \   'component_type': {
-                \     'syntastic': 'error',
                 \   },
                 \   'separator': { 'left': "\u2b80", 'right': "\u2b82" },
                 \   'subseparator': { 'left': "\u2b81", 'right': "\u2b83" },
@@ -471,21 +465,6 @@ endif "}}}
 if neobundle#tap('vim-gitgutter') "{{{
     let g:gitgutter_realtime = 0
     let g:gitgutter_eager = 0
-
-    call neobundle#untap()
-endif "}}}
-
-if neobundle#tap('syntastic') "{{{
-    let g:syntastic_mode_map = { 'mode': 'passive' }
-
-    function! MyVimrcSyntastic()
-        SyntasticCheck
-        call lightline#update()
-    endfunction
-
-    let g:syntastic_enable_signs = 1
-    let g:syntastic_error_symbol = 'x'
-    let g:syntastic_warning_symbol = 'w'
 
     call neobundle#untap()
 endif "}}}
