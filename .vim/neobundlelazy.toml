@@ -18,22 +18,22 @@ depends = ['Shougo/neomru.vim', 'osyo-manga/unite-filters-collection']
 [[plugins]]
 repository = 'thinca/vim-unite-history'
 depends = 'Shougo/unite.vim'
-on_unite = ['history/command', 'history/search']
+on_source = 'unite.vim'
 
 [[plugins]]
 repository = 'Shougo/unite-help'
 depends = 'Shougo/unite.vim'
-on_unite = 'help'
+on_source = 'unite.vim'
 
 [[plugins]]
 repository = 'Shougo/unite-ssh'
 depends = 'Shougo/unite.vim'
-on_unite = 'ssh'
+on_source = 'unite.vim'
 
 [[plugins]]
 repository = 'Shougo/unite-outline'
 depends = 'Shougo/unite.vim'
-on_unite = 'outline'
+on_source = 'unite.vim'
 
 [[plugins]]
 repository = 'ryotakato/unite-outline-objc'
@@ -43,22 +43,22 @@ on_ft = 'objc'
 [[plugins]]
 repository = 'hewes/unite-gtags'
 depends = 'Shougo/unite.vim'
-on_unite = ['gtags/ref', 'gtags/context']
+on_source = 'unite.vim'
 
 [[plugins]]
 repository = 'Shougo/unite-build'
 depends = 'Shougo/unite.vim'
-on_unite = 'build'
+on_source = 'unite.vim'
 
 [[plugins]]
 repository = 'thinca/vim-ref'
 depends = 'Shougo/unite.vim'
-on_unite = 'ref'
+on_source = 'unite.vim'
 
 [[plugins]]
 repository = 'Shougo/junkfile.vim'
 depends = 'Shougo/unite.vim'
-on_unite = 'junkfile'
+on_source = 'unite.vim'
 
 # Language
 
@@ -168,7 +168,7 @@ repository = 'Shougo/neosnippet'
 depends = 'Shougo/context_filetype.vim'
 on_i = 1
 on_ft = 'snippet'
-on_unite = ['neosnippet', 'neosnippet/user', 'neosnippet/runtime']
+on_source = 'unite.vim'
 
 [[plugins]]
 repository = 'eagletmt/neco-ghc'
@@ -276,7 +276,7 @@ on_i = 1
 [[plugins]]
 repository = 'rhysd/conflict-marker.vim'
 on_ft = 'all'
-on_unite = 'conflict'
+on_source = 'unite.vim'
 
 [[plugins]]
 repository = 'thinca/vim-quickrun'
