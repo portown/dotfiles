@@ -194,11 +194,13 @@ on_map = [['ox', '<Plug>']]
 repository = 'thinca/vim-textobj-between'
 depends = 'kana/vim-textobj-user'
 on_map = [['ox', '<Plug>']]
+on_source = 'vim-operator-surround'
 
 [[plugins]]
 repository = 'osyo-manga/vim-textobj-multiblock'
 depends = 'kana/vim-textobj-user'
 on_map = [['ox', '<Plug>']]
+on_source = 'vim-operator-surround'
 
 [[plugins]]
 repository = 'rhysd/vim-textobj-ruby'
