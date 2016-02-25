@@ -283,3 +283,7 @@ on_source = 'unite.vim'
 [[plugins]]
 repository = 'thinca/vim-quickrun'
 on_cmd = ['QuickRun']
+
+[[plugins]]
+repository = 'thinca/vim-template'
+on_ft = 'all'
