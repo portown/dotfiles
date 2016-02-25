@@ -104,7 +104,7 @@ on_ft = ['groovy']
 
 [[plugins]]
 repository = 'udalov/kotlin-vim'
-on_path = '\%(\.kt\|\.kts\)$'
+on_ft = ['kotlin']
 
 [[plugins]]
 repository = 'dag/vim2hs'

@@ -11,4 +11,6 @@ augroup filetypedetect
     autocmd BufRead,BufNewFile SConstruct setf scons
     autocmd BufRead,BufNewFile *.ebnf setf ebnf
     autocmd BufRead,BufNewFile *.ts setf typescript
+    autocmd BufRead,BufNewFile *.kt setf kotlin
+    autocmd BufRead,BufNewFile *.kts setf kotlin
 augroup END
