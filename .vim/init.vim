@@ -162,6 +162,7 @@ function! s:init_cmdwin()
     nnoremap <silent> <buffer> q :<C-U>quit<CR>
     inoremap <silent> <buffer><expr> <CR> neocomplete#cancel_popup()."\<CR>"
     inoremap <silent> <buffer><expr> <C-H> col('.') == 1 ? "\<ESC>:q\<CR>" : neocomplete#cancel_popup()."\<C-H>"
+    inoremap <silent> <buffer><expr> <BS> col('.') == 1 ? "\<ESC>:q\<CR>" : neocomplete#cancel_popup()."\<C-H>"
 
     inoremap <silent> <buffer><expr> <TAB> pumvisible() ? "\<C-N>" : "\<TAB>"
 
