@@ -46,39 +46,37 @@ endif
 " -------------------------------------------------------------
 
 " -------------------------------------------------------------
-" neobundle.vim の設定 {{{
+" dein.vim の設定 {{{
 
 if has('vim_starting')
-    set runtimepath+=~/.vim/bundle/neobundle.vim/
+    set runtimepath+=~/.vim/bundle/repos/github.com/Shougo/dein.vim/
 endif
 
-call neobundle#begin(expand('~/.vim/bundle'))
+call dein#begin(expand('~/.vim/bundle'))
 
-if neobundle#load_cache()
-    NeoBundleFetch 'Shougo/neobundle.vim'
-    NeoBundle 'Shougo/vimproc', {
-                \       'build': {
-                \           'windows' : 'echo "Sorry, cannot update vimproc binary file in Windows."',
-                \           'cygwin' : 'make -f make_cygwin.mak',
-                \           'mac' : 'make -f make_mac.mak',
-                \           'unix' : 'make -f make_unix.mak',
-                \       },
-                \   }
+let s:toml_path = '~/.vim/dein.toml'
+if dein#load_cache([expand('<sfile>'), s:toml_path])
+    call dein#add('Shougo/dein.vim', {'rtp': ''})
+    call dein#add('Shougo/vimproc', {'build': 'make'})
 
-    call neobundle#load_toml('~/.vim/neobundle.toml')
-    call neobundle#load_toml('~/.vim/neobundlelazy.toml', {'lazy': 1})
+    call dein#load_toml(s:toml_path, {'lazy': 0})
+    "call dein#load_toml('~/.vim/deinlazy.toml', {'lazy': 1})
     if IsMac()
-        call neobundle#load_toml('~/.vim/neobundlelazy_mac.toml', {'lazy': 1})
+        call dein#load_toml('~/.vim/deinlazy_mac.toml', {'lazy': 1})
     endif
 
-    call neobundle#local('~/.vim', {}, ['local'])
+    call dein#local('~/.vim', {'frozen': 1}, ['local'])
 
-    NeoBundleSaveCache
+    call dein#save_cache()
 endif
 
 call s:source_rc('plugins.vim')
 
-call neobundle#end()
+call dein#end()
+
+if dein#check_install()
+    call dein#install()
+endif
 
 filetype plugin indent on
 syntax enable
@@ -189,7 +187,7 @@ set tags& tags+=~/tags
 " -------------------------------------------------------------
 " カラースキームの設定 {{{
 
-if neobundle#is_installed('landscape.vim')
+if dein#tap('landscape.vim')
     function! MyVimrcConfigColorscheme()
         colorscheme landscape
 

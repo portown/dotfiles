@@ -1,0 +1,317 @@
+# Others
+
+[[plugins]]
+repo = 'vim-scripts/sudo.vim.git'
+
+[[plugins]]
+repo = 'ujihisa/shadow.vim'
+
+[[plugins]]
+repo = 'itchyny/landscape.vim'
+
+[[plugins]]
+repo = 'itchyny/lightline.vim'
+
+[[plugins]]
+repo = 'tpope/vim-fugitive'
+
+[[plugins]]
+repo = 'airblade/vim-gitgutter'
+
+[[plugins]]
+repo = 'thinca/vim-localrc'
+
+[[plugins]]
+repo = 'tpope/vim-repeat'
+
+[[plugins]]
+repo = 'fuenor/qfixgrep'
+
+[[plugins]]
+repo = 'fuenor/qfixhowm'
+
+# Unite
+
+[[plugins]]
+repo = 'Shougo/neomru.vim'
+#on_ft = 'all'
+
+[[plugins]]
+repo = 'osyo-manga/unite-filters-collection'
+
+[[plugins]]
+repo = 'Shougo/unite.vim'
+#depends = ['Shougo/neomru.vim', 'osyo-manga/unite-filters-collection']
+
+[[plugins]]
+repo = 'thinca/vim-unite-history'
+#depends = 'Shougo/unite.vim'
+#on_source = 'unite.vim'
+
+[[plugins]]
+repo = 'Shougo/unite-help'
+#depends = 'Shougo/unite.vim'
+#on_source = 'unite.vim'
+
+[[plugins]]
+repo = 'Shougo/unite-ssh'
+#depends = 'Shougo/unite.vim'
+#on_source = 'unite.vim'
+
+[[plugins]]
+repo = 'Shougo/unite-outline'
+#depends = 'Shougo/unite.vim'
+#on_source = 'unite.vim'
+
+[[plugins]]
+repo = 'ryotakato/unite-outline-objc'
+#depends = ['Shougo/unite.vim', 'Shougo/unite-outline']
+#on_ft = 'objc'
+
+[[plugins]]
+repo = 'hewes/unite-gtags'
+#depends = 'Shougo/unite.vim'
+#on_source = 'unite.vim'
+
+[[plugins]]
+repo = 'Shougo/unite-build'
+#depends = 'Shougo/unite.vim'
+#on_source = 'unite.vim'
+
+[[plugins]]
+repo = 'thinca/vim-ref'
+#depends = 'Shougo/unite.vim'
+#on_source = 'unite.vim'
+
+[[plugins]]
+repo = 'Shougo/junkfile.vim'
+#depends = 'Shougo/unite.vim'
+#on_source = 'unite.vim'
+
+# Language
+
+[[plugins]]
+repo = 'vim-jp/cpp-vim'
+#on_ft = ['cpp', 'objcpp']
+
+[[plugins]]
+repo = 'tpope/vim-haml'
+#on_path = '\.haml$'
+
+[[plugins]]
+repo = 'kchmck/vim-coffee-script'
+#on_path = '\.coffee$'
+
+[[plugins]]
+repo = 'plasticboy/vim-markdown'
+#on_path = '\.md$'
+
+[[plugins]]
+repo = 'aklt/plantuml-syntax'
+#on_path = '\.p\%(lant\)\?uml$'
+
+[[plugins]]
+repo = 'vim-scripts/scons.vim'
+#on_path = 'SConstruct$'
+
+[[plugins]]
+repo = 'ebnf.vim'
+#on_path = '\.ebnf$'
+
+[[plugins]]
+repo = 'timcharper/textile.vim'
+#on_path = '\.textile$'
+
+[[plugins]]
+repo = 'jam.vim'
+#on_path = '\%(\.jam\|Jamfile\|Jamroot\)$'
+
+[[plugins]]
+repo = 'groovyindent'
+#on_ft = ['groovy']
+
+[[plugins]]
+repo = 'udalov/kotlin-vim'
+#on_ft = ['kotlin']
+
+[[plugins]]
+repo = 'dag/vim2hs'
+#on_ft = ['haskell']
+
+[[plugins]]
+repo = 'eagletmt/ghcmod-vim'
+#on_ft = ['haskell']
+
+[[plugins]]
+repo = 'honza/dockerfile.vim'
+#on_path = 'Dockerfile$'
+
+#[[plugins]]
+#repo = 'https://fedorapeople.org/cgit/wwoods/public_git/vim-scripts.git'
+#on_path = '\%(\.service\)$'
+
+[[plugins]]
+repo = 'jvoorhis/coq.vim'
+#on_path = '\.v$'
+
+#[[plugins]]
+#repo = 'vim-scripts/CoqIDE'
+#on_ft = ['coq']
+
+[[plugins]]
+repo = 'PProvost/vim-ps1'
+#on_path = '\.ps1$'
+
+[[plugins]]
+repo = 'cespare/vim-toml'
+#on_ft = 'toml'
+
+[[plugins]]
+repo = 'elzr/vim-json'
+#on_ft = 'json'
+
+[[plugins]]
+repo = 'leafgarland/typescript-vim'
+#on_ft = 'typescript'
+
+# Completions
+
+[[plugins]]
+repo = 'Shougo/neoinclude.vim'
+#on_ft = 'all'
+
+[[plugins]]
+repo = 'Shougo/neocomplete'
+#depends = 'Shougo/context_filetype.vim'
+#on_i = 1
+
+[[plugins]]
+repo = 'Shougo/deoplete.nvim'
+#depends = 'Shougo/context_filetype.vim'
+#on_i = 1
+#external_commands = ['nvim']
+
+[[plugins]]
+repo = 'Shougo/neosnippet'
+#depends = 'Shougo/context_filetype.vim'
+#on_i = 1
+#on_ft = 'snippet'
+#on_source = 'unite.vim'
+
+[[plugins]]
+repo = 'eagletmt/neco-ghc'
+#on_ft = 'haskell'
+#external_commands = ['ghc-mod']
+
+# Textobjs
+
+[[plugins]]
+repo = 'kana/vim-textobj-user'
+
+[[plugins]]
+repo = 'kana/vim-textobj-entire'
+#depends = 'kana/vim-textobj-user'
+#on_map = [['ox', '<Plug>']]
+
+[[plugins]]
+repo = 'kana/vim-textobj-line'
+#depends = 'kana/vim-textobj-user'
+#on_map = [['ox', '<Plug>']]
+
+[[plugins]]
+repo = 'thinca/vim-textobj-between'
+#depends = 'kana/vim-textobj-user'
+#on_map = [['ox', '<Plug>']]
+#on_source = 'vim-operator-surround'
+
+[[plugins]]
+repo = 'osyo-manga/vim-textobj-multiblock'
+#depends = 'kana/vim-textobj-user'
+#on_map = [['ox', '<Plug>']]
+#on_source = 'vim-operator-surround'
+
+[[plugins]]
+repo = 'rhysd/vim-textobj-ruby'
+#depends = 'kana/vim-textobj-user'
+#on_map = [['ox', '<Plug>']]
+
+# Operators
+
+[[plugins]]
+repo = 'kana/vim-operator-user'
+
+[[plugins]]
+repo = 'kana/vim-operator-replace'
+#depends = 'kana/vim-operator-user'
+#on_map = '<Plug>'
+
+[[plugins]]
+repo = 'rhysd/vim-operator-surround'
+#depends = 'kana/vim-operator-user'
+#on_map = '<Plug>'
+
+[[plugins]]
+repo = 'osyo-manga/vim-operator-jump_side'
+#depends = 'kana/vim-operator-user'
+#on_map = '<Plug>'
+
+# Others
+
+[[plugins]]
+repo = 'Shougo/context_filetype.vim'
+#on_i = 1
+
+[[plugins]]
+repo = 'vim-jp/vital.vim'
+#on_cmd = 'Vitalize'
+
+[[plugins]]
+repo = 'Shougo/tabpagebuffer.vim'
+#on_ft = 'all'
+
+[[plugins]]
+repo = 'Shougo/vimshell'
+#on_cmd = ['VimShellCurrentDir']
+#depends = ['Shougo/vimproc']
+
+[[plugins]]
+repo = 'ujihisa/vimshell-ssh'
+#on_cmd = ['VimShellCurrentDir']
+#depends = ['Shougo/vimshell']
+
+[[plugins]]
+repo = 'Shougo/vimfiler'
+#on_cmd = ['VimFilerBufferDir']
+#depends = ['Shougo/unite.vim']
+
+[[plugins]]
+repo = 'thinca/vim-logcat'
+#on_cmd = ['Logcat', 'Logcat!', 'LogcatClear']
+#on_ft = 'logcat'
+#on_path = '\.logcat$'
+#external_commands = 'adb'
+
+[[plugins]]
+repo = 'Yggdroot/indentLine'
+#on_ft = 'all'
+
+[[plugins]]
+repo = 'cohama/agit.vim'
+#on_cmd = ['Agit', 'AgitFile', 'AgitGit', 'AgitDiff']
+
+[[plugins]]
+repo = 'kana/vim-smartinput'
+#on_i = 1
+
+[[plugins]]
+repo = 'rhysd/conflict-marker.vim'
+#on_ft = 'all'
+#on_source = 'unite.vim'
+
+[[plugins]]
+repo = 'thinca/vim-quickrun'
+#on_cmd = ['QuickRun']
+
+[[plugins]]
+repo = 'thinca/vim-template'
+#on_ft = 'all'

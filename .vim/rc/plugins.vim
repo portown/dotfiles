@@ -1,6 +1,6 @@
 " plugins.vim
 
-if neobundle#tap('lightline.vim') "{{{
+if dein#tap('lightline.vim') "{{{
     let g:lightline = {
                 \   'colorscheme': 'wombat',
                 \   'active': {
@@ -88,12 +88,10 @@ if neobundle#tap('lightline.vim') "{{{
     function! MyCwd()
         return fnamemodify(getcwd(), ':~')
     endfunction
-
-    call neobundle#untap()
 endif "}}}
 
-if neobundle#tap('vim-smartinput') "{{{
-    function! neobundle#hooks.on_source(bundle)
+if dein#tap('vim-smartinput') "{{{
+    function! s:vim_smartinput_on_source() abort
         call smartinput#map_to_trigger('i', '<Plug>(smartinput_CR)', '<CR>', '<CR>')
         call smartinput#map_to_trigger('i', '<Plug>(smartinput_C-H)', '<BS>', '<C-H>')
 
@@ -117,17 +115,14 @@ if neobundle#tap('vim-smartinput') "{{{
                     \   'filetype': ['m4'],
                     \ })
     endfunction
-
-    call neobundle#untap()
+    execute 'autocmd Portown User' 'dein#source#' . g:dein#name 'call s:vim_smartinput_on_source()'
 endif "}}}
 
-if neobundle#tap('vim2hs') "{{{
+if dein#tap('vim2hs') "{{{
     let g:haskell_conceal = 0
-
-    call neobundle#untap()
 endif "}}}
 
-if has('lua') && neobundle#tap('neocomplete') "{{{
+if has('lua') && dein#tap('neocomplete') "{{{
     let g:neocomplete#enable_at_startup = 1
     let g:neocomplete#enable_smart_case = 1
     let g:neocomplete#enable_fuzzy_completion = 1
@@ -197,12 +192,10 @@ if has('lua') && neobundle#tap('neocomplete') "{{{
     inoremap <expr><C-L> neocomplete#complete_common_string()
 
     imap <expr><CR> neocomplete#smart_close_popup() . "\<Plug>(smartinput_CR)"
-
-    call neobundle#untap()
 endif "}}}
 
-if has('nvim') && neobundle#tap('deoplete.nvim') "{{{
-    function! neobundle#hooks.on_source(bundle)
+if has('nvim') && dein#tap('deoplete.nvim') "{{{
+    function! s:deoplete_nvim_on_source() abort
         let g:deoplete#enable_at_startup = 1
         let g:deoplete#enable_smart_case = 1
         let g:deoplete#auto_completion_start_length = 3
@@ -210,6 +203,7 @@ if has('nvim') && neobundle#tap('deoplete.nvim') "{{{
         let g:deoplete#keyword_patterns = {}
         let g:deoplete#keyword_patterns._ = '[a-zA-Z_]\k*\(?'
     endfunction
+    execute 'autocmd Portown User' 'dein#source#' . g:dein#name 'call s:deoplete_nvim_on_source()'
 
     set completeopt+=noinsert
 
@@ -224,11 +218,9 @@ if has('nvim') && neobundle#tap('deoplete.nvim') "{{{
     inoremap <expr><C-G> deoplete#mappings#undo_completion()
 
     imap <expr><CR> deoplete#mappings#smart_close_popup() . "\<Plug>(smartinput_CR)"
-
-    call neobundle#untap()
 endif "}}}
 
-if neobundle#tap('neosnippet') "{{{
+if dein#tap('neosnippet') "{{{
     imap <C-K> <Plug>(neosnippet_expand)
     smap <C-K> <Plug>(neosnippet_expand)
     xmap <C-K> <Plug>(neosnippet_expand_target)
@@ -256,18 +248,17 @@ if neobundle#tap('neosnippet') "{{{
         let g:neosnippet#disable_runtime_snippets = {}
     endif
     let g:neosnippet#disable_runtime_snippets._ = 1
-
-    call neobundle#untap()
 endif "}}}
 
-if neobundle#tap('vimshell') "{{{
-    function! neobundle#hooks.on_source(bundle)
+if dein#tap('vimshell') "{{{
+    function! s:vimshell_on_source() abort
         if IsWindows()
             let g:vimshell_prompt = $USERNAME.'@'.hostname().'$ '
         else
             let g:vimshell_prompt = $USER.'$ '
         endif
     endfunction
+    execute 'autocmd Portown User' 'dein#source#' . g:dein#name 'call s:vimshell_on_source()'
 
     command! PortownVimShellSplit :topleft 10split
 
@@ -277,26 +268,23 @@ if neobundle#tap('vimshell') "{{{
     nnoremap <silent> <SID>[vimshell]f :<C-U>VimShellCurrentDir -buffer-name=shell<CR>
 
     autocmd Portown FileType vimshell execute 'nunmap <buffer> <C-N>' | nunmap <buffer> <C-P>
-
-    call neobundle#untap()
 endif "}}}
 
-if neobundle#tap('vimfiler') "{{{
-    function! neobundle#hooks.on_source(bundle)
+if dein#tap('vimfiler') "{{{
+    function! s:vimfiler_on_source() abort
         let g:vimfiler_force_overwrite_statusline = 0
     endfunction
+    execute 'autocmd Portown User' 'dein#source#' . g:dein#name 'call s:vimfiler_on_source()'
 
     nnoremap <SID>[vimfiler] <Nop>
     nmap <Space>f <SID>[vimfiler]
     nnoremap <silent> <SID>[vimfiler]e :<C-U>VimFilerBufferDir -buffer-name=explorer -direction=topleft -toggle -split -simple -winwidth=35 -no-quit<CR>
     nnoremap <silent> <SID>[vimfiler]f :<C-U>VimFilerBufferDir -buffer-name=explorer<CR>
     nnoremap <silent> <SID>[vimfiler]d :<C-U>VimFilerBufferDir -double<CR>
-
-    call neobundle#untap()
 endif "}}}
 
-if neobundle#tap('unite.vim') "{{{
-    function! neobundle#hooks.on_source(bundle)
+if dein#tap('unite.vim') "{{{
+    function! s:unite_vim_on_source() abort
         let g:unite_enable_start_insert = 0
         let g:unite_kind_file_use_trashbox = 0
 
@@ -330,6 +318,7 @@ if neobundle#tap('unite.vim') "{{{
                     \ }
         call unite#custom#source('message', 'sorters', 'sorter_reverse')
     endfunction
+    execute 'autocmd Portown User' 'dein#source#' . g:dein#name 'call s:unite_vim_on_source()'
 
     nnoremap <SID>[unite] <Nop>
     nmap <Space>u <SID>[unite]
@@ -359,12 +348,6 @@ if neobundle#tap('unite.vim') "{{{
     nmap <SID>[unite]t <SID>[unite-gtags]
     nnoremap <silent> <SID>[unite-gtags]r :<C-U>Unite -immediately -no-quit -keep-focus -winheight=10 gtags/ref<CR>
     nnoremap <silent> <C-]> :<C-U>Unite -immediately -no-quit -keep-focus -winheight=10 gtags/context<CR>
-
-    nnoremap <SID>[unite-neobundle] <Nop>
-    nmap <SID>[unite]n <SID>[unite-neobundle]
-    nnoremap <silent> <SID>[unite-neobundle]u :<C-U>Unite -buffer-name=neobundle -no-cursor-line -log neobundle/update<CR>
-    nnoremap <silent> <SID>[unite-neobundle]i :<C-U>Unite -buffer-name=neobundle -no-cursor-line -log neobundle/install<CR>
-    nnoremap <silent> <SID>[unite-neobundle]c :<C-U>UniteClose neobundle<CR>
 
     function! PortownBuild(...)
         let clean = a:0 >= 1 ? a:1 : 0
@@ -405,12 +388,10 @@ if neobundle#tap('unite.vim') "{{{
     xnoremap <silent> <SID>[unite-history]c :<C-U>Unite -buffer-name=commands -winheight=8 -direction=botright history/command<CR>
     nnoremap <silent> <SID>[unite-history]s :<C-U>Unite -buffer-name=commands -winheight=8 -direction=botright history/search<CR>
     xnoremap <silent> <SID>[unite-history]s :<C-U>Unite -buffer-name=commands -winheight=8 -direction=botright history/search<CR>
-
-    call neobundle#untap()
 endif "}}}
 
-if neobundle#tap('vim-ref') "{{{
-    function! neobundle#hooks.on_source(bundle)
+if dein#tap('vim-ref') "{{{
+    function! s:vim_ref_on_source() abort
         let g:ref_source_webdict_sites = {
                     \   'wikipedia:ja': {
                     \     'url': 'http://ja.wikipedia.org/wiki/%s',
@@ -429,13 +410,12 @@ if neobundle#tap('vim-ref') "{{{
 
         let g:ref_source_webdict_sites.default = 'wiktionary'
     endfunction
+    execute 'autocmd Portown User' 'dein#source#' . g:dein#name 'call s:vim_ref_on_source()'
 
     autocmd Portown FileType ref-webdict nnoremap <buffer> q <C-W>c
-
-    call neobundle#untap()
 endif "}}}
 
-if neobundle#tap('vim-fugitive') "{{{
+if dein#tap('vim-fugitive') "{{{
     nnoremap <SID>[git] <Nop>
     nmap <Space>g <SID>[git]
     nnoremap <SID>[git]d :<C-U>Gvdiff<CR>
@@ -443,11 +423,9 @@ if neobundle#tap('vim-fugitive') "{{{
     nnoremap <SID>[git]cc :<C-U>Gcommit -v<CR>
     nnoremap <SID>[git]ca :<C-U>Gcommit -av<CR>
     nnoremap <SID>[git]b :<C-U>Gblame<CR>
-
-    call neobundle#untap()
 endif "}}}
 
-if neobundle#tap('agit.vim') "{{{
+if dein#tap('agit.vim') "{{{
     let g:agit_enable_auto_show_commit = 0
     let g:agit_enable_auto_refresh = 0
     let g:agit_max_log_lines = 60
@@ -458,18 +436,14 @@ if neobundle#tap('agit.vim') "{{{
     nnoremap <silent> <SID>[agit]f :<C-U>AgitFile<CR>
 
     autocmd Portown filetype agit nnoremap <buffer> git :<C-U>AgitGit 
-
-    call neobundle#untap()
 endif "}}}
 
-if neobundle#tap('vim-gitgutter') "{{{
+if dein#tap('vim-gitgutter') "{{{
     let g:gitgutter_realtime = 0
     let g:gitgutter_eager = 0
-
-    call neobundle#untap()
 endif "}}}
 
-if neobundle#tap('vim-textobj-entire') "{{{
+if dein#tap('vim-textobj-entire') "{{{
     " for lazy loading
     let g:textobj_entire_no_default_key_mappings = 1
 
@@ -477,11 +451,9 @@ if neobundle#tap('vim-textobj-entire') "{{{
     omap ie <Plug>(textobj-entire-i)
     xmap ae <Plug>(textobj-entire-a)
     xmap ie <Plug>(textobj-entire-i)
-
-    call neobundle#untap()
 endif "}}}
 
-if neobundle#tap('vim-textobj-line') "{{{
+if dein#tap('vim-textobj-line') "{{{
     " for lazy loading
     let g:textobj_line_no_default_key_mappings = 1
 
@@ -489,11 +461,9 @@ if neobundle#tap('vim-textobj-line') "{{{
     omap il <Plug>(textobj-line-i)
     xmap al <Plug>(textobj-line-a)
     xmap il <Plug>(textobj-line-i)
-
-    call neobundle#untap()
 endif "}}}
 
-if neobundle#tap('vim-textobj-between') "{{{
+if dein#tap('vim-textobj-between') "{{{
     " for lazy loading
     let g:textobj_between_no_default_key_mappings = 1
 
@@ -501,11 +471,9 @@ if neobundle#tap('vim-textobj-between') "{{{
     omap if <Plug>(textobj-between-i)
     xmap af <Plug>(textobj-between-a)
     xmap if <Plug>(textobj-between-i)
-
-    call neobundle#untap()
 endif "}}}
 
-if neobundle#tap('vim-textobj-multiblock') "{{{
+if dein#tap('vim-textobj-multiblock') "{{{
     let g:textobj#multiblock#default_blocks = []
     let g:textobj_multiblock_blocks = [
                 \   ['"', '"', 1],
@@ -523,11 +491,9 @@ if neobundle#tap('vim-textobj-multiblock') "{{{
     omap ib <Plug>(textobj-multiblock-i)
     xmap ab <Plug>(textobj-multiblock-a)
     xmap ib <Plug>(textobj-multiblock-i)
-
-    call neobundle#untap()
 endif "}}}
 
-if neobundle#tap('vim-textobj-ruby') "{{{
+if dein#tap('vim-textobj-ruby') "{{{
     " for lazy loading
     let g:textobj_ruby_no_default_key_mappings = 1
 
@@ -538,11 +504,9 @@ if neobundle#tap('vim-textobj-ruby') "{{{
         xmap <buffer> ir <Plug>(textobj-ruby-i)
     endfunction
     autocmd Portown FileType ruby call s:vim_textobj_ruby_settings()
-
-    call neobundle#untap()
 endif "}}}
 
-if neobundle#tap('vim-operator-surround') "{{{
+if dein#tap('vim-operator-surround') "{{{
     nmap <silent>ys <Plug>(operator-surround-append)
     nmap <silent>csb <Plug>(operator-surround-replace)<Plug>(textobj-multiblock-a)
     nmap <silent>csc <Plug>(operator-surround-replace)<Plug>(textobj-between-a)
@@ -550,18 +514,14 @@ if neobundle#tap('vim-operator-surround') "{{{
     nmap <silent>dsc <Plug>(operator-surround-delete)<Plug>(textobj-between-a)
 
     xmap <silent>s <Plug>(operator-surround-append)
-
-    call neobundle#untap()
 endif "}}}
 
-if neobundle#tap('vim-operator-replace') "{{{
+if dein#tap('vim-operator-replace') "{{{
     nmap <silent>_ <Plug>(operator-replace)
-
-    call neobundle#untap()
 endif "}}}
 
-if neobundle#tap('vim-quickrun') "{{{
-    function! neobundle#hooks.on_source(bundle)
+if dein#tap('vim-quickrun') "{{{
+    function! s:vim_quickrun_on_source() abort
         let g:quickrun_config = {}
 
         let g:quickrun_config._ = {
@@ -583,11 +543,10 @@ if neobundle#tap('vim-quickrun') "{{{
                     \       'command': 'ruby',
                     \   }
     endfunction
-
-    call neobundle#untap()
+    execute 'autocmd Portown User' 'dein#source#' . g:dein#name 'call s:vim_quickrun_on_source()'
 endif "}}}
 
-if neobundle#tap('qfixhowm') "{{{
+if dein#tap('qfixhowm') "{{{
     let howm_dir = '~/howm'
     let howm_filename = '%Y/%m/%Y-%m-%d-%H%M%S.md'
     let QFixHowm_RootDir = howm_dir
@@ -599,14 +558,11 @@ if neobundle#tap('qfixhowm') "{{{
 
     let QFixHowm_ScheduleSearchDir = howm_dir . '/schedule'
     let QFixHowm_ScheduleSearchFile = ''
-
-    call neobundle#untap()
 endif "}}}
 
-if neobundle#tap('vim-json') "{{{
-    function! neobundle#hooks.on_source(bundle)
+if dein#tap('vim-json') "{{{
+    function! s:vim_json_on_source() abort
         let g:vim_json_syntax_conceal = 0
     endfunction
-
-    call neobundle#untap()
+    execute 'autocmd Portown User' 'dein#source#' . g:dein#name 'call s:vim_json_on_source()'
 endif"}}}
