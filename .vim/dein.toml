@@ -327,3 +327,15 @@ if = 'IsMac()'
 repo = 'keith/swift.vim'
 #on_ft = 'swift'
 if = 'IsMac()'
+
+# Completions
+
+[[plugins]]
+repo = 'Rip-Rip/clang_complete'
+#depends = 'tokorom/clang_complete-getopts-ios'
+#on_ft = ['objc', 'objcpp']
+if = 'IsMac()'
+
+[[plugins]]
+repo = 'tokorom/clang_complete-getopts-ios'
+if = 'IsMac()'

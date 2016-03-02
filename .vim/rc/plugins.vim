@@ -220,6 +220,12 @@ if has('nvim') && dein#tap('deoplete.nvim') "{{{
     imap <expr><CR> deoplete#mappings#smart_close_popup() . "\<Plug>(smartinput_CR)"
 endif "}}}
 
+if dein#tap('clang_complete') "{{{
+    let g:clang_complete_auto = 0
+    let g:clang_auto_select = 0
+    let g:clang_close_preview = 1
+endif "}}}
+
 if dein#tap('neosnippet') "{{{
     imap <C-K> <Plug>(neosnippet_expand)
     smap <C-K> <Plug>(neosnippet_expand)
