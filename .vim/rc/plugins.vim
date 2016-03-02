@@ -591,7 +591,7 @@ if neobundle#tap('qfixhowm') "{{{
     let howm_dir = '~/howm'
     let howm_filename = '%Y/%m/%Y-%m-%d-%H%M%S.md'
     let QFixHowm_RootDir = howm_dir
-    let QFixHowm_FileType = 'markdown'
+    let QFixHowm_FileType = 'qfix_memo'
     let QFixHowm_Title = '#'
     let QFixMRU_Title = {}
     let QFixMRU_Title['md'] = '^#[^#]'
