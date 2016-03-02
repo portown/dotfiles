@@ -61,9 +61,6 @@ if dein#load_cache([expand('<sfile>'), s:toml_path])
 
     call dein#load_toml(s:toml_path, {'lazy': 0})
     "call dein#load_toml('~/.vim/deinlazy.toml', {'lazy': 1})
-    if IsMac()
-        call dein#load_toml('~/.vim/deinlazy_mac.toml', {'lazy': 1})
-    endif
 
     call dein#local('~/.vim', {'frozen': 1}, ['local'])
 

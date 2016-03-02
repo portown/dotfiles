@@ -189,7 +189,7 @@ repo = 'Shougo/neocomplete'
 repo = 'Shougo/deoplete.nvim'
 #depends = 'Shougo/context_filetype.vim'
 #on_i = 1
-#external_commands = ['nvim']
+if = 'executable("nvim")'
 
 [[plugins]]
 repo = 'Shougo/neosnippet'
@@ -201,7 +201,7 @@ repo = 'Shougo/neosnippet'
 [[plugins]]
 repo = 'eagletmt/neco-ghc'
 #on_ft = 'haskell'
-#external_commands = ['ghc-mod']
+if = 'executable("ghc-mod")'
 
 # Textobjs
 
@@ -289,7 +289,7 @@ repo = 'thinca/vim-logcat'
 #on_cmd = ['Logcat', 'Logcat!', 'LogcatClear']
 #on_ft = 'logcat'
 #on_path = '\.logcat$'
-#external_commands = 'adb'
+if = 'executable("adb")'
 
 [[plugins]]
 repo = 'Yggdroot/indentLine'
@@ -315,3 +315,15 @@ repo = 'thinca/vim-quickrun'
 [[plugins]]
 repo = 'thinca/vim-template'
 #on_ft = 'all'
+
+# Language
+
+[[plugins]]
+repo = 'b4winckler/vim-objc'
+#on_ft = ['objc', 'objcpp']
+if = 'IsMac()'
+
+[[plugins]]
+repo = 'keith/swift.vim'
+#on_ft = 'swift'
+if = 'IsMac()'
