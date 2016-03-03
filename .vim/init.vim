@@ -49,7 +49,7 @@ endif
 " dein.vim の設定 {{{
 
 if has('vim_starting')
-    set runtimepath+=~/.vim/bundle/repos/github.com/Shougo/dein.vim/
+    set runtimepath^=~/.vim/bundle/repos/github.com/Shougo/dein.vim/
 endif
 
 call dein#begin(expand('~/.vim/bundle'))
