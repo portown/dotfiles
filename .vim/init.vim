@@ -32,6 +32,8 @@ if $GOROOT != ''
     endif
 endif
 
+let g:vimproc#download_windows_dll = 1
+
 " }}}
 " -------------------------------------------------------------
 
@@ -57,7 +59,6 @@ call dein#begin(expand('~/.vim/bundle'))
 let s:toml_path = '~/.vim/dein.toml'
 if dein#load_cache([expand('<sfile>'), s:toml_path])
     call dein#add('Shougo/dein.vim', {'rtp': ''})
-    call dein#add('Shougo/vimproc', {'build': 'make'})
 
     call dein#load_toml(s:toml_path, {'lazy': 0})
     "call dein#load_toml('~/.vim/deinlazy.toml', {'lazy': 1})
