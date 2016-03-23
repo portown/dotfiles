@@ -20,12 +20,26 @@ repo = 'itchyny/landscape.vim'
 
 [[plugins]]
 repo = 'itchyny/lightline.vim'
+hook_add = 'source ~/.vim/rc/plugins/lightline.vim'
 
 [[plugins]]
 repo = 'tpope/vim-fugitive'
+hook_add = '''
+    nnoremap <SID>[git] <Nop>
+    nmap <Space>g <SID>[git]
+    nnoremap <SID>[git]d :<C-U>Gvdiff<CR>
+    nnoremap <SID>[git]s :<C-U>Gstatus<CR>
+    nnoremap <SID>[git]cc :<C-U>Gcommit -v<CR>
+    nnoremap <SID>[git]ca :<C-U>Gcommit -av<CR>
+    nnoremap <SID>[git]b :<C-U>Gblame<CR>
+'''
 
 [[plugins]]
 repo = 'airblade/vim-gitgutter'
+hook_add = '''
+    let g:gitgutter_realtime = 0
+    let g:gitgutter_eager = 0
+'''
 
 [[plugins]]
 repo = 'thinca/vim-localrc'
@@ -38,6 +52,19 @@ repo = 'fuenor/qfixgrep'
 
 [[plugins]]
 repo = 'fuenor/qfixhowm'
+hook_add = '''
+    let howm_dir = '~/howm'
+    let howm_filename = '%Y/%m/%Y-%m-%d-%H%M%S.md'
+    let QFixHowm_RootDir = howm_dir
+    let QFixHowm_FileType = 'qfix_memo'
+    let QFixHowm_Title = '#'
+    let QFixMRU_Title = {}
+    let QFixMRU_Title['md'] = '^#[^#]'
+    let QFixHowm_HolidayFile = $HOME . '/.vim/bundle/qfixhowm/misc/holiday/Sche-Hd-0000-00-00-000000.utf8'
+
+    let QFixHowm_ScheduleSearchDir = howm_dir . '/schedule'
+    let QFixHowm_ScheduleSearchFile = ''
+'''
 
 # Unite
 
@@ -51,6 +78,8 @@ repo = 'osyo-manga/unite-filters-collection'
 [[plugins]]
 repo = 'Shougo/unite.vim'
 #depends = ['Shougo/neomru.vim', 'osyo-manga/unite-filters-collection']
+hook_add = 'source ~/.vim/rc/plugins/unite.vim'
+hook_source = 'source ~/.vim/rc/plugins/unite_on_source.vim'
 
 [[plugins]]
 repo = 'thinca/vim-unite-history'
@@ -91,6 +120,28 @@ repo = 'Shougo/unite-build'
 repo = 'thinca/vim-ref'
 #depends = 'Shougo/unite.vim'
 #on_source = 'unite.vim'
+hook_add = '''
+    autocmd Portown FileType ref-webdict nnoremap <buffer> q <C-W>c
+'''
+hook_source = '''
+    let g:ref_source_webdict_sites = {
+                \   'wikipedia:ja': {
+                \     'url': 'http://ja.wikipedia.org/wiki/%s',
+                \     'keyword_encoding': 'utf-8',
+                \     'cache': 1,
+                \   },
+                \   'wiktionary': {
+                \     'url': 'http://ja.wiktionary.org/wiki/%s',
+                \     'keyword_encoding': 'utf-8',
+                \     'cache': 1,
+                \   },
+                \ }
+    function! g:ref_source_webdict_sites.wiktionary.filter(output)
+        return join(split(a:output, "\n")[18 :], "\n")
+    endfunction
+
+    let g:ref_source_webdict_sites.default = 'wiktionary'
+'''
 
 [[plugins]]
 repo = 'Shougo/junkfile.vim'
@@ -146,6 +197,9 @@ repo = 'udalov/kotlin-vim'
 [[plugins]]
 repo = 'dag/vim2hs'
 #on_ft = ['haskell']
+hook_add = '''
+    let g:haskell_conceal = 0
+'''
 
 [[plugins]]
 repo = 'eagletmt/ghcmod-vim'
@@ -178,6 +232,9 @@ repo = 'cespare/vim-toml'
 [[plugins]]
 repo = 'elzr/vim-json'
 #on_ft = 'json'
+hook_source = '''
+    let g:vim_json_syntax_conceal = 0
+'''
 
 [[plugins]]
 repo = 'leafgarland/typescript-vim'
@@ -193,12 +250,14 @@ repo = 'Shougo/neoinclude.vim'
 repo = 'Shougo/neocomplete'
 #depends = 'Shougo/context_filetype.vim'
 #on_i = 1
+hook_add = 'source ~/.vim/rc/plugins/neocomplete.vim'
 
 [[plugins]]
 repo = 'Shougo/deoplete.nvim'
 #depends = 'Shougo/context_filetype.vim'
 #on_i = 1
 if = 'executable("nvim")'
+hook_add = 'source ~/.vim/rc/plugins/deoplete.vim'
 
 [[plugins]]
 repo = 'Shougo/neosnippet'
@@ -206,6 +265,7 @@ repo = 'Shougo/neosnippet'
 #on_i = 1
 #on_ft = 'snippet'
 #on_source = 'unite.vim'
+hook_add = 'source ~/.vim/rc/plugins/neosnippet.vim'
 
 [[plugins]]
 repo = 'eagletmt/neco-ghc'
@@ -221,28 +281,86 @@ repo = 'kana/vim-textobj-user'
 repo = 'kana/vim-textobj-entire'
 #depends = 'kana/vim-textobj-user'
 #on_map = [['ox', '<Plug>']]
+hook_add = '''
+    " for lazy loading
+    let g:textobj_entire_no_default_key_mappings = 1
+
+    omap ae <Plug>(textobj-entire-a)
+    omap ie <Plug>(textobj-entire-i)
+    xmap ae <Plug>(textobj-entire-a)
+    xmap ie <Plug>(textobj-entire-i)
+'''
 
 [[plugins]]
 repo = 'kana/vim-textobj-line'
 #depends = 'kana/vim-textobj-user'
 #on_map = [['ox', '<Plug>']]
+hook_add = '''
+    " for lazy loading
+    let g:textobj_line_no_default_key_mappings = 1
+
+    omap al <Plug>(textobj-line-a)
+    omap il <Plug>(textobj-line-i)
+    xmap al <Plug>(textobj-line-a)
+    xmap il <Plug>(textobj-line-i)
+'''
 
 [[plugins]]
 repo = 'thinca/vim-textobj-between'
 #depends = 'kana/vim-textobj-user'
 #on_map = [['ox', '<Plug>']]
 #on_source = 'vim-operator-surround'
+hook_add = '''
+    " for lazy loading
+    let g:textobj_between_no_default_key_mappings = 1
+
+    omap af <Plug>(textobj-between-a)
+    omap if <Plug>(textobj-between-i)
+    xmap af <Plug>(textobj-between-a)
+    xmap if <Plug>(textobj-between-i)
+'''
 
 [[plugins]]
 repo = 'osyo-manga/vim-textobj-multiblock'
 #depends = 'kana/vim-textobj-user'
 #on_map = [['ox', '<Plug>']]
 #on_source = 'vim-operator-surround'
+hook_add = '''
+    let g:textobj#multiblock#default_blocks = []
+    let g:textobj_multiblock_blocks = [
+                \   ['"', '"', 1],
+                \   ["'", "'", 1],
+                \   ['`', '`', 1],
+                \   ['(', ')'],
+                \   ['{', '}'],
+                \   ['[', ']'],
+                \   ['<', '>'],
+                \ ]
+
+    let g:textobj#multiblock#enable_block_in_cursor = 1
+
+    omap ab <Plug>(textobj-multiblock-a)
+    omap ib <Plug>(textobj-multiblock-i)
+    xmap ab <Plug>(textobj-multiblock-a)
+    xmap ib <Plug>(textobj-multiblock-i)
+'''
 
 [[plugins]]
 repo = 'rhysd/vim-textobj-ruby'
 #depends = 'kana/vim-textobj-user'
 #on_map = [['ox', '<Plug>']]
+hook_add = '''
+    " for lazy loading
+    let g:textobj_ruby_no_default_key_mappings = 1
+
+    function! s:vim_textobj_ruby_settings()
+        omap <buffer> ar <Plug>(textobj-ruby-a)
+        omap <buffer> ir <Plug>(textobj-ruby-i)
+        xmap <buffer> ar <Plug>(textobj-ruby-a)
+        xmap <buffer> ir <Plug>(textobj-ruby-i)
+    endfunction
+    autocmd Portown FileType ruby call s:vim_textobj_ruby_settings()
+'''
 
 # Operators
 
@@ -253,11 +371,23 @@ repo = 'kana/vim-operator-user'
 repo = 'kana/vim-operator-replace'
 #depends = 'kana/vim-operator-user'
 #on_map = '<Plug>'
+hook_add = '''
+    nmap <silent>_ <Plug>(operator-replace)
+'''
 
 [[plugins]]
 repo = 'rhysd/vim-operator-surround'
 #depends = 'kana/vim-operator-user'
 #on_map = '<Plug>'
+hook_add = '''
+    nmap <silent>ys <Plug>(operator-surround-append)
+    nmap <silent>csb <Plug>(operator-surround-replace)<Plug>(textobj-multiblock-a)
+    nmap <silent>csc <Plug>(operator-surround-replace)<Plug>(textobj-between-a)
+    nmap <silent>dsb <Plug>(operator-surround-delete)<Plug>(textobj-multiblock-a)
+    nmap <silent>dsc <Plug>(operator-surround-delete)<Plug>(textobj-between-a)
+
+    xmap <silent>s <Plug>(operator-surround-append)
+'''
 
 [[plugins]]
 repo = 'osyo-manga/vim-operator-jump_side'
@@ -282,6 +412,23 @@ repo = 'Shougo/tabpagebuffer.vim'
 repo = 'Shougo/vimshell'
 #on_cmd = ['VimShellCurrentDir']
 #depends = ['Shougo/vimproc']
+hook_add = '''
+    command! PortownVimShellSplit :topleft 10split
+
+    nnoremap <SID>[vimshell] <Nop>
+    nmap <Space>s <SID>[vimshell]
+    nnoremap <silent> <SID>[vimshell]s :<C-U>VimShellCurrentDir -buffer-name=shell -toggle -split -split-command=PortownVimShellSplit<CR>
+    nnoremap <silent> <SID>[vimshell]f :<C-U>VimShellCurrentDir -buffer-name=shell<CR>
+
+    autocmd Portown FileType vimshell execute 'nunmap <buffer> <C-N>' | nunmap <buffer> <C-P>
+'''
+hook_source = '''
+    if IsWindows()
+        let g:vimshell_prompt = $USERNAME.'@'.hostname().'$ '
+    else
+        let g:vimshell_prompt = $USER.'$ '
+    endif
+'''
 
 [[plugins]]
 repo = 'ujihisa/vimshell-ssh'
@@ -292,6 +439,16 @@ repo = 'ujihisa/vimshell-ssh'
 repo = 'Shougo/vimfiler'
 #on_cmd = ['VimFilerBufferDir']
 #depends = ['Shougo/unite.vim']
+hook_add = '''
+    nnoremap <SID>[vimfiler] <Nop>
+    nmap <Space>f <SID>[vimfiler]
+    nnoremap <silent> <SID>[vimfiler]e :<C-U>VimFilerBufferDir -buffer-name=explorer -direction=topleft -toggle -split -simple -winwidth=35 -no-quit<CR>
+    nnoremap <silent> <SID>[vimfiler]f :<C-U>VimFilerBufferDir -buffer-name=explorer<CR>
+    nnoremap <silent> <SID>[vimfiler]d :<C-U>VimFilerBufferDir -double<CR>
+'''
+hook_source = '''
+    let g:vimfiler_force_overwrite_statusline = 0
+'''
 
 [[plugins]]
 repo = 'thinca/vim-logcat'
@@ -307,10 +464,46 @@ repo = 'Yggdroot/indentLine'
 [[plugins]]
 repo = 'cohama/agit.vim'
 #on_cmd = ['Agit', 'AgitFile', 'AgitGit', 'AgitDiff']
+hook_add = '''
+    let g:agit_enable_auto_show_commit = 0
+    let g:agit_enable_auto_refresh = 0
+    let g:agit_max_log_lines = 60
+
+    nnoremap <SID>[agit] <Nop>
+    nmap <SID>[git]v <SID>[agit]
+    nnoremap <silent> <SID>[agit]v :<C-U>Agit<CR>
+    nnoremap <silent> <SID>[agit]f :<C-U>AgitFile<CR>
+
+    autocmd Portown filetype agit nnoremap <buffer> git :<C-U>AgitGit 
+'''
 
 [[plugins]]
 repo = 'kana/vim-smartinput'
 #on_i = 1
+hook_source = '''
+    call smartinput#map_to_trigger('i', '<Plug>(smartinput_CR)', '<CR>', '<CR>')
+    call smartinput#map_to_trigger('i', '<Plug>(smartinput_C-H)', '<BS>', '<C-H>')
+
+    " for m4
+    call smartinput#define_rule({
+                \   'at': '\%#',
+                \   'char': '`',
+                \   'input': "`'<Left>",
+                \   'filetype': ['m4'],
+                \ })
+    call smartinput#define_rule({
+                \   'at': "`\%#'",
+                \   'char': "'",
+                \   'input': '<Right>',
+                \   'filetype': ['m4'],
+                \ })
+    call smartinput#define_rule({
+                \   'at': "`\%#'",
+                \   'char': '<BS>',
+                \   'input': '<Del><BS>',
+                \   'filetype': ['m4'],
+                \ })
+'''
 
 [[plugins]]
 repo = 'rhysd/conflict-marker.vim'
@@ -320,6 +513,28 @@ repo = 'rhysd/conflict-marker.vim'
 [[plugins]]
 repo = 'thinca/vim-quickrun'
 #on_cmd = ['QuickRun']
+hook_source = '''
+    let g:quickrun_config = {}
+
+    let g:quickrun_config._ = {
+                \       'runner': 'vimproc',
+                \       'runner/vimproc/updatetime': 60,
+                \       'outputter': 'error',
+                \       'outputter/error/success': 'buffer',
+                \       'outputter/error/error': 'quickfix',
+                \   }
+
+    let g:quickrun_config.haskell = {
+                \       'command': 'runghc',
+                \   }
+    if IsWindows()
+        let g:quickrun_config.haskell['hook/output_encode/encoding'] = 'cp932'
+    endif
+
+    let g:quickrun_config.ruby = {
+                \       'command': 'ruby',
+                \   }
+'''
 
 [[plugins]]
 repo = 'thinca/vim-template'
@@ -344,6 +559,11 @@ repo = 'Rip-Rip/clang_complete'
 #depends = 'tokorom/clang_complete-getopts-ios'
 #on_ft = ['objc', 'objcpp']
 if = 'IsMac()'
+hook_add = '''
+    let g:clang_complete_auto = 0
+    let g:clang_auto_select = 0
+    let g:clang_close_preview = 1
+'''
 
 [[plugins]]
 repo = 'tokorom/clang_complete-getopts-ios'

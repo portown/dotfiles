@@ -54,26 +54,22 @@ if has('vim_starting')
     set runtimepath^=~/.vim/bundle/repos/github.com/Shougo/dein.vim/
 endif
 
-call dein#begin(expand('~/.vim/bundle'))
-
+let s:dein_path = expand('~/.vim/bundle')
 let s:toml_path = '~/.vim/dein.toml'
-if dein#load_cache([expand('<sfile>'), s:toml_path])
-    call dein#add('Shougo/dein.vim', {'rtp': ''})
+if dein#load_state(s:dein_path)
+    call dein#begin(s:dein_path, [expand('<sfile>'), s:toml_path])
 
+    call dein#add('Shougo/dein.vim', {'rtp': ''})
     call dein#load_toml(s:toml_path, {'lazy': 0})
     "call dein#load_toml('~/.vim/deinlazy.toml', {'lazy': 1})
-
     call dein#local('~/.vim', {'frozen': 1}, ['local'])
 
-    call dein#save_cache()
-endif
+    call dein#end()
+    call dein#save_state()
 
-call s:source_rc('plugins.vim')
-
-call dein#end()
-
-if dein#check_install()
-    call dein#install()
+    if dein#check_install()
+        call dein#install()
+    endif
 endif
 
 filetype plugin indent on
