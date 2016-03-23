@@ -1,9 +1,0 @@
-# Language
-
-[[plugins]]
-repository = 'b4winckler/vim-objc'
-on_ft = ['objc', 'objcpp']
-
-[[plugins]]
-repository = 'keith/swift.vim'
-on_ft = 'swift'

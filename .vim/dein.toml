@@ -1,0 +1,186 @@
+# Others
+
+[[plugins]]
+repo = 'Shougo/vimproc'
+
+    [plugins.build]
+    cygwin = 'make -f make_cygwin.mak'
+    mac = 'make -f make_mac.mak'
+    linux = 'make'
+    unix = 'gmake'
+
+[[plugins]]
+repo = 'vim-scripts/sudo.vim.git'
+
+[[plugins]]
+repo = 'ujihisa/shadow.vim'
+
+[[plugins]]
+repo = 'itchyny/lightline.vim'
+hook_add = 'source ~/.vim/rc/plugins/lightline.vim'
+
+[[plugins]]
+repo = 'tpope/vim-fugitive'
+hook_add = '''
+    nnoremap <SID>[git] <Nop>
+    nmap <Space>g <SID>[git]
+    nnoremap <SID>[git]d :<C-U>Gvdiff<CR>
+    nnoremap <SID>[git]s :<C-U>Gstatus<CR>
+    nnoremap <SID>[git]cc :<C-U>Gcommit -v<CR>
+    nnoremap <SID>[git]ca :<C-U>Gcommit -av<CR>
+    nnoremap <SID>[git]b :<C-U>Gblame<CR>
+'''
+
+[[plugins]]
+repo = 'airblade/vim-gitgutter'
+hook_add = '''
+    let g:gitgutter_realtime = 0
+    let g:gitgutter_eager = 0
+'''
+
+[[plugins]]
+repo = 'thinca/vim-localrc'
+
+[[plugins]]
+repo = 'tpope/vim-repeat'
+
+[[plugins]]
+repo = 'fuenor/qfixgrep'
+
+[[plugins]]
+repo = 'fuenor/qfixhowm'
+hook_add = '''
+    let howm_dir = "~/howm"
+    let howm_filename = "%Y/%m/%Y-%m-%d-%H%M%S.md"
+    let QFixHowm_RootDir = howm_dir
+    let QFixHowm_FileType = "qfix_memo"
+    let QFixHowm_Title = "#"
+    let QFixMRU_Title = {}
+    let QFixMRU_Title["md"] = "^#[^#]"
+    let QFixHowm_HolidayFile = $HOME . "/.vim/bundle/qfixhowm/misc/holiday/Sche-Hd-0000-00-00-000000.utf8"
+
+    let QFixHowm_ScheduleSearchDir = howm_dir . "/schedule"
+    let QFixHowm_ScheduleSearchFile = ""
+'''
+
+# Textobjs
+
+[[plugins]]
+repo = 'kana/vim-textobj-user'
+
+[[plugins]]
+repo = 'kana/vim-textobj-entire'
+#depends = 'kana/vim-textobj-user'
+#on_map = [['ox', '<Plug>']]
+hook_add = '''
+    " for lazy loading
+    let g:textobj_entire_no_default_key_mappings = 1
+
+    omap ae <Plug>(textobj-entire-a)
+    omap ie <Plug>(textobj-entire-i)
+    xmap ae <Plug>(textobj-entire-a)
+    xmap ie <Plug>(textobj-entire-i)
+'''
+
+[[plugins]]
+repo = 'kana/vim-textobj-line'
+#depends = 'kana/vim-textobj-user'
+#on_map = [['ox', '<Plug>']]
+hook_add = '''
+    " for lazy loading
+    let g:textobj_line_no_default_key_mappings = 1
+
+    omap al <Plug>(textobj-line-a)
+    omap il <Plug>(textobj-line-i)
+    xmap al <Plug>(textobj-line-a)
+    xmap il <Plug>(textobj-line-i)
+'''
+
+[[plugins]]
+repo = 'thinca/vim-textobj-between'
+#depends = 'kana/vim-textobj-user'
+#on_map = [['ox', '<Plug>']]
+#on_source = 'vim-operator-surround'
+hook_add = '''
+    " for lazy loading
+    let g:textobj_between_no_default_key_mappings = 1
+
+    omap af <Plug>(textobj-between-a)
+    omap if <Plug>(textobj-between-i)
+    xmap af <Plug>(textobj-between-a)
+    xmap if <Plug>(textobj-between-i)
+'''
+
+[[plugins]]
+repo = 'osyo-manga/vim-textobj-multiblock'
+#depends = 'kana/vim-textobj-user'
+#on_map = [['ox', '<Plug>']]
+#on_source = 'vim-operator-surround'
+hook_add = '''
+    let g:textobj#multiblock#default_blocks = []
+    let g:textobj_multiblock_blocks = [
+                \   ['"', '"', 1],
+                \   ["'", "'", 1],
+                \   ["`", "`", 1],
+                \   ["(", ")"],
+                \   ["{", "}"],
+                \   ["[", "]"],
+                \   ["<", ">"],
+                \ ]
+
+    let g:textobj#multiblock#enable_block_in_cursor = 1
+
+    omap ab <Plug>(textobj-multiblock-a)
+    omap ib <Plug>(textobj-multiblock-i)
+    xmap ab <Plug>(textobj-multiblock-a)
+    xmap ib <Plug>(textobj-multiblock-i)
+'''
+
+[[plugins]]
+repo = 'rhysd/vim-textobj-ruby'
+#depends = 'kana/vim-textobj-user'
+#on_map = [['ox', '<Plug>']]
+hook_add = '''
+    " for lazy loading
+    let g:textobj_ruby_no_default_key_mappings = 1
+
+    function! s:vim_textobj_ruby_settings()
+        omap <buffer> ar <Plug>(textobj-ruby-a)
+        omap <buffer> ir <Plug>(textobj-ruby-i)
+        xmap <buffer> ar <Plug>(textobj-ruby-a)
+        xmap <buffer> ir <Plug>(textobj-ruby-i)
+    endfunction
+    autocmd Portown FileType ruby call s:vim_textobj_ruby_settings()
+'''
+
+# Operators
+
+[[plugins]]
+repo = 'kana/vim-operator-user'
+
+[[plugins]]
+repo = 'kana/vim-operator-replace'
+#depends = 'kana/vim-operator-user'
+#on_map = '<Plug>'
+hook_add = '''
+    nmap <silent>_ <Plug>(operator-replace)
+'''
+
+[[plugins]]
+repo = 'rhysd/vim-operator-surround'
+#depends = 'kana/vim-operator-user'
+#on_map = '<Plug>'
+hook_add = '''
+    nmap <silent>ys <Plug>(operator-surround-append)
+    nmap <silent>csb <Plug>(operator-surround-replace)<Plug>(textobj-multiblock-a)
+    nmap <silent>csc <Plug>(operator-surround-replace)<Plug>(textobj-between-a)
+    nmap <silent>dsb <Plug>(operator-surround-delete)<Plug>(textobj-multiblock-a)
+    nmap <silent>dsc <Plug>(operator-surround-delete)<Plug>(textobj-between-a)
+
+    xmap <silent>s <Plug>(operator-surround-append)
+'''
+
+[[plugins]]
+repo = 'osyo-manga/vim-operator-jump_side'
+#depends = 'kana/vim-operator-user'
+#on_map = '<Plug>'

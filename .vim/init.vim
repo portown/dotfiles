@@ -32,6 +32,8 @@ if $GOROOT != ''
     endif
 endif
 
+let g:vimproc#download_windows_dll = 1
+
 " }}}
 " -------------------------------------------------------------
 
@@ -46,42 +48,37 @@ endif
 " -------------------------------------------------------------
 
 " -------------------------------------------------------------
-" neobundle.vim の設定 {{{
+" dein.vim の設定 {{{
 
 if has('vim_starting')
-    set runtimepath+=~/.vim/bundle/neobundle.vim/
+    set runtimepath^=~/.vim/bundle/repos/github.com/Shougo/dein.vim/
 endif
 
-call neobundle#begin(expand('~/.vim/bundle'))
+let s:dein_path = expand('~/.vim/bundle')
+let s:toml_path = '~/.vim/dein.toml'
+let s:toml_lazy_path = '~/.vim/deinlazy.toml'
+if dein#load_state(s:dein_path)
+    call dein#begin(s:dein_path, [expand('<sfile>'), s:toml_path, s:toml_lazy_path])
 
-if neobundle#load_cache()
-    NeoBundleFetch 'Shougo/neobundle.vim'
-    NeoBundle 'Shougo/vimproc', {
-                \       'build': {
-                \           'windows' : 'echo "Sorry, cannot update vimproc binary file in Windows."',
-                \           'cygwin' : 'make -f make_cygwin.mak',
-                \           'mac' : 'make -f make_mac.mak',
-                \           'unix' : 'make -f make_unix.mak',
-                \       },
-                \   }
+    call dein#add('Shougo/dein.vim', {'rtp': ''})
+    call dein#load_toml(s:toml_path, {'lazy': 0})
+    call dein#load_toml(s:toml_lazy_path, {'lazy': 1})
+    call dein#local('~/.vim', {'frozen': 1}, ['local'])
 
-    call neobundle#load_toml('~/.vim/neobundle.toml')
-    call neobundle#load_toml('~/.vim/neobundlelazy.toml', {'lazy': 1})
-    if IsMac()
-        call neobundle#load_toml('~/.vim/neobundlelazy_mac.toml', {'lazy': 1})
+    call dein#end()
+    call dein#save_state()
+
+    if dein#check_install()
+        call dein#install()
     endif
-
-    call neobundle#local('~/.vim', {}, ['local'])
-
-    NeoBundleSaveCache
 endif
-
-call s:source_rc('plugins.vim')
-
-call neobundle#end()
 
 filetype plugin indent on
 syntax enable
+
+" Because of confliction against syntax/unite.vim in unite.vim,
+" landscape.vim must be loaded lazily.
+call dein#source('landscape.vim')
 
 " }}}
 " -------------------------------------------------------------
@@ -160,14 +157,38 @@ xmap ; <SID>(command-line-enter)
 autocmd Portown CmdwinEnter * call s:init_cmdwin()
 function! s:init_cmdwin()
     nnoremap <silent> <buffer> q :<C-U>quit<CR>
-    inoremap <silent> <buffer><expr> <CR> neocomplete#cancel_popup()."\<CR>"
-    inoremap <silent> <buffer><expr> <C-H> col('.') == 1 ? "\<ESC>:q\<CR>" : neocomplete#cancel_popup()."\<C-H>"
-    inoremap <silent> <buffer><expr> <BS> col('.') == 1 ? "\<ESC>:q\<CR>" : neocomplete#cancel_popup()."\<C-H>"
-
-    inoremap <silent> <buffer><expr> <TAB> pumvisible() ? "\<C-N>" : "\<TAB>"
-
     startinsert!
 endfunction
+
+" }}}
+" -------------------------------------------------------------
+
+" -------------------------------------------------------------
+" Backspace configurations {{{
+
+function! PortownBackspace()
+    if bufname('%') ==# '[Command Line]' && col('.') == 1
+        return "\<ESC>q"
+    endif
+
+    let ret = ''
+    if dein#tap('deoplete.nvim')
+        let ret = ret . deoplete#mappings#smart_close_popup()
+    elseif dein#tap('neocomplete.vim')
+        let ret = ret . neocomplete#smart_close_popup()
+    endif
+
+    if dein#tap('vim-smartinput')
+        let ret = ret . "\<Plug>(smartinput_C-H)"
+    else
+        let ret = "\<BS>"
+    endif
+
+    return ret
+endfunction
+
+imap <silent><expr> <C-H> PortownBackspace()
+imap <silent><expr> <BS> PortownBackspace()
 
 " }}}
 " -------------------------------------------------------------
@@ -189,7 +210,7 @@ set tags& tags+=~/tags
 " -------------------------------------------------------------
 " カラースキームの設定 {{{
 
-if neobundle#is_installed('landscape.vim')
+if dein#tap('landscape.vim')
     function! MyVimrcConfigColorscheme()
         colorscheme landscape
 
