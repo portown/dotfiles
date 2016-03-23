@@ -66,38 +66,6 @@ hook_add = '''
     let QFixHowm_ScheduleSearchFile = ''
 '''
 
-# Completions
-
-[[plugins]]
-repo = 'Shougo/neoinclude.vim'
-#on_ft = 'all'
-
-[[plugins]]
-repo = 'Shougo/neocomplete'
-#depends = 'Shougo/context_filetype.vim'
-#on_i = 1
-hook_add = 'source ~/.vim/rc/plugins/neocomplete.vim'
-
-[[plugins]]
-repo = 'Shougo/deoplete.nvim'
-#depends = 'Shougo/context_filetype.vim'
-#on_i = 1
-if = 'executable("nvim")'
-hook_add = 'source ~/.vim/rc/plugins/deoplete.vim'
-
-[[plugins]]
-repo = 'Shougo/neosnippet'
-#depends = 'Shougo/context_filetype.vim'
-#on_i = 1
-#on_ft = 'snippet'
-#on_source = 'unite.vim'
-hook_add = 'source ~/.vim/rc/plugins/neosnippet.vim'
-
-[[plugins]]
-repo = 'eagletmt/neco-ghc'
-#on_ft = 'haskell'
-if = 'executable("ghc-mod")'
-
 # Textobjs
 
 [[plugins]]
@@ -365,20 +333,3 @@ hook_source = '''
 [[plugins]]
 repo = 'thinca/vim-template'
 #on_ft = 'all'
-
-# Completions
-
-[[plugins]]
-repo = 'Rip-Rip/clang_complete'
-#depends = 'tokorom/clang_complete-getopts-ios'
-#on_ft = ['objc', 'objcpp']
-if = 'IsMac()'
-hook_add = '''
-    let g:clang_complete_auto = 0
-    let g:clang_auto_select = 0
-    let g:clang_close_preview = 1
-'''
-
-[[plugins]]
-repo = 'tokorom/clang_complete-getopts-ios'
-if = 'IsMac()'

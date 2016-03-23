@@ -181,3 +181,51 @@ if = 'IsMac()'
 repo = 'keith/swift.vim'
 on_ft = 'swift'
 if = 'IsMac()'
+
+# Completions
+
+[[plugins]]
+repo = 'Shougo/neoinclude.vim'
+on_path = '.*'
+
+[[plugins]]
+repo = 'Shougo/neocomplete'
+depends = 'context_filetype.vim'
+on_i = 1
+if = 'has("lua")'
+hook_add = 'source ~/.vim/rc/plugins/neocomplete.vim'
+
+[[plugins]]
+repo = 'Shougo/deoplete.nvim'
+depends = 'context_filetype.vim'
+on_i = 1
+if = 'has("nvim")'
+hook_add = 'source ~/.vim/rc/plugins/deoplete.vim'
+
+[[plugins]]
+repo = 'Shougo/neosnippet'
+depends = 'context_filetype.vim'
+on_i = 1
+on_ft = 'snippet'
+on_source = 'unite.vim'
+hook_add = 'source ~/.vim/rc/plugins/neosnippet.vim'
+
+[[plugins]]
+repo = 'eagletmt/neco-ghc'
+on_ft = 'haskell'
+if = 'executable("ghc-mod")'
+
+[[plugins]]
+repo = 'Rip-Rip/clang_complete'
+depends = 'clang_complete-getopts-ios'
+on_ft = ['objc', 'objcpp']
+if = 'IsMac()'
+hook_add = '''
+    let g:clang_complete_auto = 0
+    let g:clang_auto_select = 0
+    let g:clang_close_preview = 1
+'''
+
+[[plugins]]
+repo = 'tokorom/clang_complete-getopts-ios'
+if = 'IsMac()'
