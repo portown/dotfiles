@@ -157,14 +157,38 @@ xmap ; <SID>(command-line-enter)
 autocmd Portown CmdwinEnter * call s:init_cmdwin()
 function! s:init_cmdwin()
     nnoremap <silent> <buffer> q :<C-U>quit<CR>
-    inoremap <silent> <buffer><expr> <CR> neocomplete#cancel_popup()."\<CR>"
-    inoremap <silent> <buffer><expr> <C-H> col('.') == 1 ? "\<ESC>:q\<CR>" : neocomplete#cancel_popup()."\<C-H>"
-    inoremap <silent> <buffer><expr> <BS> col('.') == 1 ? "\<ESC>:q\<CR>" : neocomplete#cancel_popup()."\<C-H>"
-
-    inoremap <silent> <buffer><expr> <TAB> pumvisible() ? "\<C-N>" : "\<TAB>"
-
     startinsert!
 endfunction
+
+" }}}
+" -------------------------------------------------------------
+
+" -------------------------------------------------------------
+" Backspace configurations {{{
+
+function! PortownBackspace()
+    if bufname('%') ==# '[Command Line]' && col('.') == 1
+        return "\<ESC>q"
+    endif
+
+    let ret = ''
+    if dein#tap('deoplete.nvim')
+        let ret = ret . deoplete#mappings#smart_close_popup()
+    elseif dein#tap('neocomplete.vim')
+        let ret = ret . neocomplete#smart_close_popup()
+    endif
+
+    if dein#tap('vim-smartinput')
+        let ret = ret . "\<Plug>(smartinput_C-H)"
+    else
+        let ret = "\<BS>"
+    endif
+
+    return ret
+endfunction
+
+imap <silent><expr> <C-H> PortownBackspace()
+imap <silent><expr> <BS> PortownBackspace()
 
 " }}}
 " -------------------------------------------------------------

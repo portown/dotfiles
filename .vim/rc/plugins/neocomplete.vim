@@ -61,7 +61,6 @@ inoremap <expr><C-F> pumvisible() ? "\<PageDown>" : "\<Right>"
 inoremap <expr><C-B> pumvisible() ? "\<PageUp>" : "\<Left>"
 inoremap <expr><C-Y> pumvisible() ? neocomplete#close_popup() : "\<C-R>\""
 inoremap <expr><C-E> pumvisible() ? neocomplete#cancel_popup() : "\<End>"
-imap <expr><C-H> neocomplete#smart_close_popup() . "\<Plug>(smartinput_C-H)"
 inoremap <expr><C-N> pumvisible() ? "\<C-N>" : "\<C-X>\<C-U>\<C-P>\<Down>"
 inoremap <expr><C-P> pumvisible() ? "\<C-P>" : "\<C-P>\<C-N>"
 
