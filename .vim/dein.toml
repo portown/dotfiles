@@ -53,17 +53,17 @@ repo = 'fuenor/qfixgrep'
 [[plugins]]
 repo = 'fuenor/qfixhowm'
 hook_add = '''
-    let howm_dir = '~/howm'
-    let howm_filename = '%Y/%m/%Y-%m-%d-%H%M%S.md'
+    let howm_dir = "~/howm"
+    let howm_filename = "%Y/%m/%Y-%m-%d-%H%M%S.md"
     let QFixHowm_RootDir = howm_dir
-    let QFixHowm_FileType = 'qfix_memo'
-    let QFixHowm_Title = '#'
+    let QFixHowm_FileType = "qfix_memo"
+    let QFixHowm_Title = "#"
     let QFixMRU_Title = {}
-    let QFixMRU_Title['md'] = '^#[^#]'
-    let QFixHowm_HolidayFile = $HOME . '/.vim/bundle/qfixhowm/misc/holiday/Sche-Hd-0000-00-00-000000.utf8'
+    let QFixMRU_Title["md"] = "^#[^#]"
+    let QFixHowm_HolidayFile = $HOME . "/.vim/bundle/qfixhowm/misc/holiday/Sche-Hd-0000-00-00-000000.utf8"
 
-    let QFixHowm_ScheduleSearchDir = howm_dir . '/schedule'
-    let QFixHowm_ScheduleSearchFile = ''
+    let QFixHowm_ScheduleSearchDir = howm_dir . "/schedule"
+    let QFixHowm_ScheduleSearchFile = ""
 '''
 
 # Textobjs
@@ -124,11 +124,11 @@ hook_add = '''
     let g:textobj_multiblock_blocks = [
                 \   ['"', '"', 1],
                 \   ["'", "'", 1],
-                \   ['`', '`', 1],
-                \   ['(', ')'],
-                \   ['{', '}'],
-                \   ['[', ']'],
-                \   ['<', '>'],
+                \   ["`", "`", 1],
+                \   ["(", ")"],
+                \   ["{", "}"],
+                \   ["[", "]"],
+                \   ["<", ">"],
                 \ ]
 
     let g:textobj#multiblock#enable_block_in_cursor = 1
