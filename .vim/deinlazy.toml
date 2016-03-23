@@ -79,3 +79,105 @@ hook_source = '''
 repo = 'Shougo/junkfile.vim'
 depends = 'unite.vim'
 on_source = 'unite.vim'
+
+# Language
+
+[[plugins]]
+repo = 'vim-jp/cpp-vim'
+on_ft = ['cpp', 'objcpp']
+
+[[plugins]]
+repo = 'tpope/vim-haml'
+on_path = '\.haml$'
+
+[[plugins]]
+repo = 'kchmck/vim-coffee-script'
+on_path = '\.coffee$'
+
+[[plugins]]
+repo = 'plasticboy/vim-markdown'
+on_path = '\.md$'
+
+[[plugins]]
+repo = 'aklt/plantuml-syntax'
+on_path = '\.p\%(lant\)\?uml$'
+
+[[plugins]]
+repo = 'vim-scripts/scons.vim'
+on_path = 'SConstruct$'
+
+[[plugins]]
+repo = 'ebnf.vim'
+on_path = '\.ebnf$'
+
+[[plugins]]
+repo = 'timcharper/textile.vim'
+on_path = '\.textile$'
+
+[[plugins]]
+repo = 'jam.vim'
+on_path = '\%(\.jam\|Jamfile\|Jamroot\)$'
+
+[[plugins]]
+repo = 'groovyindent'
+on_ft = ['groovy']
+
+[[plugins]]
+repo = 'udalov/kotlin-vim'
+on_ft = ['kotlin']
+
+[[plugins]]
+repo = 'dag/vim2hs'
+on_ft = ['haskell']
+hook_add = '''
+    let g:haskell_conceal = 0
+'''
+
+[[plugins]]
+repo = 'eagletmt/ghcmod-vim'
+on_ft = ['haskell']
+
+[[plugins]]
+repo = 'honza/dockerfile.vim'
+on_path = 'Dockerfile$'
+
+#[[plugins]]
+#repo = 'https://fedorapeople.org/cgit/wwoods/public_git/vim-scripts.git'
+#on_path = '\%(\.service\)$'
+
+[[plugins]]
+repo = 'jvoorhis/coq.vim'
+on_path = '\.v$'
+
+#[[plugins]]
+#repo = 'vim-scripts/CoqIDE'
+#on_ft = ['coq']
+
+[[plugins]]
+repo = 'PProvost/vim-ps1'
+on_path = '\.ps1$'
+
+[[plugins]]
+repo = 'cespare/vim-toml'
+on_ft = 'toml'
+
+[[plugins]]
+repo = 'elzr/vim-json'
+on_ft = 'json'
+hook_source = '''
+    let g:vim_json_syntax_conceal = 0
+'''
+
+[[plugins]]
+repo = 'leafgarland/typescript-vim'
+on_ft = 'typescript'
+
+[[plugins]]
+repo = 'b4winckler/vim-objc'
+on_ft = ['objc', 'objcpp']
+if = 'IsMac()'
+
+[[plugins]]
+repo = 'keith/swift.vim'
+on_ft = 'swift'
+if = 'IsMac()'
