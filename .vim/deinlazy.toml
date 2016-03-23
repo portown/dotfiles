@@ -229,3 +229,149 @@ hook_add = '''
 [[plugins]]
 repo = 'tokorom/clang_complete-getopts-ios'
 if = 'IsMac()'
+
+# Others
+
+[[plugins]]
+repo = 'Shougo/context_filetype.vim'
+on_i = 1
+
+[[plugins]]
+repo = 'vim-jp/vital.vim'
+on_cmd = 'Vitalize'
+
+[[plugins]]
+repo = 'Shougo/tabpagebuffer.vim'
+on_path = '.*'
+
+[[plugins]]
+repo = 'Shougo/vimshell'
+on_cmd = ['VimShellCurrentDir']
+depends = ['vimproc']
+hook_add = '''
+    command! PortownVimShellSplit :topleft 10split
+
+    nnoremap <SID>[vimshell] <Nop>
+    nmap <Space>s <SID>[vimshell]
+    nnoremap <silent> <SID>[vimshell]s :<C-U>VimShellCurrentDir -buffer-name=shell -toggle -split -split-command=PortownVimShellSplit<CR>
+    nnoremap <silent> <SID>[vimshell]f :<C-U>VimShellCurrentDir -buffer-name=shell<CR>
+
+    autocmd Portown FileType vimshell execute "nunmap <buffer> <C-N>" | nunmap <buffer> <C-P>
+'''
+hook_source = '''
+    if IsWindows()
+        let g:vimshell_prompt = $USERNAME."@".hostname()."$ "
+    else
+        let g:vimshell_prompt = $USER."$ "
+    endif
+'''
+
+[[plugins]]
+repo = 'ujihisa/vimshell-ssh'
+on_cmd = ['VimShellCurrentDir']
+depends = ['vimshell']
+
+[[plugins]]
+repo = 'Shougo/vimfiler'
+on_cmd = ['VimFilerBufferDir']
+depends = ['unite.vim']
+hook_add = '''
+    nnoremap <SID>[vimfiler] <Nop>
+    nmap <Space>f <SID>[vimfiler]
+    nnoremap <silent> <SID>[vimfiler]e :<C-U>VimFilerBufferDir -buffer-name=explorer -direction=topleft -toggle -split -simple -winwidth=35 -no-quit<CR>
+    nnoremap <silent> <SID>[vimfiler]f :<C-U>VimFilerBufferDir -buffer-name=explorer<CR>
+    nnoremap <silent> <SID>[vimfiler]d :<C-U>VimFilerBufferDir -double<CR>
+'''
+hook_source = '''
+    let g:vimfiler_force_overwrite_statusline = 0
+'''
+
+[[plugins]]
+repo = 'thinca/vim-logcat'
+on_cmd = ['Logcat', 'Logcat!', 'LogcatClear']
+on_ft = 'logcat'
+on_path = '\.logcat$'
+if = 'executable("adb")'
+
+[[plugins]]
+repo = 'Yggdroot/indentLine'
+on_path = '.*'
+
+[[plugins]]
+repo = 'cohama/agit.vim'
+on_cmd = ['Agit', 'AgitFile', 'AgitGit', 'AgitDiff']
+hook_add = '''
+    let g:agit_enable_auto_show_commit = 0
+    let g:agit_enable_auto_refresh = 0
+    let g:agit_max_log_lines = 60
+
+    nnoremap <SID>[agit] <Nop>
+    nmap <SID>[git]v <SID>[agit]
+    nnoremap <silent> <SID>[agit]v :<C-U>Agit<CR>
+    nnoremap <silent> <SID>[agit]f :<C-U>AgitFile<CR>
+
+    autocmd Portown filetype agit nnoremap <buffer> git :<C-U>AgitGit 
+'''
+
+[[plugins]]
+repo = 'kana/vim-smartinput'
+on_i = 1
+hook_source = '''
+    call smartinput#map_to_trigger("i", "<Plug>(smartinput_CR)", "<CR>", "<CR>")
+    call smartinput#map_to_trigger("i", "<Plug>(smartinput_C-H)", "<BS>", "<C-H>")
+
+    " for m4
+    call smartinput#define_rule({
+                \   "at": "\%#",
+                \   "char": "`",
+                \   "input": "`'<Left>",
+                \   "filetype": ["m4"],
+                \ })
+    call smartinput#define_rule({
+                \   "at": "`\%#'",
+                \   "char": "'",
+                \   "input": "<Right>",
+                \   "filetype": ["m4"],
+                \ })
+    call smartinput#define_rule({
+                \   "at": "`\%#'",
+                \   "char": "<BS>",
+                \   "input": "<Del><BS>",
+                \   "filetype": ["m4"],
+                \ })
+'''
+
+[[plugins]]
+repo = 'rhysd/conflict-marker.vim'
+on_ft = '.*'
+on_source = 'unite.vim'
+
+[[plugins]]
+repo = 'thinca/vim-quickrun'
+on_cmd = ['QuickRun']
+hook_source = '''
+    let g:quickrun_config = {}
+
+    let g:quickrun_config._ = {
+                \       "runner": "vimproc",
+                \       "runner/vimproc/updatetime": 60,
+                \       "outputter": "error",
+                \       "outputter/error/success": "buffer",
+                \       "outputter/error/error": "quickfix",
+                \   }
+
+    let g:quickrun_config.haskell = {
+                \       "command": "runghc",
+                \   }
+    if IsWindows()
+        let g:quickrun_config.haskell["hook/output_encode/encoding"] = "cp932"
+    endif
+
+    let g:quickrun_config.ruby = {
+                \       "command": "ruby",
+                \   }
+'''
+
+[[plugins]]
+repo = 'thinca/vim-template'
+on_path = '.*'
