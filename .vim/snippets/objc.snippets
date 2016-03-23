@@ -82,7 +82,7 @@ alias proto
 snippet property-definition
 alias prop
 options head
-	@property (nonatomic${1:, strong, nonnull}) ${2:NSObject*} ${3:object};${0}
+	@property (nonatomic${1:, strong}) ${2:NSObject*} ${3:object};${0}
 
 snippet synchronization-block
 alias sync
@@ -93,11 +93,11 @@ options head
 
 snippet initd
 options head
-	- (nonnull instancetype)init${1};${0}
+	- (instancetype)init${1};${0}
 
 snippet init
 options head
-	- (nonnull instancetype)init${1}
+	- (instancetype)init${1}
 	{
 		self = [super init${2:$1}];
 		if (self != nil) {
@@ -131,11 +131,11 @@ options head
 
 snippet sharedd
 options head
-	+ (nonnull instancetype)shared${1:Instance};${0}
+	+ (instancetype)shared${1:Instance};${0}
 
 snippet shared
 options head
-	+ (nonnull instancetype)shared${1:Instance}
+	+ (instancetype)shared${1:Instance}
 	{
 		static ${2:`expand('%:t:r')`}* ${3:instance} = nil;
 		static dispatch_once_t onceToken;
