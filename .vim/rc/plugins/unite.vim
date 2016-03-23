@@ -1,5 +1,7 @@
 " unite.vim
 
+let g:unite_force_overwrite_statusline = 0
+
 nnoremap <SID>[unite] <Nop>
 nmap <Space>u <SID>[unite]
 

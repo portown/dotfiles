@@ -3,8 +3,6 @@
 let g:unite_enable_start_insert = 0
 let g:unite_kind_file_use_trashbox = 0
 
-let g:unite_force_overwrite_statusline = 0
-
 let g:unite_source_process_enable_confirm = 0
 
 call unite#custom#source('file_rec,file_rec/async,grep,neomru/file', 'ignore_pattern',
