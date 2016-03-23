@@ -16,9 +16,6 @@ repo = 'vim-scripts/sudo.vim.git'
 repo = 'ujihisa/shadow.vim'
 
 [[plugins]]
-repo = 'itchyny/landscape.vim'
-
-[[plugins]]
 repo = 'itchyny/lightline.vim'
 hook_add = 'source ~/.vim/rc/plugins/lightline.vim'
 
