@@ -2,12 +2,7 @@
 
 [[plugins]]
 repo = 'Shougo/vimproc'
-
-    [plugins.build]
-    cygwin = 'make -f make_cygwin.mak'
-    mac = 'make -f make_mac.mak'
-    linux = 'make'
-    unix = 'gmake'
+build = 'make'
 
 [[plugins]]
 repo = 'vim-scripts/sudo.vim.git'
