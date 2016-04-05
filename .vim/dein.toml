@@ -1,6 +1,9 @@
 # Others
 
 [[plugins]]
+repo = 'Shougo/dein.vim'
+
+[[plugins]]
 repo = 'Shougo/vimproc'
 build = 'make'
 
