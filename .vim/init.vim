@@ -89,20 +89,7 @@ if IsWindows()
     set termencoding=cp932
 endif
 
-if has('kaoriya')
-    set fileencodings=guess
-else
-    set fileencodings=ucs-bom,iso-2022-jp,euc-jp,cp932,utf-8
-
-    " 日本語を含まない場合は fenc = enc
-    function! RecheckIso2022Jp()
-        if &fileencoding =~# 'iso-2022-jp' && search('[^\x01-\x7e]', 'n') == 0
-            let &fileencoding = &encoding
-        endif
-    endfunction
-    autocmd Portown BufReadPost * call RecheckIso2022Jp()
-endif
-
+set fileencodings=ucs-bom,utf-8
 set fileformats=unix,dos,mac
 
 if exists('&ambiwidth')
