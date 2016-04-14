@@ -18,18 +18,6 @@ repo = 'itchyny/lightline.vim'
 hook_add = 'source ~/.vim/rc/plugins/lightline.vim'
 
 [[plugins]]
-repo = 'tpope/vim-fugitive'
-hook_add = '''
-    nnoremap <SID>[git] <Nop>
-    nmap <Space>g <SID>[git]
-    nnoremap <SID>[git]d :<C-U>Gvdiff<CR>
-    nnoremap <SID>[git]s :<C-U>Gstatus<CR>
-    nnoremap <SID>[git]cc :<C-U>Gcommit -v<CR>
-    nnoremap <SID>[git]ca :<C-U>Gcommit -av<CR>
-    nnoremap <SID>[git]b :<C-U>Gblame<CR>
-'''
-
-[[plugins]]
 repo = 'airblade/vim-gitgutter'
 hook_add = '''
     let g:gitgutter_realtime = 0

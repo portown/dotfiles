@@ -403,3 +403,15 @@ hook_add = '''
     let QFixHowm_ScheduleSearchDir = howm_dir . "/schedule"
     let QFixHowm_ScheduleSearchFile = ""
 '''
+
+[[plugins]]
+repo = 'lambdalisue/vim-gita'
+on_cmd = 'Gita'
+hook_add = '''
+    nnoremap <SID>[git] <Nop>
+    nmap <Space>g <SID>[git]
+    nnoremap <SID>[git]d :<C-U>Gita patch<CR>
+    nnoremap <SID>[git]s :<C-U>Gita status<CR>
+    nnoremap <SID>[git]b :<C-U>Gita blame<CR>
+    nnoremap <SID>[git]r :<C-U>Gita branch --all<CR>
+'''

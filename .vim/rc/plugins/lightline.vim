@@ -3,7 +3,7 @@
 let g:lightline = {
             \   'colorscheme': 'wombat',
             \   'active': {
-            \     'left': [['mode'], ['fugitive', 'filename']],
+            \     'left': [['mode'], ['branch', 'filename']],
             \     'right': [['lineinfo'], ['fileformat', 'fileencoding', 'filetype']],
             \   },
             \   'inactive': {
@@ -18,7 +18,7 @@ let g:lightline = {
             \     'lineinfo': '%3l/%{line("$")}:%-2v',
             \   },
             \   'component_function': {
-            \     'fugitive': 'MyFugitive',
+            \     'branch': 'MyBranch',
             \     'filename': 'MyFilename',
             \     'fileformat': 'MyFileformat',
             \     'filetype': 'MyFiletype',
@@ -30,10 +30,13 @@ let g:lightline = {
             \   'subseparator': { 'left': "\u2b81", 'right': "\u2b83" },
             \ }
 
-function! MyFugitive()
-    if &filetype !~? 'unite\|vimfiler' && exists("*fugitive#head")
-        let _ = fugitive#head()
-        return strlen(_) ? "\u2b60 "._ : ''
+function! MyBranch()
+    if &filetype !~? 'unite\|vimfiler' && dein#tap('vim-gita')
+        if !dein#is_sourced('vim-gita')
+            call dein#source('vim-gita')
+        endif
+        let _ = gita#statusline#format('%lb')
+        return strlen(_) ? "\u2b60 " . _ : ''
     endif
     return ''
 endfunction
