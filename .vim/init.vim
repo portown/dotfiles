@@ -253,7 +253,6 @@ set showcmd
 
 set directory-=.
 
-set ttyfast
 set lazyredraw
 
 " -------------------------------------------------------------
