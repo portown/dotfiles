@@ -309,7 +309,7 @@ on_cmd = ['Agit', 'AgitFile', 'AgitGit', 'AgitDiff']
 hook_add = '''
     let g:agit_enable_auto_show_commit = 0
     let g:agit_enable_auto_refresh = 0
-    let g:agit_max_log_lines = 60
+    let g:agit_max_log_lines = 120
 
     nnoremap <SID>[agit] <Nop>
     nmap <SID>[git]v <SID>[agit]
