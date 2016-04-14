@@ -255,6 +255,8 @@ set directory-=.
 
 set lazyredraw
 
+set diffopt=filler,vertical
+
 " -------------------------------------------------------------
 " 検索設定 {{{
 
