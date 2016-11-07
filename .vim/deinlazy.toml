@@ -214,6 +214,9 @@ hook_add = 'source ~/.vim/rc/plugins/neosnippet.vim'
 repo = 'eagletmt/neco-ghc'
 on_ft = 'haskell'
 if = 'executable("ghc-mod")'
+hook_add = '''
+    let g:necoghc_enable_detailed_browse = 1
+'''
 
 [[plugins]]
 repo = 'Rip-Rip/clang_complete'
