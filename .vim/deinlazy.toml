@@ -136,6 +136,10 @@ hook_add = '''
 [[plugins]]
 repo = 'eagletmt/ghcmod-vim'
 on_ft = ['haskell']
+if = 'executable("ghc-mod")'
+hook_add = '''
+    autocmd BufWritePost *.hs GhcModCheckAndLintAsync
+'''
 
 [[plugins]]
 repo = 'honza/dockerfile.vim'
