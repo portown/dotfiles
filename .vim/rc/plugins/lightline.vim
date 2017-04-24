@@ -31,7 +31,7 @@ let g:lightline = {
             \ }
 
 function! MyBranch()
-    if &filetype !~? 'unite\|vimfiler' && dein#tap('vim-gita')
+    if &filetype !~? 'unite\|denite\|vimfiler' && dein#tap('vim-gita')
         if !dein#is_sourced('vim-gita')
             call dein#source('vim-gita')
         endif
@@ -65,6 +65,7 @@ function! MyFilename()
     return ('' != MyReadonly() ? MyReadonly() . ' ' : '') .
                 \ (&ft ==# 'vimfiler' ? vimfiler#get_status_string() :
                 \  &ft ==# 'unite' ? unite#get_status_string() :
+                \  &ft ==# 'denite' ? denite#get_status_sources() :
                 \  &ft ==# 'vimshell' ? vimshell#get_status_string() :
                 \  '' != expand('%:t') ? expand('%:t') : '[No Name]') .
                 \ ('' != MyModified() ? ' ' . MyModified() : '') .
