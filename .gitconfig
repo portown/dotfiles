@@ -20,6 +20,8 @@
 	status = auto
 	branch = auto
 	diff = auto
+[fetch]
+	prune = true
 [push]
 	default = simple
 [merge]
