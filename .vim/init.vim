@@ -65,12 +65,14 @@ if dein#load_state(s:dein_path)
     call dein#local('~/.vim', {'frozen': 1}, ['local'])
 
     call dein#end()
+    call dein#call_hook('source')
     call dein#save_state()
 
     if dein#check_install()
         call dein#install()
     endif
 endif
+autocmd VimEnter * call dein#call_hook('post_source')
 
 filetype plugin indent on
 syntax enable
