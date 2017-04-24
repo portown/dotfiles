@@ -26,11 +26,6 @@ depends = 'unite.vim'
 on_source = 'unite.vim'
 
 [[plugins]]
-repo = 'Shougo/unite-help'
-depends = 'unite.vim'
-on_source = 'unite.vim'
-
-[[plugins]]
 repo = 'Shougo/unite-ssh'
 depends = 'unite.vim'
 on_source = 'unite.vim'
