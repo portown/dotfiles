@@ -1,3 +1,3 @@
 " denite_on_source.vim
 
-call denite#custom#option('default', 'statusline', 'false')
+call denite#custom#option('_', 'statusline', v:false)

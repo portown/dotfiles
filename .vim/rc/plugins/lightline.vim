@@ -84,7 +84,13 @@ function! MyFileencoding()
 endfunction
 
 function! MyMode()
-    return winwidth(0) > 60 ? lightline#mode() : ''
+    if &ft ==# 'denite'
+        let mode_str = substitute(denite#get_status_mode(), '-\| ', '', 'g')
+        call lightline#link(tolower(mode_str[0]))
+        return mode_str
+    else
+        return winwidth(0) > 60 ? lightline#mode() : ''
+    endif
 endfunction
 
 function! MyCwd()
