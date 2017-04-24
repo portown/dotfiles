@@ -14,12 +14,14 @@ hook_add = 'source ~/.vim/rc/plugins/unite.vim'
 hook_source = 'source ~/.vim/rc/plugins/unite_on_source.vim'
 
 [[plugins]]
-repo = 'thinca/vim-unite-history'
-depends = 'unite.vim'
-on_source = 'unite.vim'
+repo = 'Shougo/denite.nvim'
+depends = ['neomru.vim']
+hook_add = 'source ~/.vim/rc/plugins/denite.vim'
+hook_source = 'source ~/.vim/rc/plugins/denite_on_source.vim'
+
 
 [[plugins]]
-repo = 'Shougo/unite-help'
+repo = 'thinca/vim-unite-history'
 depends = 'unite.vim'
 on_source = 'unite.vim'
 
