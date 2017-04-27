@@ -77,10 +77,6 @@ autocmd VimEnter * call dein#call_hook('post_source')
 filetype plugin indent on
 syntax enable
 
-" Because of confliction against syntax/unite.vim in unite.vim,
-" landscape.vim must be loaded lazily.
-call dein#source('landscape.vim')
-
 " }}}
 " -------------------------------------------------------------
 

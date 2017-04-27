@@ -242,12 +242,6 @@ if = 'IsMac()'
 # Others
 
 [[plugins]]
-repo = 'itchyny/landscape.vim'
-# Because of confliction against syntax/unite.vim in unite.vim,
-# it must be loaded lazily.
-# (Lazy plugins aren't cached in .dein directory)
-
-[[plugins]]
 repo = 'Shougo/context_filetype.vim'
 on_i = 1
 

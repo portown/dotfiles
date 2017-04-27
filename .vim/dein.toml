@@ -1,6 +1,10 @@
 # Others
 
 [[plugins]]
+repo = 'itchyny/landscape.vim'
+merged = 0
+
+[[plugins]]
 repo = 'Shougo/dein.vim'
 
 [[plugins]]
