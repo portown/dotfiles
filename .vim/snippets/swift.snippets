@@ -1,0 +1,66 @@
+# swift.snippets
+# vim:set noexpandtab:
+
+snippet file-header
+alias fh
+options head
+	//
+	//  `expand('%:t')`
+	//  `fileutil#get_xcode_proj_name(expand('%:h'))`
+	//
+	${0}
+
+snippet import-framework
+alias imp
+options head
+	import ${1:Foundation}
+	${0}
+
+snippet mark-comment
+alias mark
+options word
+	// MARK: ${0}
+
+snippet selector
+alias sel
+options word
+	#selector(${1})${0}
+
+snippet class-declaration
+alias cl
+options head
+	class ${1:`expand('%:t:r')`} {
+
+		${0}
+	}
+
+snippet extension-declaration
+alias ext
+options head
+	extension ${1:`expand('%:t:r')`} {
+
+		${0}
+	}
+
+snippet delegate-declaration
+alias deleg
+options head
+	protocol ${1:`expand('%:t:r')`Delegate}: class {
+
+		${0}
+	}
+
+snippet protocol-declaration
+alias proto
+options head
+	protocol ${1:`expand('%:t:r')`} {
+
+		${0}
+	}
+
+snippet method-declaration
+alias m
+options head
+	func ${1}(${2})${3: -> Int} {
+		${0}
+	}
