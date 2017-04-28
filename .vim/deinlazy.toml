@@ -19,17 +19,6 @@ depends = ['neomru.vim']
 hook_add = 'source ~/.vim/rc/plugins/denite.vim'
 hook_source = 'source ~/.vim/rc/plugins/denite_on_source.vim'
 
-
-[[plugins]]
-repo = 'thinca/vim-unite-history'
-depends = 'unite.vim'
-on_source = 'unite.vim'
-
-[[plugins]]
-repo = 'Shougo/unite-ssh'
-depends = 'unite.vim'
-on_source = 'unite.vim'
-
 [[plugins]]
 repo = 'Shougo/unite-outline'
 depends = 'unite.vim'
@@ -39,43 +28,6 @@ on_source = 'unite.vim'
 repo = 'ryotakato/unite-outline-objc'
 depends = ['unite.vim', 'unite-outline']
 on_ft = 'objc'
-
-[[plugins]]
-repo = 'hewes/unite-gtags'
-depends = 'unite.vim'
-on_source = 'unite.vim'
-
-[[plugins]]
-repo = 'Shougo/unite-build'
-depends = 'unite.vim'
-on_source = 'unite.vim'
-
-[[plugins]]
-repo = 'thinca/vim-ref'
-depends = 'unite.vim'
-on_source = 'unite.vim'
-hook_add = '''
-    autocmd Portown FileType ref-webdict nnoremap <buffer> q <C-W>c
-'''
-hook_source = '''
-    let g:ref_source_webdict_sites = {
-                \   "wikipedia:ja": {
-                \     "url": "http://ja.wikipedia.org/wiki/%s",
-                \     "keyword_encoding": "utf-8",
-                \     "cache": 1,
-                \   },
-                \   "wiktionary": {
-                \     "url": "http://ja.wiktionary.org/wiki/%s",
-                \     "keyword_encoding": "utf-8",
-                \     "cache": 1,
-                \   },
-                \ }
-    function! g:ref_source_webdict_sites.wiktionary.filter(output)
-        return join(split(a:output, "\n")[18 :], "\n")
-    endfunction
-
-    let g:ref_source_webdict_sites.default = "wiktionary"
-'''
 
 [[plugins]]
 repo = 'Shougo/junkfile.vim'
@@ -89,24 +41,8 @@ repo = 'vim-jp/cpp-vim'
 on_ft = ['cpp', 'objcpp']
 
 [[plugins]]
-repo = 'tpope/vim-haml'
-on_path = '\.haml$'
-
-[[plugins]]
-repo = 'kchmck/vim-coffee-script'
-on_path = '\.coffee$'
-
-[[plugins]]
 repo = 'plasticboy/vim-markdown'
 on_path = '\.md$'
-
-[[plugins]]
-repo = 'aklt/plantuml-syntax'
-on_path = '\.p\%(lant\)\?uml$'
-
-[[plugins]]
-repo = 'vim-scripts/scons.vim'
-on_path = 'SConstruct$'
 
 [[plugins]]
 repo = 'ebnf.vim'
@@ -115,10 +51,6 @@ on_path = '\.ebnf$'
 [[plugins]]
 repo = 'timcharper/textile.vim'
 on_path = '\.textile$'
-
-[[plugins]]
-repo = 'jam.vim'
-on_path = '\%(\.jam\|Jamfile\|Jamroot\)$'
 
 [[plugins]]
 repo = 'groovyindent'
@@ -152,18 +84,6 @@ on_path = 'Dockerfile$'
 #on_path = '\%(\.service\)$'
 
 [[plugins]]
-repo = 'jvoorhis/coq.vim'
-on_path = '\.v$'
-
-#[[plugins]]
-#repo = 'vim-scripts/CoqIDE'
-#on_ft = ['coq']
-
-[[plugins]]
-repo = 'PProvost/vim-ps1'
-on_path = '\.ps1$'
-
-[[plugins]]
 repo = 'cespare/vim-toml'
 on_ft = 'toml'
 
@@ -173,10 +93,6 @@ on_ft = 'json'
 hook_source = '''
     let g:vim_json_syntax_conceal = 0
 '''
-
-[[plugins]]
-repo = 'leafgarland/typescript-vim'
-on_ft = 'typescript'
 
 [[plugins]]
 repo = 'b4winckler/vim-objc'
@@ -252,48 +168,6 @@ on_cmd = 'Vitalize'
 [[plugins]]
 repo = 'Shougo/tabpagebuffer.vim'
 on_path = '.*'
-
-[[plugins]]
-repo = 'Shougo/vimshell'
-on_cmd = ['VimShellCurrentDir']
-depends = ['vimproc']
-hook_add = '''
-    command! PortownVimShellSplit :topleft 10split
-
-    nnoremap <SID>[vimshell] <Nop>
-    nmap <Space>s <SID>[vimshell]
-    nnoremap <silent> <SID>[vimshell]s :<C-U>VimShellCurrentDir -buffer-name=shell -toggle -split -split-command=PortownVimShellSplit<CR>
-    nnoremap <silent> <SID>[vimshell]f :<C-U>VimShellCurrentDir -buffer-name=shell<CR>
-
-    autocmd Portown FileType vimshell execute "nunmap <buffer> <C-N>" | nunmap <buffer> <C-P>
-'''
-hook_source = '''
-    if IsWindows()
-        let g:vimshell_prompt = $USERNAME."@".hostname()."$ "
-    else
-        let g:vimshell_prompt = $USER."$ "
-    endif
-'''
-
-[[plugins]]
-repo = 'ujihisa/vimshell-ssh'
-on_cmd = ['VimShellCurrentDir']
-depends = ['vimshell']
-
-[[plugins]]
-repo = 'Shougo/vimfiler'
-on_cmd = ['VimFilerBufferDir']
-depends = ['unite.vim']
-hook_add = '''
-    nnoremap <SID>[vimfiler] <Nop>
-    nmap <Space>f <SID>[vimfiler]
-    nnoremap <silent> <SID>[vimfiler]e :<C-U>VimFilerBufferDir -buffer-name=explorer -direction=topleft -toggle -split -simple -winwidth=35 -no-quit<CR>
-    nnoremap <silent> <SID>[vimfiler]f :<C-U>VimFilerBufferDir -buffer-name=explorer<CR>
-    nnoremap <silent> <SID>[vimfiler]d :<C-U>VimFilerBufferDir -double<CR>
-'''
-hook_source = '''
-    let g:vimfiler_force_overwrite_statusline = 0
-'''
 
 [[plugins]]
 repo = 'thinca/vim-logcat'

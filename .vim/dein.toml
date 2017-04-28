@@ -12,12 +12,6 @@ repo = 'Shougo/vimproc'
 build = 'make'
 
 [[plugins]]
-repo = 'vim-scripts/sudo.vim.git'
-
-[[plugins]]
-repo = 'ujihisa/shadow.vim'
-
-[[plugins]]
 repo = 'itchyny/lightline.vim'
 hook_add = 'source ~/.vim/rc/plugins/lightline.vim'
 

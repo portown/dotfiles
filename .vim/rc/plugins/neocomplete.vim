@@ -14,7 +14,6 @@ let g:neocomplete#enable_refresh_always = 0
 
 let g:neocomplete#sources#dictionary#dictionaries = {
             \   'default': '',
-            \   'vimshell': $HOME.'/.vimshell/command-history',
             \ }
 
 let g:neocomplete#enable_auto_delimiter = 1
@@ -50,11 +49,6 @@ let g:neocomplete#sources#include#patterns.objcpp = '^\s*#\s*import'
 let g:neocomplete#sources#vim#complete_functions = {
             \   'Ref': 'ref#complete',
             \   'Unite': 'unite#complete_source',
-            \   'VimShellExecute': 'vimshell#vimshell_execute_complete',
-            \   'VimShellInteractive': 'vimshell#vimshell_execute_complete',
-            \   'VimShellTerminal': 'vimshell#vimshell_execute_complete',
-            \   'VimShell': 'vimshell#complete',
-            \   'VimFiler': 'vimfiler#complete',
             \ }
 
 inoremap <expr><C-F> pumvisible() ? "\<PageDown>" : "\<Right>"
