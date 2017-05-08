@@ -45,7 +45,7 @@ repo = 'plasticboy/vim-markdown'
 on_path = '\.md$'
 
 [[plugins]]
-repo = 'ebnf.vim'
+repo = 'vim-scripts/ebnf.vim'
 on_path = '\.ebnf$'
 
 [[plugins]]
@@ -53,7 +53,7 @@ repo = 'timcharper/textile.vim'
 on_path = '\.textile$'
 
 [[plugins]]
-repo = 'groovyindent'
+repo = 'vim-scripts/groovyindent'
 on_ft = ['groovy']
 
 [[plugins]]
