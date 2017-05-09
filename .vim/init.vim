@@ -57,11 +57,15 @@ endif
 let s:dein_path = expand('~/.vim/bundle')
 let s:toml_path = '~/.vim/dein.toml'
 let s:toml_lazy_path = '~/.vim/deinlazy.toml'
+let s:toml_local_path = '~/.vim/local/dein.toml'
 if dein#load_state(s:dein_path)
-    call dein#begin(s:dein_path, [expand('<sfile>'), s:toml_path, s:toml_lazy_path])
+    call dein#begin(s:dein_path, [expand('<sfile>'), s:toml_path, s:toml_lazy_path, s:toml_local_path])
 
     call dein#load_toml(s:toml_path, {'lazy': 0})
     call dein#load_toml(s:toml_lazy_path, {'lazy': 1})
+    if filereadable(expand(s:toml_local_path))
+        call dein#load_toml(s:toml_local_path)
+    endif
     call dein#local('~/.vim', {'frozen': 1}, ['local'])
 
     call dein#end()

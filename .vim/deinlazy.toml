@@ -25,11 +25,6 @@ depends = 'unite.vim'
 on_source = 'unite.vim'
 
 [[plugins]]
-repo = 'ryotakato/unite-outline-objc'
-depends = ['unite.vim', 'unite-outline']
-on_ft = 'objc'
-
-[[plugins]]
 repo = 'Shougo/junkfile.vim'
 depends = 'unite.vim'
 on_source = 'unite.vim'
@@ -45,20 +40,8 @@ repo = 'plasticboy/vim-markdown'
 on_path = '\.md$'
 
 [[plugins]]
-repo = 'vim-scripts/ebnf.vim'
-on_path = '\.ebnf$'
-
-[[plugins]]
-repo = 'timcharper/textile.vim'
-on_path = '\.textile$'
-
-[[plugins]]
 repo = 'vim-scripts/groovyindent'
 on_ft = ['groovy']
-
-[[plugins]]
-repo = 'udalov/kotlin-vim'
-on_ft = ['kotlin']
 
 [[plugins]]
 repo = 'dag/vim2hs'
@@ -79,10 +62,6 @@ hook_add = '''
 repo = 'honza/dockerfile.vim'
 on_path = 'Dockerfile$'
 
-#[[plugins]]
-#repo = 'https://fedorapeople.org/cgit/wwoods/public_git/vim-scripts.git'
-#on_path = '\%(\.service\)$'
-
 [[plugins]]
 repo = 'cespare/vim-toml'
 on_ft = 'toml'
@@ -93,16 +72,6 @@ on_ft = 'json'
 hook_source = '''
     let g:vim_json_syntax_conceal = 0
 '''
-
-[[plugins]]
-repo = 'b4winckler/vim-objc'
-on_ft = ['objc', 'objcpp']
-if = 'IsMac()'
-
-[[plugins]]
-repo = 'keith/swift.vim'
-on_ft = 'swift'
-if = 'IsMac()'
 
 # Completions
 
@@ -140,21 +109,6 @@ hook_add = '''
     let g:necoghc_enable_detailed_browse = 1
 '''
 
-[[plugins]]
-repo = 'Rip-Rip/clang_complete'
-depends = 'clang_complete-getopts-ios'
-on_ft = ['objc', 'objcpp']
-if = 'IsMac()'
-hook_add = '''
-    let g:clang_complete_auto = 0
-    let g:clang_auto_select = 0
-    let g:clang_close_preview = 1
-'''
-
-[[plugins]]
-repo = 'tokorom/clang_complete-getopts-ios'
-if = 'IsMac()'
-
 # Others
 
 [[plugins]]
@@ -162,19 +116,8 @@ repo = 'Shougo/context_filetype.vim'
 on_i = 1
 
 [[plugins]]
-repo = 'vim-jp/vital.vim'
-on_cmd = 'Vitalize'
-
-[[plugins]]
 repo = 'Shougo/tabpagebuffer.vim'
 on_path = '.*'
-
-[[plugins]]
-repo = 'thinca/vim-logcat'
-on_cmd = ['Logcat', 'Logcat!', 'LogcatClear']
-on_ft = 'logcat'
-on_path = '\.logcat$'
-if = 'executable("adb")'
 
 [[plugins]]
 repo = 'Yggdroot/indentLine'
