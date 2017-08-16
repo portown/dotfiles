@@ -51,10 +51,10 @@ endif
 " dein.vim の設定 {{{
 
 if has('vim_starting')
-    set runtimepath^=~/.vim/bundle/repos/github.com/Shougo/dein.vim/
+    set runtimepath^=~/.cache/dein/repos/github.com/Shougo/dein.vim/
 endif
 
-let s:dein_path = expand('~/.vim/bundle')
+let s:dein_path = expand('~/.cache/dein')
 let s:toml_path = '~/.vim/dein.toml'
 let s:toml_lazy_path = '~/.vim/deinlazy.toml'
 let s:toml_local_path = '~/.vim/local/dein.toml'
