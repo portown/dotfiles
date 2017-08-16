@@ -9,4 +9,5 @@ augroup filetypedetect
     autocmd BufRead,BufNewFile *.gradle setf groovy
     autocmd BufRead,BufNewFile SConstruct setf scons
     autocmd BufRead,BufNewFile *.ebnf setf ebnf
+    autocmd BufRead,BufNewFile *.g4 setf antlr
 augroup END
