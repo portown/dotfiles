@@ -149,3 +149,18 @@ hook_add = '''
 repo = 'osyo-manga/vim-operator-jump_side'
 #depends = 'kana/vim-operator-user'
 #on_map = '<Plug>'
+
+# Completions
+
+[[plugins]]
+repo = 'Shougo/deoplete.nvim'
+depends = 'context_filetype.vim'
+hook_source = 'source ~/.vim/rc/plugins/deoplete.vim'
+
+[[plugins]]
+repo = 'roxma/nvim-yarp'
+if = '!has("nvim")'
+
+[[plugins]]
+repo = 'roxma/vim-hug-neovim-rpc'
+if = '!has("nvim")'

@@ -88,20 +88,6 @@ repo = 'Shougo/neoinclude.vim'
 on_path = '.*'
 
 [[plugins]]
-repo = 'Shougo/neocomplete'
-depends = 'context_filetype.vim'
-on_i = 1
-if = 'has("lua")'
-hook_source = 'source ~/.vim/rc/plugins/neocomplete.vim'
-
-[[plugins]]
-repo = 'Shougo/deoplete.nvim'
-depends = 'context_filetype.vim'
-on_i = 1
-if = 'has("nvim")'
-hook_source = 'source ~/.vim/rc/plugins/deoplete.vim'
-
-[[plugins]]
 repo = 'Shougo/neosnippet'
 depends = 'context_filetype.vim'
 on_i = 1
