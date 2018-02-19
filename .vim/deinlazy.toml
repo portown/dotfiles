@@ -76,6 +76,11 @@ hook_source = '''
     let g:vim_json_syntax_conceal = 0
 '''
 
+[[plugins]]
+repo = 'asciidoc/vim-asciidoc'
+on_path = '\.\%(adoc\|asciidoc\)$'
+on_ft = 'asciidoc'
+
 # Completions
 
 [[plugins]]
