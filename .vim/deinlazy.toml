@@ -211,13 +211,13 @@ repo = 'thinca/vim-template'
 on_path = '.*'
 
 [[plugins]]
-repo = 'lambdalisue/vim-gita'
-on_cmd = 'Gita'
+repo = 'lambdalisue/gina.vim'
+on_cmd = ['Gina', 'Gina!', 'Gina!!']
 hook_add = '''
     nnoremap <SID>[git] <Nop>
     nmap <Space>g <SID>[git]
-    nnoremap <SID>[git]d :<C-U>Gita patch<CR>
-    nnoremap <SID>[git]s :<C-U>Gita status<CR>
-    nnoremap <SID>[git]b :<C-U>Gita blame<CR>
-    nnoremap <SID>[git]r :<C-U>Gita branch --all<CR>
+    nnoremap <SID>[git]d :<C-U>Gina patch<CR>
+    nnoremap <SID>[git]s :<C-U>Gina status<CR>
+    nnoremap <SID>[git]b :<C-U>Gina blame<CR>
+    nnoremap <SID>[git]r :<C-U>Gina branch --all<CR>
 '''

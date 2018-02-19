@@ -31,11 +31,11 @@ let g:lightline = {
             \ }
 
 function! MyBranch()
-    if &filetype !~? 'unite\|denite\|vimfiler' && dein#tap('vim-gita')
-        if !dein#is_sourced('vim-gita')
-            call dein#source('vim-gita')
+    if &filetype !~? 'unite\|denite\|vimfiler' && dein#tap('gina.vim')
+        if !dein#is_sourced('gina.vim')
+            call dein#source('gina.vim')
         endif
-        let _ = gita#statusline#format('%lb')
+        let _ = gina#component#repo#branch()
         return strlen(_) ? "\u2b60 " . _ : ''
     endif
     return ''
