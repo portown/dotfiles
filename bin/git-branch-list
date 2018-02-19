@@ -3,29 +3,31 @@
 fmt='
     refname="%(refname:short)"
     upstream="%(upstream:short)"
+    track="%(upstream:track)"
     head="%(HEAD)"
 
-    if test "x$upstream" = "x"
-    then
+    if test "x$upstream" = "x"; then
         ups=""
     else
-        ups=" -> %(color:red)$upstream%(color:reset)%(upstream:track)"
+        ups=" -> %(color:red)$upstream%(color:reset)"
         git show-ref --verify --quiet %(upstream)
-        if test $? -ne 0
-        then
+        if test $? -ne 0; then
             ups="$ups [x]"
         fi
     fi
 
-    if test "x$head" = "x*"
-    then
+    if test "x$track" != "x"; then
+        track=`echo " $track" | sed -e "s/ahead \([0-9]\+\)/ahead %(color:green)\1%(color:reset)/" -e "s/behind \([0-9]\+\)/behind %(color:red)\1%(color:reset)/"`
+    fi
+
+    if test "x$head" = "x*"; then
         ref="%(color:green)$refname%(color:reset)"
     else
         ref="$refname"
     fi
 
-    echo "$head $ref$ups"
+    echo "$head $ref$ups$track"
 '
 
-eval=`git for-each-ref --format="$fmt" refs/heads`
+eval=`git for-each-ref --color=always --format="$fmt" refs/heads`
 eval "$eval"
