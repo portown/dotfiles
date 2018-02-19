@@ -42,7 +42,11 @@ set titlestring=gVim
 " フォント設定 {{{
 
 if IsWindows()
-  set guifont=Ricty\ for\ Powerline:h12:cSHIFTJIS
+  if has('nvim')
+    GuiFont! Ricty\ for\ Powerline:h12
+  else
+    set guifont=Ricty\ for\ Powerline:h12:cSHIFTJIS
+  endif
 
   if exists( '&rop' )
     " DirectWrite の設定
