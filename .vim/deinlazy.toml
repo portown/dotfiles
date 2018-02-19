@@ -143,30 +143,29 @@ hook_add = '''
 '''
 
 [[plugins]]
-repo = 'kana/vim-smartinput'
+repo = 'cohama/lexima.vim'
 on_i = 1
 hook_source = '''
-    call smartinput#map_to_trigger("i", "<Plug>(smartinput_CR)", "<CR>", "<CR>")
-    call smartinput#map_to_trigger("i", "<Plug>(smartinput_C-H)", "<BS>", "<C-H>")
+    cmap <C-h> <BS>
 
     " for m4
-    call smartinput#define_rule({
-                \   "at": "\%#",
+    call lexima#add_rule({
                 \   "char": "`",
-                \   "input": "`'<Left>",
-                \   "filetype": ["m4"],
+                \   "input": "`",
+                \   "input_after": "'",
+                \   "filetype": "m4",
                 \ })
-    call smartinput#define_rule({
-                \   "at": "`\%#'",
+    call lexima#add_rule({
                 \   "char": "'",
-                \   "input": "<Right>",
-                \   "filetype": ["m4"],
-                \ })
-    call smartinput#define_rule({
                 \   "at": "`\%#'",
+                \   "leave": 1,
+                \   "filetype": "m4",
+                \ })
+    call lexima#add_rule({
                 \   "char": "<BS>",
-                \   "input": "<Del><BS>",
-                \   "filetype": ["m4"],
+                \   "at": "`\%#'",
+                \   "delete": 1,
+                \   "filetype": "m4",
                 \ })
 '''
 

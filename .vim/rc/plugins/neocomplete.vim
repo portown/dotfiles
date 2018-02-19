@@ -61,4 +61,4 @@ inoremap <expr><C-P> pumvisible() ? "\<C-P>" : "\<C-P>\<C-N>"
 inoremap <expr><C-G> neocomplete#undo_completion()
 inoremap <expr><C-L> neocomplete#complete_common_string()
 
-imap <expr><CR> neocomplete#smart_close_popup() . "\<Plug>(smartinput_CR)"
+imap <expr><CR> neocomplete#smart_close_popup() . lexima#expand('<CR>', 'i')

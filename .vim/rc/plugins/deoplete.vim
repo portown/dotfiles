@@ -18,4 +18,4 @@ inoremap <expr><C-P> pumvisible() ? "\<C-P>" : deoplete#mappings#manual_complete
 
 inoremap <expr><C-G> deoplete#mappings#undo_completion()
 
-imap <expr><CR> deoplete#mappings#smart_close_popup() . "\<Plug>(smartinput_CR)"
+imap <expr><CR> deoplete#mappings#smart_close_popup() . lexima#expand('<CR>', 'i')

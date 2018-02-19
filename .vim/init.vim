@@ -166,8 +166,8 @@ function! PortownBackspace()
         let ret = ret . neocomplete#smart_close_popup()
     endif
 
-    if dein#tap('vim-smartinput')
-        let ret = ret . "\<Plug>(smartinput_C-H)"
+    if dein#tap('lexima.vim')
+        let ret = ret . lexima#expand('<BS>', 'i')
     else
         let ret = "\<BS>"
     endif
