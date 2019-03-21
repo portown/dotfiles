@@ -1,8 +1,12 @@
-# Others
+# Core
 
 [[plugins]]
-repo = 'itchyny/landscape.vim'
-merged = 0
+repo = 'roxma/nvim-yarp'
+if = '!has("nvim")'
+
+[[plugins]]
+repo = 'roxma/vim-hug-neovim-rpc'
+if = '!has("nvim")'
 
 [[plugins]]
 repo = 'Shougo/dein.vim'
@@ -10,6 +14,12 @@ repo = 'Shougo/dein.vim'
 [[plugins]]
 repo = 'Shougo/vimproc'
 build = 'make'
+
+# Others
+
+[[plugins]]
+repo = 'itchyny/landscape.vim'
+merged = 0
 
 [[plugins]]
 repo = 'itchyny/lightline.vim'
@@ -156,11 +166,3 @@ repo = 'osyo-manga/vim-operator-jump_side'
 repo = 'Shougo/deoplete.nvim'
 depends = 'context_filetype.vim'
 hook_source = 'source ~/.vim/rc/plugins/deoplete.vim'
-
-[[plugins]]
-repo = 'roxma/nvim-yarp'
-if = '!has("nvim")'
-
-[[plugins]]
-repo = 'roxma/vim-hug-neovim-rpc'
-if = '!has("nvim")'
