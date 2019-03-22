@@ -27,6 +27,8 @@
 	default = simple
 [merge]
 	ff = false
+[rebase]
+	autoStash = true
 [status]
 	showUntrackedFiles = all
 [include]
