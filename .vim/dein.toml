@@ -163,6 +163,9 @@ repo = 'osyo-manga/vim-operator-jump_side'
 # Completions
 
 [[plugins]]
+repo = 'Shougo/context_filetype.vim'
+
+[[plugins]]
 repo = 'Shougo/deoplete.nvim'
 depends = 'context_filetype.vim'
 hook_source = 'source ~/.vim/rc/plugins/deoplete.vim'

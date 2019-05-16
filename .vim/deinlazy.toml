@@ -106,10 +106,6 @@ hook_add = '''
 # Others
 
 [[plugins]]
-repo = 'Shougo/context_filetype.vim'
-on_i = 1
-
-[[plugins]]
 repo = 'Shougo/tabpagebuffer.vim'
 on_path = '.*'
 
