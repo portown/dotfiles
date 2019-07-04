@@ -223,7 +223,11 @@ if dein#tap('landscape.vim')
     endfunction
 
     if IsWindows() && has('gui_running')
-        autocmd Portown GUIEnter * call MyVimrcConfigColorscheme() | call lightline#colorscheme()
+        if has('kaoriya')
+            autocmd Portown GUIEnter * call MyVimrcConfigColorscheme() | call lightline#colorscheme()
+        else
+            autocmd Portown GUIEnter * call MyVimrcConfigColorscheme()
+        endif
     else
         call MyVimrcConfigColorscheme()
     endif
