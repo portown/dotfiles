@@ -11,11 +11,11 @@ set completeopt+=noinsert
 
 inoremap <expr><C-F> pumvisible() ? "\<PageDown>" : "\<Right>"
 inoremap <expr><C-B> pumvisible() ? "\<PageUp>" : "\<Left>"
-inoremap <expr><C-Y> pumvisible() ? deoplete#mappings#close_popup() : "\<C-R>\""
-inoremap <expr><C-E> pumvisible() ? deoplete#mappings#cancel_popup() : "\<End>"
-inoremap <expr><C-N> pumvisible() ? "\<C-N>" : deoplete#mappings#manual_complete()
-inoremap <expr><C-P> pumvisible() ? "\<C-P>" : deoplete#mappings#manual_complete()
+inoremap <expr><C-Y> pumvisible() ? deoplete#close_popup() : "\<C-R>\""
+inoremap <expr><C-E> pumvisible() ? deoplete#cancel_popup() : "\<End>"
+inoremap <expr><C-N> pumvisible() ? "\<C-N>" : deoplete#manual_complete()
+inoremap <expr><C-P> pumvisible() ? "\<C-P>" : deoplete#manual_complete()
 
-inoremap <expr><C-G> deoplete#mappings#undo_completion()
+inoremap <expr><C-G> deoplete#undo_completion()
 
-imap <expr><CR> deoplete#mappings#smart_close_popup() . lexima#expand('<CR>', 'i')
+imap <expr><CR> deoplete#smart_close_popup() . lexima#expand('<CR>', 'i')

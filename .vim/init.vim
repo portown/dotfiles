@@ -161,7 +161,7 @@ function! PortownBackspace()
 
     let ret = ''
     if dein#tap('deoplete.nvim')
-        let ret = ret . deoplete#mappings#smart_close_popup()
+        let ret = ret . deoplete#smart_close_popup()
     elseif dein#tap('neocomplete.vim')
         let ret = ret . neocomplete#smart_close_popup()
     endif
