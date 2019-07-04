@@ -13,7 +13,6 @@
 	br = branch
 	brl = branch-list
 	chp = cherry-pick
-	difc = diff-commit
 [ui]
 	color = auto
 [color]
