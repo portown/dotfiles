@@ -110,10 +110,6 @@ repo = 'Shougo/tabpagebuffer.vim'
 on_path = '.*'
 
 [[plugins]]
-repo = 'Yggdroot/indentLine'
-on_path = '.*'
-
-[[plugins]]
 repo = 'cohama/agit.vim'
 on_cmd = ['Agit', 'AgitFile', 'AgitGit', 'AgitDiff']
 hook_add = '''

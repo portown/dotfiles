@@ -26,6 +26,15 @@ repo = 'itchyny/lightline.vim'
 hook_add = 'source ~/.vim/rc/plugins/lightline.vim'
 
 [[plugins]]
+repo = 'nathanaelkane/vim-indent-guides'
+hook_add = '''
+    let g:indent_guides_enable_on_vim_startup = 1
+    let g:indent_guides_start_level = 2
+    let g:indent_guides_guide_size = 1
+    let g:indent_guides_exclude_filetypes = ['help', 'unite']
+'''
+
+[[plugins]]
 repo = 'airblade/vim-gitgutter'
 hook_add = '''
     let g:gitgutter_realtime = 0
