@@ -17,4 +17,8 @@ inoremap <expr><C-P> pumvisible() ? "\<C-P>" : deoplete#manual_complete()
 
 inoremap <expr><C-G> deoplete#undo_completion()
 
-imap <expr><CR> deoplete#smart_close_popup() . lexima#expand('<CR>', 'i')
+if has('vimscript-3')
+    imap <expr><CR> deoplete#smart_close_popup() .. lexima#expand('<CR>', 'i')
+else
+    imap <expr><CR> deoplete#smart_close_popup() . lexima#expand('<CR>', 'i')
+endif

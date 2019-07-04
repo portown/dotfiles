@@ -3,6 +3,10 @@
 set encoding=utf-8
 scriptencoding utf-8
 
+if has('vimscript-3')
+    scriptversion 3
+endif
+
 " -------------------------------------------------------------
 " 初期化 {{{
 
@@ -161,13 +165,25 @@ function! PortownBackspace()
 
     let ret = ''
     if dein#tap('deoplete.nvim')
-        let ret = ret . deoplete#smart_close_popup()
+        if has('vimscript-3')
+            let ret = ret .. deoplete#smart_close_popup()
+        else
+            let ret = ret . deoplete#smart_close_popup()
+        endif
     elseif dein#tap('neocomplete.vim')
-        let ret = ret . neocomplete#smart_close_popup()
+        if has('vimscript-3')
+            let ret = ret .. neocomplete#smart_close_popup()
+        else
+            let ret = ret . neocomplete#smart_close_popup()
+        endif
     endif
 
     if dein#tap('lexima.vim')
-        let ret = ret . lexima#expand('<BS>', 'i')
+        if has('vimscript-3')
+            let ret = ret .. lexima#expand('<BS>', 'i')
+        else
+            let ret = ret . lexima#expand('<BS>', 'i')
+        endif
     else
         let ret = "\<BS>"
     endif
