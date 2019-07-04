@@ -27,6 +27,7 @@
 	default = simple
 [merge]
 	ff = false
+	conflictStyle = diff3
 [rebase]
 	autoStash = true
 [status]
