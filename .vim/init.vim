@@ -278,7 +278,11 @@ set directory-=.
 
 set lazyredraw
 
-set diffopt=internal,filler,vertical
+if has('nvim')
+    set diffopt=filler,vertical
+else
+    set diffopt=internal,filler,vertical
+endif
 
 " -------------------------------------------------------------
 " 検索設定 {{{
