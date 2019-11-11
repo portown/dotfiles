@@ -13,6 +13,8 @@
 	br = branch
 	brl = branch-list
 	chp = cherry-pick
+	sw = switch
+	rs = restore
 [ui]
 	color = auto
 [color]
