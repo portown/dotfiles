@@ -62,6 +62,7 @@ let s:dein_path = expand('~/.cache/dein')
 let s:toml_path = '~/.vim/dein.toml'
 let s:toml_lazy_path = '~/.vim/deinlazy.toml'
 let s:toml_local_path = '~/.vim/local/dein.toml'
+let g:dein#install_log_filename = s:dein_path . '/dein_log.txt'
 if dein#load_state(s:dein_path)
     call dein#begin(s:dein_path, [expand('<sfile>'), s:toml_path, s:toml_lazy_path, s:toml_local_path])
 
