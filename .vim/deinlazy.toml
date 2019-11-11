@@ -153,11 +153,6 @@ hook_source = '''
 '''
 
 [[plugins]]
-repo = 'rhysd/conflict-marker.vim'
-on_ft = '.*'
-on_source = 'unite.vim'
-
-[[plugins]]
 repo = 'thinca/vim-quickrun'
 on_cmd = ['QuickRun']
 hook_source = '''

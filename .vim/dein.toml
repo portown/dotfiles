@@ -47,6 +47,9 @@ repo = 'thinca/vim-localrc'
 [[plugins]]
 repo = 'tpope/vim-repeat'
 
+[[plugins]]
+repo = 'rhysd/conflict-marker.vim'
+
 # Textobjs
 
 [[plugins]]
