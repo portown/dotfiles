@@ -53,6 +53,10 @@ repo = 'rhysd/conflict-marker.vim'
 [[plugins]]
 repo = 'thinca/vim-fontzoom'
 
+[[plugins]]
+repo = 'Shougo/defx.nvim'
+hook_add = 'source ~/.vim/rc/plugins/defx.vim'
+
 # Textobjs
 
 [[plugins]]
