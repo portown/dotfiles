@@ -1,10 +1,11 @@
 " deoplete.vim
 
 let g:deoplete#enable_at_startup = 1
-let g:deoplete#enable_smart_case = 1
+call deoplete#custom#option('smart_case', v:true)
 
-let g:deoplete#keyword_patterns = {}
-let g:deoplete#keyword_patterns._ = '[a-zA-Z_]\k*\(?'
+call deoplete#custom#option('keyword_patterns', {
+    \ '_': '[a-zA-Z_]\k*\(?',
+    \})
 
 set completeopt+=noinsert
 
