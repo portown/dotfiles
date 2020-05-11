@@ -50,6 +50,9 @@ repo = 'tpope/vim-repeat'
 [[plugins]]
 repo = 'rhysd/conflict-marker.vim'
 
+[[plugins]]
+repo = 'thinca/vim-fontzoom'
+
 # Textobjs
 
 [[plugins]]
