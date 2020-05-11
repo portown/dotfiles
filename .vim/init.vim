@@ -357,7 +357,8 @@ set shortmess& shortmess+=I
 nnoremap <SID>[vimrc] <Nop>
 nmap <Space>v <SID>[vimrc]
 
-nnoremap <silent> <SID>[vimrc]e :<C-U>edit $MYVIMRC<CR>
+" .vim/vimrc から .vim/init.vim を開く構成になっている（vi用）ため、$MYVIMRC では .vim/vimrc が開かれてしまう
+nnoremap <silent> <SID>[vimrc]e :<C-U>edit ~/.vim/init.vim<CR>
 nnoremap <silent> <SID>[vimrc]l :<C-U>source $MYVIMRC \| if has('gui_running') \| source $MYGVIMRC \| endif<CR>
 
 " .gvimrc の編集は CUI/GUI 関係なくコマンドでできるようにする
@@ -370,6 +371,9 @@ nnoremap <silent> <SID>[gvimrc]e :<C-U>edit $MYGVIMRC<CR>
 if has('gui_running')
     nnoremap <silent> <SID>[gvimrc]l :<C-U>source $MYGVIMRC<CR>
 endif
+
+nnoremap <silent> <SID>[vimrc]p :<C-U>edit ~/.vim/dein.toml<CR>
+nnoremap <silent> <SID>[vimrc]pl :<C-U>edit ~/.vim/deinlazy.toml<CR>
 
 " }}}
 " -------------------------------------------------------------
