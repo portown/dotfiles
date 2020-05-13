@@ -175,12 +175,6 @@ function! PortownBackspace()
         else
             let ret = ret . deoplete#smart_close_popup()
         endif
-    elseif dein#tap('neocomplete.vim')
-        if has('vimscript-3')
-            let ret = ret .. neocomplete#smart_close_popup()
-        else
-            let ret = ret . neocomplete#smart_close_popup()
-        endif
     endif
 
     if dein#tap('lexima.vim')
