@@ -45,8 +45,8 @@ hook_source = '''
 '''
 
 [[plugins]]
-repo = 'vim-scripts/groovyindent'
-on_ft = ['groovy']
+repo = 'tfnico/vim-gradle'
+on_path = '\.gradle$'
 
 [[plugins]]
 repo = 'dag/vim2hs'
