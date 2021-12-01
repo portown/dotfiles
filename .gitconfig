@@ -15,6 +15,7 @@
 	chp = cherry-pick
 	sw = switch
 	rs = restore
+	push-f = push --force-with-lease
 [ui]
 	color = auto
 [color]
