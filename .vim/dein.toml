@@ -9,11 +9,61 @@ repo = 'roxma/vim-hug-neovim-rpc'
 if = '!has("nvim")'
 
 [[plugins]]
+repo = 'vim-denops/denops.vim'
+if = 'has("nvim") || v:version >= 900'
+
+[[plugins]]
 repo = 'Shougo/dein.vim'
 
 [[plugins]]
 repo = 'Shougo/vimproc'
 build = 'make'
+
+# ddu
+
+[[plugins]]
+repo = 'Shougo/ddu.vim'
+hook_add = 'source ~/.vim/rc/plugins/ddu.vim'
+hook_source = 'source ~/.vim/rc/plugins/ddu_on_source.vim'
+
+## ddu-ui
+
+[[plugins]]
+repo = 'Shougo/ddu-ui-ff'
+
+[[plugins]]
+repo = 'Shougo/ddu-ui-filer'
+
+## ddu-sources
+
+[[plugins]]
+repo = 'Shougo/ddu-source-file'
+depends = ['ddu-kind-file']
+
+[[plugins]]
+repo = 'Shougo/ddu-source-action'
+
+[[plugins]]
+repo = 'shun/ddu-source-buffer'
+
+[[plugins]]
+repo = 'Shougo/ddu-source-vim'
+
+[[plugins]]
+repo = 'matsui54/ddu-source-help'
+
+## ddu-kind
+
+[[plugins]]
+repo = 'Shougo/ddu-kind-file'
+
+## ddu-filter
+
+[[plugins]]
+repo = 'Shougo/ddu-filter-matcher_substring'
+
+[[plugins]]
+repo = 'Shougo/ddu-filter-sorter_alpha'
 
 # Others
 
@@ -37,7 +87,7 @@ hook_add = '''
     let g:indent_guides_enable_on_vim_startup = 1
     let g:indent_guides_start_level = 2
     let g:indent_guides_guide_size = 1
-    let g:indent_guides_exclude_filetypes = ['help', 'unite']
+    let g:indent_guides_exclude_filetypes = ['help']
 '''
 
 [[plugins]]
@@ -62,6 +112,12 @@ repo = 'thinca/vim-fontzoom'
 [[plugins]]
 repo = 'Shougo/defx.nvim'
 hook_source = 'source ~/.vim/rc/plugins/defx.vim'
+
+[[plugins]]
+repo = 'Shougo/neomru.vim'
+
+[[plugins]]
+repo = 'Shougo/junkfile.vim'
 
 # Textobjs
 

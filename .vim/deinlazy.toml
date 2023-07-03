@@ -1,34 +1,3 @@
-# Unite
-
-[[plugins]]
-repo = 'Shougo/neomru.vim'
-on_path = '.*'
-
-[[plugins]]
-repo = 'osyo-manga/unite-filters-collection'
-
-[[plugins]]
-repo = 'Shougo/unite.vim'
-depends = ['neomru.vim', 'unite-filters-collection']
-hook_add = 'source ~/.vim/rc/plugins/unite.vim'
-hook_source = 'source ~/.vim/rc/plugins/unite_on_source.vim'
-
-[[plugins]]
-repo = 'Shougo/denite.nvim'
-depends = ['neomru.vim']
-hook_add = 'source ~/.vim/rc/plugins/denite.vim'
-hook_source = 'source ~/.vim/rc/plugins/denite_on_source.vim'
-
-[[plugins]]
-repo = 'Shougo/unite-outline'
-depends = 'unite.vim'
-on_source = 'unite.vim'
-
-[[plugins]]
-repo = 'Shougo/junkfile.vim'
-depends = 'unite.vim'
-on_source = 'unite.vim'
-
 # Language
 
 [[plugins]]
@@ -94,7 +63,6 @@ repo = 'Shougo/neosnippet'
 depends = 'context_filetype.vim'
 on_i = 1
 on_ft = 'snippet'
-on_source = 'unite.vim'
 hook_add = 'source ~/.vim/rc/plugins/neosnippet.vim'
 
 [[plugins]]
