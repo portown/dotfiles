@@ -61,7 +61,9 @@ function! s:ddu_ff_my_settings() abort
     nnoremap <buffer><silent> <Space> <Cmd>call ddu#ui#do_action('toggleSelectItem')<CR>
     nnoremap <buffer><silent> i <Cmd>call ddu#ui#do_action('openFilterWindow')<CR>
     nnoremap <buffer><silent> q <Cmd>call ddu#ui#do_action('quit')<CR>
-    nnoremap <buffer><silent> <C-i> <Cmd>call ddu#ui#do_action('chooseAction')<CR>
+    nnoremap <buffer><silent> <C-i> <Cmd>call ddu#ui#multi_actions([['chooseAction'], ['openFilterWindow']])<CR>
+    nnoremap <buffer><silent> D <Cmd>call ddu#ui#do_action('itemAction', #{name: 'delete'})<CR>
+    nnoremap <buffer><silent> N <Cmd>call ddu#ui#do_action('itemAction', #{name: 'newFile'})<CR>
     setlocal cursorline
 endfunction
 
