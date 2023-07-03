@@ -9,11 +9,56 @@ repo = 'roxma/vim-hug-neovim-rpc'
 if = '!has("nvim")'
 
 [[plugins]]
+repo = 'vim-denops/denops.vim'
+if = 'has("nvim") || v:version >= 900'
+
+[[plugins]]
 repo = 'Shougo/dein.vim'
 
 [[plugins]]
 repo = 'Shougo/vimproc'
 build = 'make'
+
+# ddu
+
+[[plugins]]
+repo = 'Shougo/ddu.vim'
+depends = [
+    'ddu-ui-ff',
+    'ddu-ui-filer',
+    'ddu-source-file',
+    'ddu-source-action',
+    'ddu-filter-matcher_substring',
+]
+hook_add = 'source ~/.vim/rc/plugins/ddu.vim'
+hook_source = 'source ~/.vim/rc/plugins/ddu_on_source.vim'
+
+## ddu-ui
+
+[[plugins]]
+repo = 'Shougo/ddu-ui-ff'
+
+[[plugins]]
+repo = 'Shougo/ddu-ui-filer'
+
+## ddu-sources
+
+[[plugins]]
+repo = 'Shougo/ddu-source-file'
+depends = ['ddu-kind-file']
+
+[[plugins]]
+repo = 'Shougo/ddu-source-action'
+
+## ddu-kind
+
+[[plugins]]
+repo = 'Shougo/ddu-kind-file'
+
+## ddu-filter
+
+[[plugins]]
+repo = 'Shougo/ddu-filter-matcher_substring'
 
 # Others
 
