@@ -202,11 +202,12 @@ set tags& tags+=~/tags
 " カラースキームの設定 {{{
 
 if dein#tap('landscape.vim')
+    " landscape.vim に ModeMsg が設定されていないので設定
+    autocmd Portown ColorScheme * highlight ModeMsg gui=bold guifg=fg
+    " 日本語入力オン時のカーソル色を変更する
+    autocmd Portown ColorScheme * highlight CursorIM guibg=Red
     function! MyVimrcConfigColorscheme()
         colorscheme landscape
-
-        " landscape.vim に ModeMsg が設定されていないので設定
-        highlight ModeMsg gui=bold guifg=fg
     endfunction
 
     if IsWindows() && has('gui_running')
