@@ -43,9 +43,9 @@ set titlestring=gVim
 
 if IsWindows()
   if has('nvim')
-    GuiFont! Ricty\ for\ Powerline:h12
+    GuiFont! Ricty\ for\ Powerline:h16
   else
-    set guifont=Ricty\ for\ Powerline:h12:cSHIFTJIS
+    set guifont=Ricty\ for\ Powerline:h16:cSHIFTJIS
   endif
 
   if exists( '&rop' )
