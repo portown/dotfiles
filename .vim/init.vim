@@ -213,12 +213,18 @@ if dein#tap('landscape.vim')
     if IsWindows() && has('gui_running')
         if has('kaoriya')
             autocmd Portown GUIEnter * call MyVimrcConfigColorscheme() | call lightline#colorscheme()
+        elseif has('nvim')
+            call MyVimrcConfigColorscheme()
         else
             autocmd Portown GUIEnter * call MyVimrcConfigColorscheme()
         endif
     else
         call MyVimrcConfigColorscheme()
     endif
+endif
+
+if has('nvim')
+    autocmd Portown UIEnter * execute 'source' expand('~/.vim/gvimrc')
 endif
 
 " }}}
