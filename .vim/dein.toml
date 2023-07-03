@@ -24,6 +24,12 @@ merged = 0
 [[plugins]]
 repo = 'itchyny/lightline.vim'
 hook_add = 'source ~/.vim/rc/plugins/lightline.vim'
+if = '!has("nvim")'
+
+[[plugins]]
+repo = 'nvim-lualine/lualine.nvim'
+hook_source = 'source ~/.vim/rc/plugins/lualine.lua'
+if = 'has("nvim")'
 
 [[plugins]]
 repo = 'nathanaelkane/vim-indent-guides'
