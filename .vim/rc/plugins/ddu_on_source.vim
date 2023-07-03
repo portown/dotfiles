@@ -8,6 +8,11 @@ call ddu#custom#patch_global(#{
     \               'matcher_substring',
     \           ],
     \       },
+    \       file: #{
+    \           sorters: [
+    \               'sorter_alpha',
+    \           ],
+    \       },
     \   },
     \   kindOptions: #{
     \       file: #{
@@ -15,6 +20,9 @@ call ddu#custom#patch_global(#{
     \       },
     \       action: #{
     \           defaultAction: 'do',
+    \       },
+    \       help: #{
+    \           defaultAction: 'open',
     \       },
     \   },
     \   filterParams: #{
@@ -25,8 +33,24 @@ call ddu#custom#patch_global(#{
     \           prompt: '> ',
     \           split: 'horizontal',
     \           splitDirection: 'botright',
-    \           startFilter: v:true,
+    \           startFilter: v:false,
     \           statusline: v:false,
+    \       },
+    \   },
+    \})
+
+call ddu#custom#patch_local('help', #{
+    \   uiParams: #{
+    \       ff: #{
+    \           startFilter: v:true,
+    \       },
+    \   },
+    \})
+
+call ddu#custom#patch_local('file', #{
+    \   uiParams: #{
+    \       ff: #{
+    \           startFilter: v:true,
     \       },
     \   },
     \})

@@ -1,10 +1,6 @@
 # Unite
 
 [[plugins]]
-repo = 'Shougo/neomru.vim'
-on_path = '.*'
-
-[[plugins]]
 repo = 'osyo-manga/unite-filters-collection'
 
 [[plugins]]
