@@ -58,12 +58,16 @@ call ddu#custom#patch_local('file', #{
 autocmd Portown FileType ddu-ff call s:ddu_ff_my_settings()
 function! s:ddu_ff_my_settings() abort
     nnoremap <buffer><silent> <CR> <Cmd>call ddu#ui#do_action('itemAction')<CR>
-    nnoremap <buffer><silent> <Space> <Cmd>call ddu#ui#do_action('toggleSelectItem')<CR>
+    nnoremap <buffer><silent> m <Cmd>call ddu#ui#do_action('toggleSelectItem')<CR>
     nnoremap <buffer><silent> i <Cmd>call ddu#ui#do_action('openFilterWindow')<CR>
     nnoremap <buffer><silent> q <Cmd>call ddu#ui#do_action('quit')<CR>
     nnoremap <buffer><silent> <C-i> <Cmd>call ddu#ui#multi_actions([['chooseAction'], ['openFilterWindow']])<CR>
     nnoremap <buffer><silent> D <Cmd>call ddu#ui#do_action('itemAction', #{name: 'delete'})<CR>
+    nnoremap <buffer><silent> R <Cmd>call ddu#ui#do_action('itemAction', #{name: 'rename'})<CR>
+    nnoremap <buffer><silent> Y <Cmd>call ddu#ui#do_action('itemAction', #{name: 'yank'})<CR>
     nnoremap <buffer><silent> N <Cmd>call ddu#ui#do_action('itemAction', #{name: 'newFile'})<CR>
+    nnoremap <buffer><silent> h <Cmd>call ddu#ui#do_action('itemAction', #{name: 'narrow', params: #{path: '..'}})<CR>
+    nnoremap <buffer><silent> l <Cmd>call ddu#ui#do_action('itemAction', #{name: 'narrow'})<CR>
     setlocal cursorline
 endfunction
 
