@@ -75,7 +75,7 @@ if dein#load_state(s:dein_path)
     if filereadable(expand(s:toml_local_path))
         call dein#load_toml(s:toml_local_path)
     endif
-    call dein#local('~/.vim', {'frozen': 1}, ['local'])
+    call dein#local('~/.vim', {'frozen': 1}, ['local', 'ddu_custom'])
 
     call dein#end()
     call dein#call_hook('source')

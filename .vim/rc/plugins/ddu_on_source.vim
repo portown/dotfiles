@@ -10,7 +10,7 @@ call ddu#custom#patch_global(#{
     \       },
     \       file: #{
     \           sorters: [
-    \               'sorter_alpha',
+    \               'sorter_file',
     \           ],
     \       },
     \   },
