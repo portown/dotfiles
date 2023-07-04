@@ -52,27 +52,6 @@ repo = 'asciidoc/vim-asciidoc'
 on_path = '\.\%(adoc\|asciidoc\)$'
 on_ft = 'asciidoc'
 
-# Completions
-
-[[plugins]]
-repo = 'Shougo/neoinclude.vim'
-on_path = '.*'
-
-[[plugins]]
-repo = 'Shougo/neosnippet'
-depends = 'context_filetype.vim'
-on_i = 1
-on_ft = 'snippet'
-hook_add = 'source ~/.vim/rc/plugins/neosnippet.vim'
-
-[[plugins]]
-repo = 'eagletmt/neco-ghc'
-on_ft = 'haskell'
-if = 'executable("ghc-mod")'
-hook_add = '''
-    let g:necoghc_enable_detailed_browse = 1
-'''
-
 # Others
 
 [[plugins]]
@@ -120,37 +99,6 @@ hook_source = '''
                 \   "delete": 1,
                 \   "filetype": "m4",
                 \ })
-'''
-
-[[plugins]]
-repo = 'thinca/vim-quickrun'
-on_cmd = ['QuickRun']
-hook_source = '''
-    let g:quickrun_config = {}
-
-    let g:quickrun_config._ = {
-                \       "outputter": "error",
-                \       "outputter/error/success": "buffer",
-                \       "outputter/error/error": "quickfix",
-                \   }
-
-    if has('job')
-        let g:quickrun_config._.runner = 'job'
-    else
-        let g:quickrun_config._.runner = 'vimproc'
-        let g:quickrun_config._['runner/vimproc/updatetime'] = 60
-    endif
-
-    let g:quickrun_config.haskell = {
-                \       "command": "runghc",
-                \   }
-    if IsWindows()
-        let g:quickrun_config.haskell["hook/output_encode/encoding"] = "cp932"
-    endif
-
-    let g:quickrun_config.ruby = {
-                \       "command": "ruby",
-                \   }
 '''
 
 [[plugins]]
