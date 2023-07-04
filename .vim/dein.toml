@@ -119,6 +119,9 @@ repo = 'Shougo/neomru.vim'
 [[plugins]]
 repo = 'Shougo/junkfile.vim'
 
+[[plugins]]
+repo = 'jamessan/vim-gnupg'
+
 # Textobjs
 
 [[plugins]]
