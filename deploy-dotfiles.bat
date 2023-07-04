@@ -13,4 +13,5 @@ for %%i in (bin\git-branch-gc bin\git-branch-list .gitconfig .gitignore.global .
     )
 )
 mklink /d %dst%vimfiles %src%.vim
+xcopy /s /i /y %src%nvim %dst%AppData\Local\nvim
 pause

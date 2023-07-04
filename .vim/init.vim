@@ -223,10 +223,6 @@ if dein#tap('landscape.vim')
     endif
 endif
 
-if has('nvim')
-    autocmd Portown UIEnter * execute 'source' expand('~/.vim/gvimrc')
-endif
-
 " }}}
 " -------------------------------------------------------------
 
