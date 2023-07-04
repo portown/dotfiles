@@ -3,6 +3,7 @@
 
 [core]
 	excludesfile = ~/.gitignore.global
+	longpaths = true
 [alias]
 	st = status -sb
 	ci = commit -q
