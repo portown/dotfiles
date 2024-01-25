@@ -103,14 +103,6 @@ endif
 set fileencodings=ucs-bom,utf-8
 set fileformats=unix,dos,mac
 
-if exists('&ambiwidth')
-    if has('kaoriya') && IsWindows() && has('gui_running')
-        set ambiwidth=auto
-    else
-        set ambiwidth=double
-    endif
-endif
-
 " }}}
 " -------------------------------------------------------------
 

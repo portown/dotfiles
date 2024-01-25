@@ -114,6 +114,9 @@ repo = 'Shougo/junkfile.vim'
 [[plugins]]
 repo = 'jamessan/vim-gnupg'
 
+[[plugins]]
+repo = 'rbtnn/vim-ambiwidth'
+
 # Textobjs
 
 [[plugins]]
