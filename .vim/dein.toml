@@ -15,10 +15,6 @@ if = 'has("nvim") || v:version >= 900'
 [[plugins]]
 repo = 'Shougo/dein.vim'
 
-[[plugins]]
-repo = 'Shougo/vimproc'
-build = 'make'
-
 # ddu
 
 [[plugins]]
