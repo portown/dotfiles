@@ -238,8 +238,8 @@ set list
 let s:listchars = {
             \   'tab': '^ ',
             \   'trail': '_',
-            \   'extends': '»',
-            \   'precedes': '«',
+            \   'extends': '>',
+            \   'precedes': '<',
             \ }
 let &listchars = join(map(items(s:listchars), 'join(v:val, ":")'), ',')
 unlet s:listchars
