@@ -251,7 +251,11 @@ set backspace=indent,start,eol
 
 set showmatch
 
-set laststatus=2
+if has('nvim')
+    set laststatus=3
+else
+    set laststatus=2
+endif
 set cmdheight=2
 set showcmd
 
