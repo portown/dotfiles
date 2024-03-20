@@ -55,7 +55,7 @@ endif
 " dein.vim の設定 {{{
 
 if has('vim_starting')
-    set runtimepath^=~/.cache/dein/repos/github.com/Shougo/dein.vim/
+    set runtimepath^=~/.cache/dein/repos/github.com/Shougo/dein.vim
 endif
 
 let s:dein_path = expand('~/.cache/dein')
