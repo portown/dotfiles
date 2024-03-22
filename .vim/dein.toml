@@ -20,7 +20,8 @@ repo = 'Shougo/dein.vim'
 [[plugins]]
 repo = 'Shougo/ddu.vim'
 hook_add = 'source ~/.vim/rc/plugins/ddu.vim'
-hook_source = 'source ~/.vim/rc/plugins/ddu_on_source.vim'
+hook_post_source = 'source ~/.vim/rc/plugins/ddu_on_source.vim'
+merged = 0
 
 ## ddu-ui
 
@@ -74,7 +75,7 @@ if = '!has("nvim")'
 
 [[plugins]]
 repo = 'nvim-lualine/lualine.nvim'
-hook_source = 'source ~/.vim/rc/plugins/lualine.lua'
+hook_post_source = 'source ~/.vim/rc/plugins/lualine.lua'
 if = 'has("nvim")'
 
 [[plugins]]
