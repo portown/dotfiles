@@ -96,10 +96,6 @@ syntax enable
 " -------------------------------------------------------------
 " 文字コードの設定 {{{
 
-if IsWindows()
-    set termencoding=cp932
-endif
-
 set fileencodings=ucs-bom,utf-8
 set fileformats=unix,dos,mac
 
