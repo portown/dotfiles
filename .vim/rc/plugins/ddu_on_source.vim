@@ -81,4 +81,4 @@ function! s:ddu_ff_filter_my_settings() abort
     "inoremap <buffer><silent> <C-n> <Cmd>call ddu#ui#do_action('cursorNext')<CR>
 endfunction
 
-call ddu#load('ui', ['ff', 'filer'])
+call ddu#load('default', 'ui', ['ff', 'filer'])
